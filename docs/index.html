@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KOG Player Stats</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg-gradient: radial-gradient(circle at top, #151a33 0%, #05070e 55%, #010103 100%);
+        --card-bg: rgba(12, 16, 34, 0.75);
+        --card-border: rgba(82, 93, 150, 0.35);
+        --glow: 0 24px 60px rgba(16, 26, 67, 0.55);
+        --accent: #46c2ff;
+        --accent-soft: rgba(70, 194, 255, 0.18);
+        --text-primary: #f3f6ff;
+        --text-muted: #9aa4c7;
+        --divider: rgba(90, 105, 158, 0.35);
+        --badge-bg: rgba(70, 194, 255, 0.12);
+        --badge-text: #7fd6ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, sans-serif;
+        background: var(--bg-gradient);
+        color: var(--text-primary);
+        padding: clamp(1.6rem, 4vw, 3.5rem);
+        display: flex;
+        justify-content: center;
+      }
+
+      main {
+        width: min(1100px, 100%);
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 28px;
+        box-shadow: var(--glow);
+        backdrop-filter: blur(20px);
+        padding: clamp(1.6rem, 3vw, 3rem);
+        position: relative;
+        overflow: hidden;
+      }
+
+      main::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(circle at 25% 15%, rgba(70, 194, 255, 0.22), transparent 55%),
+          radial-gradient(circle at 80% 0%, rgba(125, 214, 255, 0.12), transparent 60%);
+        filter: blur(0.5px);
+      }
+
+      header {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-bottom: clamp(1.8rem, 3vw, 2.8rem);
+      }
+
+      .team-lockup {
+        display: grid;
+        gap: 0.45rem;
+      }
+
+      .team-lockup h1 {
+        font-size: clamp(2.1rem, 4vw, 2.9rem);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      .team-lockup span {
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.4em;
+        color: var(--text-muted);
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        z-index: 1;
+      }
+
+      .badge {
+        padding: 0.45rem 0.85rem;
+        border-radius: 999px;
+        border: 1px solid var(--accent-soft);
+        background: var(--badge-bg);
+        color: var(--badge-text);
+        font-size: 0.8rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        letter-spacing: 0.08em;
+      }
+
+      .badge strong {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      section {
+        position: relative;
+        z-index: 1;
+      }
+
+      .table-wrapper {
+        overflow-x: auto;
+        border-radius: 20px;
+        border: 1px solid rgba(96, 108, 162, 0.25);
+        background: rgba(7, 10, 22, 0.65);
+        box-shadow: inset 0 1px 0 rgba(108, 124, 182, 0.25);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+      }
+
+      thead {
+        background: linear-gradient(95deg, rgba(70, 194, 255, 0.18), rgba(70, 194, 255, 0.05));
+      }
+
+      th,
+      td {
+        padding: 1rem 1.25rem;
+        text-align: right;
+        font-size: 0.92rem;
+      }
+
+      th {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+
+      th:first-child,
+      td:first-child,
+      th:nth-child(2),
+      td:nth-child(2) {
+        text-align: left;
+      }
+
+      tbody tr {
+        border-bottom: 1px solid var(--divider);
+        transition: background 180ms ease, transform 180ms ease;
+      }
+
+      tbody tr:last-child {
+        border-bottom: none;
+      }
+
+      tbody tr:hover {
+        background: rgba(70, 194, 255, 0.06);
+        transform: translateY(-2px);
+      }
+
+      tbody td {
+        color: var(--text-primary);
+      }
+
+      tbody td span {
+        display: block;
+        color: var(--text-muted);
+        font-size: 0.78rem;
+        letter-spacing: 0.02em;
+      }
+
+      .number {
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      .totals {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.8rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .totals-card {
+        border: 1px solid rgba(96, 108, 162, 0.22);
+        background: rgba(9, 12, 26, 0.65);
+        border-radius: 18px;
+        padding: 1rem 1.2rem;
+        display: grid;
+        gap: 0.35rem;
+      }
+
+      .totals-card span {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .totals-card strong {
+        font-size: 1.6rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+
+      .no-data {
+        margin-top: 1.6rem;
+        padding: 1.1rem 1.3rem;
+        border-radius: 14px;
+        border: 1px dashed rgba(70, 194, 255, 0.42);
+        background: rgba(4, 7, 18, 0.65);
+        color: var(--badge-text);
+        font-size: 0.88rem;
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          border-radius: 22px;
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        thead {
+          position: sticky;
+          top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header></header>
+
+      <section class="totals" id="teamTotals"></section>
+
+      <section>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Player</th>
+                <th>Games</th>
+                <th>FT Made</th>
+                <th>FG Made</th>
+                <th>P/G</th>
+                <th>Total Pts</th>
+                <th>3PT Made</th>
+                <th>Fouls</th>
+              </tr>
+            </thead>
+            <tbody id="statsTable"></tbody>
+          </table>
+        </div>
+        <div class="no-data" id="noDataMessage">
+          No stats available yet. Check back after the next Kungsholmen OG game tip-off.
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const header = document.querySelector("header");
+      const metaContainer = document.createElement("div");
+      metaContainer.className = "meta";
+      header.appendChild(
+        (() => {
+          const lockup = document.createElement("div");
+          lockup.className = "team-lockup";
+          lockup.innerHTML = `
+            <span>Season 2025</span>
+            <h1>Kungsholmen OG</h1>
+          `;
+          return lockup;
+        })()
+      );
+      header.appendChild(metaContainer);
+
+      function createBadge(label, value) {
+        const badge = document.createElement("span");
+        badge.className = "badge";
+        badge.innerHTML = `<strong>${value}</strong>${label}`;
+        return badge;
+      }
+
+      function renderTotals(totals, gamesCount, playersTracked) {
+        const cards = [
+          { label: "Team Points", value: totals.totalPoints },
+          { label: "Team Field Goals", value: totals.fieldGoals },
+          { label: "Team Free Throws", value: totals.freeThrows },
+          { label: "Games Logged", value: gamesCount }
+        ];
+
+        if (playersTracked) {
+          cards.push({ label: "Players Tracked", value: playersTracked });
+        }
+
+        const totalsEl = document.getElementById("teamTotals");
+        totalsEl.innerHTML = "";
+        cards.forEach(({ label, value }) => {
+          const card = document.createElement("article");
+          card.className = "totals-card";
+          card.innerHTML = `<span>${label}</span><strong>${value}</strong>`;
+          totalsEl.appendChild(card);
+        });
+      }
+
+      function formatDateTime(value) {
+        if (!value) return null;
+        const date = new Date(value);
+        if (Number.isNaN(date.getTime())) return null;
+        return date.toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+      }
+
+      function renderBadges(players, metadata, gamesCount) {
+        metaContainer.innerHTML = "";
+        metaContainer.appendChild(createBadge("Games Logged", gamesCount));
+
+        if (players.length) {
+          const bestScorer = players
+            .slice()
+            .sort((a, b) => b.totalPoints - a.totalPoints || a.name.localeCompare(b.name))[0];
+          if (bestScorer) {
+            metaContainer.appendChild(createBadge("Top Scorer", bestScorer.name));
+          }
+        }
+
+        const updated = formatDateTime(metadata && metadata.generatedAt);
+        if (updated) {
+          metaContainer.appendChild(createBadge("Updated", updated));
+        }
+      }
+
+      function renderTable(players) {
+        const tbody = document.getElementById("statsTable");
+        tbody.innerHTML = "";
+
+        players.forEach((player) => {
+          const row = document.createElement("tr");
+          const pointsPerGame = player.gamesPlayed
+            ? (player.totalPoints / player.gamesPlayed).toFixed(1)
+            : "0.0";
+
+          row.innerHTML = `
+            <td class="number">#${player.number || "-"}</td>
+            <td>
+              ${player.name}
+              <span>${player.gamesPlayed ? "Active" : "DNP"}</span>
+            </td>
+            <td>${player.gamesPlayed}</td>
+            <td>${player.freeThrowsMade}</td>
+            <td>${player.fieldGoalsMade}</td>
+            <td>${pointsPerGame}</td>
+            <td>${player.totalPoints}</td>
+            <td>${player.threePointsMade}</td>
+            <td>${player.foulsMade}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      }
+
+      function computeTeamTotals(players) {
+        return players.reduce(
+          (acc, player) => {
+            acc.totalPoints += player.totalPoints;
+            acc.fieldGoals += player.fieldGoalsMade;
+            acc.freeThrows += player.freeThrowsMade;
+            return acc;
+          },
+          { totalPoints: 0, fieldGoals: 0, freeThrows: 0 }
+        );
+      }
+
+      function resolveGamesCount(players, metadata) {
+        if (metadata && Array.isArray(metadata.gamesProcessed) && metadata.gamesProcessed.length) {
+          return metadata.gamesProcessed.length;
+        }
+        const counts = players.map((p) => p.gamesPlayed || 0).filter((num) => num > 0);
+        return counts.length ? Math.max(...counts) : 0;
+      }
+
+      Promise.all([
+        fetch("data/kog_players.json", { cache: "no-store" })
+          .then((response) => (response.ok ? response.json() : []))
+          .catch(() => []),
+        fetch("data/last_updated.json", { cache: "no-store" })
+          .then((response) => (response.ok ? response.json() : null))
+          .catch(() => null)
+      ])
+        .then(([playersData, metadata]) => {
+          const players = Array.isArray(playersData) ? playersData : [];
+          const gamesCount = resolveGamesCount(players, metadata);
+          const playersTracked = metadata && typeof metadata.playersTracked === "number"
+            ? metadata.playersTracked
+            : players.length;
+
+          renderBadges(players, metadata, gamesCount);
+
+          if (!players.length) {
+            document.getElementById("noDataMessage").style.display = "block";
+            return;
+          }
+
+          renderTable(players);
+          renderTotals(computeTeamTotals(players), gamesCount, playersTracked);
+        })
+        .catch(() => {
+          document.getElementById("noDataMessage").style.display = "block";
+          renderBadges([], null, 0);
+        });
+    </script>
+  </body>
+</html>
