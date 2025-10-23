@@ -160,6 +160,7 @@
       tbody tr {
         border-bottom: 1px solid var(--divider);
         transition: background 180ms ease, transform 180ms ease;
+        cursor: pointer;
       }
 
       tbody tr:last-child {
@@ -283,6 +284,94 @@
           letter-spacing: 0.06em;
         }
       }
+
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(4, 6, 14, 0.75);
+        backdrop-filter: blur(14px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+        padding: 1.2rem;
+      }
+
+      .modal-overlay.visible {
+        display: flex;
+      }
+
+      .modal-card {
+        width: min(420px, 100%);
+        background: rgba(8, 12, 26, 0.9);
+        border: 1px solid rgba(108, 132, 205, 0.4);
+        border-radius: 22px;
+        padding: clamp(1.4rem, 4vw, 2rem);
+        box-shadow: 0 22px 58px rgba(8, 12, 32, 0.55);
+        display: grid;
+        gap: 1rem;
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .modal-header h2 {
+        margin: 0;
+        font-size: clamp(1.4rem, 5vw, 1.9rem);
+        letter-spacing: 0.05em;
+      }
+
+      .close-modal {
+        appearance: none;
+        border: 1px solid rgba(108, 132, 205, 0.35);
+        background: rgba(10, 14, 31, 0.6);
+        color: var(--text-muted);
+        border-radius: 999px;
+        padding: 0.45rem 0.95rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 150ms ease, color 150ms ease;
+      }
+
+      .close-modal:hover {
+        background: rgba(78, 126, 255, 0.18);
+        color: var(--text-primary);
+      }
+
+      .modal-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .modal-stats {
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .stat-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.02rem;
+        letter-spacing: 0.02em;
+      }
+
+      .stat-row span:first-child {
+        color: var(--text-muted);
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+      }
+
+      .stat-row strong {
+        font-size: 1.2rem;
+      }
     </style>
   </head>
   <body>
@@ -315,6 +404,16 @@
         </div>
       </section>
     </main>
+    <div class="modal-overlay" id="playerModal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true">
+        <div class="modal-header">
+          <h2 id="modalPlayerName"></h2>
+          <button class="close-modal" id="closeModal" type="button">Close</button>
+        </div>
+        <div class="modal-badges" id="modalBadges"></div>
+        <div class="modal-stats" id="modalStats"></div>
+      </div>
+    </div>
 
     <script>
       const header = document.querySelector("header");
@@ -332,6 +431,12 @@
         })()
       );
       header.appendChild(metaContainer);
+
+      const modalOverlay = document.getElementById("playerModal");
+      const modalName = document.getElementById("modalPlayerName");
+      const modalBadges = document.getElementById("modalBadges");
+      const modalStats = document.getElementById("modalStats");
+      const closeModalBtn = document.getElementById("closeModal");
 
       function createBadge(label, value) {
         const badge = document.createElement("span");
@@ -486,6 +591,16 @@
             }
           });
 
+          row.dataset.name = player.name;
+          row.dataset.number = player.number || "-";
+          row.dataset.games = player.gamesPlayed;
+          row.dataset.freeThrows = player.freeThrowsMade;
+          row.dataset.fieldGoals = player.fieldGoalsMade;
+          row.dataset.pointsPerGame = pointsPerGame;
+          row.dataset.totalPoints = player.totalPoints;
+          row.dataset.threePoints = player.threePointsMade;
+          row.dataset.fouls = player.foulsMade;
+
           tbody.appendChild(row);
         });
       }
@@ -544,6 +659,59 @@
           document.getElementById("noDataMessage").style.display = "block";
           renderBadges([], null, 0);
         });
+
+      function openModalFromDataset(data) {
+        modalName.textContent = data.name;
+
+        modalBadges.innerHTML = "";
+        if (data.number && data.number !== "-") {
+          modalBadges.appendChild(createBadge("Jersey", `#${data.number}`));
+        }
+        modalBadges.appendChild(createBadge("PTS/G", data.pointsPerGame));
+        modalBadges.appendChild(createBadge("Total Pts", data.totalPoints));
+
+        const statConfig = [
+          { label: "Games Played", value: data.games },
+          { label: "Free Throws Made", value: data.freeThrows },
+          { label: "Field Goals Made", value: data.fieldGoals },
+          { label: "Three Pointers", value: data.threePoints },
+          { label: "Fouls Committed", value: data.fouls }
+        ];
+
+        modalStats.innerHTML = "";
+        statConfig.forEach(({ label, value }) => {
+          const row = document.createElement("div");
+          row.className = "stat-row";
+          row.innerHTML = `<span>${label}</span><strong>${value}</strong>`;
+          modalStats.appendChild(row);
+        });
+
+        modalOverlay.classList.add("visible");
+        modalOverlay.setAttribute("aria-hidden", "false");
+      }
+
+      function closeModal() {
+        modalOverlay.classList.remove("visible");
+        modalOverlay.setAttribute("aria-hidden", "true");
+      }
+
+      document.getElementById("statsTable").addEventListener("click", (event) => {
+        const row = event.target.closest("tr");
+        if (!row) return;
+        openModalFromDataset(row.dataset);
+      });
+
+      closeModalBtn.addEventListener("click", closeModal);
+      modalOverlay.addEventListener("click", (event) => {
+        if (event.target === modalOverlay) {
+          closeModal();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modalOverlay.classList.contains("visible")) {
+          closeModal();
+        }
+      });
     </script>
   </body>
 </html>
