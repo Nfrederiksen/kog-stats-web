@@ -1,8 +1,10 @@
 {
-  "generatedAt": "2025-10-23T13:15:18.705861+00:00",
+  "generatedAt": "2025-10-23T13:45:22.143083+00:00",
   "gamesProcessed": [
     32403262,
-    32403267
+    32403267,
+    32403273,
+    32403279
   ],
   "playersTracked": 14,
   "teamRecords": {
@@ -23,12 +25,12 @@
       "pointDiff": 7
     },
     "toughestLoss": {
-      "gameId": 32403267,
-      "opponent": "Alvik V\u00e4sterled",
-      "opponentTeamId": 1402200,
-      "kogPoints": 66,
-      "opponentPoints": 82,
-      "pointDiff": -16
+      "gameId": 32403279,
+      "opponent": "KFUM Central Basket",
+      "opponentTeamId": 1402964,
+      "kogPoints": 42,
+      "opponentPoints": 88,
+      "pointDiff": -46
     }
   }
 }

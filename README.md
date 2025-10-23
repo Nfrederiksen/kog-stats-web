@@ -21,7 +21,7 @@ Static site plus scripts for tracking Kungsholmen OG game data from Profixio EMP
    ```
 
    This will:
-   - download each URL to `data/raw/game_<id>.json`
+   - download each URL to `data/raw/game_<id>.json` (skipping URLs whose match is already cached)
    - regenerate summaries & pretty JSON in `data/processed/`
    - update `docs/data/kog_players.json`
    - write metadata (`docs/data/last_updated.json`)
@@ -65,4 +65,3 @@ jobs:
 ```
 
 If you use GitHub Pages with the `docs/` folder, this commit is enough to retrigger the site build.
-

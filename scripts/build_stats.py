@@ -31,6 +31,7 @@ SITE_DATA_DIR = ROOT / "docs" / "data"
 class PlayerTotals:
     name: str
     numbers: set[str] = field(default_factory=set)
+    last_number: str = ""
     games_played: int = 0
     free_throws: int = 0
     two_pointers: int = 0
@@ -49,6 +50,7 @@ class PlayerTotals:
         number = (number or "").strip()
         if number:
             self.numbers.add(number)
+            self.last_number = number
 
         if counted_as_played:
             self.games_played += 1
@@ -63,7 +65,10 @@ class PlayerTotals:
         return self.free_throws + self.two_pointers * 2 + self.three_pointers * 3
 
     def as_row(self) -> Dict[str, object]:
-        number = sorted(self.numbers, key=lambda n: (len(n), n))[0] if self.numbers else ""
+        if self.last_number:
+            number = self.last_number
+        else:
+            number = sorted(self.numbers, key=lambda n: (len(n), n))[0] if self.numbers else ""
         ppg = round(self.total_points / self.games_played, 1) if self.games_played else 0
 
         return {

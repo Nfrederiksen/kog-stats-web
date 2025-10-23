@@ -40,8 +40,7 @@ def parse_match_id(url: str) -> int:
     return int(match.group(1))
 
 
-def fetch_feed(url: str) -> Tuple[int, bytes]:
-    match_id = parse_match_id(url)
+def fetch_feed(url: str, match_id: int) -> Tuple[int, bytes]:
     req = urllib.request.Request(url, headers={"User-Agent": "kog-stats-fetcher/1.0"})
     try:
         with urllib.request.urlopen(req, timeout=30) as response:
@@ -67,14 +66,31 @@ def write_raw_feed(match_id: int, data: bytes) -> Path:
 def main() -> None:
     fetched: list[Path] = []
     for url in read_sources():
-        match_id, payload = fetch_feed(url)
+        try:
+            match_id = parse_match_id(url)
+        except ValueError as exc:
+            print(f"[WARN] {exc}")
+            continue
+
+        cached_path = RAW_DIR / f"game_{match_id}.json"
+        if cached_path.exists():
+            print(f"Skipping game {match_id}; cached feed found at {cached_path}")
+            continue
+
+        try:
+            match_id, payload = fetch_feed(url, match_id)
+        except RuntimeError as exc:
+            print(f"[WARN] {exc}")
+            continue
+
         path = write_raw_feed(match_id, payload)
         fetched.append(path)
         print(f"Saved game {match_id} -> {path}")
 
-    if not fetched:
-        print("No feeds fetched.")
-        return
+    if fetched:
+        print("Fetched new feeds; regenerating outputs…")
+    else:
+        print("No new feeds fetched; using cached data.")
 
     print("Rebuilding processed stats…")
     build_stats_main()

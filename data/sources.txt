@@ -1,4 +1,7 @@
 # One EMP feed URL per line. Blank lines and lines starting with # are ignored.
 https://www.profixio.com/app/api/emp/32403262/0?expires=1761305616&signature=c187093b455c30e7c48c360044cddeb8cbcbe490a0aae9130bea8e806e673845
 https://www.profixio.com/app/api/emp/32403267/0?expires=1761306539&signature=4139005f62f7e7b5d84074bfbcbf3d4d72da2e2aa3c2e18700d025d54a964cb7
+https://www.profixio.com/app/api/emp/32403273/0?expires=1761313200&signature=454c28bcb8a0b6247143912f3d72bb5b66b916ea52a3417f3061fbaee7e52100
+https://www.profixio.com/app/api/emp/32403279/0?expires=1761313442&signature=0c1299a84d8e4b932bb3f302e7a15af03f61173b430b0d254b004f3bfaa45a2f
+
 
