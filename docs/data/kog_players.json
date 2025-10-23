@@ -11,15 +11,15 @@
     "pointsPerGame": 13.0
   },
   {
-    "name": "Randall Brar Kalala",
-    "number": "9",
-    "gamesPlayed": 1,
-    "freeThrowsMade": 0,
-    "fieldGoalsMade": 9,
+    "name": "Axel Forsberg",
+    "number": "13",
+    "gamesPlayed": 2,
+    "freeThrowsMade": 2,
+    "fieldGoalsMade": 2,
     "threePointsMade": 0,
-    "foulsMade": 1,
-    "totalPoints": 18,
-    "pointsPerGame": 18.0
+    "foulsMade": 5,
+    "totalPoints": 6,
+    "pointsPerGame": 3.0
   },
   {
     "name": "Benjamin Nord Paskin",
@@ -33,15 +33,15 @@
     "pointsPerGame": 8.0
   },
   {
-    "name": "Nicholas Frederiksen",
-    "number": "36",
+    "name": "Chuma Mc Phoy Odenyo",
+    "number": "111",
     "gamesPlayed": 1,
-    "freeThrowsMade": 1,
-    "fieldGoalsMade": 7,
-    "threePointsMade": 0,
-    "foulsMade": 1,
-    "totalPoints": 15,
-    "pointsPerGame": 15.0
+    "freeThrowsMade": 0,
+    "fieldGoalsMade": 2,
+    "threePointsMade": 1,
+    "foulsMade": 0,
+    "totalPoints": 5,
+    "pointsPerGame": 5.0
   },
   {
     "name": "Fares Cherif",
@@ -55,50 +55,6 @@
     "pointsPerGame": 7.0
   },
   {
-    "name": "Axel Forsberg",
-    "number": "13",
-    "gamesPlayed": 2,
-    "freeThrowsMade": 2,
-    "fieldGoalsMade": 2,
-    "threePointsMade": 0,
-    "foulsMade": 5,
-    "totalPoints": 6,
-    "pointsPerGame": 3.0
-  },
-  {
-    "name": "Mattias Malmi Pauser",
-    "number": "51",
-    "gamesPlayed": 1,
-    "freeThrowsMade": 0,
-    "fieldGoalsMade": 3,
-    "threePointsMade": 0,
-    "foulsMade": 3,
-    "totalPoints": 6,
-    "pointsPerGame": 6.0
-  },
-  {
-    "name": "Chuma Mc Phoy Odenyo",
-    "number": "111",
-    "gamesPlayed": 1,
-    "freeThrowsMade": 0,
-    "fieldGoalsMade": 2,
-    "threePointsMade": 1,
-    "foulsMade": 0,
-    "totalPoints": 5,
-    "pointsPerGame": 5.0
-  },
-  {
-    "name": "Niklas Walles",
-    "number": "3",
-    "gamesPlayed": 1,
-    "freeThrowsMade": 3,
-    "fieldGoalsMade": 1,
-    "threePointsMade": 0,
-    "foulsMade": 1,
-    "totalPoints": 5,
-    "pointsPerGame": 5.0
-  },
-  {
     "name": "Hassan Drammeh",
     "number": "87",
     "gamesPlayed": 1,
@@ -110,15 +66,15 @@
     "pointsPerGame": 4.0
   },
   {
-    "name": "Lucas Evertsson",
-    "number": "10",
+    "name": "Joakim Walles",
+    "number": "15",
     "gamesPlayed": 1,
-    "freeThrowsMade": 2,
-    "fieldGoalsMade": 1,
+    "freeThrowsMade": 1,
+    "fieldGoalsMade": 0,
     "threePointsMade": 0,
-    "foulsMade": 2,
-    "totalPoints": 4,
-    "pointsPerGame": 4.0
+    "foulsMade": 1,
+    "totalPoints": 1,
+    "pointsPerGame": 1.0
   },
   {
     "name": "Kipat Kahumbu",
@@ -132,6 +88,17 @@
     "pointsPerGame": 2.0
   },
   {
+    "name": "Lucas Evertsson",
+    "number": "10",
+    "gamesPlayed": 1,
+    "freeThrowsMade": 2,
+    "fieldGoalsMade": 1,
+    "threePointsMade": 0,
+    "foulsMade": 2,
+    "totalPoints": 4,
+    "pointsPerGame": 4.0
+  },
+  {
     "name": "Luka Rosko",
     "number": "11",
     "gamesPlayed": 1,
@@ -143,14 +110,47 @@
     "pointsPerGame": 2.0
   },
   {
-    "name": "Joakim Walles",
-    "number": "15",
+    "name": "Mattias Malmi Pauser",
+    "number": "51",
+    "gamesPlayed": 1,
+    "freeThrowsMade": 0,
+    "fieldGoalsMade": 3,
+    "threePointsMade": 0,
+    "foulsMade": 3,
+    "totalPoints": 6,
+    "pointsPerGame": 6.0
+  },
+  {
+    "name": "Nicholas Frederiksen",
+    "number": "36",
     "gamesPlayed": 1,
     "freeThrowsMade": 1,
-    "fieldGoalsMade": 0,
+    "fieldGoalsMade": 7,
     "threePointsMade": 0,
     "foulsMade": 1,
-    "totalPoints": 1,
-    "pointsPerGame": 1.0
+    "totalPoints": 15,
+    "pointsPerGame": 15.0
+  },
+  {
+    "name": "Niklas Walles",
+    "number": "3",
+    "gamesPlayed": 1,
+    "freeThrowsMade": 3,
+    "fieldGoalsMade": 1,
+    "threePointsMade": 0,
+    "foulsMade": 1,
+    "totalPoints": 5,
+    "pointsPerGame": 5.0
+  },
+  {
+    "name": "Randall Brar Kalala",
+    "number": "9",
+    "gamesPlayed": 1,
+    "freeThrowsMade": 0,
+    "fieldGoalsMade": 9,
+    "threePointsMade": 0,
+    "foulsMade": 1,
+    "totalPoints": 18,
+    "pointsPerGame": 18.0
   }
 ]

@@ -1,8 +1,34 @@
 {
-  "generatedAt": "2025-10-23T12:51:47.126044+00:00",
+  "generatedAt": "2025-10-23T13:15:18.705861+00:00",
   "gamesProcessed": [
     32403262,
     32403267
   ],
-  "playersTracked": 14
+  "playersTracked": 14,
+  "teamRecords": {
+    "highestScore": {
+      "gameId": 32403267,
+      "opponent": "Alvik V\u00e4sterled",
+      "opponentTeamId": 1402200,
+      "kogPoints": 66,
+      "opponentPoints": 82,
+      "pointDiff": -16
+    },
+    "biggestWin": {
+      "gameId": 32403262,
+      "opponent": "Uppsala Basket",
+      "opponentTeamId": 1400873,
+      "kogPoints": 58,
+      "opponentPoints": 51,
+      "pointDiff": 7
+    },
+    "toughestLoss": {
+      "gameId": 32403267,
+      "opponent": "Alvik V\u00e4sterled",
+      "opponentTeamId": 1402200,
+      "kogPoints": 66,
+      "opponentPoints": 82,
+      "pointDiff": -16
+    }
+  }
 }

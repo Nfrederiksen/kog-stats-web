@@ -188,9 +188,9 @@
       }
 
       .highlight {
-        color: var(--accent);
+        color: #f8d057;
         font-weight: 600;
-        text-shadow: 0 0 12px rgba(70, 194, 255, 0.35);
+        text-shadow: 0 0 16px rgba(255, 210, 95, 0.45);
       }
 
       .totals {
@@ -221,6 +221,13 @@
       .totals-card strong {
         font-size: 1.6rem;
         font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+
+      .totals-card p {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.78rem;
         letter-spacing: 0.04em;
       }
 
@@ -333,24 +340,53 @@
         return badge;
       }
 
-      function renderTotals(totals, gamesCount, playersTracked) {
+      function formatDiff(diff) {
+        if (diff > 0) return `+${diff}`;
+        if (diff < 0) return `${diff}`;
+        return `${diff}`;
+      }
+
+      const formatScoreLine = (record) => `${record.kogPoints}-${record.opponentPoints}`;
+
+      function renderTotals(totals, gamesCount, playersTracked, teamRecords) {
         const cards = [
           { label: "Team Points", value: totals.totalPoints },
           { label: "Team Field Goals", value: totals.fieldGoals },
           { label: "Team Free Throws", value: totals.freeThrows },
-          { label: "Games Logged", value: gamesCount }
+          { label: "Games Logged", value: gamesCount },
+          { label: "Players Tracked", value: playersTracked }
         ];
 
-        if (playersTracked) {
-          cards.push({ label: "Players Tracked", value: playersTracked });
+        if (teamRecords?.highestScore) {
+          cards.push({
+            label: "Highest Score",
+            value: teamRecords.highestScore.kogPoints,
+            subtitle: `vs ${teamRecords.highestScore.opponent} (${formatScoreLine(teamRecords.highestScore)})`
+          });
+        }
+
+        if (teamRecords?.biggestWin) {
+          cards.push({
+            label: "Biggest Win",
+            value: formatDiff(teamRecords.biggestWin.pointDiff),
+            subtitle: `vs ${teamRecords.biggestWin.opponent} (${formatScoreLine(teamRecords.biggestWin)})`
+          });
+        }
+
+        if (teamRecords?.toughestLoss) {
+          cards.push({
+            label: "Toughest Loss",
+            value: formatDiff(teamRecords.toughestLoss.pointDiff),
+            subtitle: `vs ${teamRecords.toughestLoss.opponent} (${formatScoreLine(teamRecords.toughestLoss)})`
+          });
         }
 
         const totalsEl = document.getElementById("teamTotals");
         totalsEl.innerHTML = "";
-        cards.forEach(({ label, value }) => {
+        cards.forEach(({ label, value, subtitle }) => {
           const card = document.createElement("article");
           card.className = "totals-card";
-          card.innerHTML = `<span>${label}</span><strong>${value}</strong>`;
+          card.innerHTML = `<span>${label}</span><strong>${value}</strong>${subtitle ? `<p>${subtitle}</p>` : ""}`;
           totalsEl.appendChild(card);
         });
       }
@@ -414,23 +450,23 @@
             ? (player.totalPoints / player.gamesPlayed).toFixed(1)
             : "0.0";
 
-        const cells = [
-          { value: player.gamesPlayed, key: "gamesPlayed", display: player.gamesPlayed },
-          { value: player.freeThrowsMade, key: "freeThrowsMade", display: player.freeThrowsMade },
-          { value: player.fieldGoalsMade, key: "fieldGoalsMade", display: player.fieldGoalsMade },
-          {
-            value: parseFloat(pointsPerGame),
-            key: "pointsPerGame",
-            display: pointsPerGame,
-          },
-          { value: player.totalPoints, key: "totalPoints", display: player.totalPoints },
-          {
-            value: player.threePointsMade,
-            key: "threePointsMade",
-            display: player.threePointsMade,
-          },
-          { value: player.foulsMade, key: "foulsMade", display: player.foulsMade },
-        ];
+          const cells = [
+            { value: player.gamesPlayed, key: "gamesPlayed", display: player.gamesPlayed },
+            { value: player.freeThrowsMade, key: "freeThrowsMade", display: player.freeThrowsMade },
+            { value: player.fieldGoalsMade, key: "fieldGoalsMade", display: player.fieldGoalsMade },
+            {
+              value: parseFloat(pointsPerGame),
+              key: "pointsPerGame",
+              display: pointsPerGame,
+            },
+            { value: player.totalPoints, key: "totalPoints", display: player.totalPoints },
+            {
+              value: player.threePointsMade,
+              key: "threePointsMade",
+              display: player.threePointsMade,
+            },
+            { value: player.foulsMade, key: "foulsMade", display: player.foulsMade },
+          ];
 
           row.innerHTML = `
             <td class="number">#${player.number || "-"}</td>
@@ -497,7 +533,12 @@
           }
 
           renderTable(players);
-          renderTotals(computeTeamTotals(players), gamesCount, playersTracked);
+          renderTotals(
+            computeTeamTotals(players),
+            gamesCount,
+            playersTracked,
+            metadata?.teamRecords || null
+          );
         })
         .catch(() => {
           document.getElementById("noDataMessage").style.display = "block";

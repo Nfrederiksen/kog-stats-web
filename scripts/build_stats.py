@@ -215,22 +215,65 @@ def aggregate_kog_players(game_id: int, teams: Dict[int, dict], totals: Dict[str
         )
 
 
+def compute_game_metrics(teams: Dict[int, dict], game_id: int | None = None) -> Dict[str, object] | None:
+    kog_team = teams.get(KOG_TEAM_ID)
+    if not kog_team:
+        return None
+
+    opponents = [team for team_id, team in teams.items() if team_id != KOG_TEAM_ID]
+    if not opponents:
+        return None
+
+    opponent = opponents[0]
+
+    def team_points(team: dict) -> int:
+        return sum(player["stats"]["points"] for player in team["roster"] if player.get("type") == "player")
+
+    kog_points = team_points(kog_team)
+    opponent_points = team_points(opponent)
+
+    return {
+        "gameId": game_id,
+        "opponent": (opponent.get("teamName") or "Opponent").strip() or "Opponent",
+        "opponentTeamId": opponent.get("teamId"),
+        "kogPoints": kog_points,
+        "opponentPoints": opponent_points,
+        "pointDiff": kog_points - opponent_points,
+    }
+
+
 def publish_kog_player_feed(totals: Dict[str, PlayerTotals]) -> None:
     SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     rows = [player.as_row() for player in totals.values() if player.games_played]
-    rows.sort(key=lambda r: (-r["totalPoints"], r["name"]))
+    rows.sort(key=lambda r: r["name"].lower())
 
     feed_path = SITE_DATA_DIR / "kog_players.json"
     feed_path.write_text(json.dumps(rows, indent=2), encoding="utf-8")
 
 
-def publish_metadata(game_ids: Iterable[int], totals: Dict[str, PlayerTotals]) -> None:
+def publish_metadata(
+    game_ids: Iterable[int],
+    totals: Dict[str, PlayerTotals],
+    game_metrics: Iterable[Dict[str, object]],
+) -> None:
     SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     metadata = {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "gamesProcessed": sorted(set(game_ids)),
         "playersTracked": sum(1 for player in totals.values() if player.games_played),
+        "teamRecords": None,
     }
+    metrics = list(game_metrics)
+    if metrics:
+        highest_score = max(metrics, key=lambda m: m["kogPoints"])
+        positive = [m for m in metrics if m["pointDiff"] > 0]
+        negative = [m for m in metrics if m["pointDiff"] < 0]
+
+        metadata["teamRecords"] = {
+            "highestScore": highest_score,
+            "biggestWin": max(positive, key=lambda m: m["pointDiff"]) if positive else None,
+            "toughestLoss": min(negative, key=lambda m: m["pointDiff"]) if negative else None,
+        }
     meta_path = SITE_DATA_DIR / "last_updated.json"
     meta_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
 
@@ -241,15 +284,19 @@ def main() -> None:
 
     kog_totals: Dict[str, PlayerTotals] = {}
     processed_games: list[int] = []
+    game_metrics: list[Dict[str, object]] = []
 
     for game_id, game in load_raw_games():
         teams = build_team_structures(game)
         write_game_summary(game_id, game, teams)
         aggregate_kog_players(game_id, teams, kog_totals)
         processed_games.append(game_id)
+        metrics = compute_game_metrics(teams, game_id=game_id)
+        if metrics:
+            game_metrics.append(metrics)
 
     publish_kog_player_feed(kog_totals)
-    publish_metadata(processed_games, kog_totals)
+    publish_metadata(processed_games, kog_totals, game_metrics)
 
 
 if __name__ == "__main__":
