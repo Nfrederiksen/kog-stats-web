@@ -1,28 +1,29 @@
 {
-  "generatedAt": "2025-10-23T13:45:22.143083+00:00",
+  "generatedAt": "2025-10-23T14:25:44.856649+00:00",
   "gamesProcessed": [
     32403262,
     32403267,
     32403273,
-    32403279
+    32403279,
+    32425895
   ],
-  "playersTracked": 14,
+  "playersTracked": 16,
   "teamRecords": {
     "highestScore": {
-      "gameId": 32403267,
-      "opponent": "Alvik V\u00e4sterled",
-      "opponentTeamId": 1402200,
-      "kogPoints": 66,
-      "opponentPoints": 82,
-      "pointDiff": -16
+      "gameId": 32425895,
+      "opponent": "Huddinge Monstock",
+      "opponentTeamId": 1461223,
+      "kogPoints": 71,
+      "opponentPoints": 63,
+      "pointDiff": 8
     },
     "biggestWin": {
-      "gameId": 32403262,
-      "opponent": "Uppsala Basket",
-      "opponentTeamId": 1400873,
-      "kogPoints": 58,
-      "opponentPoints": 51,
-      "pointDiff": 7
+      "gameId": 32425895,
+      "opponent": "Huddinge Monstock",
+      "opponentTeamId": 1461223,
+      "kogPoints": 71,
+      "opponentPoints": 63,
+      "pointDiff": 8
     },
     "toughestLoss": {
       "gameId": 32403279,
