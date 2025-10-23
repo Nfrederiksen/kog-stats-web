@@ -187,6 +187,12 @@
         color: var(--accent);
       }
 
+      .highlight {
+        color: var(--accent);
+        font-weight: 600;
+        text-shadow: 0 0 12px rgba(70, 194, 255, 0.35);
+      }
+
       .totals {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -242,6 +248,32 @@
         thead {
           position: sticky;
           top: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        body {
+          padding: 1.2rem;
+        }
+
+        th,
+        td {
+          padding: 0.7rem 0.85rem;
+          font-size: 0.84rem;
+        }
+
+        th {
+          font-size: 0.66rem;
+          letter-spacing: 0.16em;
+        }
+
+        tbody td span {
+          font-size: 0.7rem;
+        }
+
+        .badge {
+          font-size: 0.7rem;
+          letter-spacing: 0.06em;
         }
       }
     </style>
@@ -334,14 +366,21 @@
         metaContainer.innerHTML = "";
         metaContainer.appendChild(createBadge("Games Logged", gamesCount));
 
-        if (players.length) {
-          const bestScorer = players
+        const compareBy = (key) =>
+          players
             .slice()
-            .sort((a, b) => b.totalPoints - a.totalPoints || a.name.localeCompare(b.name))[0];
-          if (bestScorer) {
-            metaContainer.appendChild(createBadge("Top Scorer", bestScorer.name));
-          }
-        }
+            .sort(
+              (a, b) =>
+                (b[key] ?? 0) - (a[key] ?? 0) || a.name.localeCompare(b.name)
+            )[0];
+
+        const bestScorer = players.length ? compareBy("totalPoints") : null;
+        const bestThree = players.length ? compareBy("threePointsMade") : null;
+        const topFouler = players.length ? compareBy("foulsMade") : null;
+
+        bestScorer && bestScorer.totalPoints > 0 && metaContainer.appendChild(createBadge("Top Scorer", bestScorer.name));
+        bestThree && bestThree.threePointsMade > 0 && metaContainer.appendChild(createBadge("Top 3PT", bestThree.name));
+        topFouler && topFouler.foulsMade > 0 && metaContainer.appendChild(createBadge("Top Fouler", topFouler.name));
 
         const updated = formatDateTime(metadata && metadata.generatedAt);
         if (updated) {
@@ -353,11 +392,45 @@
         const tbody = document.getElementById("statsTable");
         tbody.innerHTML = "";
 
+        const metrics = [
+          "gamesPlayed",
+          "freeThrowsMade",
+          "fieldGoalsMade",
+          "pointsPerGame",
+          "totalPoints",
+          "threePointsMade",
+          "foulsMade",
+        ];
+
+        const maxima = metrics.reduce((acc, key) => {
+          const values = players.map((p) => Number(p[key]) || 0);
+          acc[key] = values.length ? Math.max(...values) : 0;
+          return acc;
+        }, {});
+
         players.forEach((player) => {
           const row = document.createElement("tr");
           const pointsPerGame = player.gamesPlayed
             ? (player.totalPoints / player.gamesPlayed).toFixed(1)
             : "0.0";
+
+        const cells = [
+          { value: player.gamesPlayed, key: "gamesPlayed", display: player.gamesPlayed },
+          { value: player.freeThrowsMade, key: "freeThrowsMade", display: player.freeThrowsMade },
+          { value: player.fieldGoalsMade, key: "fieldGoalsMade", display: player.fieldGoalsMade },
+          {
+            value: parseFloat(pointsPerGame),
+            key: "pointsPerGame",
+            display: pointsPerGame,
+          },
+          { value: player.totalPoints, key: "totalPoints", display: player.totalPoints },
+          {
+            value: player.threePointsMade,
+            key: "threePointsMade",
+            display: player.threePointsMade,
+          },
+          { value: player.foulsMade, key: "foulsMade", display: player.foulsMade },
+        ];
 
           row.innerHTML = `
             <td class="number">#${player.number || "-"}</td>
@@ -365,14 +438,18 @@
               ${player.name}
               <span>${player.gamesPlayed ? "Active" : "DNP"}</span>
             </td>
-            <td>${player.gamesPlayed}</td>
-            <td>${player.freeThrowsMade}</td>
-            <td>${player.fieldGoalsMade}</td>
-            <td>${pointsPerGame}</td>
-            <td>${player.totalPoints}</td>
-            <td>${player.threePointsMade}</td>
-            <td>${player.foulsMade}</td>
+            ${cells
+              .map(({ display }) => `<td>${Number.isFinite(display) ? display : display || 0}</td>`)
+              .join("")}
           `;
+
+          const tds = row.querySelectorAll("td");
+          cells.forEach(({ value, key }, index) => {
+            if (value === maxima[key] && maxima[key] > 0) {
+              tds[index + 2].classList.add("highlight");
+            }
+          });
+
           tbody.appendChild(row);
         });
       }
