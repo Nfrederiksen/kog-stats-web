@@ -226,6 +226,16 @@
         gap: 0.35rem;
       }
 
+      .totals-card.card-clickable {
+        cursor: pointer;
+        transition: transform 150ms ease, border 150ms ease;
+      }
+
+      .totals-card.card-clickable:hover {
+        transform: translateY(-3px);
+        border-color: rgba(125, 214, 255, 0.45);
+      }
+
       .totals-card span {
         color: var(--text-muted);
         font-size: 0.8rem;
@@ -386,6 +396,15 @@
       .stat-row strong {
         font-size: 1.2rem;
       }
+
+      .stat-row.interactive {
+        cursor: pointer;
+      }
+
+      .stat-row.interactive:hover strong,
+      .stat-row.interactive:hover span {
+        color: var(--accent);
+      }
     </style>
   </head>
   <body>
@@ -432,6 +451,7 @@
     <script>
       const header = document.querySelector("header");
       const metaContainer = document.createElement("div");
+      let playerStore = [];
       metaContainer.className = "meta";
       header.appendChild(
         (() => {
@@ -470,9 +490,9 @@
       function renderTotals(totals, gamesCount, playersTracked, teamRecords) {
         const cards = [
           { label: "Team Points", value: totals.totalPoints },
-          { label: "Team Field Goals", value: totals.fieldGoals },
-          { label: "Team Free Throws", value: totals.freeThrows },
-          { label: "Team 3PT", value: totals.threePointers },
+          { label: "Team Field Goals", value: totals.fieldGoals, metric: "fieldGoalsMade" },
+          { label: "Team Free Throws", value: totals.freeThrows, metric: "freeThrowsMade" },
+          { label: "Team 3PT", value: totals.threePointers, metric: "threePointsMade" },
           { label: "Games Logged", value: gamesCount },
           { label: "Players Tracked", value: playersTracked }
         ];
@@ -503,9 +523,17 @@
 
         const totalsEl = document.getElementById("teamTotals");
         totalsEl.innerHTML = "";
-        cards.forEach(({ label, value, subtitle }) => {
+        cards.forEach(({ label, value, subtitle, metric }) => {
           const card = document.createElement("article");
-          card.className = "totals-card";
+          const classes = ["totals-card"];
+          if (metric) {
+            classes.push("card-clickable");
+            card.dataset.metric = metric;
+            card.dataset.label = label;
+            card.setAttribute("role", "button");
+            card.tabIndex = 0;
+          }
+          card.className = classes.join(" ");
           card.innerHTML = `<span>${label}</span><strong>${value}</strong>${subtitle ? `<p>${subtitle}</p>` : ""}`;
           totalsEl.appendChild(card);
         });
@@ -656,6 +684,8 @@
             ? metadata.playersTracked
             : players.length;
 
+          playerStore = players;
+
           renderBadges(players, metadata, gamesCount);
 
           if (!players.length) {
@@ -676,7 +706,7 @@
           renderBadges([], null, 0);
         });
 
-      function openModalFromDataset(data) {
+      function openPlayerModal(data) {
         modalName.textContent = data.name;
 
         modalBadges.innerHTML = "";
@@ -706,6 +736,47 @@
         modalOverlay.setAttribute("aria-hidden", "false");
       }
 
+      function openTeamModal(metric, title) {
+        const players = playerStore
+          .filter((player) => (player[metric] ?? 0) > 0)
+          .sort((a, b) => (b[metric] ?? 0) - (a[metric] ?? 0));
+
+        modalName.textContent = title;
+        modalBadges.innerHTML = "";
+
+        const totalValue = players.reduce((acc, player) => acc + (player[metric] ?? 0), 0);
+        modalBadges.appendChild(createBadge("Team Total", totalValue, "badge--hero"));
+
+        modalStats.innerHTML = "";
+        if (!players.length) {
+          const emptyRow = document.createElement("div");
+          emptyRow.className = "stat-row";
+          emptyRow.innerHTML = `<span>No data yet</span><strong>0</strong>`;
+          modalStats.appendChild(emptyRow);
+        } else {
+          players.forEach((player) => {
+            const value = player[metric] ?? 0;
+            const row = document.createElement("div");
+            row.className = "stat-row interactive";
+            row.dataset.name = player.name;
+            row.dataset.number = player.number || "-";
+            row.dataset.games = player.gamesPlayed;
+            row.dataset.freeThrows = player.freeThrowsMade;
+            row.dataset.fieldGoals = player.fieldGoalsMade;
+            row.dataset.pointsPerGame = player.pointsPerGame;
+            row.dataset.totalPoints = player.totalPoints;
+            row.dataset.threePoints = player.threePointsMade;
+            row.dataset.fouls = player.foulsMade;
+            row.innerHTML = `<span>${player.name}</span><strong>${value}</strong>`;
+            row.addEventListener("click", () => openPlayerModal(row.dataset));
+            modalStats.appendChild(row);
+          });
+        }
+
+        modalOverlay.classList.add("visible");
+        modalOverlay.setAttribute("aria-hidden", "false");
+      }
+
       function closeModal() {
         modalOverlay.classList.remove("visible");
         modalOverlay.setAttribute("aria-hidden", "true");
@@ -714,7 +785,30 @@
       document.getElementById("statsTable").addEventListener("click", (event) => {
         const row = event.target.closest("tr");
         if (!row) return;
-        openModalFromDataset(row.dataset);
+        openPlayerModal(row.dataset);
+      });
+
+      const teamTotalsEl = document.getElementById("teamTotals");
+      const handleTotalsActivation = (card) => {
+        if (!card) return;
+        const metric = card.dataset.metric;
+        if (!metric) return;
+        const label = card.dataset.label || "Team Stat";
+        openTeamModal(metric, `${label} Breakdown`);
+      };
+
+      teamTotalsEl.addEventListener("click", (event) => {
+        const card = event.target.closest(".card-clickable");
+        handleTotalsActivation(card);
+      });
+
+      teamTotalsEl.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          const card = event.target.closest(".card-clickable");
+          if (!card) return;
+          event.preventDefault();
+          handleTotalsActivation(card);
+        }
       });
 
       closeModalBtn.addEventListener("click", closeModal);
