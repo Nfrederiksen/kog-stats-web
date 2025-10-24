@@ -472,6 +472,7 @@
           { label: "Team Points", value: totals.totalPoints },
           { label: "Team Field Goals", value: totals.fieldGoals },
           { label: "Team Free Throws", value: totals.freeThrows },
+          { label: "Team 3PT", value: totals.threePointers },
           { label: "Games Logged", value: gamesCount },
           { label: "Players Tracked", value: playersTracked }
         ];
@@ -625,9 +626,10 @@
             acc.totalPoints += player.totalPoints;
             acc.fieldGoals += player.fieldGoalsMade;
             acc.freeThrows += player.freeThrowsMade;
+            acc.threePointers += player.threePointsMade;
             return acc;
           },
-          { totalPoints: 0, fieldGoals: 0, freeThrows: 0 }
+          { totalPoints: 0, fieldGoals: 0, freeThrows: 0, threePointers: 0 }
         );
       }
 
