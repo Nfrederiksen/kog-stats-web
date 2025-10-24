@@ -112,6 +112,20 @@
         color: var(--text-primary);
       }
 
+      .badge--hero {
+        padding: 0.7rem 1.4rem;
+        font-size: 1.05rem;
+        letter-spacing: 0.06em;
+        color: #12263e;
+        background: linear-gradient(130deg, #f8d057, #ffd97a);
+        border: none;
+        box-shadow: 0 14px 32px rgba(255, 207, 87, 0.35);
+      }
+
+      .badge--hero strong {
+        color: #10233b;
+      }
+
       section {
         position: relative;
         z-index: 1;
@@ -438,9 +452,9 @@
       const modalStats = document.getElementById("modalStats");
       const closeModalBtn = document.getElementById("closeModal");
 
-      function createBadge(label, value) {
+      function createBadge(label, value, extraClass = "") {
         const badge = document.createElement("span");
-        badge.className = "badge";
+        badge.className = extraClass ? `badge ${extraClass}` : "badge";
         badge.innerHTML = `<strong>${value}</strong>${label}`;
         return badge;
       }
@@ -667,8 +681,8 @@
         if (data.number && data.number !== "-") {
           modalBadges.appendChild(createBadge("Jersey", `#${data.number}`));
         }
-        modalBadges.appendChild(createBadge("PTS/G", data.pointsPerGame));
-        modalBadges.appendChild(createBadge("Total Pts", data.totalPoints));
+        modalBadges.appendChild(createBadge("Total Pts", data.totalPoints, "badge--hero"));
+        modalBadges.appendChild(createBadge("PTS/G", data.pointsPerGame, "badge--hero"));
 
         const statConfig = [
           { label: "Games Played", value: data.games },
