@@ -808,10 +808,10 @@
           const result = (game.result || "").toLowerCase();
           if (result) {
             const resultRow = document.createElement("div");
-            resultRow.className = \`game-card__result game-card__result--\${result}\`;
+            resultRow.className = "game-card__result game-card__result--" + result;
             const diffLabel = Number.isFinite(game.pointDiff) ? formatDiff(game.pointDiff) : "";
             const resultLabel = result === "win" ? "Win" : result === "loss" ? "Loss" : "Draw";
-            resultRow.textContent = diffLabel ? \`\${resultLabel} \${diffLabel}\` : resultLabel;
+            resultRow.textContent = diffLabel ? `${resultLabel} ${diffLabel}` : resultLabel;
             card.appendChild(resultRow);
           }
         }
