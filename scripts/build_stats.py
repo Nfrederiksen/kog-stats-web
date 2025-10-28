@@ -28,6 +28,7 @@ RAW_DIR = ROOT / "data" / "raw"
 PROCESSED_DIR = ROOT / "data" / "processed"
 SITE_DATA_DIR = ROOT / "docs" / "data"
 SCHEDULE_PATH = ROOT / "data" / "schedule.csv"
+LINKS_PATH = ROOT / "data" / "links.txt"
 
 # Static season details. Update SEASON_START_YEAR when rolling into a new campaign.
 SEASON_START_MONTH = 9  # September
@@ -257,6 +258,30 @@ def publish_schedule(schedule: Dict[int, dict]) -> None:
     schedule_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
+def load_links() -> list[dict]:
+    if not LINKS_PATH.exists():
+        return []
+
+    links: list[dict] = []
+    with LINKS_PATH.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            parts = [part.strip() for part in line.split(",", 1)]
+            if len(parts) != 2:
+                continue
+            label, url = parts
+            links.append({"label": label, "url": url})
+    return links
+
+
+def publish_links(links: list[dict]) -> None:
+    SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    links_path = SITE_DATA_DIR / "kog_links.json"
+    links_path.write_text(json.dumps(links, indent=2), encoding="utf-8")
+
+
 def build_team_structures(game: dict) -> Dict[int, dict]:
     teams: Dict[int, dict] = {}
 
@@ -450,6 +475,7 @@ def main() -> None:
         raise SystemExit("No raw data found. Add EMP feeds to data/raw/ first.")
 
     schedule = load_schedule()
+    links = load_links()
 
     kog_totals: Dict[str, PlayerTotals] = {}
     processed_games: list[int] = []
@@ -468,6 +494,7 @@ def main() -> None:
     publish_kog_player_feed(kog_totals)
     publish_metadata(processed_games, kog_totals, game_metrics)
     publish_schedule(schedule)
+    publish_links(links)
 
 
 if __name__ == "__main__":

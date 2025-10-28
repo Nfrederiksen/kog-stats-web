@@ -69,8 +69,24 @@
       }
 
       .team-lockup {
+        display: flex;
+        align-items: center;
+        gap: clamp(0.9rem, 2vw, 1.4rem);
+      }
+
+      .team-lockup__text {
         display: grid;
         gap: 0.45rem;
+      }
+
+      .team-logo {
+        width: clamp(64px, 12vw, 92px);
+        height: clamp(64px, 12vw, 92px);
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid rgba(70, 194, 255, 0.35);
+        box-shadow: 0 12px 28px rgba(16, 32, 72, 0.45);
+        background: rgba(4, 6, 14, 0.6);
       }
 
       .team-lockup h1 {
@@ -396,6 +412,64 @@
         color: var(--badge-text);
       }
 
+      .team-photo {
+        margin-top: clamp(2.4rem, 6vw, 3.4rem);
+        display: flex;
+        justify-content: center;
+      }
+
+      .team-photo img {
+        width: min(460px, 90%);
+        border-radius: 22px;
+        border: 2px solid rgba(70, 194, 255, 0.25);
+        box-shadow: 0 20px 48px rgba(12, 26, 66, 0.45);
+        object-fit: cover;
+      }
+
+      .links-card {
+        margin-top: clamp(2rem, 5vw, 2.8rem);
+        border: 1px solid rgba(96, 108, 162, 0.28);
+        border-radius: 20px;
+        background: rgba(6, 9, 20, 0.62);
+        padding: clamp(1.2rem, 3vw, 1.8rem);
+        display: grid;
+        gap: 1rem;
+      }
+
+      .links-card h3 {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+      }
+
+      .links-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .links-list a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.55rem 1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(70, 194, 255, 0.26);
+        color: var(--badge-text);
+        text-decoration: none;
+        letter-spacing: 0.08em;
+        font-size: 0.82rem;
+        transition: border 150ms ease, color 150ms ease, transform 150ms ease;
+      }
+
+      .links-list a:hover {
+        border-color: rgba(125, 214, 255, 0.45);
+        color: var(--accent);
+        transform: translateY(-1px);
+      }
+
       .no-data {
         margin-top: 1.6rem;
         padding: 1.1rem 1.3rem;
@@ -589,6 +663,15 @@
           <div class="games-list" id="upcomingGamesList"></div>
         </div>
       </section>
+
+      <section class="team-photo">
+        <img src="assets/team-photo.png" alt="Kungsholmen OG team photo" />
+      </section>
+
+      <section class="links-card" id="linksCard" hidden>
+        <h3>Links</h3>
+        <div class="links-list" id="linksList"></div>
+      </section>
     </main>
     <div class="modal-overlay" id="playerModal" aria-hidden="true">
       <div class="modal-card" role="dialog" aria-modal="true">
@@ -610,6 +693,8 @@
       const playedGamesList = document.getElementById("playedGamesList");
       const upcomingGamesGroup = document.getElementById("upcomingGamesGroup");
       const upcomingGamesList = document.getElementById("upcomingGamesList");
+      const linksCard = document.getElementById("linksCard");
+      const linksList = document.getElementById("linksList");
       let playerStore = [];
       metaContainer.className = "meta";
       header.appendChild(
@@ -617,8 +702,11 @@
           const lockup = document.createElement("div");
           lockup.className = "team-lockup";
           lockup.innerHTML = `
-            <span>Season 2025</span>
-            <h1>Kungsholmen OG</h1>
+            <img src="assets/team-logo.png" alt="Kungsholmen OG logo" class="team-logo" />
+            <div class="team-lockup__text">
+              <span>Season 2025</span>
+              <h1>Kungsholmen OG</h1>
+            </div>
           `;
           return lockup;
         })()
@@ -867,6 +955,26 @@
         }
       }
 
+      function renderLinks(links) {
+        linksList.innerHTML = "";
+        if (!Array.isArray(links) || !links.length) {
+          linksCard.hidden = true;
+          return;
+        }
+
+        links.forEach((link) => {
+          if (!link || !link.url) return;
+          const anchor = document.createElement("a");
+          anchor.href = link.url;
+          anchor.target = "_blank";
+          anchor.rel = "noreferrer noopener";
+          anchor.textContent = link.label || link.url;
+          linksList.appendChild(anchor);
+        });
+
+        linksCard.hidden = linksList.children.length === 0;
+      }
+
       function renderBadges(players, metadata, gamesCount) {
         metaContainer.innerHTML = "";
         metaContainer.appendChild(createBadge("Games Logged", gamesCount));
@@ -999,9 +1107,12 @@
           .catch(() => null),
         fetch("data/kog_schedule.json", { cache: "no-store" })
           .then((response) => (response.ok ? response.json() : []))
+          .catch(() => []),
+        fetch("data/kog_links.json", { cache: "no-store" })
+          .then((response) => (response.ok ? response.json() : []))
           .catch(() => [])
       ])
-        .then(([playersData, metadata, scheduleData]) => {
+        .then(([playersData, metadata, scheduleData, linksData]) => {
           const players = Array.isArray(playersData) ? playersData : [];
           const gamesCount = resolveGamesCount(players, metadata);
           const playersTracked = metadata && typeof metadata.playersTracked === "number"
@@ -1012,6 +1123,7 @@
 
           renderBadges(players, metadata, gamesCount);
           renderSchedule(Array.isArray(scheduleData) ? scheduleData : []);
+          renderLinks(Array.isArray(linksData) ? linksData : []);
 
           if (!players.length) {
             document.getElementById("noDataMessage").style.display = "block";
@@ -1030,6 +1142,7 @@
           document.getElementById("noDataMessage").style.display = "block";
           renderBadges([], null, 0);
           renderSchedule([]);
+          renderLinks([]);
         });
 
       function openPlayerModal(data) {
