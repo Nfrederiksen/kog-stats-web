@@ -11,12 +11,14 @@ aggregated Kungsholmen OG player stats to docs/data/kog_players.json.
 """
 from __future__ import annotations
 
+import csv
 import json
 import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Iterable, Tuple
+from zoneinfo import ZoneInfo
 
 # Team id for Kungsholmen OG in Profixio
 KOG_TEAM_ID = 1403069
@@ -25,6 +27,12 @@ ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw"
 PROCESSED_DIR = ROOT / "data" / "processed"
 SITE_DATA_DIR = ROOT / "docs" / "data"
+SCHEDULE_PATH = ROOT / "data" / "schedule.csv"
+
+# Static season details. Update SEASON_START_YEAR when rolling into a new campaign.
+SEASON_START_MONTH = 9  # September
+SEASON_START_YEAR = 2025
+SCHEDULE_TZ = ZoneInfo("Europe/Stockholm")
 
 
 @dataclass
@@ -93,6 +101,160 @@ def load_raw_games() -> Iterable[Tuple[int, dict]]:
 
         with raw_file.open("r", encoding="utf-8") as handle:
             yield int(match.group(1)), json.load(handle)
+
+
+def parse_schedule_datetime(raw_value: str) -> datetime | None:
+    raw_value = " ".join((raw_value or "").strip().split())
+    if not raw_value:
+        return None
+
+    try:
+        parsed = datetime.strptime(raw_value, "%a %d.%b %H:%M")
+    except ValueError:
+        return None
+
+    year = SEASON_START_YEAR
+    if parsed.month < SEASON_START_MONTH:
+        year += 1
+
+    return parsed.replace(year=year, tzinfo=SCHEDULE_TZ)
+
+
+def to_int(value: str | None) -> int | None:
+    if value is None:
+        return None
+    value = str(value).strip()
+    if not value:
+        return None
+    try:
+        return int(value)
+    except ValueError:
+        return None
+
+
+def load_schedule() -> Dict[int, dict]:
+    if not SCHEDULE_PATH.exists():
+        return {}
+
+    schedule: Dict[int, dict] = {}
+    with SCHEDULE_PATH.open("r", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        for row in reader:
+            raw_id = (row.get("matchId") or "").strip()
+            if not raw_id:
+                continue
+            try:
+                match_id = int(raw_id)
+            except ValueError:
+                continue
+
+            home_or_away = (row.get("homeOrAway") or "").strip().lower()
+            raw_date = " ".join((row.get("date") or "").strip().split())
+            tipoff = parse_schedule_datetime(raw_date)
+            home_score = to_int(row.get("homeScore"))
+            away_score = to_int(row.get("awayScore"))
+            status = "played" if home_score is not None and away_score is not None else "upcoming"
+
+            entry = {
+                "matchId": match_id,
+                "homeOrAway": "home" if home_or_away == "home" else "away",
+                "opponent": (row.get("opponents") or "").strip(),
+                "location": (row.get("location") or "").strip(),
+                "dateLabel": raw_date,
+                "tipoff": tipoff,
+                "homeScore": home_score,
+                "awayScore": away_score,
+                "status": status,
+                "kogScore": None,
+                "opponentScore": None,
+                "pointDiff": None,
+                "result": None,
+                "hasStats": False,
+            }
+
+            if home_score is not None and away_score is not None:
+                if entry["homeOrAway"] == "home":
+                    entry["kogScore"] = home_score
+                    entry["opponentScore"] = away_score
+                else:
+                    entry["kogScore"] = away_score
+                    entry["opponentScore"] = home_score
+                entry["pointDiff"] = entry["kogScore"] - entry["opponentScore"]
+                if entry["pointDiff"] > 0:
+                    entry["result"] = "win"
+                elif entry["pointDiff"] < 0:
+                    entry["result"] = "loss"
+                else:
+                    entry["result"] = "draw"
+
+            schedule[match_id] = entry
+
+    return schedule
+
+
+def apply_metrics_to_schedule(schedule: Dict[int, dict], metrics: Dict[str, object]) -> None:
+    match_id = metrics.get("gameId")
+    if match_id is None:
+        return
+
+    entry = schedule.get(match_id)
+    if not entry:
+        return
+
+    kog_points = metrics.get("kogPoints")
+    opponent_points = metrics.get("opponentPoints")
+    if kog_points is None or opponent_points is None:
+        return
+
+    entry["kogScore"] = int(kog_points)
+    entry["opponentScore"] = int(opponent_points)
+    entry["pointDiff"] = entry["kogScore"] - entry["opponentScore"]
+    if entry["pointDiff"] > 0:
+        entry["result"] = "win"
+    elif entry["pointDiff"] < 0:
+        entry["result"] = "loss"
+    else:
+        entry["result"] = "draw"
+    entry["status"] = "played"
+    entry["hasStats"] = True
+
+    if entry["homeOrAway"] == "home":
+        entry["homeScore"] = entry["kogScore"]
+        entry["awayScore"] = entry["opponentScore"]
+    else:
+        entry["homeScore"] = entry["opponentScore"]
+        entry["awayScore"] = entry["kogScore"]
+
+    if "opponentTeamId" in metrics:
+        entry["opponentTeamId"] = metrics["opponentTeamId"]
+
+    opponent_name = (metrics.get("opponent") or "").strip()
+    if opponent_name and not entry.get("opponent"):
+        entry["opponent"] = opponent_name
+
+
+def publish_schedule(schedule: Dict[int, dict]) -> None:
+    SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+    def sort_key(item: dict) -> datetime:
+        tipoff = item.get("tipoff")
+        if isinstance(tipoff, datetime):
+            return tipoff
+        return datetime.max.replace(tzinfo=timezone.utc)
+
+    games = sorted(schedule.values(), key=sort_key)
+    payload = []
+    for game in games:
+        serialized = dict(game)
+        tipoff = serialized.get("tipoff")
+        if isinstance(tipoff, datetime):
+            serialized["tipoff"] = tipoff.isoformat()
+        else:
+            serialized["tipoff"] = None if not tipoff else str(tipoff)
+        payload.append(serialized)
+
+    schedule_path = SITE_DATA_DIR / "kog_schedule.json"
+    schedule_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
 def build_team_structures(game: dict) -> Dict[int, dict]:
@@ -287,6 +449,8 @@ def main() -> None:
     if not RAW_DIR.exists():
         raise SystemExit("No raw data found. Add EMP feeds to data/raw/ first.")
 
+    schedule = load_schedule()
+
     kog_totals: Dict[str, PlayerTotals] = {}
     processed_games: list[int] = []
     game_metrics: list[Dict[str, object]] = []
@@ -299,9 +463,11 @@ def main() -> None:
         metrics = compute_game_metrics(teams, game_id=game_id)
         if metrics:
             game_metrics.append(metrics)
+            apply_metrics_to_schedule(schedule, metrics)
 
     publish_kog_player_feed(kog_totals)
     publish_metadata(processed_games, kog_totals, game_metrics)
+    publish_schedule(schedule)
 
 
 if __name__ == "__main__":

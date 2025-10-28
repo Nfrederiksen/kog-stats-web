@@ -256,6 +256,146 @@
         letter-spacing: 0.04em;
       }
 
+      .schedule {
+        margin-top: clamp(2.4rem, 6vw, 3.4rem);
+        display: grid;
+        gap: 1.6rem;
+      }
+
+      .schedule-title {
+        margin: 0;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .next-game-wrapper {
+        display: none;
+      }
+
+      .next-game-wrapper.active {
+        display: block;
+      }
+
+      .games-group {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .games-group h3 {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+      }
+
+      .games-list {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .game-card {
+        border: 1px solid rgba(96, 108, 162, 0.24);
+        background: rgba(7, 10, 22, 0.62);
+        border-radius: 18px;
+        padding: 1rem 1.2rem;
+        display: grid;
+        gap: 0.65rem;
+        box-shadow: inset 0 1px 0 rgba(70, 194, 255, 0.12);
+      }
+
+      .game-card--next {
+        border-color: rgba(125, 214, 255, 0.48);
+        background: rgba(15, 32, 58, 0.78);
+        box-shadow: 0 18px 44px rgba(24, 61, 123, 0.32);
+      }
+
+      .game-card__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .game-card__label {
+        font-size: 0.78rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--badge-text);
+      }
+
+      .game-card__homeaway {
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        padding: 0.32rem 0.95rem;
+        border-radius: 999px;
+        border: 1px solid rgba(96, 108, 162, 0.42);
+        color: var(--text-muted);
+      }
+
+      .game-card__homeaway.is-home {
+        border-color: rgba(125, 214, 255, 0.45);
+        color: var(--accent);
+      }
+
+      .game-card__homeaway.is-away {
+        border-color: rgba(255, 210, 95, 0.45);
+        color: #ffd97a;
+      }
+
+      .game-card__opponent {
+        font-size: clamp(1.15rem, 3vw, 1.35rem);
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+
+      .game-card__meta {
+        font-size: 0.86rem;
+        letter-spacing: 0.06em;
+        color: var(--text-muted);
+      }
+
+      .game-card__score {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.45rem;
+        font-size: clamp(1.6rem, 3vw, 1.9rem);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+      }
+
+      .game-card__score-sep {
+        font-size: 1rem;
+        color: var(--text-muted);
+      }
+
+      .game-card__result {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.78rem;
+      }
+
+      .game-card__result--win {
+        color: #7fd6ff;
+      }
+
+      .game-card__result--loss {
+        color: #ff8c8c;
+      }
+
+      .game-card__result--draw {
+        color: var(--text-muted);
+      }
+
+      .game-card__countdown {
+        font-size: 0.84rem;
+        letter-spacing: 0.08em;
+        color: var(--badge-text);
+      }
+
       .no-data {
         margin-top: 1.6rem;
         padding: 1.1rem 1.3rem;
@@ -436,6 +576,19 @@
           No stats available yet. Check back after the next Kungsholmen OG game tip-off.
         </div>
       </section>
+
+      <section class="schedule" id="scheduleSection" hidden>
+        <h2 class="schedule-title">Season Schedule</h2>
+        <div class="next-game-wrapper" id="nextGameWrapper"></div>
+        <div class="games-group" id="playedGamesGroup">
+          <h3>Games Played</h3>
+          <div class="games-list" id="playedGamesList"></div>
+        </div>
+        <div class="games-group" id="upcomingGamesGroup">
+          <h3>Upcoming Games</h3>
+          <div class="games-list" id="upcomingGamesList"></div>
+        </div>
+      </section>
     </main>
     <div class="modal-overlay" id="playerModal" aria-hidden="true">
       <div class="modal-card" role="dialog" aria-modal="true">
@@ -451,6 +604,12 @@
     <script>
       const header = document.querySelector("header");
       const metaContainer = document.createElement("div");
+      const scheduleSection = document.getElementById("scheduleSection");
+      const nextGameWrapper = document.getElementById("nextGameWrapper");
+      const playedGamesGroup = document.getElementById("playedGamesGroup");
+      const playedGamesList = document.getElementById("playedGamesList");
+      const upcomingGamesGroup = document.getElementById("upcomingGamesGroup");
+      const upcomingGamesList = document.getElementById("upcomingGamesList");
       let playerStore = [];
       metaContainer.className = "meta";
       header.appendChild(
@@ -546,6 +705,168 @@
         return date.toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
       }
 
+      function getTipoffDate(game) {
+        if (!game || !game.tipoff) return null;
+        const date = new Date(game.tipoff);
+        return Number.isNaN(date.getTime()) ? null : date;
+      }
+
+      function getTipoffTime(game, fallback = 0) {
+        const date = getTipoffDate(game);
+        return date ? date.getTime() : fallback;
+      }
+
+      function formatScheduleDate(game) {
+        const date = getTipoffDate(game);
+        if (!date) return game.dateLabel || "TBA";
+        return date.toLocaleString([], {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+      }
+
+      function formatCountdown(game) {
+        const date = getTipoffDate(game);
+        if (!date) return null;
+        const diffMs = date.getTime() - Date.now();
+        if (diffMs <= 0) return null;
+        const diffHours = Math.round(diffMs / 36e5);
+        if (diffHours >= 48) {
+          const diffDays = Math.round(diffHours / 24);
+          return `Starts in ${diffDays} ${diffDays === 1 ? "day" : "days"}`;
+        }
+        if (diffHours >= 1) {
+          return `Starts in ${diffHours} ${diffHours === 1 ? "hour" : "hours"}`;
+        }
+        const diffMinutes = Math.max(1, Math.round(diffMs / 60000));
+        return `Starts in ${diffMinutes} ${diffMinutes === 1 ? "minute" : "minutes"}`;
+      }
+
+      function buildGameCard(game, { highlight = false, label = null } = {}) {
+        const card = document.createElement("article");
+        card.className = highlight ? "game-card game-card--next" : "game-card";
+        card.dataset.matchId = game.matchId;
+
+        const headerRow = document.createElement("div");
+        headerRow.className = "game-card__header";
+        const effectiveLabel = label ?? (highlight ? "Next Game" : null);
+        if (effectiveLabel) {
+          const labelEl = document.createElement("span");
+          labelEl.className = "game-card__label";
+          labelEl.textContent = effectiveLabel;
+          headerRow.appendChild(labelEl);
+        } else {
+          headerRow.appendChild(document.createElement("span"));
+        }
+
+        const badge = document.createElement("span");
+        badge.className = "game-card__homeaway";
+        badge.classList.add(game.homeOrAway === "home" ? "is-home" : "is-away");
+        badge.textContent = game.homeOrAway === "home" ? "Home" : "Away";
+        headerRow.appendChild(badge);
+        card.appendChild(headerRow);
+
+        const opponentLine = document.createElement("div");
+        opponentLine.className = "game-card__opponent";
+        const prefix = game.homeOrAway === "home" ? "vs" : "@";
+        opponentLine.textContent = `${prefix} ${game.opponent || "TBD"}`;
+        card.appendChild(opponentLine);
+
+        const metaLine = document.createElement("div");
+        metaLine.className = "game-card__meta";
+        const metaParts = [];
+        const formattedDate = formatScheduleDate(game);
+        if (formattedDate) metaParts.push(formattedDate);
+        if (game.location) metaParts.push(game.location);
+        metaLine.textContent = metaParts.join(" • ") || "TBA";
+        card.appendChild(metaLine);
+
+        if (highlight) {
+          const countdown = formatCountdown(game);
+          if (countdown) {
+            const countdownEl = document.createElement("div");
+            countdownEl.className = "game-card__countdown";
+            countdownEl.textContent = countdown;
+            card.appendChild(countdownEl);
+          }
+        }
+
+        const hasScore = Number.isFinite(game.kogScore) && Number.isFinite(game.opponentScore);
+        if (hasScore) {
+          const scoreRow = document.createElement("div");
+          scoreRow.className = "game-card__score";
+          scoreRow.innerHTML = `
+            <span class="game-card__score-kog">${game.kogScore}</span>
+            <span class="game-card__score-sep">-</span>
+            <span class="game-card__score-opp">${game.opponentScore}</span>
+          `;
+          card.appendChild(scoreRow);
+
+          const result = (game.result || "").toLowerCase();
+          if (result) {
+            const resultRow = document.createElement("div");
+            resultRow.className = \`game-card__result game-card__result--\${result}\`;
+            const diffLabel = Number.isFinite(game.pointDiff) ? formatDiff(game.pointDiff) : "";
+            const resultLabel = result === "win" ? "Win" : result === "loss" ? "Loss" : "Draw";
+            resultRow.textContent = diffLabel ? \`\${resultLabel} \${diffLabel}\` : resultLabel;
+            card.appendChild(resultRow);
+          }
+        }
+
+        return card;
+      }
+
+      function renderSchedule(games) {
+        nextGameWrapper.innerHTML = "";
+        playedGamesList.innerHTML = "";
+        upcomingGamesList.innerHTML = "";
+
+        if (!Array.isArray(games) || !games.length) {
+          scheduleSection.hidden = true;
+          return;
+        }
+
+        scheduleSection.hidden = false;
+
+        const played = games
+          .filter((game) => (game.status || "").toLowerCase() === "played")
+          .sort((a, b) => getTipoffTime(b, 0) - getTipoffTime(a, 0));
+
+        const upcoming = games
+          .filter((game) => (game.status || "").toLowerCase() !== "played")
+          .sort((a, b) => getTipoffTime(a, Number.POSITIVE_INFINITY) - getTipoffTime(b, Number.POSITIVE_INFINITY));
+
+        const nextGame = upcoming.length ? upcoming.shift() : null;
+
+        if (nextGame) {
+          nextGameWrapper.appendChild(buildGameCard(nextGame, { highlight: true }));
+          nextGameWrapper.classList.add("active");
+        } else {
+          nextGameWrapper.classList.remove("active");
+        }
+
+        if (played.length) {
+          playedGamesGroup.style.display = "";
+          played.forEach((game) => {
+            playedGamesList.appendChild(buildGameCard(game, { label: "Final" }));
+          });
+        } else {
+          playedGamesGroup.style.display = "none";
+        }
+
+        if (upcoming.length) {
+          upcomingGamesGroup.style.display = "";
+          upcoming.forEach((game) => {
+            upcomingGamesList.appendChild(buildGameCard(game));
+          });
+        } else {
+          upcomingGamesGroup.style.display = "none";
+        }
+      }
+
       function renderBadges(players, metadata, gamesCount) {
         metaContainer.innerHTML = "";
         metaContainer.appendChild(createBadge("Games Logged", gamesCount));
@@ -562,9 +883,9 @@
         const bestThree = players.length ? compareBy("threePointsMade") : null;
         const topFouler = players.length ? compareBy("foulsMade") : null;
 
-        bestScorer && bestScorer.totalPoints > 0 && metaContainer.appendChild(createBadge("Top Scorer", bestScorer.name));
-        bestThree && bestThree.threePointsMade > 0 && metaContainer.appendChild(createBadge("Top 3PT", bestThree.name));
-        topFouler && topFouler.foulsMade > 0 && metaContainer.appendChild(createBadge("Top Fouler", topFouler.name));
+        bestScorer && bestScorer.totalPoints > 0 && metaContainer.appendChild(createBadge("Top Scorer 🪣", bestScorer.name));
+        bestThree && bestThree.threePointsMade > 0 && metaContainer.appendChild(createBadge("Top 3PT 👌", bestThree.name));
+        topFouler && topFouler.foulsMade > 0 && metaContainer.appendChild(createBadge("Top Fouler 🩼", topFouler.name));
 
         const updated = formatDateTime(metadata && metadata.generatedAt);
         if (updated) {
@@ -675,9 +996,12 @@
           .catch(() => []),
         fetch("data/last_updated.json", { cache: "no-store" })
           .then((response) => (response.ok ? response.json() : null))
-          .catch(() => null)
+          .catch(() => null),
+        fetch("data/kog_schedule.json", { cache: "no-store" })
+          .then((response) => (response.ok ? response.json() : []))
+          .catch(() => [])
       ])
-        .then(([playersData, metadata]) => {
+        .then(([playersData, metadata, scheduleData]) => {
           const players = Array.isArray(playersData) ? playersData : [];
           const gamesCount = resolveGamesCount(players, metadata);
           const playersTracked = metadata && typeof metadata.playersTracked === "number"
@@ -687,6 +1011,7 @@
           playerStore = players;
 
           renderBadges(players, metadata, gamesCount);
+          renderSchedule(Array.isArray(scheduleData) ? scheduleData : []);
 
           if (!players.length) {
             document.getElementById("noDataMessage").style.display = "block";
@@ -704,6 +1029,7 @@
         .catch(() => {
           document.getElementById("noDataMessage").style.display = "block";
           renderBadges([], null, 0);
+          renderSchedule([]);
         });
 
       function openPlayerModal(data) {
