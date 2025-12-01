@@ -619,6 +619,88 @@
         letter-spacing: 0.02em;
       }
 
+      .modal-card--wide {
+        width: min(760px, 100%);
+      }
+
+      .timeline-meta {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .timeline-body {
+        border: 1px solid rgba(96, 108, 162, 0.25);
+        background: rgba(6, 9, 20, 0.65);
+        border-radius: 16px;
+        padding: 1rem 1.1rem;
+        max-height: min(60vh, 520px);
+        overflow-y: auto;
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 0.8rem;
+        align-items: start;
+      }
+
+      .timeline-time {
+        text-align: right;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .timeline-time span {
+        display: block;
+        font-size: 0.78rem;
+        color: var(--accent);
+        letter-spacing: 0.05em;
+      }
+
+      .timeline-content {
+        position: relative;
+        padding-left: 1.2rem;
+      }
+
+      .timeline-content::before {
+        content: "";
+        position: absolute;
+        left: 0.35rem;
+        top: 0.5rem;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 6px rgba(70, 194, 255, 0.12);
+      }
+
+      .timeline-label {
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .timeline-meta-row {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-top: 0.15rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .timeline-empty {
+        color: var(--text-muted);
+        text-align: center;
+        padding: 1rem 0;
+      }
+
       .stat-row span:first-child {
         color: var(--text-muted);
         text-transform: uppercase;
@@ -702,6 +784,16 @@
         <div class="modal-stats" id="modalStats"></div>
       </div>
     </div>
+    <div class="modal-overlay" id="timelineModal" aria-hidden="true">
+      <div class="modal-card modal-card--wide" role="dialog" aria-modal="true">
+        <div class="modal-header">
+          <h2 id="timelineTitle">Game Timeline</h2>
+          <button class="close-modal" id="closeTimeline" type="button">Close</button>
+        </div>
+        <div class="timeline-meta" id="timelineMeta"></div>
+        <div class="timeline-body" id="timelineBody"></div>
+      </div>
+    </div>
 
     <script>
       const header = document.querySelector("header");
@@ -714,7 +806,13 @@
       const upcomingGamesList = document.getElementById("upcomingGamesList");
       const linksCard = document.getElementById("linksCard");
       const linksList = document.getElementById("linksList");
+      const timelineModal = document.getElementById("timelineModal");
+      const timelineTitle = document.getElementById("timelineTitle");
+      const timelineMeta = document.getElementById("timelineMeta");
+      const timelineBody = document.getElementById("timelineBody");
+      const closeTimelineBtn = document.getElementById("closeTimeline");
       let playerStore = [];
+      let scheduleStore = [];
       metaContainer.className = "meta";
       header.appendChild(
         (() => {
@@ -871,6 +969,10 @@
         const card = document.createElement("article");
         card.className = highlight ? "game-card game-card--next" : "game-card";
         card.dataset.matchId = game.matchId;
+        card.dataset.status = (game.status || "").toLowerCase();
+        if (game.opponent) card.dataset.opponent = game.opponent;
+        if (game.dateLabel) card.dataset.date = game.dateLabel;
+        if (game.location) card.dataset.location = game.location;
 
         const headerRow = document.createElement("div");
         headerRow.className = "game-card__header";
@@ -942,6 +1044,7 @@
       }
 
       function renderSchedule(games) {
+        scheduleStore = Array.isArray(games) ? games.slice() : [];
         nextGameWrapper.innerHTML = "";
         playedGamesList.innerHTML = "";
         upcomingGamesList.innerHTML = "";
@@ -1029,6 +1132,79 @@
         });
 
         linksCard.hidden = linksList.children.length === 0;
+      }
+
+      function renderTimeline(timeline) {
+        timelineBody.innerHTML = "";
+        if (!Array.isArray(timeline) || !timeline.length) {
+          timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game yet.</div>`;
+          return;
+        }
+
+        timeline.forEach((event) => {
+          const item = document.createElement("div");
+          item.className = "timeline-item";
+          const periodLabel = event.period ? `Q${event.period}` : "—";
+          const metaBits = [];
+          if (event.side && event.teamName) metaBits.push(`${event.side}: ${event.teamName}`);
+          else if (event.teamName) metaBits.push(event.teamName);
+          if (event.player) metaBits.push(event.player);
+          if (event.score) metaBits.push(`Score ${event.score}`);
+
+          item.innerHTML = `
+            <div class="timeline-time">
+              ${event.clock || "—"}
+              <span>${periodLabel}</span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-label">${event.emoji || "•"} ${event.label || "Event"}</div>
+              <div class="timeline-meta-row">
+                ${metaBits.map((bit) => `<span>${bit}</span>`).join("")}
+              </div>
+            </div>
+          `;
+          timelineBody.appendChild(item);
+        });
+      }
+
+      function openTimelineModal(matchId, gameInfo = null) {
+        if (!matchId) return;
+        timelineModal.classList.add("visible");
+        timelineModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+
+        const titleOpponent = gameInfo?.opponent || "Opponent";
+        timelineTitle.textContent = `vs ${titleOpponent}`;
+
+        const metaBits = [];
+        if (gameInfo?.dateLabel) metaBits.push(gameInfo.dateLabel);
+        if (gameInfo?.location) metaBits.push(gameInfo.location);
+        if (Number.isFinite(gameInfo?.kogScore) && Number.isFinite(gameInfo?.opponentScore)) {
+          metaBits.push(`Final ${gameInfo.kogScore}-${gameInfo.opponentScore}`);
+        } else if (Number.isFinite(gameInfo?.kogScore) || Number.isFinite(gameInfo?.opponentScore)) {
+          metaBits.push(`Score ${gameInfo.kogScore ?? "-"}-${gameInfo.opponentScore ?? "-"}`);
+        }
+        timelineMeta.textContent = metaBits.join(" • ");
+        timelineBody.innerHTML = `<div class="timeline-empty">Loading play-by-play…</div>`;
+
+        fetch(`data/playbyplay/game_${matchId}.json`, { cache: "no-store" })
+          .then((response) => (response.ok ? response.json() : null))
+          .then((data) => {
+            if (!data || !data.timeline) {
+              timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game.</div>`;
+              return;
+            }
+            renderTimeline(data.timeline);
+          })
+          .catch(() => {
+            timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game.</div>`;
+          });
+      }
+
+      function closeTimelineModal() {
+        timelineModal.classList.remove("visible");
+        timelineModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
       }
 
       function renderBadges(players, metadata, gamesCount) {
@@ -1284,6 +1460,22 @@
         openPlayerModal(row.dataset);
       });
 
+      scheduleSection.addEventListener("click", (event) => {
+        const card = event.target.closest(".game-card");
+        if (!card) return;
+        const status = (card.dataset.status || "").toLowerCase();
+        if (status !== "played") return;
+        const matchId = Number(card.dataset.matchId);
+        if (!matchId) return;
+        const game =
+          scheduleStore.find((g) => Number(g.matchId) === matchId) || {
+            opponent: card.dataset.opponent,
+            dateLabel: card.dataset.date,
+            location: card.dataset.location
+          };
+        openTimelineModal(matchId, game);
+      });
+
       const teamTotalsEl = document.getElementById("teamTotals");
       const handleTotalsActivation = (card) => {
         if (!card) return;
@@ -1311,6 +1503,12 @@
       modalOverlay.addEventListener("click", (event) => {
         if (event.target === modalOverlay) {
           closeModal();
+        }
+      });
+      closeTimelineBtn.addEventListener("click", closeTimelineModal);
+      timelineModal.addEventListener("click", (event) => {
+        if (event.target === timelineModal) {
+          closeTimelineModal();
         }
       });
       document.addEventListener("keydown", (event) => {

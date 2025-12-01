@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw"
 PROCESSED_DIR = ROOT / "data" / "processed"
 SITE_DATA_DIR = ROOT / "docs" / "data"
+PLAY_BY_PLAY_DIR = SITE_DATA_DIR / "playbyplay"
 SCHEDULE_PATH = ROOT / "data" / "schedule.csv"
 LINKS_PATH = ROOT / "data" / "links.txt"
 
@@ -191,6 +192,128 @@ def load_schedule() -> Dict[int, dict]:
             schedule[match_id] = entry
 
     return schedule
+
+
+def format_clock(seconds: int | None) -> str | None:
+    if seconds is None or seconds < 0:
+        return None
+    mins, secs = divmod(int(seconds), 60)
+    return f"{mins:02d}:{secs:02d}"
+
+
+def build_play_by_play(
+    events: list[dict],
+    schedule_entry: dict,
+    opponent_team_id: int | None,
+) -> list[dict]:
+    kog_home = (schedule_entry.get("homeOrAway") or "").lower() == "home"
+    opponent_name = schedule_entry.get("opponent") or "Opponent"
+
+    def score_line(event: dict) -> str | None:
+        score = event.get("currentScore") or {}
+        home = score.get("home")
+        away = score.get("away")
+        if home is None or away is None:
+            return None
+        kog_score = home if kog_home else away
+        opp_score = away if kog_home else home
+        if not isinstance(kog_score, int) or not isinstance(opp_score, int):
+            return None
+        return f"{kog_score}-{opp_score}"
+
+    timeline: list[dict] = []
+
+    sort_key = lambda e: (
+        e.get("period") or 0,
+        e.get("secondsSinceStartOfPeriod") if e.get("secondsSinceStartOfPeriod") is not None else 0,
+        e.get("sortOrder") or 0,
+        e.get("id") or 0,
+    )
+
+    for event in sorted(events or [], key=sort_key):
+        etype = event.get("eventTypeId")
+        period = event.get("period") or 0
+        clock = format_clock(event.get("secondsSinceStartOfPeriod"))
+
+        base = {
+            "period": period,
+            "clock": clock,
+            "teamId": event.get("teamId"),
+            "teamName": event.get("teamName") or opponent_name,
+            "player": (event.get("person") or {}).get("name", "").strip(),
+            "score": score_line(event),
+            "rawType": etype,
+        }
+
+        if etype == 97:  # start period
+            timeline.append({**base, "kind": "period", "label": f"Start Period {period or ''}", "emoji": "⏱️"})
+            continue
+        if etype == 98:  # period break
+            timeline.append({**base, "kind": "period", "label": f"End Period {period or ''}", "emoji": "🔔"})
+            continue
+        if etype == 99:  # start period (later)
+            timeline.append({**base, "kind": "period", "label": f"Start Period {period or ''}", "emoji": "⏱️"})
+            continue
+        if etype == 100:  # full time
+            timeline.append({**base, "kind": "period", "label": "Final Buzzer", "emoji": "🏁"})
+            continue
+        if etype == 108:  # timeout
+            timeline.append({**base, "kind": "timeout", "label": "Timeout", "emoji": "🛑"})
+            continue
+        if etype in (109, 111):  # fouls
+            label = "Personal Foul" if etype == 109 else "Unsportsmanlike Foul"
+            emoji = "⚠️" if etype == 109 else "🚫"
+            timeline.append({**base, "kind": "foul", "label": label, "emoji": emoji})
+            continue
+        if etype in (103, 104, 106):  # scoring
+            if etype == 103:
+                label, emoji = "3PT Made", "🎯"
+            elif etype == 104:
+                label, emoji = "2PT Made", "🏀"
+            else:
+                label, emoji = "FT Made", "🎫"
+
+            team_id = event.get("teamId")
+            if team_id == KOG_TEAM_ID:
+                side = "KOG"
+            elif opponent_team_id and team_id == opponent_team_id:
+                side = "Opponent"
+            else:
+                side = event.get("teamName") or "Opponent"
+
+            timeline.append({
+                **base,
+                "kind": "score",
+                "label": label,
+                "emoji": emoji,
+                "side": side,
+                "teamName": event.get("teamName") or opponent_name,
+            })
+            continue
+
+    return timeline
+
+
+def publish_play_by_play(game_id: int, game: dict, schedule_entry: dict, opponent_team_id: int | None) -> None:
+    events = game.get("events")
+    if not events:
+        return
+
+    timeline = build_play_by_play(events, schedule_entry, opponent_team_id)
+    if not timeline:
+        return
+
+    PLAY_BY_PLAY_DIR.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "matchId": game_id,
+        "opponent": schedule_entry.get("opponent"),
+        "homeOrAway": schedule_entry.get("homeOrAway"),
+        "location": schedule_entry.get("location"),
+        "dateLabel": schedule_entry.get("dateLabel"),
+        "timeline": timeline,
+    }
+    target = PLAY_BY_PLAY_DIR / f"game_{game_id}.json"
+    target.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
 def apply_metrics_to_schedule(schedule: Dict[int, dict], metrics: Dict[str, object]) -> None:
@@ -458,6 +581,9 @@ def update_player_records(
     opponent_name = (opponent.get("teamName") or "Opponent").strip() or "Opponent"
     schedule_row = schedule.get(game_id or 0, {})
 
+    tipoff = schedule_row.get("tipoff")
+    tipoff_value = tipoff.isoformat() if hasattr(tipoff, "isoformat") else tipoff
+
     for player in kog_team.get("roster", []):
         if player.get("type") != "player":
             continue
@@ -474,7 +600,7 @@ def update_player_records(
             "opponent": opponent_name,
             "opponentTeamId": opponent.get("teamId"),
             "dateLabel": schedule_row.get("dateLabel"),
-            "tipoff": schedule_row.get("tipoff"),
+            "tipoff": tipoff_value,
         }
 
 
@@ -529,6 +655,15 @@ def main() -> None:
         if metrics:
             game_metrics.append(metrics)
             apply_metrics_to_schedule(schedule, metrics)
+
+        schedule_entry = schedule.get(game_id)
+        opponent_team_id = None
+        for team_id in teams:
+            if team_id != KOG_TEAM_ID:
+                opponent_team_id = team_id
+                break
+        if schedule_entry:
+            publish_play_by_play(game_id, game, schedule_entry, opponent_team_id)
 
     publish_kog_player_feed(kog_totals)
     publish_metadata(processed_games, kog_totals, game_metrics, player_records)
