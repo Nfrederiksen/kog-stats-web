@@ -1300,9 +1300,9 @@
       "player": "",
       "score": "55-71",
       "rawType": 100,
-      "side": null,
+      "side": "Opponent",
       "kind": "period",
-      "label": "Final Buzzer",
+      "label": "Final Buzzer \u2014 H\u00e4sselby HEAT",
       "emoji": "\ud83c\udfc1"
     }
   ]

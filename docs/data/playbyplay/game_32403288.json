@@ -1456,9 +1456,9 @@
       "player": "",
       "score": "61-67",
       "rawType": 100,
-      "side": null,
+      "side": "Opponent",
       "kind": "period",
-      "label": "Final Buzzer",
+      "label": "Final Buzzer \u2014 Kungsholmen NY",
       "emoji": "\ud83c\udfc1"
     }
   ]

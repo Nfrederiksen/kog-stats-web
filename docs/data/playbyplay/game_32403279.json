@@ -1274,9 +1274,9 @@
       "player": "",
       "score": "42-88",
       "rawType": 100,
-      "side": null,
+      "side": "Opponent",
       "kind": "period",
-      "label": "Final Buzzer",
+      "label": "Final Buzzer \u2014 KFUM Central Basket",
       "emoji": "\ud83c\udfc1"
     }
   ]

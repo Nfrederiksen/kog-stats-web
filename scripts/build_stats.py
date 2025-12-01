@@ -266,7 +266,23 @@ def build_play_by_play(
             timeline.append({**base, "kind": "period", "label": f"Start Period {period or ''}", "emoji": "⏱️"})
             continue
         if etype == 100:  # full time
-            timeline.append({**base, "kind": "period", "label": "Final Buzzer", "emoji": "🏁"})
+            score = event.get("currentScore") or {}
+            winner_label = "Final Buzzer"
+            winner_side = None
+            home = score.get("home")
+            away = score.get("away")
+            if isinstance(home, int) and isinstance(away, int):
+                kog_score = home if kog_home else away
+                opp_score = away if kog_home else home
+                if kog_score > opp_score:
+                    winner_label = "Final Buzzer — Kungsholmen OG"
+                    winner_side = "KOG"
+                elif opp_score > kog_score:
+                    winner_label = f"Final Buzzer — {opponent_name}"
+                    winner_side = "Opponent"
+                else:
+                    winner_label = "Final Buzzer — Draw"
+            timeline.append({**base, "kind": "period", "label": winner_label, "emoji": "🏁", "side": winner_side})
             continue
         if etype == 108:  # timeout
             timeline.append({**base, "kind": "timeout", "label": "Timeout", "emoji": "🛑"})

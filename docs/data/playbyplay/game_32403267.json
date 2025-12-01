@@ -1404,9 +1404,9 @@
       "player": "",
       "score": "66-82",
       "rawType": 100,
-      "side": null,
+      "side": "Opponent",
       "kind": "period",
-      "label": "Final Buzzer",
+      "label": "Final Buzzer \u2014 Alvik V\u00e4sterled",
       "emoji": "\ud83c\udfc1"
     }
   ]
