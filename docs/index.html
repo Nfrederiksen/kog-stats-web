@@ -1285,7 +1285,8 @@
               : shortenTeamName(event.teamName) || (event.teamName ? event.teamName : "Opp");
           const scoreLabel = event.score ? `[${event.score}]` : "";
           const playerLabel = formatPlayerShort(event.player);
-          const headline = [scoreLabel, teamShort, playerLabel ? `, ${playerLabel}` : ""]
+          const playerNumber = event.playerNumber ? ` #${event.playerNumber}` : "";
+          const headline = [scoreLabel, teamShort, playerLabel ? `, ${playerLabel}${playerNumber}` : ""]
             .filter(Boolean)
             .join(" ")
             .trim();

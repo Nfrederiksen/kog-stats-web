@@ -42,6 +42,7 @@ class PlayerTotals:
     name: str
     numbers: set[str] = field(default_factory=set)
     last_number: str = ""
+    last_number_seen_ts: float = -1.0
     games_played: int = 0
     free_throws: int = 0
     two_pointers: int = 0
@@ -56,11 +57,15 @@ class PlayerTotals:
         three_pointers: int,
         fouls: int,
         counted_as_played: bool,
+        tipoff_ts: float | None,
     ) -> None:
         number = (number or "").strip()
         if number:
             self.numbers.add(number)
-            self.last_number = number
+            ts = tipoff_ts if tipoff_ts is not None else -1.0
+            if ts >= self.last_number_seen_ts:
+                self.last_number_seen_ts = ts
+                self.last_number = number
 
         if counted_as_played:
             self.games_played += 1
@@ -276,6 +281,7 @@ def build_play_by_play(
             "teamId": event.get("teamId"),
             "teamName": event.get("teamName") or opponent_name,
             "player": (event.get("person") or {}).get("name", "").strip(),
+            "playerNumber": (event.get("person") or {}).get("number", ""),
             "score": score_line(event),
             "rawType": etype,
             "side": side,
@@ -559,7 +565,12 @@ def write_game_summary(game_id: int, game: dict, teams: Dict[int, dict]) -> None
     pretty_raw_path.write_text(json.dumps(game, indent=2), encoding="utf-8")
 
 
-def aggregate_kog_players(game_id: int, teams: Dict[int, dict], totals: Dict[str, PlayerTotals]) -> None:
+def aggregate_kog_players(
+    game_id: int,
+    teams: Dict[int, dict],
+    totals: Dict[str, PlayerTotals],
+    tipoff_ts: float | None = None,
+) -> None:
     kog_team = teams.get(KOG_TEAM_ID)
     if not kog_team:
         return
@@ -588,6 +599,7 @@ def aggregate_kog_players(game_id: int, teams: Dict[int, dict], totals: Dict[str
             three_pointers=stats["threePointMade"],
             fouls=stats["fouls"],
             counted_as_played=counted_as_played,
+            tipoff_ts=tipoff_ts,
         )
 
 
@@ -720,7 +732,20 @@ def main() -> None:
     for game_id, game in load_raw_games():
         teams = build_team_structures(game)
         write_game_summary(game_id, game, teams)
-        aggregate_kog_players(game_id, teams, kog_totals)
+        tipoff = None
+        schedule_entry = schedule.get(game_id)
+        if schedule_entry:
+            tipoff_val = schedule_entry.get("tipoff")
+            if isinstance(tipoff_val, datetime):
+                tipoff = tipoff_val.timestamp()
+            elif isinstance(tipoff_val, str):
+                try:
+                    tip_dt = datetime.fromisoformat(tipoff_val)
+                    tipoff = tip_dt.timestamp()
+                except ValueError:
+                    tipoff = None
+
+        aggregate_kog_players(game_id, teams, kog_totals, tipoff_ts=tipoff)
         processed_games.append(game_id)
         metrics = compute_game_metrics(teams, game_id=game_id)
         update_player_records(teams, schedule, player_records, game_id=game_id)
@@ -728,7 +753,6 @@ def main() -> None:
             game_metrics.append(metrics)
             apply_metrics_to_schedule(schedule, metrics)
 
-        schedule_entry = schedule.get(game_id)
         opponent_team_id = None
         for team_id in teams:
             if team_id != KOG_TEAM_ID:
