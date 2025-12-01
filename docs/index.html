@@ -1195,10 +1195,13 @@
           item.className = sideClass;
           const periodLabel = event.period ? `Q${event.period}` : "—";
 
-          const teamShort = event.side === "KOG" ? "OG" : shortenTeamName(event.teamName);
+          const teamShort =
+            event.side === "KOG"
+              ? "OG"
+              : shortenTeamName(event.teamName) || (event.teamName ? event.teamName : "Opp");
           const scoreLabel = event.score ? `[${event.score}]` : "";
           const playerLabel = formatPlayerShort(event.player);
-          const headline = [teamShort && `${teamShort};`, scoreLabel, playerLabel]
+          const headline = [scoreLabel, teamShort, playerLabel ? `, ${playerLabel}` : ""]
             .filter(Boolean)
             .join(" ")
             .trim();
