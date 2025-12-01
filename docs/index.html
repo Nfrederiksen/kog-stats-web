@@ -623,6 +623,20 @@
         width: min(760px, 100%);
       }
 
+      .timeline-controls {
+        display: flex;
+        margin-bottom: 0.6rem;
+      }
+
+      .timeline-controls input[type="search"] {
+        width: 100%;
+        padding: 0.55rem 0.8rem;
+        border-radius: 12px;
+        border: 1px solid rgba(96, 108, 162, 0.4);
+        background: rgba(10, 14, 30, 0.8);
+        color: var(--text-primary);
+      }
+
       .timeline-meta {
         color: var(--text-muted);
         font-size: 0.95rem;
@@ -817,6 +831,14 @@
           <h2 id="timelineTitle">Game Timeline</h2>
           <button class="close-modal" id="closeTimeline" type="button">Close</button>
         </div>
+        <div class="timeline-controls">
+          <input
+            type="search"
+            id="timelineSearch"
+            placeholder="Filter by player name..."
+            aria-label="Filter play-by-play by player name"
+          />
+        </div>
         <div class="timeline-meta" id="timelineMeta"></div>
         <div class="timeline-body" id="timelineBody"></div>
       </div>
@@ -838,8 +860,10 @@
       const timelineMeta = document.getElementById("timelineMeta");
       const timelineBody = document.getElementById("timelineBody");
       const closeTimelineBtn = document.getElementById("closeTimeline");
+      const timelineSearch = document.getElementById("timelineSearch");
       let playerStore = [];
       let scheduleStore = [];
+      let timelineStore = [];
       metaContainer.className = "meta";
       header.appendChild(
         (() => {
@@ -1179,14 +1203,24 @@
         return initials ? `${first} ${initials}` : first;
       }
 
-      function renderTimeline(timeline) {
+      function renderTimeline(timeline, filterTerm = "") {
         timelineBody.innerHTML = "";
         if (!Array.isArray(timeline) || !timeline.length) {
           timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game yet.</div>`;
           return;
         }
 
-        timeline.forEach((event) => {
+        const term = (filterTerm || "").trim().toLowerCase();
+        const filtered = term
+          ? timeline.filter((event) => (event.player || "").toLowerCase().includes(term))
+          : timeline;
+
+        if (!filtered.length) {
+          timelineBody.innerHTML = `<div class="timeline-empty">No events matched that player.</div>`;
+          return;
+        }
+
+        filtered.forEach((event) => {
           const item = document.createElement("div");
           const sideClass =
             (event.side || "").toLowerCase() === "kog"
@@ -1225,6 +1259,8 @@
         timelineModal.classList.add("visible");
         timelineModal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
+        timelineSearch.value = "";
+        timelineStore = [];
 
         const titleOpponent = gameInfo?.opponent || "Opponent";
         timelineTitle.textContent = `vs ${titleOpponent}`;
@@ -1247,7 +1283,8 @@
               timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game.</div>`;
               return;
             }
-            renderTimeline(data.timeline);
+            timelineStore = data.timeline;
+            renderTimeline(timelineStore);
           })
           .catch(() => {
             timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game.</div>`;
@@ -1563,6 +1600,11 @@
         if (event.target === timelineModal) {
           closeTimelineModal();
         }
+      });
+
+      timelineSearch.addEventListener("input", (event) => {
+        const term = event.target.value || "";
+        renderTimeline(timelineStore, term);
       });
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && modalOverlay.classList.contains("visible")) {
