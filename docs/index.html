@@ -938,15 +938,37 @@
 
         scheduleSection.hidden = false;
 
+        const now = Date.now();
+
         const played = games
           .filter((game) => (game.status || "").toLowerCase() === "played")
           .sort((a, b) => getTipoffTime(b, 0) - getTipoffTime(a, 0));
 
-        const upcoming = games
-          .filter((game) => (game.status || "").toLowerCase() !== "played")
+        const scheduled = games.filter((game) => (game.status || "").toLowerCase() !== "played");
+
+        const upcomingFuture = scheduled
+          .filter((game) => {
+            const tipoffTime = getTipoffTime(game, Number.NaN);
+            if (!Number.isFinite(tipoffTime)) return true;
+            return tipoffTime >= now;
+          })
           .sort((a, b) => getTipoffTime(a, Number.POSITIVE_INFINITY) - getTipoffTime(b, Number.POSITIVE_INFINITY));
 
-        const nextGame = upcoming.length ? upcoming.shift() : null;
+        const staleUpcoming = scheduled
+          .filter((game) => {
+            const tipoffTime = getTipoffTime(game, Number.NaN);
+            return Number.isFinite(tipoffTime) && tipoffTime < now;
+          })
+          .sort((a, b) => getTipoffTime(a, 0) - getTipoffTime(b, 0));
+
+        let nextGame = null;
+        let upcomingList = [];
+
+        if (upcomingFuture.length) {
+          [nextGame, ...upcomingList] = upcomingFuture;
+        } else if (staleUpcoming.length) {
+          [nextGame, ...upcomingList] = staleUpcoming;
+        }
 
         if (nextGame) {
           nextGameWrapper.appendChild(buildGameCard(nextGame, { highlight: true }));
@@ -964,9 +986,9 @@
           playedGamesGroup.style.display = "none";
         }
 
-        if (upcoming.length) {
+        if (upcomingList.length) {
           upcomingGamesGroup.style.display = "";
-          upcoming.forEach((game) => {
+          upcomingList.forEach((game) => {
             upcomingGamesList.appendChild(buildGameCard(game));
           });
         } else {
