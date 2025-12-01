@@ -264,7 +264,7 @@
       "kind": "period",
       "label": "End Period 1",
       "emoji": "\ud83d\udd14",
-      "detail": "Tie game 11-11"
+      "detail": "QTR tied 11-11, lead 0"
     },
     {
       "period": 2,
@@ -499,7 +499,7 @@
       "kind": "period",
       "label": "End Period 2",
       "emoji": "\ud83d\udd14",
-      "detail": "KFUM Central Basket wins QTR 36-19, lead +17"
+      "detail": "KFUM Central Basket wins QTR 25-8, lead -17"
     },
     {
       "period": 3,
@@ -838,7 +838,7 @@
       "kind": "period",
       "label": "End Period 3",
       "emoji": "\ud83d\udd14",
-      "detail": "KFUM Central Basket wins QTR 63-29, lead +34"
+      "detail": "KFUM Central Basket wins QTR 27-10, lead -34"
     },
     {
       "period": 4,

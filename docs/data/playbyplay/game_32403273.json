@@ -277,7 +277,7 @@
       "kind": "period",
       "label": "End Period 1",
       "emoji": "\ud83d\udd14",
-      "detail": "H\u00e4sselby HEAT wins QTR 20-8, lead +12"
+      "detail": "H\u00e4sselby HEAT wins QTR 20-8, lead -12"
     },
     {
       "period": 2,
@@ -616,7 +616,7 @@
       "kind": "period",
       "label": "End Period 2",
       "emoji": "\ud83d\udd14",
-      "detail": "H\u00e4sselby HEAT wins QTR 37-26, lead +11"
+      "detail": "OG wins QTR 18-17, lead -11"
     },
     {
       "period": 3,
@@ -890,7 +890,7 @@
       "kind": "period",
       "label": "End Period 3",
       "emoji": "\ud83d\udd14",
-      "detail": "H\u00e4sselby HEAT wins QTR 54-35, lead +19"
+      "detail": "H\u00e4sselby HEAT wins QTR 17-9, lead -19"
     },
     {
       "period": 4,

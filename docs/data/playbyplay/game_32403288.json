@@ -355,7 +355,7 @@
       "kind": "period",
       "label": "End Period 1",
       "emoji": "\ud83d\udd14",
-      "detail": "Kungsholmen NY wins QTR 18-17, lead +1"
+      "detail": "Kungsholmen NY wins QTR 18-17, lead -1"
     },
     {
       "period": 2,
@@ -694,7 +694,7 @@
       "kind": "period",
       "label": "End Period 2",
       "emoji": "\ud83d\udd14",
-      "detail": "OG wins QTR 34-29, lead +5"
+      "detail": "OG wins QTR 17-11, lead +5"
     },
     {
       "period": 3,
@@ -1085,7 +1085,7 @@
       "kind": "period",
       "label": "End Period 3",
       "emoji": "\ud83d\udd14",
-      "detail": "Kungsholmen NY wins QTR 51-47, lead +4"
+      "detail": "Kungsholmen NY wins QTR 22-13, lead -4"
     },
     {
       "period": 4,

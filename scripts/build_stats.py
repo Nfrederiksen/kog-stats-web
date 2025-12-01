@@ -286,18 +286,23 @@ def build_play_by_play(
             continue
         if etype == 98:  # period break
             state = period_state.get(period, {})
-            start_score = state.get("start") or previous_end or (None, None)
+            start_score = state.get("start") or previous_end or (0, 0)
             end_score = state.get("end") or start_score
             detail = None
             if start_score and end_score and None not in start_score and None not in end_score:
+                start_kog, start_opp = start_score
                 end_kog, end_opp = end_score
-                diff = end_kog - end_opp
-                if diff > 0:
-                    detail = f"OG wins QTR {end_kog}-{end_opp}, lead +{diff}"
-                elif diff < 0:
-                    detail = f"{opponent_name} wins QTR {end_opp}-{end_kog}, lead +{abs(diff)}"
+                quarter_kog = end_kog - start_kog
+                quarter_opp = end_opp - start_opp
+                lead_diff = end_kog - end_opp
+                lead_label = f"+{lead_diff}" if lead_diff > 0 else f"{lead_diff}"
+
+                if quarter_kog > quarter_opp:
+                    detail = f"OG wins QTR {quarter_kog}-{quarter_opp}, lead {lead_label}"
+                elif quarter_opp > quarter_kog:
+                    detail = f"{opponent_name} wins QTR {quarter_opp}-{quarter_kog}, lead {lead_label}"
                 else:
-                    detail = f"Tie game {end_kog}-{end_opp}"
+                    detail = f"QTR tied {quarter_kog}-{quarter_opp}, lead {lead_label}"
             previous_end = end_score if end_score != (None, None) else previous_end
             timeline.append({**base, "kind": "period", "label": f"End Period {period or ''}", "emoji": "🔔", "detail": detail})
             continue
