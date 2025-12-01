@@ -13,6 +13,7 @@
       "player": "",
       "score": "0-0",
       "rawType": 97,
+      "side": null,
       "kind": "period",
       "label": "Start Period 1",
       "emoji": "\u23f1\ufe0f"
@@ -25,10 +26,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "2-0",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -38,6 +39,7 @@
       "player": "Benjamin Nord Paskin",
       "score": "2-0",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -50,10 +52,10 @@
       "player": "Fabio Monetti",
       "score": "2-1",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -63,10 +65,10 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "4-1",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -76,6 +78,7 @@
       "player": "Lukas Zarders",
       "score": "4-1",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -88,10 +91,10 @@
       "player": "Fares Cherif",
       "score": "7-1",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 1,
@@ -101,10 +104,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "9-1",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -114,6 +117,7 @@
       "player": "Lasse Mundt",
       "score": "9-1",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -126,10 +130,10 @@
       "player": "Fares Cherif",
       "score": "11-1",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -139,10 +143,10 @@
       "player": "Lasse Mundt",
       "score": "11-3",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -152,6 +156,7 @@
       "player": "Benjamin Nord Paskin",
       "score": "11-3",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -164,6 +169,7 @@
       "player": "Tommaso Cauda",
       "score": "11-3",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -176,10 +182,10 @@
       "player": "Filippo Tuti",
       "score": "11-5",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -189,6 +195,7 @@
       "player": "Fares Cherif",
       "score": "11-5",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -201,10 +208,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "13-5",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -214,10 +221,10 @@
       "player": "Eymen Isik",
       "score": "13-7",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -227,10 +234,10 @@
       "player": "Luka Rosko",
       "score": "15-7",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -240,10 +247,10 @@
       "player": "Fabio Monetti",
       "score": "15-10",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 1,
@@ -253,10 +260,10 @@
       "player": "Lukas Zarders",
       "score": "15-13",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 1,
@@ -266,6 +273,7 @@
       "player": "Luca Deltetto",
       "score": "15-13",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -278,10 +286,10 @@
       "player": "Luka Rosko",
       "score": "17-13",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -291,10 +299,10 @@
       "player": "Lukas Zarders",
       "score": "17-16",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 1,
@@ -304,6 +312,7 @@
       "player": "Anton Jensen Wennberg",
       "score": "17-16",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -316,10 +325,10 @@
       "player": "Lukas Zarders",
       "score": "17-17",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -329,10 +338,10 @@
       "player": "Lukas Zarders",
       "score": "17-18",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -342,6 +351,7 @@
       "player": "",
       "score": "17-18",
       "rawType": 98,
+      "side": null,
       "kind": "period",
       "label": "End Period 1",
       "emoji": "\ud83d\udd14"
@@ -354,6 +364,7 @@
       "player": "",
       "score": "17-18",
       "rawType": 99,
+      "side": null,
       "kind": "period",
       "label": "Start Period 2",
       "emoji": "\u23f1\ufe0f"
@@ -366,6 +377,7 @@
       "player": "Max Landgren",
       "score": "17-18",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -378,10 +390,10 @@
       "player": "Riccardo Cappai",
       "score": "17-20",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -391,10 +403,10 @@
       "player": "Luka Rosko",
       "score": "20-20",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 2,
@@ -404,10 +416,10 @@
       "player": "Max Landgren",
       "score": "23-20",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 2,
@@ -417,6 +429,7 @@
       "player": "",
       "score": "23-20",
       "rawType": 108,
+      "side": "KOG",
       "kind": "timeout",
       "label": "Timeout",
       "emoji": "\ud83d\uded1"
@@ -429,6 +442,7 @@
       "player": "Fares Cherif",
       "score": "23-20",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -441,6 +455,7 @@
       "player": "Fabio Monetti",
       "score": "23-20",
       "rawType": 111,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Unsportsmanlike Foul",
       "emoji": "\ud83d\udeab"
@@ -453,10 +468,10 @@
       "player": "Max Landgren",
       "score": "24-20",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -466,6 +481,7 @@
       "player": "Lucas Evertsson",
       "score": "24-20",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -478,10 +494,10 @@
       "player": "Fabio Monetti",
       "score": "24-21",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -491,10 +507,10 @@
       "player": "Fabio Monetti",
       "score": "24-22",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -504,6 +520,7 @@
       "player": "Filippo Tuti",
       "score": "24-22",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -516,10 +533,10 @@
       "player": "Lucas Evertsson",
       "score": "26-22",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -529,10 +546,10 @@
       "player": "Eymen Isik",
       "score": "26-25",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 2,
@@ -542,10 +559,10 @@
       "player": "Lucas Evertsson",
       "score": "28-25",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -555,10 +572,10 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "30-25",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -568,10 +585,10 @@
       "player": "Fabio Monetti",
       "score": "30-27",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -581,6 +598,7 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "30-27",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -593,10 +611,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "32-27",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -606,10 +624,10 @@
       "player": "Max Landgren",
       "score": "34-27",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -619,6 +637,7 @@
       "player": "Lucas Evertsson",
       "score": "34-27",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -631,10 +650,10 @@
       "player": "Fabio Monetti",
       "score": "34-28",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -644,10 +663,10 @@
       "player": "Lukas Zarders",
       "score": "34-29",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -657,6 +676,7 @@
       "player": "",
       "score": "34-29",
       "rawType": 108,
+      "side": "KOG",
       "kind": "timeout",
       "label": "Timeout",
       "emoji": "\ud83d\uded1"
@@ -669,6 +689,7 @@
       "player": "",
       "score": "34-29",
       "rawType": 98,
+      "side": null,
       "kind": "period",
       "label": "End Period 2",
       "emoji": "\ud83d\udd14"
@@ -681,6 +702,7 @@
       "player": "",
       "score": "34-29",
       "rawType": 99,
+      "side": null,
       "kind": "period",
       "label": "Start Period 3",
       "emoji": "\u23f1\ufe0f"
@@ -693,10 +715,10 @@
       "player": "Lukas Zarders",
       "score": "34-31",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -706,10 +728,10 @@
       "player": "Max Landgren",
       "score": "36-31",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -719,6 +741,7 @@
       "player": "Fabio Monetti",
       "score": "36-31",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -731,10 +754,10 @@
       "player": "Max Landgren",
       "score": "37-31",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -744,10 +767,10 @@
       "player": "Eymen Isik",
       "score": "37-33",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -757,6 +780,7 @@
       "player": "Benjamin Nord Paskin",
       "score": "37-33",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -769,10 +793,10 @@
       "player": "Eymen Isik",
       "score": "37-34",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -782,6 +806,7 @@
       "player": "Lukas Zarders",
       "score": "37-34",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -794,10 +819,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "38-34",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -807,10 +832,10 @@
       "player": "Lukas Zarders",
       "score": "38-36",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -820,6 +845,7 @@
       "player": "Luka Rosko",
       "score": "38-36",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -832,10 +858,10 @@
       "player": "Lukas Zarders",
       "score": "38-38",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -845,6 +871,7 @@
       "player": "Luka Rosko",
       "score": "38-38",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -857,10 +884,10 @@
       "player": "Lukas Zarders",
       "score": "38-39",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -870,6 +897,7 @@
       "player": "Max Landgren",
       "score": "38-39",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -882,10 +910,10 @@
       "player": "Eymen Isik",
       "score": "38-42",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 3,
@@ -895,6 +923,7 @@
       "player": "Fabio Monetti",
       "score": "38-42",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -907,10 +936,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "39-42",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -920,10 +949,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "40-42",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -933,6 +962,7 @@
       "player": "Eymen Isik",
       "score": "40-42",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -945,10 +975,10 @@
       "player": "Max Landgren",
       "score": "42-42",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -958,10 +988,10 @@
       "player": "Lukas Zarders",
       "score": "42-45",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 3,
@@ -971,10 +1001,10 @@
       "player": "Max Landgren",
       "score": "45-45",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 3,
@@ -984,10 +1014,10 @@
       "player": "Lukas Zarders",
       "score": "45-47",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -997,10 +1027,10 @@
       "player": "Lasse Mundt",
       "score": "45-49",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -1010,10 +1040,10 @@
       "player": "Gustav Hellstr\u00f6m",
       "score": "45-51",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -1023,6 +1053,7 @@
       "player": "Anton Jensen Wennberg",
       "score": "45-51",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1035,10 +1066,10 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "47-51",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -1048,6 +1079,7 @@
       "player": "",
       "score": "47-51",
       "rawType": 98,
+      "side": null,
       "kind": "period",
       "label": "End Period 3",
       "emoji": "\ud83d\udd14"
@@ -1060,6 +1092,7 @@
       "player": "",
       "score": "47-51",
       "rawType": 99,
+      "side": null,
       "kind": "period",
       "label": "Start Period 4",
       "emoji": "\u23f1\ufe0f"
@@ -1072,6 +1105,7 @@
       "player": "Eymen Isik",
       "score": "47-51",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1084,10 +1118,10 @@
       "player": "Lucas Evertsson",
       "score": "48-51",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1097,6 +1131,7 @@
       "player": "Max Landgren",
       "score": "48-51",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1109,10 +1144,10 @@
       "player": "Riccardo Cappai",
       "score": "48-54",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1122,10 +1157,10 @@
       "player": "Gustav Hellstr\u00f6m",
       "score": "48-57",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1135,6 +1170,7 @@
       "player": "Eymen Isik",
       "score": "48-57",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1147,10 +1183,10 @@
       "player": "Riccardo Cappai",
       "score": "48-59",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1160,10 +1196,10 @@
       "player": "Max Landgren",
       "score": "50-59",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1173,10 +1209,10 @@
       "player": "Filippo Tuti",
       "score": "50-61",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1186,6 +1222,7 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "50-61",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1198,6 +1235,7 @@
       "player": "Riccardo Cappai",
       "score": "50-61",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1210,6 +1248,7 @@
       "player": "",
       "score": "50-61",
       "rawType": 108,
+      "side": "KOG",
       "kind": "timeout",
       "label": "Timeout",
       "emoji": "\ud83d\uded1"
@@ -1222,10 +1261,10 @@
       "player": "Max Landgren",
       "score": "52-61",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1235,10 +1274,10 @@
       "player": "Lukas Zarders",
       "score": "52-63",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1248,10 +1287,10 @@
       "player": "Max Landgren",
       "score": "54-63",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1261,10 +1300,10 @@
       "player": "Lasse Mundt",
       "score": "54-65",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1274,10 +1313,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "57-65",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1287,6 +1326,7 @@
       "player": "Fabio Monetti",
       "score": "57-65",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1299,10 +1339,10 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "58-65",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1312,10 +1352,10 @@
       "player": "Lucas Evertsson",
       "score": "60-65",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1325,6 +1365,7 @@
       "player": "Benjamin Nord Paskin",
       "score": "60-65",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1337,10 +1378,10 @@
       "player": "Lukas Zarders",
       "score": "60-66",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1350,10 +1391,10 @@
       "player": "Lukas Zarders",
       "score": "60-67",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1363,6 +1404,7 @@
       "player": "Filippo Tuti",
       "score": "60-67",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1375,10 +1417,10 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "61-67",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1388,6 +1430,7 @@
       "player": "",
       "score": "61-67",
       "rawType": 108,
+      "side": "KOG",
       "kind": "timeout",
       "label": "Timeout",
       "emoji": "\ud83d\uded1"
@@ -1400,6 +1443,7 @@
       "player": "Luka Rosko",
       "score": "61-67",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1412,6 +1456,7 @@
       "player": "",
       "score": "61-67",
       "rawType": 100,
+      "side": null,
       "kind": "period",
       "label": "Final Buzzer",
       "emoji": "\ud83c\udfc1"

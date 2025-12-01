@@ -13,6 +13,7 @@
       "player": "",
       "score": "0-0",
       "rawType": 97,
+      "side": null,
       "kind": "period",
       "label": "Start Period 1",
       "emoji": "\u23f1\ufe0f"
@@ -25,10 +26,10 @@
       "player": "Axel Forsberg",
       "score": "2-0",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -38,10 +39,10 @@
       "player": "Anand D",
       "score": "2-3",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 1,
@@ -51,6 +52,7 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "2-3",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -63,6 +65,7 @@
       "player": "Erdenebat Ch",
       "score": "2-3",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -75,6 +78,7 @@
       "player": "Erdenebat Ch",
       "score": "2-3",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -87,10 +91,10 @@
       "player": "Axel Forsberg",
       "score": "4-3",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -100,6 +104,7 @@
       "player": "Iderbayasgalan I",
       "score": "4-3",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -112,10 +117,10 @@
       "player": "Erdenebat Ch",
       "score": "4-5",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -125,10 +130,10 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "6-5",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -138,6 +143,7 @@
       "player": "Erdenebat Ch",
       "score": "6-5",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -150,10 +156,10 @@
       "player": "Fares Cherif",
       "score": "7-5",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -163,10 +169,10 @@
       "player": "Fares Cherif",
       "score": "8-5",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -176,10 +182,10 @@
       "player": "Enkhtaivan E",
       "score": "8-8",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 1,
@@ -189,6 +195,7 @@
       "player": "Iderbayasgalan I",
       "score": "8-8",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -201,6 +208,7 @@
       "player": "Iderbayasgalan I",
       "score": "8-8",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -213,10 +221,10 @@
       "player": "Mandaa M",
       "score": "8-10",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -226,10 +234,10 @@
       "player": "Michael Brown",
       "score": "11-10",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 1,
@@ -239,10 +247,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "13-10",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -252,6 +260,7 @@
       "player": "Munkhbayar M",
       "score": "13-10",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -264,10 +273,10 @@
       "player": "Michael Brown",
       "score": "14-10",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -277,10 +286,10 @@
       "player": "Michael Brown",
       "score": "15-10",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -290,10 +299,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "16-10",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -303,6 +312,7 @@
       "player": "Gombojav G",
       "score": "16-10",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -315,6 +325,7 @@
       "player": "Lhamjav L",
       "score": "16-10",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -327,10 +338,10 @@
       "player": "Michael Brown",
       "score": "17-10",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -340,10 +351,10 @@
       "player": "Michael Brown",
       "score": "18-10",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -353,6 +364,7 @@
       "player": "Mandaa M",
       "score": "18-10",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -365,10 +377,10 @@
       "player": "Michael Brown",
       "score": "19-10",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -378,6 +390,7 @@
       "player": "",
       "score": "19-10",
       "rawType": 98,
+      "side": null,
       "kind": "period",
       "label": "End Period 1",
       "emoji": "\ud83d\udd14"
@@ -390,6 +403,7 @@
       "player": "",
       "score": "19-10",
       "rawType": 99,
+      "side": null,
       "kind": "period",
       "label": "Start Period 2",
       "emoji": "\u23f1\ufe0f"
@@ -402,10 +416,10 @@
       "player": "Michael Brown",
       "score": "21-10",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -415,10 +429,10 @@
       "player": "Erdenebat Ch",
       "score": "21-12",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -428,10 +442,10 @@
       "player": "Anand D",
       "score": "21-14",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -441,6 +455,7 @@
       "player": "Michael Brown",
       "score": "21-14",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -453,10 +468,10 @@
       "player": "Erdenebat Ch",
       "score": "21-16",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -466,10 +481,10 @@
       "player": "Erdenebat Ch",
       "score": "21-18",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -479,10 +494,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "23-18",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -492,10 +507,10 @@
       "player": "Khasbaatar N",
       "score": "23-20",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -505,6 +520,7 @@
       "player": "Budee B",
       "score": "23-20",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -517,6 +533,7 @@
       "player": "Anand D",
       "score": "23-20",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -529,10 +546,10 @@
       "player": "Axel Forsberg",
       "score": "25-20",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -542,10 +559,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "27-20",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -555,6 +572,7 @@
       "player": "Khasbaatar N",
       "score": "27-20",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -567,10 +585,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "28-20",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -580,10 +598,10 @@
       "player": "Batbaatar B",
       "score": "28-23",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 2,
@@ -593,10 +611,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "30-23",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -606,10 +624,10 @@
       "player": "Munkhbayar M",
       "score": "30-26",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 2,
@@ -619,6 +637,7 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "30-26",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -631,10 +650,10 @@
       "player": "Batbaatar B",
       "score": "30-27",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -644,10 +663,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "32-27",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -657,10 +676,10 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "34-27",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -670,6 +689,7 @@
       "player": "Benjamin Nord Paskin",
       "score": "34-27",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -682,10 +702,10 @@
       "player": "Munkhbayar M",
       "score": "34-28",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -695,6 +715,7 @@
       "player": "Karl Ginsburg",
       "score": "34-28",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -707,10 +728,10 @@
       "player": "Batbaatar B",
       "score": "34-29",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -720,10 +741,10 @@
       "player": "Batbaatar B",
       "score": "34-30",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -733,6 +754,7 @@
       "player": "",
       "score": "34-30",
       "rawType": 98,
+      "side": null,
       "kind": "period",
       "label": "End Period 2",
       "emoji": "\ud83d\udd14"
@@ -745,6 +767,7 @@
       "player": "",
       "score": "34-30",
       "rawType": 99,
+      "side": null,
       "kind": "period",
       "label": "Start Period 3",
       "emoji": "\u23f1\ufe0f"
@@ -757,6 +780,7 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "34-30",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -769,10 +793,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "36-30",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -782,6 +806,7 @@
       "player": "Michael Brown",
       "score": "36-30",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -794,6 +819,7 @@
       "player": "Michael Brown",
       "score": "36-30",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -806,6 +832,7 @@
       "player": "Iderbayasgalan I",
       "score": "36-30",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -818,10 +845,10 @@
       "player": "Anand D",
       "score": "36-32",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -831,10 +858,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "38-32",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -844,10 +871,10 @@
       "player": "Erdenebat Ch",
       "score": "38-34",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -857,6 +884,7 @@
       "player": "Erdenebat Ch",
       "score": "38-34",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -869,10 +897,10 @@
       "player": "Iderbayasgalan I",
       "score": "38-37",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 3,
@@ -882,6 +910,7 @@
       "player": "Luka Rosko",
       "score": "38-37",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -894,6 +923,7 @@
       "player": "",
       "score": "38-37",
       "rawType": 108,
+      "side": "KOG",
       "kind": "timeout",
       "label": "Timeout",
       "emoji": "\ud83d\uded1"
@@ -906,10 +936,10 @@
       "player": "Khasbaatar N",
       "score": "38-38",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -919,10 +949,10 @@
       "player": "Erdenebat Ch",
       "score": "38-40",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -932,6 +962,7 @@
       "player": "Erdenebat Ch",
       "score": "38-40",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -944,10 +975,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "40-40",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -957,6 +988,7 @@
       "player": "Budee B",
       "score": "40-40",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -969,10 +1001,10 @@
       "player": "Fares Cherif",
       "score": "43-40",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 3,
@@ -982,6 +1014,7 @@
       "player": "Axel Forsberg",
       "score": "43-40",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -994,10 +1027,10 @@
       "player": "Lhamjav L",
       "score": "43-41",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -1007,10 +1040,10 @@
       "player": "Lhamjav L",
       "score": "43-42",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -1020,10 +1053,10 @@
       "player": "Lhamjav L",
       "score": "43-43",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -1033,6 +1066,7 @@
       "player": "Munkhbayar M",
       "score": "43-43",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1045,6 +1079,7 @@
       "player": "Mandaa M",
       "score": "43-43",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1057,10 +1092,10 @@
       "player": "Michael Brown",
       "score": "44-43",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -1070,6 +1105,7 @@
       "player": "Michael Brown",
       "score": "44-43",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1082,10 +1118,10 @@
       "player": "Munkhbayar M",
       "score": "44-44",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -1095,10 +1131,10 @@
       "player": "Munkhbayar M",
       "score": "44-45",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -1108,10 +1144,10 @@
       "player": "Axel Forsberg",
       "score": "46-45",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -1121,10 +1157,10 @@
       "player": "Lhamjav L",
       "score": "46-47",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -1134,6 +1170,7 @@
       "player": "Munkhbayar M",
       "score": "46-47",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1146,6 +1183,7 @@
       "player": "Mandaa M",
       "score": "46-47",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1158,10 +1196,10 @@
       "player": "Fares Cherif",
       "score": "47-47",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 3,
@@ -1171,10 +1209,10 @@
       "player": "Lhamjav L",
       "score": "47-50",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 3,
@@ -1184,6 +1222,7 @@
       "player": "",
       "score": "47-50",
       "rawType": 98,
+      "side": null,
       "kind": "period",
       "label": "End Period 3",
       "emoji": "\ud83d\udd14"
@@ -1196,6 +1235,7 @@
       "player": "",
       "score": "47-50",
       "rawType": 99,
+      "side": null,
       "kind": "period",
       "label": "Start Period 4",
       "emoji": "\u23f1\ufe0f"
@@ -1208,10 +1248,10 @@
       "player": "Fares Cherif",
       "score": "49-50",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1221,10 +1261,10 @@
       "player": "Fares Cherif",
       "score": "52-50",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1234,6 +1274,7 @@
       "player": "Benjamin Nord Paskin",
       "score": "52-50",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1246,10 +1287,10 @@
       "player": "Erdenebat Ch",
       "score": "52-51",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1259,10 +1300,10 @@
       "player": "Erdenebat Ch",
       "score": "52-52",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1272,10 +1313,10 @@
       "player": "Fares Cherif",
       "score": "54-52",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1285,6 +1326,7 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "54-52",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1297,10 +1339,10 @@
       "player": "Mattias Malmi Pauser",
       "score": "56-52",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1310,10 +1352,10 @@
       "player": "Chuma Mc Phoy Odenyo",
       "score": "58-52",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1323,10 +1365,10 @@
       "player": "Fares Cherif",
       "score": "60-52",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1336,6 +1378,7 @@
       "player": "",
       "score": "60-52",
       "rawType": 108,
+      "side": "KOG",
       "kind": "timeout",
       "label": "Timeout",
       "emoji": "\ud83d\uded1"
@@ -1348,6 +1391,7 @@
       "player": "Iderbayasgalan I",
       "score": "60-52",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1360,6 +1404,7 @@
       "player": "Anand D",
       "score": "60-52",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1372,10 +1417,10 @@
       "player": "Munkhbayar M",
       "score": "60-55",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1385,10 +1430,10 @@
       "player": "Munkhbayar M",
       "score": "60-58",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1398,10 +1443,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "62-58",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1411,10 +1456,10 @@
       "player": "Michael Brown",
       "score": "64-58",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1424,10 +1469,10 @@
       "player": "Lhamjav L",
       "score": "64-60",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1437,10 +1482,10 @@
       "player": "Gombojav G",
       "score": "64-63",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1450,10 +1495,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "66-63",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1463,10 +1508,10 @@
       "player": "Michael Brown",
       "score": "69-63",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1476,10 +1521,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "71-63",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1489,6 +1534,7 @@
       "player": "Lhamjav L",
       "score": "71-63",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1501,6 +1547,7 @@
       "player": "",
       "score": "71-63",
       "rawType": 100,
+      "side": null,
       "kind": "period",
       "label": "Final Buzzer",
       "emoji": "\ud83c\udfc1"

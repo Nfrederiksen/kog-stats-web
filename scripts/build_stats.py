@@ -209,6 +209,15 @@ def build_play_by_play(
     kog_home = (schedule_entry.get("homeOrAway") or "").lower() == "home"
     opponent_name = schedule_entry.get("opponent") or "Opponent"
 
+    def resolve_side(team_id: int | None, team_name: str | None) -> str | None:
+        if team_id is None:
+            return None
+        if team_id == KOG_TEAM_ID:
+            return "KOG"
+        if opponent_team_id and team_id == opponent_team_id:
+            return "Opponent"
+        return team_name or "Opponent"
+
     def score_line(event: dict) -> str | None:
         score = event.get("currentScore") or {}
         home = score.get("home")
@@ -234,6 +243,7 @@ def build_play_by_play(
         etype = event.get("eventTypeId")
         period = event.get("period") or 0
         clock = format_clock(event.get("secondsSinceStartOfPeriod"))
+        side = resolve_side(event.get("teamId"), event.get("teamName"))
 
         base = {
             "period": period,
@@ -243,6 +253,7 @@ def build_play_by_play(
             "player": (event.get("person") or {}).get("name", "").strip(),
             "score": score_line(event),
             "rawType": etype,
+            "side": side,
         }
 
         if etype == 97:  # start period
@@ -273,21 +284,11 @@ def build_play_by_play(
             else:
                 label, emoji = "FT Made", "🎫"
 
-            team_id = event.get("teamId")
-            if team_id == KOG_TEAM_ID:
-                side = "KOG"
-            elif opponent_team_id and team_id == opponent_team_id:
-                side = "Opponent"
-            else:
-                side = event.get("teamName") or "Opponent"
-
             timeline.append({
                 **base,
                 "kind": "score",
                 "label": label,
                 "emoji": emoji,
-                "side": side,
-                "teamName": event.get("teamName") or opponent_name,
             })
             continue
 
@@ -589,6 +590,9 @@ def update_player_records(
             continue
 
         threes = player.get("stats", {}).get("threePointMade", 0)
+        field_goals = (player.get("stats", {}).get("twoPointMade", 0) or 0) + (
+            player.get("stats", {}).get("threePointMade", 0) or 0
+        )
         current = player_records.get("mostThreesInGame")
         if current and threes <= current["threePointers"]:
             continue
@@ -602,6 +606,18 @@ def update_player_records(
             "dateLabel": schedule_row.get("dateLabel"),
             "tipoff": tipoff_value,
         }
+
+        field_goal_current = player_records.get("mostFieldGoalsMade")
+        if not field_goal_current or field_goals > field_goal_current["fieldGoalsMade"]:
+            player_records["mostFieldGoalsMade"] = {
+                "gameId": game_id,
+                "player": player.get("name") or "",
+                "fieldGoalsMade": field_goals,
+                "opponent": opponent_name,
+                "opponentTeamId": opponent.get("teamId"),
+                "dateLabel": schedule_row.get("dateLabel"),
+                "tipoff": tipoff_value,
+            }
 
 
 def publish_metadata(

@@ -13,6 +13,7 @@
       "player": "",
       "score": "0-0",
       "rawType": 97,
+      "side": null,
       "kind": "period",
       "label": "Start Period 1",
       "emoji": "\u23f1\ufe0f"
@@ -25,6 +26,7 @@
       "player": "Olle Martinsson",
       "score": "0-0",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -37,10 +39,10 @@
       "player": "Alexander  Douhan",
       "score": "0-3",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 1,
@@ -50,10 +52,10 @@
       "player": "Nicholas Frederiksen",
       "score": "2-3",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -63,6 +65,7 @@
       "player": "August  Nagague",
       "score": "2-3",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -75,10 +78,10 @@
       "player": "Nicholas Frederiksen",
       "score": "4-3",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -88,10 +91,10 @@
       "player": "Alexander  Douhan",
       "score": "4-5",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -101,6 +104,7 @@
       "player": "Olle Martinsson",
       "score": "4-5",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -113,10 +117,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "6-5",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -126,6 +130,7 @@
       "player": "Niklas Walles",
       "score": "6-5",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -138,10 +143,10 @@
       "player": "M\u00e5ns  Edwardsson",
       "score": "6-7",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -151,10 +156,10 @@
       "player": "Alexander  Douhan",
       "score": "6-9",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -164,10 +169,10 @@
       "player": "Magnus  Dahlb\u00e4ck",
       "score": "6-11",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -177,6 +182,7 @@
       "player": "Joakim Walles",
       "score": "6-11",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -189,10 +195,10 @@
       "player": "Magnus  Dahlb\u00e4ck",
       "score": "6-13",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -202,10 +208,10 @@
       "player": "Mattias Malmi Pauser",
       "score": "8-13",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -215,6 +221,7 @@
       "player": "Gustaf Eklund",
       "score": "8-13",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -227,10 +234,10 @@
       "player": "Lucas Evertsson",
       "score": "9-13",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 1,
@@ -240,10 +247,10 @@
       "player": "Nicholas Frederiksen",
       "score": "11-13",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 1,
@@ -253,6 +260,7 @@
       "player": "",
       "score": "11-13",
       "rawType": 98,
+      "side": null,
       "kind": "period",
       "label": "End Period 1",
       "emoji": "\ud83d\udd14"
@@ -265,6 +273,7 @@
       "player": "",
       "score": "11-13",
       "rawType": 99,
+      "side": null,
       "kind": "period",
       "label": "Start Period 2",
       "emoji": "\u23f1\ufe0f"
@@ -277,6 +286,7 @@
       "player": "Alexander  Douhan",
       "score": "11-13",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -289,10 +299,10 @@
       "player": "Lucas Evertsson",
       "score": "12-13",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -302,10 +312,10 @@
       "player": "Fares Cherif",
       "score": "15-13",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 2,
@@ -315,10 +325,10 @@
       "player": "Lucas Evertsson",
       "score": "17-13",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -328,6 +338,7 @@
       "player": "August  Nagague",
       "score": "17-13",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -340,6 +351,7 @@
       "player": "",
       "score": "17-13",
       "rawType": 108,
+      "side": "Opponent",
       "kind": "timeout",
       "label": "Timeout",
       "emoji": "\ud83d\uded1"
@@ -352,10 +364,10 @@
       "player": "Axel Forsberg",
       "score": "18-13",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -365,10 +377,10 @@
       "player": "Axel Forsberg",
       "score": "19-13",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -378,6 +390,7 @@
       "player": "Lucas Evertsson",
       "score": "19-13",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -390,10 +403,10 @@
       "player": "August  Nagague",
       "score": "19-14",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -403,10 +416,10 @@
       "player": "Nicholas Frederiksen",
       "score": "21-14",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -416,6 +429,7 @@
       "player": "Olle Martinsson",
       "score": "21-14",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -428,10 +442,10 @@
       "player": "Nicholas Frederiksen",
       "score": "22-14",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -441,6 +455,7 @@
       "player": "August  Nagague",
       "score": "22-14",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -453,6 +468,7 @@
       "player": "August  Nagague",
       "score": "22-14",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -465,10 +481,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "23-14",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -478,10 +494,10 @@
       "player": "Nicholas Frederiksen",
       "score": "25-14",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -491,6 +507,7 @@
       "player": "Axel Forsberg",
       "score": "25-14",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -503,10 +520,10 @@
       "player": "Isak Stafstr\u00f6m",
       "score": "25-15",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -516,10 +533,10 @@
       "player": "Nicholas Frederiksen",
       "score": "27-15",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -529,6 +546,7 @@
       "player": "Gustaf Eklund",
       "score": "27-15",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -541,10 +559,10 @@
       "player": "Joakim Walles",
       "score": "28-15",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 2,
@@ -554,10 +572,10 @@
       "player": "Nicholas Frederiksen",
       "score": "30-15",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -567,6 +585,7 @@
       "player": "",
       "score": "30-15",
       "rawType": 108,
+      "side": "Opponent",
       "kind": "timeout",
       "label": "Timeout",
       "emoji": "\ud83d\uded1"
@@ -579,10 +598,10 @@
       "player": "Alexander  Douhan",
       "score": "30-17",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -592,10 +611,10 @@
       "player": "Magnus  Dahlb\u00e4ck",
       "score": "30-19",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -605,10 +624,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "32-19",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -618,10 +637,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "34-19",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 2,
@@ -631,6 +650,7 @@
       "player": "",
       "score": "34-19",
       "rawType": 98,
+      "side": null,
       "kind": "period",
       "label": "End Period 2",
       "emoji": "\ud83d\udd14"
@@ -643,6 +663,7 @@
       "player": "",
       "score": "34-19",
       "rawType": 99,
+      "side": null,
       "kind": "period",
       "label": "Start Period 3",
       "emoji": "\u23f1\ufe0f"
@@ -655,10 +676,10 @@
       "player": "Fares Cherif",
       "score": "37-19",
       "rawType": 103,
+      "side": "KOG",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "KOG"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 3,
@@ -668,10 +689,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "39-19",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -681,6 +702,7 @@
       "player": "Mattias Malmi Pauser",
       "score": "39-19",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -693,10 +715,10 @@
       "player": "M\u00e5ns  Edwardsson",
       "score": "39-21",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -706,10 +728,10 @@
       "player": "Mattias Malmi Pauser",
       "score": "41-21",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -719,10 +741,10 @@
       "player": "Axel Forsberg",
       "score": "43-21",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -732,10 +754,10 @@
       "player": "M\u00e5ns  Edwardsson",
       "score": "43-24",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 3,
@@ -745,10 +767,10 @@
       "player": "Alexander  Douhan",
       "score": "43-26",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -758,10 +780,10 @@
       "player": "M\u00e5ns  Edwardsson",
       "score": "43-28",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 3,
@@ -771,6 +793,7 @@
       "player": "",
       "score": "43-28",
       "rawType": 98,
+      "side": null,
       "kind": "period",
       "label": "End Period 3",
       "emoji": "\ud83d\udd14"
@@ -783,6 +806,7 @@
       "player": "",
       "score": "43-28",
       "rawType": 99,
+      "side": null,
       "kind": "period",
       "label": "Start Period 4",
       "emoji": "\u23f1\ufe0f"
@@ -795,6 +819,7 @@
       "player": "Nicholas Frederiksen",
       "score": "43-28",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -807,6 +832,7 @@
       "player": "Mattias Malmi Pauser",
       "score": "43-28",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -819,6 +845,7 @@
       "player": "Olle Martinsson",
       "score": "43-28",
       "rawType": 111,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Unsportsmanlike Foul",
       "emoji": "\ud83d\udeab"
@@ -831,6 +858,7 @@
       "player": "Mattias Malmi Pauser",
       "score": "43-28",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -843,6 +871,7 @@
       "player": "Gustaf Eklund",
       "score": "43-28",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -855,6 +884,7 @@
       "player": "M\u00e5ns  Edwardsson",
       "score": "43-28",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -867,10 +897,10 @@
       "player": "Niklas Walles",
       "score": "44-28",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -880,10 +910,10 @@
       "player": "Alexander  Douhan",
       "score": "44-30",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -893,10 +923,10 @@
       "player": "Gustaf Eklund",
       "score": "44-32",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -906,10 +936,10 @@
       "player": "Mattias Malmi Pauser",
       "score": "46-32",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -919,10 +949,10 @@
       "player": "Alexander  Douhan",
       "score": "46-35",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -932,6 +962,7 @@
       "player": "Anton Jensen Wennberg",
       "score": "46-35",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -944,10 +975,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "48-35",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -957,10 +988,10 @@
       "player": "Alexander  Douhan",
       "score": "48-37",
       "rawType": 104,
+      "side": "Opponent",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -970,6 +1001,7 @@
       "player": "Anton Jensen Wennberg",
       "score": "48-37",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -982,10 +1014,10 @@
       "player": "Benjamin Nord Paskin",
       "score": "50-37",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -995,10 +1027,10 @@
       "player": "Alexander  Douhan",
       "score": "50-40",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1008,10 +1040,10 @@
       "player": "Niklas Walles",
       "score": "52-40",
       "rawType": 104,
+      "side": "KOG",
       "kind": "score",
       "label": "2PT Made",
-      "emoji": "\ud83c\udfc0",
-      "side": "KOG"
+      "emoji": "\ud83c\udfc0"
     },
     {
       "period": 4,
@@ -1021,10 +1053,10 @@
       "player": "Magnus  Dahlb\u00e4ck",
       "score": "52-43",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1034,6 +1066,7 @@
       "player": "Gustaf Eklund",
       "score": "52-43",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1046,6 +1079,7 @@
       "player": "Lucas Evertsson",
       "score": "52-43",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1058,6 +1092,7 @@
       "player": "",
       "score": "52-43",
       "rawType": 108,
+      "side": "Opponent",
       "kind": "timeout",
       "label": "Timeout",
       "emoji": "\ud83d\uded1"
@@ -1070,10 +1105,10 @@
       "player": "Alexander  Douhan",
       "score": "52-44",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1083,10 +1118,10 @@
       "player": "Alexander  Douhan",
       "score": "52-45",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1096,10 +1131,10 @@
       "player": "Alexander  Douhan",
       "score": "52-46",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1109,6 +1144,7 @@
       "player": "Magnus  Dahlb\u00e4ck",
       "score": "52-46",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1121,10 +1157,10 @@
       "player": "Niklas Walles",
       "score": "53-46",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1134,10 +1170,10 @@
       "player": "Niklas Walles",
       "score": "54-46",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1147,10 +1183,10 @@
       "player": "Gustaf Eklund",
       "score": "54-49",
       "rawType": 103,
+      "side": "Opponent",
       "kind": "score",
       "label": "3PT Made",
-      "emoji": "\ud83c\udfaf",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfaf"
     },
     {
       "period": 4,
@@ -1160,6 +1196,7 @@
       "player": "Isak Stafstr\u00f6m",
       "score": "54-49",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1172,10 +1209,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "55-49",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1185,10 +1222,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "56-49",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1198,6 +1235,7 @@
       "player": "Isak Stafstr\u00f6m",
       "score": "56-49",
       "rawType": 109,
+      "side": "Opponent",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1210,10 +1248,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "57-49",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1223,10 +1261,10 @@
       "player": "Anton Jensen Wennberg",
       "score": "58-49",
       "rawType": 106,
+      "side": "KOG",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "KOG"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1236,6 +1274,7 @@
       "player": "Fares Cherif",
       "score": "58-49",
       "rawType": 109,
+      "side": "KOG",
       "kind": "foul",
       "label": "Personal Foul",
       "emoji": "\u26a0\ufe0f"
@@ -1248,10 +1287,10 @@
       "player": "Gustaf Eklund",
       "score": "58-50",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1261,10 +1300,10 @@
       "player": "Gustaf Eklund",
       "score": "58-51",
       "rawType": 106,
+      "side": "Opponent",
       "kind": "score",
       "label": "FT Made",
-      "emoji": "\ud83c\udfab",
-      "side": "Opponent"
+      "emoji": "\ud83c\udfab"
     },
     {
       "period": 4,
@@ -1274,6 +1313,7 @@
       "player": "",
       "score": "58-51",
       "rawType": 100,
+      "side": null,
       "kind": "period",
       "label": "Final Buzzer",
       "emoji": "\ud83c\udfc1"
