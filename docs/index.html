@@ -701,6 +701,11 @@
         background: rgba(243, 108, 108, 0.12);
       }
 
+      .timeline-item--period {
+        border-color: #f8d057;
+        background: rgba(248, 208, 87, 0.16);
+      }
+
       .timeline-label {
         font-weight: 600;
         display: flex;
@@ -1266,7 +1271,9 @@
         filtered.forEach((event) => {
           const item = document.createElement("div");
           const sideClass =
-            (event.side || "").toLowerCase() === "kog"
+            event.kind === "period"
+              ? "timeline-item timeline-item--period"
+              : (event.side || "").toLowerCase() === "kog"
               ? "timeline-item timeline-item--kog"
               : "timeline-item timeline-item--opp";
           item.className = sideClass;
