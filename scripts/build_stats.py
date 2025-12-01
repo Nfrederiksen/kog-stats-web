@@ -443,10 +443,46 @@ def publish_kog_player_feed(totals: Dict[str, PlayerTotals]) -> None:
     feed_path.write_text(json.dumps(rows, indent=2), encoding="utf-8")
 
 
+def update_player_records(
+    teams: Dict[int, dict],
+    schedule: Dict[int, dict],
+    player_records: Dict[str, dict],
+    game_id: int | None = None,
+) -> None:
+    kog_team = teams.get(KOG_TEAM_ID)
+    if not kog_team:
+        return
+
+    opponents = [team for team_id, team in teams.items() if team_id != KOG_TEAM_ID]
+    opponent = opponents[0] if opponents else {}
+    opponent_name = (opponent.get("teamName") or "Opponent").strip() or "Opponent"
+    schedule_row = schedule.get(game_id or 0, {})
+
+    for player in kog_team.get("roster", []):
+        if player.get("type") != "player":
+            continue
+
+        threes = player.get("stats", {}).get("threePointMade", 0)
+        current = player_records.get("mostThreesInGame")
+        if current and threes <= current["threePointers"]:
+            continue
+
+        player_records["mostThreesInGame"] = {
+            "gameId": game_id,
+            "player": player.get("name") or "",
+            "threePointers": threes,
+            "opponent": opponent_name,
+            "opponentTeamId": opponent.get("teamId"),
+            "dateLabel": schedule_row.get("dateLabel"),
+            "tipoff": schedule_row.get("tipoff"),
+        }
+
+
 def publish_metadata(
     game_ids: Iterable[int],
     totals: Dict[str, PlayerTotals],
     game_metrics: Iterable[Dict[str, object]],
+    player_records: Dict[str, dict] | None,
 ) -> None:
     SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     metadata = {
@@ -454,6 +490,7 @@ def publish_metadata(
         "gamesProcessed": sorted(set(game_ids)),
         "playersTracked": sum(1 for player in totals.values() if player.games_played),
         "teamRecords": None,
+        "playerRecords": player_records or None,
     }
     metrics = list(game_metrics)
     if metrics:
@@ -480,6 +517,7 @@ def main() -> None:
     kog_totals: Dict[str, PlayerTotals] = {}
     processed_games: list[int] = []
     game_metrics: list[Dict[str, object]] = []
+    player_records: dict[str, dict] = {}
 
     for game_id, game in load_raw_games():
         teams = build_team_structures(game)
@@ -487,12 +525,13 @@ def main() -> None:
         aggregate_kog_players(game_id, teams, kog_totals)
         processed_games.append(game_id)
         metrics = compute_game_metrics(teams, game_id=game_id)
+        update_player_records(teams, schedule, player_records, game_id=game_id)
         if metrics:
             game_metrics.append(metrics)
             apply_metrics_to_schedule(schedule, metrics)
 
     publish_kog_player_feed(kog_totals)
-    publish_metadata(processed_games, kog_totals, game_metrics)
+    publish_metadata(processed_games, kog_totals, game_metrics, player_records)
     publish_schedule(schedule)
     publish_links(links)
 

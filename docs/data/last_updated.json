@@ -8,6 +8,17 @@
     32425895
   ],
   "playersTracked": 16,
+  "playerRecords": {
+    "mostThreesInGame": {
+      "gameId": 32403267,
+      "player": "Fares Cherif",
+      "threePointers": 2,
+      "opponent": "Alvik Västerled",
+      "opponentTeamId": 1402200,
+      "dateLabel": "Sun 28.Sep 15:45",
+      "tipoff": "2025-09-28T15:45:00+02:00"
+    }
+  },
   "teamRecords": {
     "highestScore": {
       "gameId": 32425895,

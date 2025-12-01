@@ -753,7 +753,7 @@
 
       const formatScoreLine = (record) => `${record.kogPoints}-${record.opponentPoints}`;
 
-      function renderTotals(totals, gamesCount, playersTracked, teamRecords) {
+      function renderTotals(totals, gamesCount, playersTracked, teamRecords, playerRecords) {
         const cards = [
           { label: "Team Points", value: totals.totalPoints },
           { label: "Team Field Goals", value: totals.fieldGoals, metric: "fieldGoalsMade" },
@@ -762,6 +762,21 @@
           { label: "Games Logged", value: gamesCount },
           { label: "Players Tracked", value: playersTracked }
         ];
+
+        const mostThrees = playerRecords?.mostThreesInGame;
+        if (mostThrees && Number.isFinite(mostThrees.threePointers) && mostThrees.threePointers > 0) {
+          const subtitleParts = [];
+          if (mostThrees.player) subtitleParts.push(mostThrees.player);
+          if (mostThrees.opponent) subtitleParts.push(`vs ${mostThrees.opponent}`);
+          if (mostThrees.dateLabel) subtitleParts.push(mostThrees.dateLabel);
+
+          cards.push({
+            label: "Most 3PT (Game)",
+            value: mostThrees.threePointers,
+            subtitle: subtitleParts.join(" — ") || null,
+            metric: "threePointsMade"
+          });
+        }
 
         if (teamRecords?.highestScore) {
           cards.push({
@@ -1176,7 +1191,8 @@
             computeTeamTotals(players),
             gamesCount,
             playersTracked,
-            metadata?.teamRecords || null
+            metadata?.teamRecords || null,
+            metadata?.playerRecords || null
           );
         })
         .catch(() => {
