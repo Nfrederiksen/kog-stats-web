@@ -341,7 +341,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 1",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "OG wins QTR 16-9, lead +7"
     },
     {
       "period": 2,
@@ -666,7 +667,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 2",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "OG wins QTR 33-22, lead +11"
     },
     {
       "period": 3,
@@ -1095,7 +1097,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 3",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "OG wins QTR 61-39, lead +22"
     },
     {
       "period": 4,

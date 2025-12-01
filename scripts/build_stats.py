@@ -218,14 +218,27 @@ def build_play_by_play(
             return "Opponent"
         return team_name or "Opponent"
 
-    def score_line(event: dict) -> str | None:
+    def extract_score(event: dict) -> tuple[int | None, int | None]:
         score = event.get("currentScore") or {}
         home = score.get("home")
         away = score.get("away")
+        if not isinstance(home, int) or not isinstance(away, int):
+            return None, None
+        return (home, away)
+
+    def map_score_to_kog(raw_score: tuple[int | None, int | None]) -> tuple[int | None, int | None]:
+        home, away = raw_score
         if home is None or away is None:
+            return None, None
+        if kog_home:
+            return home, away
+        return away, home
+
+    def score_line(event: dict) -> str | None:
+        raw_home, raw_away = extract_score(event)
+        if raw_home is None or raw_away is None:
             return None
-        kog_score = home if kog_home else away
-        opp_score = away if kog_home else home
+        kog_score, opp_score = map_score_to_kog((raw_home, raw_away))
         if not isinstance(kog_score, int) or not isinstance(opp_score, int):
             return None
         return f"{kog_score}-{opp_score}"
@@ -239,11 +252,23 @@ def build_play_by_play(
         e.get("id") or 0,
     )
 
+    period_state: dict[int, dict[str, tuple[int, int] | None]] = {}
+    previous_end: tuple[int, int] | None = None
+
     for event in sorted(events or [], key=sort_key):
         etype = event.get("eventTypeId")
         period = event.get("period") or 0
         clock = format_clock(event.get("secondsSinceStartOfPeriod"))
         side = resolve_side(event.get("teamId"), event.get("teamName"))
+
+        raw_score = extract_score(event)
+        if raw_score != (None, None):
+            kog_score, opp_score = map_score_to_kog(raw_score)
+            if kog_score is not None and opp_score is not None:
+                state = period_state.setdefault(period, {"start": None, "end": None})
+                if state["start"] is None:
+                    state["start"] = (kog_score, opp_score)
+                state["end"] = (kog_score, opp_score)
 
         base = {
             "period": period,
@@ -260,7 +285,21 @@ def build_play_by_play(
             timeline.append({**base, "kind": "period", "label": f"Start Period {period or ''}", "emoji": "⏱️"})
             continue
         if etype == 98:  # period break
-            timeline.append({**base, "kind": "period", "label": f"End Period {period or ''}", "emoji": "🔔"})
+            state = period_state.get(period, {})
+            start_score = state.get("start") or previous_end or (None, None)
+            end_score = state.get("end") or start_score
+            detail = None
+            if start_score and end_score and None not in start_score and None not in end_score:
+                end_kog, end_opp = end_score
+                diff = end_kog - end_opp
+                if diff > 0:
+                    detail = f"OG wins QTR {end_kog}-{end_opp}, lead +{diff}"
+                elif diff < 0:
+                    detail = f"{opponent_name} wins QTR {end_opp}-{end_kog}, lead +{abs(diff)}"
+                else:
+                    detail = f"Tie game {end_kog}-{end_opp}"
+            previous_end = end_score if end_score != (None, None) else previous_end
+            timeline.append({**base, "kind": "period", "label": f"End Period {period or ''}", "emoji": "🔔", "detail": detail})
             continue
         if etype == 99:  # start period (later)
             timeline.append({**base, "kind": "period", "label": f"Start Period {period or ''}", "emoji": "⏱️"})

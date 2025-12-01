@@ -1297,7 +1297,7 @@
             </div>
             <div class="timeline-content">
               <div class="timeline-label">${event.emoji || "•"} ${headline || event.label || "Event"}</div>
-              <div class="timeline-meta-row">${event.label || ""}</div>
+              <div class="timeline-meta-row">${event.detail || event.label || ""}</div>
             </div>
           `;
           timelineBody.appendChild(item);

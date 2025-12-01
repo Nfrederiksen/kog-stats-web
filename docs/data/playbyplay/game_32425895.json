@@ -393,7 +393,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 1",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "OG wins QTR 19-10, lead +9"
     },
     {
       "period": 2,
@@ -757,7 +758,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 2",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "OG wins QTR 34-30, lead +4"
     },
     {
       "period": 3,
@@ -1225,7 +1227,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 3",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "Huddinge Monstock wins QTR 50-47, lead +3"
     },
     {
       "period": 4,

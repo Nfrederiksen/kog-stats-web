@@ -393,7 +393,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 1",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "OG wins QTR 25-18, lead +7"
     },
     {
       "period": 2,
@@ -731,7 +732,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 2",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "OG wins QTR 42-40, lead +2"
     },
     {
       "period": 3,
@@ -1043,7 +1045,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 3",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "Alvik V\u00e4sterled wins QTR 63-53, lead +10"
     },
     {
       "period": 4,

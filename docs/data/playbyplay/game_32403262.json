@@ -263,7 +263,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 1",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "Uppsala Basket wins QTR 13-11, lead +2"
     },
     {
       "period": 2,
@@ -653,7 +654,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 2",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "OG wins QTR 34-19, lead +15"
     },
     {
       "period": 3,
@@ -796,7 +798,8 @@
       "side": null,
       "kind": "period",
       "label": "End Period 3",
-      "emoji": "\ud83d\udd14"
+      "emoji": "\ud83d\udd14",
+      "detail": "OG wins QTR 43-28, lead +15"
     },
     {
       "period": 4,
