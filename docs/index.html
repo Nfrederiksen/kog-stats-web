@@ -161,6 +161,30 @@
         min-width: 720px;
       }
 
+      th.sortable {
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+      }
+
+      th.sortable::after {
+        content: "";
+        position: absolute;
+        right: 0.6rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+      }
+
+      th.sortable[data-active="true"][data-direction="desc"]::after {
+        content: "▼";
+      }
+
+      th.sortable[data-active="true"][data-direction="asc"]::after {
+        content: "▲";
+      }
+
       thead {
         background: linear-gradient(95deg, rgba(70, 194, 255, 0.18), rgba(70, 194, 255, 0.05));
       }
@@ -776,13 +800,13 @@
               <tr>
                 <th>No.</th>
                 <th>Player</th>
-                <th>Games</th>
-                <th>FT Made</th>
-                <th>FG Made</th>
-                <th>P/G</th>
-                <th>Total Pts</th>
-                <th>3PT Made</th>
-                <th>Fouls</th>
+                <th class="sortable" data-sort-key="gamesPlayed">Games</th>
+                <th class="sortable" data-sort-key="freeThrowsMade">FT Made</th>
+                <th class="sortable" data-sort-key="fieldGoalsMade">FG Made</th>
+                <th class="sortable" data-sort-key="pointsPerGame">P/G</th>
+                <th class="sortable" data-sort-key="totalPoints">Total Pts</th>
+                <th class="sortable" data-sort-key="threePointsMade">3PT Made</th>
+                <th class="sortable" data-sort-key="foulsMade">Fouls</th>
               </tr>
             </thead>
             <tbody id="statsTable"></tbody>
@@ -864,6 +888,7 @@
       let playerStore = [];
       let scheduleStore = [];
       let timelineStore = [];
+      let sortState = { key: null, dir: "desc" };
       metaContainer.className = "meta";
       header.appendChild(
         (() => {
@@ -926,6 +951,20 @@
             value: `${mostThrees.threePointers} ${flames}`,
             subtitle: subtitleParts.join(" — ") || null,
             metric: "threePointsMade"
+          });
+        }
+
+        const mostPoints = playerRecords?.mostPointsInGame;
+        if (mostPoints && Number.isFinite(mostPoints.points) && mostPoints.points > 0) {
+          const subtitleParts = [];
+          if (mostPoints.player) subtitleParts.push(mostPoints.player);
+          if (mostPoints.opponent) subtitleParts.push(`vs ${mostPoints.opponent}`);
+          if (mostPoints.dateLabel) subtitleParts.push(mostPoints.dateLabel);
+          cards.push({
+            label: "Most PTS (Game) 💥",
+            value: mostPoints.points,
+            subtitle: subtitleParts.join(" — ") || null,
+            metric: "totalPoints"
           });
         }
 
@@ -1323,6 +1362,19 @@
         }
       }
 
+      function updateSortHeaders() {
+        document.querySelectorAll("th[data-sort-key]").forEach((th) => {
+          const key = th.dataset.sortKey;
+          if (sortState.key === key) {
+            th.dataset.active = "true";
+            th.dataset.direction = sortState.dir;
+          } else {
+            th.dataset.active = "false";
+            th.dataset.direction = "";
+          }
+        });
+      }
+
       function renderTable(players) {
         const tbody = document.getElementById("statsTable");
         tbody.innerHTML = "";
@@ -1337,13 +1389,27 @@
           "foulsMade",
         ];
 
+        const sortedPlayers = (() => {
+          if (!sortState.key) return players.slice();
+          const dir = sortState.dir === "asc" ? 1 : -1;
+          return players
+            .slice()
+            .sort((a, b) => {
+              const av = Number(a[sortState.key]) || 0;
+              const bv = Number(b[sortState.key]) || 0;
+              const delta = (av - bv) * dir;
+              if (delta !== 0) return delta;
+              return a.name.localeCompare(b.name);
+            });
+        })();
+
         const maxima = metrics.reduce((acc, key) => {
           const values = players.map((p) => Number(p[key]) || 0);
           acc[key] = values.length ? Math.max(...values) : 0;
           return acc;
         }, {});
 
-        players.forEach((player) => {
+        sortedPlayers.forEach((player) => {
           const row = document.createElement("tr");
           const pointsPerGame = player.gamesPlayed
             ? (player.totalPoints / player.gamesPlayed).toFixed(1)
@@ -1397,6 +1463,8 @@
 
           tbody.appendChild(row);
         });
+
+        updateSortHeaders();
       }
 
       function computeTeamTotals(players) {
@@ -1548,6 +1616,20 @@
         const row = event.target.closest("tr");
         if (!row) return;
         openPlayerModal(row.dataset);
+      });
+
+      document.querySelectorAll("th[data-sort-key]").forEach((th) => {
+        th.addEventListener("click", () => {
+          const key = th.dataset.sortKey;
+          if (!key) return;
+          if (sortState.key === key) {
+            sortState.dir = sortState.dir === "desc" ? "asc" : "desc";
+          } else {
+            sortState.key = key;
+            sortState.dir = "desc";
+          }
+          renderTable(playerStore);
+        });
       });
 
       scheduleSection.addEventListener("click", (event) => {
