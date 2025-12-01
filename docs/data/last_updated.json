@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2025-12-01T10:29:09.411139+00:00",
+  "generatedAt": "2025-12-01T10:48:06.905556+00:00",
   "gamesProcessed": [
     32403262,
     32403267,
@@ -41,15 +41,6 @@
       "gameId": 32423175,
       "player": "Randall Brar Kalala",
       "threePointers": 4,
-      "opponent": "Vallentuna Eagles",
-      "opponentTeamId": 1459098,
-      "dateLabel": "Sun 30.Nov 17:15",
-      "tipoff": "2025-11-30T17:15:00+01:00"
-    },
-    "mostFieldGoalsMade": {
-      "gameId": 32423175,
-      "player": "Randall Brar Kalala",
-      "fieldGoalsMade": 5,
       "opponent": "Vallentuna Eagles",
       "opponentTeamId": 1459098,
       "dateLabel": "Sun 30.Nov 17:15",

@@ -590,9 +590,6 @@ def update_player_records(
             continue
 
         threes = player.get("stats", {}).get("threePointMade", 0)
-        field_goals = (player.get("stats", {}).get("twoPointMade", 0) or 0) + (
-            player.get("stats", {}).get("threePointMade", 0) or 0
-        )
         current = player_records.get("mostThreesInGame")
         if current and threes <= current["threePointers"]:
             continue
@@ -606,18 +603,6 @@ def update_player_records(
             "dateLabel": schedule_row.get("dateLabel"),
             "tipoff": tipoff_value,
         }
-
-        field_goal_current = player_records.get("mostFieldGoalsMade")
-        if not field_goal_current or field_goals > field_goal_current["fieldGoalsMade"]:
-            player_records["mostFieldGoalsMade"] = {
-                "gameId": game_id,
-                "player": player.get("name") or "",
-                "fieldGoalsMade": field_goals,
-                "opponent": opponent_name,
-                "opponentTeamId": opponent.get("teamId"),
-                "dateLabel": schedule_row.get("dateLabel"),
-                "tipoff": tipoff_value,
-            }
 
 
 def publish_metadata(
