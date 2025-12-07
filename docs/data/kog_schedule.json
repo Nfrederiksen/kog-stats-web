@@ -125,14 +125,15 @@
     "location": "Edbohallen",
     "dateLabel": "Sun 7.Dec 17:15",
     "tipoff": "2025-12-07T17:15:00+01:00",
-    "homeScore": null,
-    "awayScore": null,
-    "status": "upcoming",
-    "kogScore": null,
-    "opponentScore": null,
-    "pointDiff": null,
-    "result": null,
-    "hasStats": false
+    "homeScore": 75,
+    "awayScore": 73,
+    "status": "played",
+    "kogScore": 73,
+    "opponentScore": 75,
+    "pointDiff": -2,
+    "result": "loss",
+    "hasStats": true,
+    "opponentTeamId": 1404822
   },
   {
     "matchId": 32403312,

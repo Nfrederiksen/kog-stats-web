@@ -2,46 +2,57 @@
   {
     "name": "Anton Jensen Wennberg",
     "number": "27",
-    "gamesPlayed": 7,
+    "gamesPlayed": 8,
     "freeThrowsMade": 12,
-    "fieldGoalsMade": 30,
+    "fieldGoalsMade": 34,
     "threePointsMade": 2,
-    "foulsMade": 11,
-    "totalPoints": 74,
-    "pointsPerGame": 10.6
+    "foulsMade": 15,
+    "totalPoints": 82,
+    "pointsPerGame": 10.2
   },
   {
     "name": "Axel Forsberg",
     "number": "13",
-    "gamesPlayed": 4,
+    "gamesPlayed": 5,
     "freeThrowsMade": 2,
-    "fieldGoalsMade": 9,
+    "fieldGoalsMade": 12,
     "threePointsMade": 0,
-    "foulsMade": 8,
-    "totalPoints": 20,
-    "pointsPerGame": 5.0
+    "foulsMade": 9,
+    "totalPoints": 26,
+    "pointsPerGame": 5.2
   },
   {
     "name": "Benjamin Nord Paskin",
     "number": "2",
-    "gamesPlayed": 5,
-    "freeThrowsMade": 6,
-    "fieldGoalsMade": 21,
+    "gamesPlayed": 6,
+    "freeThrowsMade": 7,
+    "fieldGoalsMade": 25,
     "threePointsMade": 0,
-    "foulsMade": 8,
-    "totalPoints": 48,
-    "pointsPerGame": 9.6
+    "foulsMade": 12,
+    "totalPoints": 57,
+    "pointsPerGame": 9.5
   },
   {
     "name": "Chuma Mc Phoy Odenyo",
     "number": "42",
-    "gamesPlayed": 6,
-    "freeThrowsMade": 6,
-    "fieldGoalsMade": 12,
-    "threePointsMade": 2,
-    "foulsMade": 11,
-    "totalPoints": 32,
-    "pointsPerGame": 5.3
+    "gamesPlayed": 7,
+    "freeThrowsMade": 7,
+    "fieldGoalsMade": 17,
+    "threePointsMade": 4,
+    "foulsMade": 14,
+    "totalPoints": 45,
+    "pointsPerGame": 6.4
+  },
+  {
+    "name": "Daniel Amani Rud\u00e4ng",
+    "number": "21",
+    "gamesPlayed": 1,
+    "freeThrowsMade": 0,
+    "fieldGoalsMade": 1,
+    "threePointsMade": 0,
+    "foulsMade": 0,
+    "totalPoints": 2,
+    "pointsPerGame": 2.0
   },
   {
     "name": "Fares Cherif",
@@ -90,12 +101,12 @@
   {
     "name": "Kipat Kahumbu",
     "number": "41",
-    "gamesPlayed": 1,
+    "gamesPlayed": 2,
     "freeThrowsMade": 0,
-    "fieldGoalsMade": 1,
+    "fieldGoalsMade": 2,
     "threePointsMade": 0,
-    "foulsMade": 2,
-    "totalPoints": 2,
+    "foulsMade": 3,
+    "totalPoints": 4,
     "pointsPerGame": 2.0
   },
   {
@@ -112,46 +123,46 @@
   {
     "name": "Luka Rosko",
     "number": "4",
-    "gamesPlayed": 6,
-    "freeThrowsMade": 0,
+    "gamesPlayed": 7,
+    "freeThrowsMade": 1,
     "fieldGoalsMade": 8,
     "threePointsMade": 1,
-    "foulsMade": 8,
-    "totalPoints": 17,
-    "pointsPerGame": 2.8
+    "foulsMade": 10,
+    "totalPoints": 18,
+    "pointsPerGame": 2.6
   },
   {
     "name": "Mattias Malmi Pauser",
     "number": "51",
-    "gamesPlayed": 3,
+    "gamesPlayed": 4,
     "freeThrowsMade": 0,
-    "fieldGoalsMade": 5,
-    "threePointsMade": 0,
-    "foulsMade": 3,
-    "totalPoints": 10,
-    "pointsPerGame": 3.3
+    "fieldGoalsMade": 8,
+    "threePointsMade": 1,
+    "foulsMade": 4,
+    "totalPoints": 17,
+    "pointsPerGame": 4.2
   },
   {
     "name": "Max Landgren",
     "number": "50",
-    "gamesPlayed": 2,
-    "freeThrowsMade": 7,
-    "fieldGoalsMade": 12,
-    "threePointsMade": 2,
-    "foulsMade": 3,
-    "totalPoints": 33,
-    "pointsPerGame": 16.5
+    "gamesPlayed": 3,
+    "freeThrowsMade": 9,
+    "fieldGoalsMade": 20,
+    "threePointsMade": 3,
+    "foulsMade": 7,
+    "totalPoints": 52,
+    "pointsPerGame": 17.3
   },
   {
     "name": "Michael Brown",
-    "number": "9",
-    "gamesPlayed": 1,
-    "freeThrowsMade": 6,
-    "fieldGoalsMade": 4,
+    "number": "40",
+    "gamesPlayed": 2,
+    "freeThrowsMade": 8,
+    "fieldGoalsMade": 6,
     "threePointsMade": 2,
-    "foulsMade": 4,
-    "totalPoints": 16,
-    "pointsPerGame": 16.0
+    "foulsMade": 6,
+    "totalPoints": 22,
+    "pointsPerGame": 11.0
   },
   {
     "name": "Nicholas Frederiksen",
