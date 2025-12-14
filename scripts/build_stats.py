@@ -258,7 +258,31 @@ def build_play_by_play(
     )
 
     period_state: dict[int, dict[str, tuple[int, int] | None]] = {}
+    summarized_periods: set[int] = set()
     previous_end: tuple[int, int] | None = None
+
+    def summarize_period(period: int, prev_end: tuple[int, int] | None) -> tuple[str | None, tuple[int, int] | None]:
+        state = period_state.get(period, {})
+        start_score = state.get("start") or prev_end or (0, 0)
+        end_score = state.get("end") or start_score
+        detail = None
+        if start_score and end_score and None not in start_score and None not in end_score:
+            start_kog, start_opp = start_score
+            end_kog, end_opp = end_score
+            quarter_kog = end_kog - start_kog
+            quarter_opp = end_opp - start_opp
+            lead_diff = end_kog - end_opp
+            lead_label = f"+{lead_diff}" if lead_diff > 0 else f"{lead_diff}"
+
+            if quarter_kog > quarter_opp:
+                detail = f"OG wins QTR {quarter_kog}-{quarter_opp}, lead {lead_label}"
+            elif quarter_opp > quarter_kog:
+                detail = f"{opponent_name} wins QTR {quarter_opp}-{quarter_kog}, lead {lead_label}"
+            else:
+                detail = f"QTR tied {quarter_kog}-{quarter_opp}, lead {lead_label}"
+
+        next_prev_end = end_score if end_score != (None, None) else prev_end
+        return detail, next_prev_end
 
     for event in sorted(events or [], key=sort_key):
         etype = event.get("eventTypeId")
@@ -291,31 +315,25 @@ def build_play_by_play(
             timeline.append({**base, "kind": "period", "label": f"Start Period {period or ''}", "emoji": "⏱️"})
             continue
         if etype == 98:  # period break
-            state = period_state.get(period, {})
-            start_score = state.get("start") or previous_end or (0, 0)
-            end_score = state.get("end") or start_score
-            detail = None
-            if start_score and end_score and None not in start_score and None not in end_score:
-                start_kog, start_opp = start_score
-                end_kog, end_opp = end_score
-                quarter_kog = end_kog - start_kog
-                quarter_opp = end_opp - start_opp
-                lead_diff = end_kog - end_opp
-                lead_label = f"+{lead_diff}" if lead_diff > 0 else f"{lead_diff}"
-
-                if quarter_kog > quarter_opp:
-                    detail = f"OG wins QTR {quarter_kog}-{quarter_opp}, lead {lead_label}"
-                elif quarter_opp > quarter_kog:
-                    detail = f"{opponent_name} wins QTR {quarter_opp}-{quarter_kog}, lead {lead_label}"
-                else:
-                    detail = f"QTR tied {quarter_kog}-{quarter_opp}, lead {lead_label}"
-            previous_end = end_score if end_score != (None, None) else previous_end
+            detail, previous_end = summarize_period(period, previous_end)
+            summarized_periods.add(period)
             timeline.append({**base, "kind": "period", "label": f"End Period {period or ''}", "emoji": "🔔", "detail": detail})
             continue
         if etype == 99:  # start period (later)
             timeline.append({**base, "kind": "period", "label": f"Start Period {period or ''}", "emoji": "⏱️"})
             continue
         if etype == 100:  # full time
+            final_period = period or 4
+            if final_period not in summarized_periods:
+                detail, previous_end = summarize_period(final_period, previous_end)
+                summarized_periods.add(final_period)
+                timeline.append({
+                    **base,
+                    "kind": "period",
+                    "label": f"End Period {final_period or ''}",
+                    "emoji": "🔔",
+                    "detail": detail,
+                })
             score = event.get("currentScore") or {}
             winner_label = "Final Buzzer"
             winner_side = None
