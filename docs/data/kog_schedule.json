@@ -142,14 +142,15 @@
     "location": "Thorildshallen",
     "dateLabel": "Sun 14.Dec 16:00",
     "tipoff": "2025-12-14T16:00:00+01:00",
-    "homeScore": null,
-    "awayScore": null,
-    "status": "upcoming",
-    "kogScore": null,
-    "opponentScore": null,
-    "pointDiff": null,
-    "result": null,
-    "hasStats": false
+    "homeScore": 43,
+    "awayScore": 62,
+    "status": "played",
+    "kogScore": 43,
+    "opponentScore": 62,
+    "pointDiff": -19,
+    "result": "loss",
+    "hasStats": true,
+    "opponentTeamId": 1408808
   },
   {
     "matchId": 32403326,
