@@ -679,6 +679,54 @@
         display: grid;
         gap: 0.8rem;
       }
+      .timeline-summary {
+        margin-top: 12px;
+        padding: 12px;
+        background: #fff6c2;
+        border: 1px solid #f0c948;
+        border-radius: 12px;
+      }
+      .timeline-summary__title {
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #7d5b00;
+        margin-bottom: 6px;
+      }
+      .timeline-summary__rows {
+        display: grid;
+        gap: 6px;
+      }
+      .timeline-summary__row {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        background: #fff9d9;
+        border-radius: 10px;
+        border: 1px solid #f6de7a;
+      }
+      .timeline-summary__label {
+        font-weight: 700;
+        color: #6b4c00;
+        letter-spacing: 0.03em;
+      }
+      .timeline-summary__score {
+        font-variant-numeric: tabular-nums;
+        color: #4b3d09;
+      }
+      .timeline-summary__status {
+        font-weight: 900;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #2f6200;
+      }
+      .timeline-summary__status--loss {
+        color: #9b1c1c;
+      }
 
       .timeline-item {
         display: grid;
@@ -874,6 +922,7 @@
         </div>
         <div class="timeline-meta" id="timelineMeta"></div>
         <div class="timeline-body" id="timelineBody"></div>
+        <div class="timeline-summary" id="timelineSummary" hidden></div>
       </div>
     </div>
 
@@ -892,6 +941,7 @@
       const timelineTitle = document.getElementById("timelineTitle");
       const timelineMeta = document.getElementById("timelineMeta");
       const timelineBody = document.getElementById("timelineBody");
+      const timelineSummary = document.getElementById("timelineSummary");
       const closeTimelineBtn = document.getElementById("closeTimeline");
       const timelineSearch = document.getElementById("timelineSearch");
       let playerStore = [];
@@ -1251,10 +1301,135 @@
         return initials ? `${first} ${initials}` : first;
       }
 
+      function parseScoreLine(line) {
+        if (typeof line !== "string") return null;
+        const parts = line.split("-");
+        if (parts.length !== 2) return null;
+        const [a, b] = parts.map((p) => parseInt(p.trim(), 10));
+        if (Number.isNaN(a) || Number.isNaN(b)) return null;
+        return [a, b];
+      }
+
+      function computeQuarterSummary(timeline) {
+        if (!Array.isArray(timeline) || !timeline.length) return [];
+
+        const periodState = new Map();
+        let previousEnd = null;
+
+        const getState = (period) => {
+          if (!periodState.has(period)) {
+            periodState.set(period, { start: null, end: null });
+          }
+          return periodState.get(period);
+        };
+
+        timeline.forEach((event) => {
+          const period = Number(event.period) || 0;
+          if (!period) return;
+
+          if (event.kind === "period" && (event.label || "").startsWith("Start Period")) {
+            const state = getState(period);
+            if (state.start === null && previousEnd) {
+              state.start = previousEnd;
+            }
+            return;
+          }
+
+          const score = parseScoreLine(event.score);
+          if (score) {
+            const state = getState(period);
+            if (state.start === null) {
+              state.start = previousEnd || score;
+            }
+            state.end = score;
+          }
+
+          if (event.kind === "period" && (event.label || "").startsWith("End Period")) {
+            const state = getState(period);
+            if (state.start === null) state.start = previousEnd || state.end;
+            if (state.end === null) state.end = state.start;
+            previousEnd = state.end || previousEnd;
+          }
+        });
+
+        const summary = [];
+        let carryEnd = null;
+        [1, 2, 3, 4].forEach((period) => {
+          const state = periodState.get(period) || { start: null, end: null };
+          let start = state.start ?? carryEnd;
+          let end = state.end ?? state.start ?? carryEnd;
+          if (!start || !end) return;
+          const [kogStart, oppStart] = start;
+          const [kogEnd, oppEnd] = end;
+          const kogQuarter = kogEnd - kogStart;
+          const oppQuarter = oppEnd - oppStart;
+          let outcome = "tie";
+          if (kogQuarter > oppQuarter) outcome = "win";
+          else if (kogQuarter < oppQuarter) outcome = "loss";
+          summary.push({
+            period,
+            kogQuarter,
+            oppQuarter,
+            kogTotal: kogEnd,
+            oppTotal: oppEnd,
+            outcome,
+          });
+          carryEnd = end;
+        });
+
+        return summary;
+      }
+
+      function renderQuarterSummary(timeline) {
+        const summary = computeQuarterSummary(timeline);
+        timelineSummary.innerHTML = "";
+        if (!summary.length) {
+          timelineSummary.hidden = true;
+          return;
+        }
+
+        const title = document.createElement("div");
+        title.className = "timeline-summary__title";
+        title.textContent = "Quarter breakdown";
+
+        const rows = document.createElement("div");
+        rows.className = "timeline-summary__rows";
+
+        summary.forEach((row) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "timeline-summary__row";
+
+          const label = document.createElement("div");
+          label.className = "timeline-summary__label";
+          label.textContent = `Q${row.period}`;
+
+          const score = document.createElement("div");
+          score.className = "timeline-summary__score";
+          score.textContent = `${row.kogQuarter}-${row.oppQuarter}`;
+
+          const status = document.createElement("div");
+          status.className = "timeline-summary__status";
+          if (row.outcome === "loss") status.classList.add("timeline-summary__status--loss");
+          const icon = row.outcome === "win" ? "✅" : row.outcome === "loss" ? "❌" : "➖";
+          status.textContent = `${icon} ${row.outcome === "win" ? "OG" : row.outcome === "loss" ? "Opp" : "Tie"}`;
+
+          wrapper.appendChild(label);
+          wrapper.appendChild(score);
+          wrapper.appendChild(status);
+          rows.appendChild(wrapper);
+        });
+
+        timelineSummary.appendChild(title);
+        timelineSummary.appendChild(rows);
+        timelineSummary.hidden = false;
+      }
+
       function renderTimeline(timeline, filterTerm = "") {
         timelineBody.innerHTML = "";
         if (!Array.isArray(timeline) || !timeline.length) {
           timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game yet.</div>`;
+          timelineSummary.hidden = true;
+          timelineSummary.innerHTML = "";
           return;
         }
 
@@ -1265,6 +1440,8 @@
 
         if (!filtered.length) {
           timelineBody.innerHTML = `<div class="timeline-empty">No events matched that player.</div>`;
+          timelineSummary.hidden = true;
+          timelineSummary.innerHTML = "";
           return;
         }
 
@@ -1303,6 +1480,8 @@
           `;
           timelineBody.appendChild(item);
         });
+
+        renderQuarterSummary(timeline);
       }
 
       function openTimelineModal(matchId, gameInfo = null) {
