@@ -576,6 +576,7 @@
         justify-content: center;
         z-index: 20;
         padding: 1.2rem;
+        overflow-y: auto;
       }
 
       .modal-overlay.visible {
@@ -591,6 +592,9 @@
         box-shadow: 0 22px 58px rgba(8, 12, 32, 0.55);
         display: grid;
         gap: 1rem;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
       }
 
       .modal-header {
@@ -598,6 +602,12 @@
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
+        position: sticky;
+        top: 0;
+        padding-top: 0.2rem;
+        padding-bottom: 0.6rem;
+        background: rgba(8, 12, 26, 0.95);
+        z-index: 1;
       }
 
       .modal-header h2 {
@@ -645,6 +655,21 @@
 
       .modal-card--wide {
         width: min(760px, 100%);
+      }
+      @media (max-width: 720px) {
+        .modal-overlay {
+          align-items: flex-start;
+          padding: 0.7rem;
+        }
+        .modal-card {
+          width: 100%;
+          border-radius: 16px;
+          padding: 1.2rem;
+          max-height: calc(100vh - 1.4rem);
+        }
+        .timeline-body {
+          max-height: 55vh;
+        }
       }
 
       .timeline-controls {
