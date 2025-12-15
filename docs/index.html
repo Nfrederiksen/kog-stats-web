@@ -752,6 +752,103 @@
       .timeline-summary__status--loss {
         color: #9b1c1c;
       }
+      .timeline-detail {
+        margin-top: 12px;
+        padding: 12px;
+        background: rgba(8, 12, 26, 0.8);
+        border: 1px solid rgba(108, 132, 205, 0.4);
+        border-radius: 12px;
+      }
+      .timeline-detail__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+      }
+      .timeline-detail__title {
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--text-primary);
+      }
+      .close-detail {
+        padding: 0.35rem 0.8rem;
+      }
+      .timeline-detail__controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 0.6rem 0;
+      }
+      .timeline-detail__quarter {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+      }
+      .timeline-detail__sides {
+        display: inline-flex;
+        gap: 0.5rem;
+        background: rgba(108, 132, 205, 0.16);
+        border-radius: 999px;
+        padding: 0.2rem;
+      }
+      .timeline-detail__side {
+        border: 1px solid transparent;
+        background: transparent;
+        color: var(--text-primary);
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        cursor: pointer;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        transition: all 120ms ease;
+      }
+      .timeline-detail__side--active {
+        background: var(--accent);
+        color: #0b111f;
+        border-color: rgba(255, 255, 255, 0.14);
+        box-shadow: 0 8px 20px rgba(70, 194, 255, 0.35);
+      }
+      .timeline-detail__table {
+        display: grid;
+        gap: 6px;
+      }
+      .timeline-detail__row {
+        display: grid;
+        grid-template-columns: 72px 1fr 1.3fr 70px;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 10px;
+        border: 1px solid rgba(108, 132, 205, 0.2);
+      }
+      .timeline-detail__row--head {
+        background: rgba(108, 132, 205, 0.12);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-muted);
+      }
+      .timeline-detail__cell {
+        font-size: 0.92rem;
+        color: var(--text-primary);
+      }
+      .timeline-detail__cell--muted {
+        color: var(--text-muted);
+      }
+      .timeline-detail__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        font-size: 1.05rem;
+      }
+      .timeline-detail__points {
+        font-weight: 800;
+        color: var(--accent);
+        text-align: right;
+      }
 
       .timeline-item {
         display: grid;
@@ -948,6 +1045,20 @@
         <div class="timeline-meta" id="timelineMeta"></div>
         <div class="timeline-body" id="timelineBody"></div>
         <div class="timeline-summary" id="timelineSummary" hidden></div>
+        <div class="timeline-detail" id="timelineDetail" hidden>
+          <div class="timeline-detail__header">
+            <div class="timeline-detail__title" id="timelineDetailTitle">Quarter detail</div>
+            <button class="close-modal close-detail" id="closeDetail" type="button">Close</button>
+          </div>
+          <div class="timeline-detail__controls">
+            <div class="timeline-detail__quarter" id="timelineDetailQuarter">Q1</div>
+            <div class="timeline-detail__sides" id="timelineDetailSides">
+              <button type="button" data-side="home" class="timeline-detail__side">H</button>
+              <button type="button" data-side="away" class="timeline-detail__side">A</button>
+            </div>
+          </div>
+          <div class="timeline-detail__table" id="timelineDetailTable"></div>
+        </div>
       </div>
     </div>
 
@@ -967,11 +1078,21 @@
       const timelineMeta = document.getElementById("timelineMeta");
       const timelineBody = document.getElementById("timelineBody");
       const timelineSummary = document.getElementById("timelineSummary");
+      const timelineDetail = document.getElementById("timelineDetail");
+      const timelineDetailTitle = document.getElementById("timelineDetailTitle");
+      const timelineDetailQuarter = document.getElementById("timelineDetailQuarter");
+      const timelineDetailSides = document.getElementById("timelineDetailSides");
+      const timelineDetailTable = document.getElementById("timelineDetailTable");
+      const closeDetailBtn = document.getElementById("closeDetail");
       const closeTimelineBtn = document.getElementById("closeTimeline");
       const timelineSearch = document.getElementById("timelineSearch");
       let playerStore = [];
       let scheduleStore = [];
       let timelineStore = [];
+      let timelineContext = { homeOrAway: null };
+      let quarterDetailsCache = {};
+      let selectedQuarter = null;
+      let selectedSide = "home";
       let sortState = { key: null, dir: "desc" };
       metaContainer.className = "meta";
       header.appendChild(
@@ -1335,6 +1456,56 @@
         return [a, b];
       }
 
+      function resolveSideKey(side) {
+        const kogHome = (timelineContext.homeOrAway || "").toLowerCase() === "home";
+        const homeSide = kogHome ? "kog" : "opponent";
+        const sideKey = (side || "").toLowerCase();
+        return sideKey === homeSide ? "home" : "away";
+      }
+
+      function buildQuarterDetails(timeline) {
+        const QUARTER_POINTS = { 103: 3, 104: 2, 106: 1 };
+        const cache = {};
+
+        (timeline || []).forEach((event) => {
+          const period = Number(event.period) || 0;
+          if (!period || period > 4) return;
+          if (event.kind === "period") return;
+
+          const sideKey = resolveSideKey(event.side);
+          const emoji = event.emoji || "";
+          const points = QUARTER_POINTS[event.rawType] || 0;
+          const name = (event.player || "").trim() || (event.teamName || "Unknown");
+          const number = (event.playerNumber || "").toString().trim();
+
+          const quarter = (cache[period] ||= { home: new Map(), away: new Map() });
+          const bySide = quarter[sideKey];
+          const playerKey = `${name}__${number}`;
+          if (!bySide.has(playerKey)) {
+            bySide.set(playerKey, {
+              name,
+              number,
+              emojis: [],
+              points: 0,
+            });
+          }
+          const row = bySide.get(playerKey);
+          if (emoji) row.emojis.push(emoji);
+          row.points += points;
+        });
+
+        // convert maps to arrays for rendering
+        Object.keys(cache).forEach((period) => {
+          ["home", "away"].forEach((side) => {
+            const entries = Array.from(cache[period][side].values());
+            entries.sort((a, b) => b.points - a.points || a.name.localeCompare(b.name));
+            cache[period][side] = entries;
+          });
+        });
+
+        return cache;
+      }
+
       function computeQuarterSummary(timeline) {
         if (!Array.isArray(timeline) || !timeline.length) return [];
 
@@ -1423,6 +1594,7 @@
         summary.forEach((row) => {
           const wrapper = document.createElement("div");
           wrapper.className = "timeline-summary__row";
+          wrapper.dataset.period = row.period;
 
           const label = document.createElement("div");
           label.className = "timeline-summary__label";
@@ -1442,11 +1614,74 @@
           wrapper.appendChild(score);
           wrapper.appendChild(status);
           rows.appendChild(wrapper);
+
+          wrapper.addEventListener("click", () => {
+            selectedQuarter = row.period;
+            timelineDetail.hidden = false;
+            renderQuarterDetail();
+          });
         });
 
         timelineSummary.appendChild(title);
         timelineSummary.appendChild(rows);
         timelineSummary.hidden = false;
+      }
+
+      function renderQuarterDetail() {
+        if (!selectedQuarter) {
+          timelineDetail.hidden = true;
+          return;
+        }
+
+        timelineDetailQuarter.textContent = `Q${selectedQuarter}`;
+        timelineDetailTitle.textContent = selectedSide === "home" ? "Home quarter detail" : "Away quarter detail";
+
+        Array.from(timelineDetailSides.querySelectorAll(".timeline-detail__side")).forEach((btn) => {
+          if (btn.dataset.side === selectedSide) {
+            btn.classList.add("timeline-detail__side--active");
+          } else {
+            btn.classList.remove("timeline-detail__side--active");
+          }
+        });
+
+        const data = quarterDetailsCache[selectedQuarter]?.[selectedSide] || [];
+        timelineDetailTable.innerHTML = "";
+
+        const head = document.createElement("div");
+        head.className = "timeline-detail__row timeline-detail__row--head";
+        head.innerHTML = `
+          <div class="timeline-detail__cell">No.</div>
+          <div class="timeline-detail__cell">Player</div>
+          <div class="timeline-detail__cell">Actions</div>
+          <div class="timeline-detail__cell timeline-detail__points">Pts</div>
+        `;
+        timelineDetailTable.appendChild(head);
+
+        if (!data.length) {
+          const empty = document.createElement("div");
+          empty.className = "timeline-detail__row";
+          empty.innerHTML = `
+            <div class="timeline-detail__cell timeline-detail__cell--muted" style="grid-column: 1 / -1; text-align: center;">
+              No player actions logged for this quarter.
+            </div>
+          `;
+          timelineDetailTable.appendChild(empty);
+          return;
+        }
+
+        data.forEach((row) => {
+          const item = document.createElement("div");
+          item.className = "timeline-detail__row";
+          const numberLabel = row.number ? `#${row.number}` : "—";
+          const actions = row.emojis.length ? row.emojis.join(" ") : "—";
+          item.innerHTML = `
+            <div class="timeline-detail__cell">${numberLabel}</div>
+            <div class="timeline-detail__cell">${formatPlayerShort(row.name)}</div>
+            <div class="timeline-detail__cell timeline-detail__actions">${actions}</div>
+            <div class="timeline-detail__cell timeline-detail__points">${row.points}</div>
+          `;
+          timelineDetailTable.appendChild(item);
+        });
       }
 
       function renderTimeline(timeline, filterTerm = "") {
@@ -1455,6 +1690,8 @@
           timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game yet.</div>`;
           timelineSummary.hidden = true;
           timelineSummary.innerHTML = "";
+          timelineDetail.hidden = true;
+          selectedQuarter = null;
           return;
         }
 
@@ -1467,6 +1704,8 @@
           timelineBody.innerHTML = `<div class="timeline-empty">No events matched that player.</div>`;
           timelineSummary.hidden = true;
           timelineSummary.innerHTML = "";
+          timelineDetail.hidden = true;
+          selectedQuarter = null;
           return;
         }
 
@@ -1506,7 +1745,7 @@
           timelineBody.appendChild(item);
         });
 
-        renderQuarterSummary(timeline);
+        renderQuarterSummary(timelineStore);
       }
 
       function openTimelineModal(matchId, gameInfo = null) {
@@ -1530,6 +1769,10 @@
         }
         timelineMeta.textContent = metaBits.join(" • ");
         timelineBody.innerHTML = `<div class="timeline-empty">Loading play-by-play…</div>`;
+        timelineSummary.hidden = true;
+        timelineDetail.hidden = true;
+        selectedQuarter = null;
+        selectedSide = "home";
 
         fetch(`data/playbyplay/game_${matchId}.json`, { cache: "no-store" })
           .then((response) => (response.ok ? response.json() : null))
@@ -1539,7 +1782,13 @@
               return;
             }
             timelineStore = data.timeline;
+            timelineContext = { homeOrAway: data.homeOrAway || null };
+            quarterDetailsCache = buildQuarterDetails(timelineStore);
             renderTimeline(timelineStore);
+            renderQuarterSummary(timelineStore);
+            selectedQuarter = 1;
+            selectedSide = "home";
+            renderQuarterDetail();
           })
           .catch(() => {
             timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game.</div>`;
@@ -1550,6 +1799,8 @@
         timelineModal.classList.remove("visible");
         timelineModal.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
+        timelineDetail.hidden = true;
+        selectedQuarter = null;
       }
 
       function renderBadges(players, metadata, gamesCount) {
@@ -1885,6 +2136,18 @@
           event.preventDefault();
           handleTotalsActivation(card);
         }
+      });
+
+      timelineDetailSides.addEventListener("click", (event) => {
+        const btn = event.target.closest("button[data-side]");
+        if (!btn) return;
+        selectedSide = btn.dataset.side === "away" ? "away" : "home";
+        renderQuarterDetail();
+      });
+
+      closeDetailBtn.addEventListener("click", () => {
+        timelineDetail.hidden = true;
+        selectedQuarter = null;
       });
 
       closeModalBtn.addEventListener("click", closeModal);
