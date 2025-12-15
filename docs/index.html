@@ -1523,14 +1523,6 @@
           const period = Number(event.period) || 0;
           if (!period) return;
 
-          if (event.kind === "period" && (event.label || "").startsWith("Start Period")) {
-            const state = getState(period);
-            if (state.start === null && previousEnd) {
-              state.start = previousEnd;
-            }
-            return;
-          }
-
           const score = parseScoreLine(event.score);
           if (score) {
             const state = getState(period);
@@ -1538,6 +1530,14 @@
               state.start = previousEnd || score;
             }
             state.end = score;
+          }
+
+          if (event.kind === "period" && (event.label || "").startsWith("Start Period")) {
+            const state = getState(period);
+            if (state.start === null && previousEnd) {
+              state.start = previousEnd;
+            }
+            return;
           }
 
           if (event.kind === "period" && (event.label || "").startsWith("End Period")) {
