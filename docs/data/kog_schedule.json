@@ -159,14 +159,15 @@
     "location": "S:t Erikshallen",
     "dateLabel": "Sun 11.Jan 18:00",
     "tipoff": "2026-01-11T18:00:00+01:00",
-    "homeScore": null,
-    "awayScore": null,
-    "status": "upcoming",
-    "kogScore": null,
-    "opponentScore": null,
-    "pointDiff": null,
-    "result": null,
-    "hasStats": false
+    "homeScore": 53,
+    "awayScore": 62,
+    "status": "played",
+    "kogScore": 53,
+    "opponentScore": 62,
+    "pointDiff": -9,
+    "result": "loss",
+    "hasStats": true,
+    "opponentTeamId": 1392330
   },
   {
     "matchId": 32403329,
