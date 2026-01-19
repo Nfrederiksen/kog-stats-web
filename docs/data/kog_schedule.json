@@ -176,14 +176,15 @@
     "location": "Tellusborgshallarna 2",
     "dateLabel": "Sun 18.Jan 17:00",
     "tipoff": "2026-01-18T17:00:00+01:00",
-    "homeScore": null,
-    "awayScore": null,
-    "status": "upcoming",
-    "kogScore": null,
-    "opponentScore": null,
-    "pointDiff": null,
-    "result": null,
-    "hasStats": false
+    "homeScore": 49,
+    "awayScore": 51,
+    "status": "played",
+    "kogScore": 51,
+    "opponentScore": 49,
+    "pointDiff": 2,
+    "result": "win",
+    "hasStats": true,
+    "opponentTeamId": 1393120
   },
   {
     "matchId": 32403340,
