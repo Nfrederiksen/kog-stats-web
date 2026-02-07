@@ -1,0 +1,326 @@
+{
+  "gameId": 32403340,
+  "finalScore": {
+    "homeGoals": 62,
+    "awayGoals": 64
+  },
+  "periodsPlayed": 5,
+  "teamStats": [
+    {
+      "teamId": 1399690,
+      "teamName": "T\u00e4by Bullcats",
+      "roster": [
+        {
+          "playerId": 5952784,
+          "personId": 496534,
+          "number": "8",
+          "name": "Christoffer Lagerstam",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 7,
+            "onePointMade": 3,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 5952785,
+          "personId": 496523,
+          "number": "14",
+          "name": "Christoffer Scullman",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 9,
+            "onePointMade": 3,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 5952786,
+          "personId": 496531,
+          "number": "7",
+          "name": "Fredrik Benckert",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 5952787,
+          "personId": 448839,
+          "number": "12",
+          "name": "Martin B\u00f6hlin",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 26,
+            "onePointMade": 4,
+            "twoPointMade": 5,
+            "threePointMade": 4,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 5952788,
+          "personId": 496520,
+          "number": "6",
+          "name": "Olof Andersson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 5952789,
+          "personId": 496533,
+          "number": "15",
+          "name": "Tobias Aspeg\u00e5rdh",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 8,
+            "onePointMade": 2,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 5952792,
+          "personId": 432158,
+          "number": "4",
+          "name": "Joakim Henriksson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 5952841,
+          "personId": null,
+          "number": "",
+          "name": "Fredrik Benckert",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1403069,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 5992941,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 13,
+            "onePointMade": 1,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 5992952,
+          "personId": 450268,
+          "number": "13",
+          "name": "Axel Forsberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 5992956,
+          "personId": 465622,
+          "number": "2",
+          "name": "Benjamin Nord Paskin",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 5992960,
+          "personId": 425001,
+          "number": "42",
+          "name": "Chuma Mc Phoy Odenyo",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 5992962,
+          "personId": 457387,
+          "number": "5",
+          "name": "Fares Cherif",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 5992968,
+          "personId": 454317,
+          "number": "10",
+          "name": "Lucas Evertsson",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 7,
+            "onePointMade": 1,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 5
+          }
+        },
+        {
+          "playerId": 5992971,
+          "personId": 479556,
+          "number": "4",
+          "name": "Luka Rosko",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 5,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 5992987,
+          "personId": 441575,
+          "number": "9",
+          "name": "Randall Brar Kalala",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 5,
+            "onePointMade": 1,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 5992995,
+          "personId": 431924,
+          "number": "50",
+          "name": "Max Landgren",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 15,
+            "onePointMade": 4,
+            "twoPointMade": 4,
+            "threePointMade": 1,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 5992999,
+          "personId": 445544,
+          "number": "1",
+          "name": "Michael Brown",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 9,
+            "onePointMade": 4,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 5993028,
+          "personId": null,
+          "number": "",
+          "name": "Anton  Wennberg",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}
