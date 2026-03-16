@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-07T19:54:19.462840+00:00",
+  "generatedAt": "2026-03-16T10:01:51.865753+00:00",
   "gamesProcessed": [
     32403262,
     32403267,
@@ -12,10 +12,12 @@
     32403329,
     32403340,
     32403342,
+    32403359,
+    32403364,
     32423175,
     32425895
   ],
-  "playersTracked": 22,
+  "playersTracked": 23,
   "teamRecords": {
     "highestScore": {
       "gameId": 32423175,
@@ -44,13 +46,13 @@
   },
   "playerRecords": {
     "mostThreesInGame": {
-      "gameId": 32423175,
-      "player": "Randall Brar Kalala",
+      "gameId": 32403364,
+      "player": "Fares Cherif",
       "threePointers": 4,
-      "opponent": "Vallentuna Eagles",
-      "opponentTeamId": 1459098,
-      "dateLabel": "Sun 30.Nov 17:15",
-      "tipoff": "2025-11-30T17:15:00+01:00"
+      "opponent": "Norrt\u00e4lje",
+      "opponentTeamId": 1401843,
+      "dateLabel": "Sun 15.Mar 18:00",
+      "tipoff": "2026-03-15T18:00:00+01:00"
     },
     "mostPointsInGame": {
       "gameId": 32403288,
