@@ -153,12 +153,17 @@
         border: 1px solid rgba(96, 108, 162, 0.25);
         background: rgba(7, 10, 22, 0.65);
         box-shadow: inset 0 1px 0 rgba(108, 124, 182, 0.25);
+        scrollbar-width: thin;
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
-        min-width: 720px;
+        min-width: 640px;
+      }
+
+      .th-short {
+        display: none;
       }
 
       th.sortable {
@@ -255,6 +260,83 @@
         margin-bottom: 1.8rem;
         position: relative;
         z-index: 1;
+      }
+
+      .content-switcher {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-bottom: 1.2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .content-toggle {
+        appearance: none;
+        border: 1px solid rgba(96, 108, 162, 0.3);
+        background: rgba(8, 12, 26, 0.72);
+        color: var(--text-primary);
+        border-radius: 999px;
+        padding: 0.75rem 1.15rem;
+        font: inherit;
+        font-size: 0.84rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+      }
+
+      .content-toggle:hover {
+        transform: translateY(-1px);
+        border-color: rgba(125, 214, 255, 0.45);
+      }
+
+      .content-toggle--active {
+        background: rgba(70, 194, 255, 0.16);
+        border-color: rgba(70, 194, 255, 0.46);
+        color: var(--accent);
+      }
+
+      .content-toggle:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      .content-panel {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1.6rem;
+        padding: 1.2rem;
+        border-radius: 22px;
+        border: 1px solid rgba(96, 108, 162, 0.24);
+        background: rgba(7, 10, 22, 0.4);
+      }
+
+      .content-panel[hidden] {
+        display: none;
+      }
+
+      .content-panel__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .content-panel__title {
+        margin: 0;
+        font-size: 0.9rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .content-panel__summary {
+        font-size: 0.82rem;
+        color: var(--text-muted);
       }
 
       .totals-card {
@@ -526,6 +608,10 @@
           padding: 1.2rem;
         }
 
+        main {
+          padding: 1.05rem;
+        }
+
         .team-lockup {
           flex-direction: column;
           align-items: center;
@@ -545,24 +631,87 @@
           font-size: clamp(1.8rem, 8vw, 2.2rem);
         }
 
-        th,
-        td {
-          padding: 0.7rem 0.85rem;
-          font-size: 0.84rem;
+        .content-panel {
+          padding: 0.8rem;
+          gap: 0.8rem;
+          border-radius: 16px;
         }
 
-        th {
-          font-size: 0.66rem;
+        .content-panel__header {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 0.35rem;
+        }
+
+        .content-panel__title {
+          font-size: 0.76rem;
           letter-spacing: 0.16em;
         }
 
+        .content-panel__summary {
+          font-size: 0.72rem;
+        }
+
+        .table-wrapper {
+          border-radius: 14px;
+        }
+
+        table {
+          min-width: 540px;
+        }
+
+        th,
+        td {
+          padding: 0.56rem 0.48rem;
+          font-size: 0.76rem;
+        }
+
+        th {
+          font-size: 0.54rem;
+          letter-spacing: 0.1em;
+        }
+
         tbody td span {
-          font-size: 0.7rem;
+          font-size: 0.62rem;
         }
 
         .badge {
           font-size: 0.7rem;
           letter-spacing: 0.06em;
+        }
+
+        th.sortable::after {
+          right: 0.28rem;
+          font-size: 0.58rem;
+        }
+
+        th:first-child,
+        td:first-child {
+          width: 34px;
+          min-width: 34px;
+          padding-left: 0.42rem;
+          padding-right: 0.3rem;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+          min-width: 110px;
+          max-width: 110px;
+          padding-left: 0.3rem;
+        }
+
+        td:nth-child(2) {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .th-full {
+          display: none;
+        }
+
+        .th-short {
+          display: inline;
         }
       }
 
@@ -705,52 +854,164 @@
         gap: 0.8rem;
       }
       .timeline-summary {
-        margin-top: 12px;
+        margin-bottom: 12px;
         padding: 12px;
-        background: #fff6c2;
-        border: 1px solid #f0c948;
-        border-radius: 12px;
+        background: linear-gradient(180deg, rgba(12, 18, 38, 0.94), rgba(7, 11, 24, 0.94));
+        border: 1px solid rgba(108, 132, 205, 0.32);
+        border-radius: 14px;
+        display: grid;
+        gap: 8px;
+      }
+      .timeline-summary__header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.8rem;
       }
       .timeline-summary__title {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         font-weight: 800;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: #7d5b00;
-        margin-bottom: 6px;
+        color: var(--text-muted);
       }
-      .timeline-summary__rows {
+      .timeline-summary__note {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+      .timeline-summary__grid {
         display: grid;
         gap: 6px;
+        grid-template-columns: 66px repeat(var(--timeline-period-count, 4), minmax(0, 1fr));
       }
-      .timeline-summary__row {
-        display: grid;
-        grid-template-columns: 1fr auto auto;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 10px;
-        background: #fff9d9;
+      .timeline-summary__corner,
+      .timeline-summary__quarter,
+      .timeline-summary__team,
+      .timeline-summary__cell {
+        min-height: 46px;
         border-radius: 10px;
-        border: 1px solid #f6de7a;
       }
-      .timeline-summary__label {
-        font-weight: 700;
-        color: #6b4c00;
-        letter-spacing: 0.03em;
-      }
-      .timeline-summary__score {
-        font-variant-numeric: tabular-nums;
-        color: #4b3d09;
-      }
-      .timeline-summary__status {
-        font-weight: 900;
-        display: inline-flex;
+      .timeline-summary__corner,
+      .timeline-summary__quarter,
+      .timeline-summary__team {
+        display: flex;
         align-items: center;
-        gap: 6px;
-        color: #2f6200;
+        justify-content: center;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
-      .timeline-summary__status--loss {
-        color: #9b1c1c;
+      .timeline-summary__corner {
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text-muted);
+      }
+      .timeline-summary__quarter {
+        background: rgba(108, 132, 205, 0.12);
+        color: var(--text-primary);
+        font-size: 0.78rem;
+      }
+      button.timeline-summary__quarter {
+        appearance: none;
+        border: 1px solid transparent;
+        font: inherit;
+        cursor: pointer;
+        transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
+      }
+      button.timeline-summary__quarter:hover {
+        transform: translateY(-1px);
+        border-color: rgba(108, 132, 205, 0.4);
+      }
+      button.timeline-summary__quarter:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .timeline-summary__quarter--selected {
+        background: rgba(70, 194, 255, 0.18);
+        border-color: rgba(70, 194, 255, 0.5);
+        box-shadow: inset 0 0 0 1px rgba(70, 194, 255, 0.15);
+      }
+      .timeline-summary__team {
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text-primary);
+        font-size: 0.8rem;
+      }
+      .timeline-summary__team--opp {
+        color: #ffd1d1;
+      }
+      .timeline-summary__cell {
+        appearance: none;
+        border: 1px solid rgba(108, 132, 205, 0.24);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text-primary);
+        font: inherit;
+        padding: 8px 6px;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 2px;
+        cursor: pointer;
+        transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease, background 120ms ease;
+      }
+      .timeline-summary__cell:hover {
+        transform: translateY(-1px);
+        border-color: rgba(108, 132, 205, 0.5);
+      }
+      .timeline-summary__cell:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .timeline-summary__cell--static {
+        cursor: default;
+      }
+      .timeline-summary__cell--static:hover {
+        transform: none;
+      }
+      .timeline-summary__cell--win {
+        background: rgba(58, 168, 112, 0.16);
+        border-color: rgba(58, 168, 112, 0.45);
+      }
+      .timeline-summary__cell--loss {
+        background: rgba(214, 88, 88, 0.15);
+        border-color: rgba(214, 88, 88, 0.4);
+      }
+      .timeline-summary__cell--tie {
+        background: rgba(248, 208, 87, 0.14);
+        border-color: rgba(248, 208, 87, 0.34);
+      }
+      .timeline-summary__cell--selected {
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 0 0 1px rgba(70, 194, 255, 0.35);
+      }
+      .timeline-summary__points {
+        font-size: 1rem;
+        font-weight: 900;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+      .timeline-summary__subtext {
+        font-size: 0.67rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+      .timeline-summary__cell--win .timeline-summary__subtext,
+      .timeline-summary__cell--loss .timeline-summary__subtext,
+      .timeline-summary__cell--tie .timeline-summary__subtext {
+        color: rgba(255, 255, 255, 0.72);
+      }
+      @media (max-width: 720px) {
+        .timeline-summary {
+          padding: 10px;
+        }
+        .timeline-summary__grid {
+          grid-template-columns: 56px repeat(var(--timeline-period-count, 4), minmax(54px, 1fr));
+          overflow-x: auto;
+        }
+        .timeline-summary__corner,
+        .timeline-summary__quarter,
+        .timeline-summary__team,
+        .timeline-summary__cell {
+          min-height: 42px;
+        }
       }
       .timeline-detail {
         margin-top: 12px;
@@ -972,20 +1233,33 @@
 
       <section class="totals" id="teamTotals"></section>
 
-      <section>
+      <div class="content-switcher" id="contentSwitcher">
+        <button type="button" class="content-toggle" id="toggleStatsPanel" aria-expanded="false" aria-controls="statsPanel">
+          Player Stats
+        </button>
+        <button type="button" class="content-toggle content-toggle--active" id="toggleSchedulePanel" aria-expanded="true" aria-controls="schedulePanel">
+          Schedule & Games
+        </button>
+      </div>
+
+      <section class="content-panel" id="statsPanel" hidden>
+        <div class="content-panel__header">
+          <h2 class="content-panel__title">Player Stats</h2>
+          <div class="content-panel__summary">Sortable table for season totals</div>
+        </div>
         <div class="table-wrapper">
           <table>
             <thead>
               <tr>
                 <th>No.</th>
                 <th>Player</th>
-                <th class="sortable" data-sort-key="gamesPlayed">Games</th>
-                <th class="sortable" data-sort-key="freeThrowsMade">FT Made</th>
-                <th class="sortable" data-sort-key="fieldGoalsMade">FG Made</th>
-                <th class="sortable" data-sort-key="pointsPerGame">P/G</th>
-                <th class="sortable" data-sort-key="totalPoints">Total Pts</th>
-                <th class="sortable" data-sort-key="threePointsMade">3PT Made</th>
-                <th class="sortable" data-sort-key="foulsMade">Fouls</th>
+                <th class="sortable" data-sort-key="gamesPlayed"><span class="th-full">Games</span><span class="th-short">G</span></th>
+                <th class="sortable" data-sort-key="freeThrowsMade"><span class="th-full">FT Made</span><span class="th-short">FT</span></th>
+                <th class="sortable" data-sort-key="fieldGoalsMade"><span class="th-full">FG Made</span><span class="th-short">FG</span></th>
+                <th class="sortable" data-sort-key="pointsPerGame"><span class="th-full">P/G</span><span class="th-short">PPG</span></th>
+                <th class="sortable" data-sort-key="totalPoints"><span class="th-full">Total Pts</span><span class="th-short">PTS</span></th>
+                <th class="sortable" data-sort-key="threePointsMade"><span class="th-full">3PT Made</span><span class="th-short">3PT</span></th>
+                <th class="sortable" data-sort-key="foulsMade"><span class="th-full">Fouls</span><span class="th-short">FL</span></th>
               </tr>
             </thead>
             <tbody id="statsTable"></tbody>
@@ -996,16 +1270,22 @@
         </div>
       </section>
 
-      <section class="schedule" id="scheduleSection" hidden>
-        <h2 class="schedule-title">Season Schedule</h2>
-        <div class="next-game-wrapper" id="nextGameWrapper"></div>
-        <div class="games-group" id="playedGamesGroup">
-          <h3>Games Played</h3>
-          <div class="games-list" id="playedGamesList"></div>
+      <section class="content-panel schedule" id="schedulePanel">
+        <div class="content-panel__header">
+          <h2 class="content-panel__title">Schedule & Games</h2>
+          <div class="content-panel__summary">Jump straight into played games and upcoming fixtures</div>
         </div>
-        <div class="games-group" id="upcomingGamesGroup">
-          <h3>Upcoming Games</h3>
-          <div class="games-list" id="upcomingGamesList"></div>
+        <div id="scheduleSection" hidden>
+          <h2 class="schedule-title">Season Schedule</h2>
+          <div class="next-game-wrapper" id="nextGameWrapper"></div>
+          <div class="games-group" id="playedGamesGroup">
+            <h3>Games Played</h3>
+            <div class="games-list" id="playedGamesList"></div>
+          </div>
+          <div class="games-group" id="upcomingGamesGroup">
+            <h3>Upcoming Games</h3>
+            <div class="games-list" id="upcomingGamesList"></div>
+          </div>
         </div>
       </section>
 
@@ -1042,9 +1322,9 @@
             aria-label="Filter play-by-play by player name"
           />
         </div>
+        <div class="timeline-summary" id="timelineSummary" hidden></div>
         <div class="timeline-meta" id="timelineMeta"></div>
         <div class="timeline-body" id="timelineBody"></div>
-        <div class="timeline-summary" id="timelineSummary" hidden></div>
         <div class="timeline-detail" id="timelineDetail" hidden>
           <div class="timeline-detail__header">
             <div class="timeline-detail__title" id="timelineDetailTitle">Quarter detail</div>
@@ -1065,6 +1345,10 @@
     <script>
       const header = document.querySelector("header");
       const metaContainer = document.createElement("div");
+      const statsPanel = document.getElementById("statsPanel");
+      const schedulePanel = document.getElementById("schedulePanel");
+      const toggleStatsPanelBtn = document.getElementById("toggleStatsPanel");
+      const toggleSchedulePanelBtn = document.getElementById("toggleSchedulePanel");
       const scheduleSection = document.getElementById("scheduleSection");
       const nextGameWrapper = document.getElementById("nextGameWrapper");
       const playedGamesGroup = document.getElementById("playedGamesGroup");
@@ -1092,6 +1376,7 @@
       let timelineContext = { homeOrAway: null };
       let quarterDetailsCache = {};
       let selectedQuarter = null;
+      let selectedTimelineQuarter = null;
       let selectedSide = "home";
       let sortState = { key: null, dir: "desc" };
       metaContainer.className = "meta";
@@ -1348,9 +1633,13 @@
 
         if (!Array.isArray(games) || !games.length) {
           scheduleSection.hidden = true;
+          schedulePanel.hidden = true;
+          toggleSchedulePanelBtn.hidden = true;
           return;
         }
 
+        schedulePanel.hidden = false;
+        toggleSchedulePanelBtn.hidden = false;
         scheduleSection.hidden = false;
 
         const now = Date.now();
@@ -1463,35 +1752,43 @@
         return sideKey === homeSide ? "home" : "away";
       }
 
+      function getDisplayEmoji(event) {
+        if (!event) return "";
+        if (event.kind === "foul") return "🥊";
+        return event.emoji || "";
+      }
+
       function buildQuarterDetails(timeline) {
         const QUARTER_POINTS = { 103: 3, 104: 2, 106: 1 };
-        const cache = {};
+        const cache = { all: { home: new Map(), away: new Map() } };
 
         (timeline || []).forEach((event) => {
           const period = Number(event.period) || 0;
-          if (!period || period > 4) return;
           if (event.kind === "period") return;
+          if (!period || period > 4) return;
 
           const sideKey = resolveSideKey(event.side);
-          const emoji = event.emoji || "";
+          const emoji = getDisplayEmoji(event);
           const points = QUARTER_POINTS[event.rawType] || 0;
           const name = (event.player || "").trim() || (event.teamName || "Unknown");
           const number = (event.playerNumber || "").toString().trim();
 
-          const quarter = (cache[period] ||= { home: new Map(), away: new Map() });
-          const bySide = quarter[sideKey];
-          const playerKey = `${name}__${number}`;
-          if (!bySide.has(playerKey)) {
-            bySide.set(playerKey, {
-              name,
-              number,
-              emojis: [],
-              points: 0,
-            });
-          }
-          const row = bySide.get(playerKey);
-          if (emoji) row.emojis.push(emoji);
-          row.points += points;
+          [period, "all"].forEach((bucket) => {
+            const quarter = (cache[bucket] ||= { home: new Map(), away: new Map() });
+            const bySide = quarter[sideKey];
+            const playerKey = `${name}__${number}`;
+            if (!bySide.has(playerKey)) {
+              bySide.set(playerKey, {
+                name,
+                number,
+                emojis: [],
+                points: 0,
+              });
+            }
+            const row = bySide.get(playerKey);
+            if (emoji) row.emojis.push(emoji);
+            row.points += points;
+          });
         });
 
         // convert maps to arrays for rendering
@@ -1576,6 +1873,16 @@
         return summary;
       }
 
+      function setPanelOpen(panel, button, isOpen) {
+        panel.hidden = !isOpen;
+        button.classList.toggle("content-toggle--active", isOpen);
+        button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      }
+
+      function togglePanel(panel, button) {
+        setPanelOpen(panel, button, panel.hidden);
+      }
+
       function renderQuarterSummary(timeline) {
         const summary = computeQuarterSummary(timeline);
         timelineSummary.innerHTML = "";
@@ -1584,46 +1891,147 @@
           return;
         }
 
-        const title = document.createElement("div");
-        title.className = "timeline-summary__title";
-        title.textContent = "Quarter breakdown";
+        const header = document.createElement("div");
+        header.className = "timeline-summary__header";
+        header.innerHTML = `
+          <div class="timeline-summary__title">Quarter Breakdown</div>
+          <div class="timeline-summary__note">Tap a quarter to inspect scoring</div>
+        `;
 
-        const rows = document.createElement("div");
-        rows.className = "timeline-summary__rows";
+        const grid = document.createElement("div");
+        grid.className = "timeline-summary__grid";
+        grid.style.setProperty("--timeline-period-count", String(summary.length + 1));
+
+        const corner = document.createElement("div");
+        corner.className = "timeline-summary__corner";
+        corner.textContent = "Team";
+        grid.appendChild(corner);
 
         summary.forEach((row) => {
-          const wrapper = document.createElement("div");
-          wrapper.className = "timeline-summary__row";
-          wrapper.dataset.period = row.period;
-
-          const label = document.createElement("div");
-          label.className = "timeline-summary__label";
-          label.textContent = `Q${row.period}`;
-
-          const score = document.createElement("div");
-          score.className = "timeline-summary__score";
-          score.textContent = `${row.kogQuarter}-${row.oppQuarter}`;
-
-          const status = document.createElement("div");
-          status.className = "timeline-summary__status";
-          if (row.outcome === "loss") status.classList.add("timeline-summary__status--loss");
-          const icon = row.outcome === "win" ? "✅" : row.outcome === "loss" ? "❌" : "➖";
-          status.textContent = `${icon} ${row.outcome === "win" ? "OG" : row.outcome === "loss" ? "Opp" : "Tie"}`;
-
-          wrapper.appendChild(label);
-          wrapper.appendChild(score);
-          wrapper.appendChild(status);
-          rows.appendChild(wrapper);
-
-          wrapper.addEventListener("click", () => {
+          const quarter = document.createElement("button");
+          quarter.type = "button";
+          quarter.className = "timeline-summary__quarter";
+          if (selectedTimelineQuarter === row.period) {
+            quarter.classList.add("timeline-summary__quarter--selected");
+          }
+          quarter.textContent = `Q${row.period}`;
+          quarter.title = `Show only Q${row.period} events`;
+          quarter.addEventListener("click", () => {
+            selectedTimelineQuarter = row.period;
             selectedQuarter = row.period;
             timelineDetail.hidden = false;
             renderQuarterDetail();
+            renderTimeline(timelineStore, timelineSearch.value || "");
           });
+          grid.appendChild(quarter);
         });
 
-        timelineSummary.appendChild(title);
-        timelineSummary.appendChild(rows);
+        const finalQuarter = document.createElement("button");
+        finalQuarter.type = "button";
+        finalQuarter.className = "timeline-summary__quarter";
+        if (selectedTimelineQuarter === null) {
+          finalQuarter.classList.add("timeline-summary__quarter--selected");
+        }
+        finalQuarter.textContent = "Final";
+        finalQuarter.title = "Show full play-by-play";
+        finalQuarter.addEventListener("click", () => {
+          selectedTimelineQuarter = null;
+          timelineDetail.hidden = false;
+          selectedQuarter = "all";
+          renderQuarterDetail();
+          renderTimeline(timelineStore, timelineSearch.value || "");
+        });
+        grid.appendChild(finalQuarter);
+
+        const buildCell = ({ label, points, period = null, outcome = "tie", subtext = "", interactive = false }) => {
+          const cell = document.createElement(interactive ? "button" : "div");
+          cell.className = `timeline-summary__cell timeline-summary__cell--${outcome}`;
+          if (!interactive) cell.classList.add("timeline-summary__cell--static");
+          if ((period === null && selectedTimelineQuarter === null) || (period !== null && selectedTimelineQuarter === period)) {
+            cell.classList.add("timeline-summary__cell--selected");
+          }
+          cell.innerHTML = `
+            <div class="timeline-summary__points">${points}</div>
+            <div class="timeline-summary__subtext">${subtext}</div>
+          `;
+          if (interactive && period) {
+            cell.type = "button";
+            cell.title = `Open quarter ${period} detail for ${label}`;
+            cell.addEventListener("click", () => {
+              selectedTimelineQuarter = period;
+              selectedQuarter = period;
+              timelineDetail.hidden = false;
+              renderQuarterDetail();
+              renderTimeline(timelineStore, timelineSearch.value || "");
+            });
+          }
+          return cell;
+        };
+
+        const kogLabel = document.createElement("div");
+        kogLabel.className = "timeline-summary__team";
+        kogLabel.textContent = "KOG";
+        grid.appendChild(kogLabel);
+
+        summary.forEach((row) => {
+          grid.appendChild(
+            buildCell({
+              label: "KOG",
+              points: row.kogQuarter,
+              period: row.period,
+              interactive: true,
+              outcome: row.outcome,
+              subtext: row.outcome === "win" ? "won qtr" : row.outcome === "loss" ? "lost qtr" : "tied"
+            })
+          );
+        });
+
+        const finalOutcome =
+          summary[summary.length - 1].kogTotal > summary[summary.length - 1].oppTotal
+            ? "win"
+            : summary[summary.length - 1].kogTotal < summary[summary.length - 1].oppTotal
+            ? "loss"
+            : "tie";
+        grid.appendChild(
+          buildCell({
+            label: "KOG",
+            points: summary[summary.length - 1].kogTotal,
+            outcome: finalOutcome,
+            subtext: "total",
+          })
+        );
+
+        const oppLabel = document.createElement("div");
+        oppLabel.className = "timeline-summary__team timeline-summary__team--opp";
+        oppLabel.textContent = "OPP";
+        grid.appendChild(oppLabel);
+
+        summary.forEach((row) => {
+          const oppOutcome = row.outcome === "win" ? "loss" : row.outcome === "loss" ? "win" : "tie";
+          grid.appendChild(
+            buildCell({
+              label: "Opponent",
+              points: row.oppQuarter,
+              period: row.period,
+              interactive: true,
+              outcome: oppOutcome,
+              subtext: oppOutcome === "win" ? "won qtr" : oppOutcome === "loss" ? "lost qtr" : "tied"
+            })
+          );
+        });
+
+        const oppFinalOutcome = finalOutcome === "win" ? "loss" : finalOutcome === "loss" ? "win" : "tie";
+        grid.appendChild(
+          buildCell({
+            label: "Opponent",
+            points: summary[summary.length - 1].oppTotal,
+            outcome: oppFinalOutcome,
+            subtext: "total",
+          })
+        );
+
+        timelineSummary.appendChild(header);
+        timelineSummary.appendChild(grid);
         timelineSummary.hidden = false;
       }
 
@@ -1633,8 +2041,16 @@
           return;
         }
 
-        timelineDetailQuarter.textContent = `Q${selectedQuarter}`;
-        timelineDetailTitle.textContent = selectedSide === "home" ? "Home quarter detail" : "Away quarter detail";
+        const isFullGame = selectedQuarter === "all";
+        timelineDetailQuarter.textContent = isFullGame ? "Full Game" : `Q${selectedQuarter}`;
+        timelineDetailTitle.textContent =
+          selectedSide === "home"
+            ? isFullGame
+              ? "Home game detail"
+              : "Home quarter detail"
+            : isFullGame
+            ? "Away game detail"
+            : "Away quarter detail";
 
         Array.from(timelineDetailSides.querySelectorAll(".timeline-detail__side")).forEach((btn) => {
           if (btn.dataset.side === selectedSide) {
@@ -1662,7 +2078,7 @@
           empty.className = "timeline-detail__row";
           empty.innerHTML = `
             <div class="timeline-detail__cell timeline-detail__cell--muted" style="grid-column: 1 / -1; text-align: center;">
-              No player actions logged for this quarter.
+              ${isFullGame ? "No player actions logged for this game." : "No player actions logged for this quarter."}
             </div>
           `;
           timelineDetailTable.appendChild(empty);
@@ -1696,16 +2112,24 @@
         }
 
         const term = (filterTerm || "").trim().toLowerCase();
+        const quarterFiltered =
+          selectedTimelineQuarter === null
+            ? timeline
+            : timeline.filter((event) => Number(event.period) === selectedTimelineQuarter);
         const filtered = term
-          ? timeline.filter((event) => (event.player || "").toLowerCase().includes(term))
-          : timeline;
+          ? quarterFiltered.filter((event) => (event.player || "").toLowerCase().includes(term))
+          : quarterFiltered;
 
         if (!filtered.length) {
-          timelineBody.innerHTML = `<div class="timeline-empty">No events matched that player.</div>`;
-          timelineSummary.hidden = true;
-          timelineSummary.innerHTML = "";
-          timelineDetail.hidden = true;
-          selectedQuarter = null;
+          const emptyLabel =
+            selectedTimelineQuarter === null
+              ? "No events matched that player."
+              : `No events matched in Q${selectedTimelineQuarter}.`;
+          timelineBody.innerHTML = `<div class="timeline-empty">${emptyLabel}</div>`;
+          if (selectedTimelineQuarter !== null && selectedQuarter !== selectedTimelineQuarter) {
+            selectedQuarter = selectedTimelineQuarter;
+          }
+          renderQuarterSummary(timelineStore);
           return;
         }
 
@@ -1738,7 +2162,7 @@
               <span>${periodLabel}</span>
             </div>
             <div class="timeline-content">
-              <div class="timeline-label">${event.emoji || "•"} ${headline || event.label || "Event"}</div>
+              <div class="timeline-label">${getDisplayEmoji(event) || "•"} ${headline || event.label || "Event"}</div>
               <div class="timeline-meta-row">${event.detail || event.label || ""}</div>
             </div>
           `;
@@ -1772,6 +2196,7 @@
         timelineSummary.hidden = true;
         timelineDetail.hidden = true;
         selectedQuarter = null;
+        selectedTimelineQuarter = null;
         selectedSide = "home";
 
         fetch(`data/playbyplay/game_${matchId}.json`, { cache: "no-store" })
@@ -1784,10 +2209,10 @@
             timelineStore = data.timeline;
             timelineContext = { homeOrAway: data.homeOrAway || null };
             quarterDetailsCache = buildQuarterDetails(timelineStore);
-            renderTimeline(timelineStore);
-            renderQuarterSummary(timelineStore);
-            selectedQuarter = 1;
+            selectedQuarter = "all";
+            selectedTimelineQuarter = null;
             selectedSide = "home";
+            renderTimeline(timelineStore);
             renderQuarterDetail();
           })
           .catch(() => {
@@ -1801,6 +2226,7 @@
         document.body.style.overflow = "";
         timelineDetail.hidden = true;
         selectedQuarter = null;
+        selectedTimelineQuarter = null;
       }
 
       function renderBadges(players, metadata, gamesCount) {
@@ -1984,6 +2410,8 @@
 
           if (!players.length) {
             document.getElementById("noDataMessage").style.display = "block";
+            statsPanel.hidden = false;
+            setPanelOpen(statsPanel, toggleStatsPanelBtn, true);
             return;
           }
 
@@ -2001,6 +2429,8 @@
           renderBadges([], null, 0);
           renderSchedule([]);
           renderLinks([]);
+          statsPanel.hidden = false;
+          setPanelOpen(statsPanel, toggleStatsPanelBtn, true);
         });
 
       function openPlayerModal(data) {
@@ -2166,6 +2596,12 @@
       timelineSearch.addEventListener("input", (event) => {
         const term = event.target.value || "";
         renderTimeline(timelineStore, term);
+      });
+      toggleStatsPanelBtn.addEventListener("click", () => {
+        togglePanel(statsPanel, toggleStatsPanelBtn);
+      });
+      toggleSchedulePanelBtn.addEventListener("click", () => {
+        togglePanel(schedulePanel, toggleSchedulePanelBtn);
       });
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && modalOverlay.classList.contains("visible")) {

@@ -357,7 +357,7 @@ def build_play_by_play(
             continue
         if etype in (109, 111):  # fouls
             label = "Personal Foul" if etype == 109 else "Unsportsmanlike Foul"
-            emoji = "⚠️" if etype == 109 else "🚫"
+            emoji = "🥊"
             timeline.append({**base, "kind": "foul", "label": label, "emoji": emoji})
             continue
         if etype in (103, 104, 106):  # scoring
