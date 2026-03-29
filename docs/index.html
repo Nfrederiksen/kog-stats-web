@@ -1225,6 +1225,211 @@
       .stat-row.interactive:hover span {
         color: var(--accent);
       }
+
+      /* ── Season Wrapped ── */
+      .wrapped-btn {
+        background: linear-gradient(135deg, #ff6b35, #f7c948, #ff6b35);
+        background-size: 200% 200%;
+        animation: wrappedGradient 3s ease infinite;
+        border: none;
+        color: #1a1a2e;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.55rem 1.2rem;
+        border-radius: 999px;
+        cursor: pointer;
+        box-shadow: 0 8px 24px rgba(255, 107, 53, 0.35);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .wrapped-btn:hover {
+        transform: scale(1.06);
+        box-shadow: 0 12px 32px rgba(255, 107, 53, 0.5);
+      }
+      @keyframes wrappedGradient {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+
+      .wrapped-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #05070e;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+      .wrapped-overlay.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .wrapped-close {
+        position: absolute;
+        top: 1.2rem;
+        right: 1.4rem;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: #fff;
+        font-size: 1rem;
+        padding: 0.4rem 0.9rem;
+        border-radius: 999px;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .wrapped-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        gap: 4px;
+        padding: 1rem 1.2rem;
+        z-index: 10;
+      }
+      .wrapped-progress__bar {
+        flex: 1;
+        height: 3px;
+        border-radius: 2px;
+        background: rgba(255,255,255,0.15);
+        overflow: hidden;
+      }
+      .wrapped-progress__bar.done {
+        background: rgba(255,255,255,0.7);
+      }
+      .wrapped-progress__bar.active {
+        background: rgba(255,255,255,0.3);
+      }
+      .wrapped-progress__bar.active::after {
+        content: "";
+        display: block;
+        height: 100%;
+        background: #fff;
+        animation: wrappedBarFill 8s linear forwards;
+      }
+      @keyframes wrappedBarFill {
+        from { width: 0; }
+        to { width: 100%; }
+      }
+
+      .wrapped-viewport {
+        width: 100%;
+        max-width: 420px;
+        height: min(85vh, 720px);
+        position: relative;
+        overflow: hidden;
+        border-radius: 24px;
+        touch-action: pan-y;
+      }
+
+      .wrapped-card {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2.5rem 1.8rem;
+        gap: 1rem;
+        border-radius: 24px;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.45s ease;
+      }
+      .wrapped-card.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .wrapped-card.exit-left {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+
+      .wrapped-card__ascii {
+        font-family: "Courier New", monospace;
+        font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+        line-height: 1.2;
+        white-space: pre;
+        color: rgba(255,255,255,0.85);
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      }
+
+      .wrapped-card__emoji {
+        font-size: clamp(3rem, 10vw, 5rem);
+        line-height: 1;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+      }
+
+      .wrapped-card__label {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        color: rgba(255,255,255,0.8);
+        text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+      }
+
+      .wrapped-card__value {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        font-weight: 800;
+        line-height: 1.1;
+        text-shadow: 0 3px 12px rgba(0,0,0,0.4);
+      }
+
+      .wrapped-card__sub {
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        color: rgba(255,255,255,0.92);
+        max-width: 32ch;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+      }
+
+      .wrapped-card__detail {
+        font-size: 0.88rem;
+        color: rgba(255,255,255,0.75);
+        margin-top: 0.5rem;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+      }
+
+      .wrapped-nav-hint {
+        position: absolute;
+        bottom: 1.2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.72rem;
+        color: rgba(255,255,255,0.3);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        z-index: 10;
+      }
+
+      .wrapped-card--intro { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #fff; }
+      .wrapped-card--record { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); color: #fff; }
+      .wrapped-card--scorer { background: linear-gradient(135deg, #2d1b69, #11998e); color: #fff; }
+      .wrapped-card--ppg { background: linear-gradient(135deg, #fc4a1a, #f7b733); color: #fff; }
+      .wrapped-card--ironman { background: linear-gradient(135deg, #134e5e, #71b280); color: #fff; }
+      .wrapped-card--bigwin { background: linear-gradient(135deg, #f7971e, #ffd200); color: #1a1a2e; text-shadow: none !important; }
+      .wrapped-card--bigwin .wrapped-card__label { color: rgba(26,26,46,0.7); text-shadow: none; }
+      .wrapped-card--bigwin .wrapped-card__sub { color: rgba(26,26,46,0.85); text-shadow: none; }
+      .wrapped-card--bigwin .wrapped-card__detail { color: rgba(26,26,46,0.65); text-shadow: none; }
+      .wrapped-card--bigwin .wrapped-card__ascii { color: rgba(26,26,46,0.7); text-shadow: none; }
+      .wrapped-card--sniper { background: linear-gradient(135deg, #6441a5, #2a0845); color: #fff; }
+      .wrapped-card--squad { background: linear-gradient(135deg, #0b486b, #f56217); color: #fff; }
+      .wrapped-card--heart { background: linear-gradient(135deg, #c31432, #240b36); color: #fff; }
+      .wrapped-card--finale { background: linear-gradient(135deg, #f7c948, #ff6b35, #ee0979); color: #fff; }
+      .wrapped-card--threerain { background: linear-gradient(135deg, #1f4037, #99f2c8); color: #fff; }
+      .wrapped-card--ftline { background: linear-gradient(135deg, #2c3e50, #4ca1af); color: #fff; }
+      .wrapped-card--impact { background: linear-gradient(135deg, #e44d26, #f16529, #fc913a); color: #fff; }
+      .wrapped-card--buckets { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: #fff; }
+      .wrapped-card--fouls { background: linear-gradient(135deg, #b91d73, #f953c6); color: #fff; }
+      .wrapped-card--points { background: linear-gradient(135deg, #c6426e, #642b73); color: #fff; }
     </style>
   </head>
   <body>
@@ -1239,6 +1444,9 @@
         </button>
         <button type="button" class="content-toggle content-toggle--active" id="toggleSchedulePanel" aria-expanded="true" aria-controls="schedulePanel">
           Schedule & Games
+        </button>
+        <button type="button" class="wrapped-btn" id="wrappedBtn">
+          Season Wrapped
         </button>
       </div>
 
@@ -1340,6 +1548,13 @@
           <div class="timeline-detail__table" id="timelineDetailTable"></div>
         </div>
       </div>
+    </div>
+
+    <div class="wrapped-overlay" id="wrappedOverlay">
+      <button class="wrapped-close" id="wrappedClose">Close</button>
+      <div class="wrapped-progress" id="wrappedProgress"></div>
+      <div class="wrapped-viewport" id="wrappedViewport"></div>
+      <div class="wrapped-nav-hint">Tap or swipe to continue &rarr;</div>
     </div>
 
     <script>
@@ -2608,6 +2823,439 @@
           closeModal();
         }
       });
+
+      /* ── Season Wrapped ── */
+      (function () {
+        const wrappedBtn = document.getElementById("wrappedBtn");
+        const overlay = document.getElementById("wrappedOverlay");
+        const viewport = document.getElementById("wrappedViewport");
+        const progressBar = document.getElementById("wrappedProgress");
+        const closeBtn = document.getElementById("wrappedClose");
+        let wrappedIndex = 0;
+        let wrappedCards = [];
+
+        function buildCards(players, schedule) {
+          const played = schedule.filter((g) => g.status === "played");
+          const wins = played.filter((g) => g.result === "win");
+          const losses = played.filter((g) => g.result === "loss");
+          const totalKog = played.reduce((s, g) => s + g.kogScore, 0);
+          const sorted = [...players].sort((a, b) => b.totalPoints - a.totalPoints);
+          const ppgSorted = [...players].filter((p) => p.gamesPlayed >= 5).sort((a, b) => b.pointsPerGame - a.pointsPerGame);
+          const gpSorted = [...players].sort((a, b) => b.gamesPlayed - a.gamesPlayed);
+          const biggestWin = [...played].filter((g) => g.result === "win").sort((a, b) => b.pointDiff - a.pointDiff)[0];
+          const closeGames = played.filter((g) => Math.abs(g.pointDiff) <= 6);
+          const threeSorted = [...players].sort((a, b) => b.threePointsMade - a.threePointsMade);
+          const ftSorted = [...players].sort((a, b) => b.freeThrowsMade - a.freeThrowsMade);
+          const lastGame = played[played.length - 1];
+
+          const cards = [];
+
+          // 1 - Intro
+          cards.push({
+            cls: "wrapped-card--intro",
+            ascii:
+              "    ,##.         ,##.\n" +
+              "  ,#    #.     ,#    #.\n" +
+              " #        #   #        #\n" +
+              " #  KOG   #   #  2026  #\n" +
+              "  '#    #'     '#    #'\n" +
+              "    '##'         '##'",
+            emoji: "",
+            label: "Your Season in Review",
+            value: "WRAPPED",
+            sub: "Kungsholmen OG 2025-26",
+            detail: played.length + " games \u00b7 " + totalKog + " total points scored",
+          });
+
+          // 2 - Record
+          const winBar = "\u2588".repeat(wins.length) + "\u2591".repeat(losses.length);
+          cards.push({
+            cls: "wrapped-card--record",
+            emoji: wins.length > losses.length ? "\ud83c\udfc6" : "\ud83d\udcaa",
+            ascii: "",
+            label: "Season Record",
+            value: wins.length + "W \u2013 " + losses.length + "L",
+            sub: winBar,
+            detail: "Win rate: " + Math.round((wins.length / played.length) * 100) + "%",
+          });
+
+          // 3 - Top scorer
+          if (sorted.length > 0) {
+            const topVal = sorted[0].totalPoints;
+            const topTied = sorted.filter((p) => p.totalPoints === topVal);
+            const isTie = topTied.length > 1;
+            const top = sorted[0];
+            cards.push({
+              cls: "wrapped-card--scorer",
+              emoji: "\ud83d\udd25",
+              ascii: isTie ? "" :
+                "      _____\n" +
+                "     |     |\n" +
+                "     | #" + top.number.toString().padStart(2, " ") + " |\n" +
+                "     |_____|\n" +
+                "     /|   |\\\n" +
+                "    / |   | \\\n" +
+                "      |   |\n" +
+                "     /     \\",
+              label: isTie ? "Tied for Top Scorer" : "Top Scorer",
+              value: topVal + " PTS",
+              sub: topTied.map((p) => p.name).join(" & "),
+              detail: isTie
+                ? topTied.map((p) => p.name.split(" ")[0] + ": " + p.gamesPlayed + "g, " + p.pointsPerGame + " PPG").join(" | ")
+                : top.gamesPlayed + " games \u00b7 " + top.pointsPerGame + " per game",
+            });
+          }
+
+          // 4 - PPG leader
+          if (ppgSorted.length > 0) {
+            const ppgVal = ppgSorted[0].pointsPerGame;
+            const ppgTied = ppgSorted.filter((p) => p.pointsPerGame === ppgVal);
+            const ppgIsTie = ppgTied.length > 1;
+            cards.push({
+              cls: "wrapped-card--ppg",
+              emoji: "\u26a1",
+              ascii: "",
+              label: ppgIsTie ? "Tied for PPG Leader" : "Points Per Game Leader",
+              value: ppgVal.toFixed(1),
+              sub: ppgTied.map((p) => p.name + " #" + p.number).join(" & "),
+              detail: ppgTied.map((p) => p.name.split(" ")[0] + ": " + p.totalPoints + " pts in " + p.gamesPlayed + " games").join(" | "),
+            });
+          }
+
+          // 5 - Iron man
+          if (gpSorted.length > 0) {
+            const gpVal = gpSorted[0].gamesPlayed;
+            const gpTied = gpSorted.filter((p) => p.gamesPlayed === gpVal);
+            const gpIsTie = gpTied.length > 1;
+            cards.push({
+              cls: "wrapped-card--ironman",
+              emoji: "\ud83e\uddbe",
+              ascii: "",
+              label: gpIsTie ? "Tied for Mr. Reliable" : "Mr. Reliable",
+              value: gpVal + "/" + played.length,
+              sub: gpTied.map((p) => p.name).join(" & "),
+              detail: gpIsTie
+                ? "Both suited up for " + gpVal + " games \u00b7 Never missing a beat"
+                : "Games played \u00b7 Never missing a beat",
+            });
+          }
+
+          // 6 - Biggest win
+          if (biggestWin) {
+            cards.push({
+              cls: "wrapped-card--bigwin",
+              emoji: "\ud83d\udca5",
+              ascii:
+                "  ___________\n" +
+                " |           |\n" +
+                " | " + String(biggestWin.kogScore).padStart(2, " ") + "  -  " + String(biggestWin.opponentScore).padStart(2, " ") + " |\n" +
+                " |___________|\n" +
+                "    |  |  |\n" +
+                "    SCOREBOARD",
+              label: "Biggest Win",
+              value: "+" + biggestWin.pointDiff,
+              sub: "vs " + biggestWin.opponent,
+              detail: biggestWin.dateLabel,
+            });
+          }
+
+          // 7 - Three-point sniper
+          const teamThrees = players.reduce((s, p) => s + p.threePointsMade, 0);
+          if (threeSorted.length > 0 && threeSorted[0].threePointsMade > 0) {
+            const threeVal = threeSorted[0].threePointsMade;
+            const threeTied = threeSorted.filter((p) => p.threePointsMade === threeVal);
+            const threeIsTie = threeTied.length > 1;
+            const combinedPct = Math.round((threeVal * threeTied.length / teamThrees) * 100);
+            const bombs = "\ud83c\udfaf".repeat(Math.min(threeVal, 8));
+            cards.push({
+              cls: "wrapped-card--sniper",
+              emoji: "\ud83c\udfd0",
+              ascii: "",
+              label: threeIsTie ? "Tied for Three-Point King" : "Three-Point King",
+              value: threeVal + " triples" + (threeIsTie ? " each" : ""),
+              sub: threeTied.map((p) => p.name).join(" & "),
+              detail: threeIsTie
+                ? bombs + "\nTogether " + combinedPct + "% of the team's " + teamThrees + " threes"
+                : bombs + "\n" + Math.round((threeVal / teamThrees) * 100) + "% of the team's " + teamThrees + " threes",
+            });
+          }
+
+          // 8 - Squad depth
+          cards.push({
+            cls: "wrapped-card--squad",
+            emoji: "\ud83d\udc65",
+            ascii:
+              "  o   o   o   o   o\n" +
+              " /|\\ /|\\ /|\\ /|\\ /|\\\n" +
+              " / \\ / \\ / \\ / \\ / \\",
+            label: "Squad Depth",
+            value: players.length + " PLAYERS",
+            sub: "Suited up for KOG this season",
+            detail: ftSorted.length > 0 ? "Most FTs: " + ftSorted[0].name + " (" + ftSorted[0].freeThrowsMade + ")" : "",
+          });
+
+          // 9 - Three-point rain: team total + individual shares
+          if (teamThrees > 0) {
+            const topTwo3 = [...players].sort((a, b) => b.threePointsMade - a.threePointsMade).slice(0, 2);
+            const topTwo3Total = topTwo3.reduce((s, p) => s + p.threePointsMade, 0);
+            const pct = Math.round((topTwo3Total / teamThrees) * 100);
+            const bar3 = topTwo3.map((p) => p.name.split(" ")[0] + " " + "\u2588".repeat(p.threePointsMade)).join("\n");
+            cards.push({
+              cls: "wrapped-card--threerain",
+              emoji: "\ud83c\udfaf",
+              ascii: "",
+              label: "Raining Threes",
+              value: teamThrees + " triples",
+              sub: "As a team this season",
+              detail: bar3 + "\n" + topTwo3[0].name.split(" ")[0] + " & " + topTwo3[1].name.split(" ")[0] + " combined for " + pct + "% of them",
+            });
+          }
+
+          // 10 - Free throw line master
+          if (ftSorted.length > 0 && ftSorted[0].freeThrowsMade > 0) {
+            const ftVal = ftSorted[0].freeThrowsMade;
+            const ftTied = ftSorted.filter((p) => p.freeThrowsMade === ftVal);
+            const ftIsTie = ftTied.length > 1;
+            const teamFT = players.reduce((s, p) => s + p.freeThrowsMade, 0);
+            const ftPct = Math.round((ftVal * ftTied.length / teamFT) * 100);
+            cards.push({
+              cls: "wrapped-card--ftline",
+              emoji: "\ud83e\uddf2",
+              ascii:
+                "     |     |\n" +
+                "     |  O  |\n" +
+                "     | /|\\ |\n" +
+                "     | / \\ |\n" +
+                "  ___|_____|___\n" +
+                "  FREE  THROWS",
+              label: ftIsTie ? "Tied for FT Machine" : "Free Throw Machine",
+              value: ftVal + " FTs" + (ftIsTie ? " each" : ""),
+              sub: ftTied.map((p) => p.name).join(" & "),
+              detail: ftPct + "% of the team's " + teamFT + " free throws",
+            });
+          }
+
+          // 11 - Impact player (high PPG, low games)
+          const impactPlayers = [...players].filter((p) => p.gamesPlayed >= 3 && p.gamesPlayed <= 8).sort((a, b) => b.pointsPerGame - a.pointsPerGame);
+          if (impactPlayers.length > 0) {
+            const impVal = impactPlayers[0].pointsPerGame;
+            const impTied = impactPlayers.filter((p) => p.pointsPerGame === impVal);
+            const impIsTie = impTied.length > 1;
+            cards.push({
+              cls: "wrapped-card--impact",
+              emoji: "\ud83d\udca3",
+              ascii: "",
+              label: impIsTie ? "Tied for Impact Sub" : "Impact Sub",
+              value: impVal.toFixed(1) + " PPG",
+              sub: impTied.map((p) => p.name + " #" + p.number).join(" & "),
+              detail: impTied.map((p) => p.name.split(" ")[0] + ": " + p.gamesPlayed + "g, " + p.totalPoints + " pts").join(" | ") + "\nEvery minute counted",
+            });
+          }
+
+          // 12 - Bucket getter: most field goals
+          const fgSorted = [...players].sort((a, b) => b.fieldGoalsMade - a.fieldGoalsMade);
+          if (fgSorted.length >= 2) {
+            const fg1 = fgSorted[0];
+            const fg2 = fgSorted[1];
+            const teamFG = players.reduce((s, p) => s + p.fieldGoalsMade, 0);
+            cards.push({
+              cls: "wrapped-card--buckets",
+              emoji: "\ud83c\udfc0",
+              ascii: "",
+              label: "Bucket Getters",
+              value: teamFG + " FGs",
+              sub: "As a team from the field",
+              detail: fg1.name.split(" ")[0] + ": " + fg1.fieldGoalsMade + " | " + fg2.name.split(" ")[0] + ": " + fg2.fieldGoalsMade + "\nTop two combined for " + Math.round(((fg1.fieldGoalsMade + fg2.fieldGoalsMade) / teamFG) * 100) + "%",
+            });
+          }
+
+          // 13 - Total points scored
+          const totalOpp = played.reduce((s, g) => s + g.opponentScore, 0);
+          cards.push({
+            cls: "wrapped-card--points",
+            emoji: "\ud83d\udcca",
+            ascii: "",
+            label: "Season Totals",
+            value: totalKog + " PTS",
+            sub: "KOG scored this season",
+            detail: "Opponents scored " + totalOpp + "\nAvg game: " + Math.round(totalKog / played.length) + " \u2013 " + Math.round(totalOpp / played.length),
+          });
+
+          // 14 - Heartbreakers
+          if (closeGames.length > 0) {
+            const closeL = closeGames.filter((g) => g.result === "loss").length;
+            const closeW = closeGames.filter((g) => g.result === "win").length;
+            cards.push({
+              cls: "wrapped-card--heart",
+              emoji: "\ud83d\ude2c",
+              ascii: "",
+              label: "Nail-Biters (\u22646 pts)",
+              value: closeGames.length + " GAMES",
+              sub: closeW + " wins, " + closeL + " losses",
+              detail: "Every possession mattered",
+            });
+          }
+
+          // 15 - Foul trouble
+          const teamFouls = players.reduce((s, p) => s + p.foulsMade, 0);
+          const foulSorted = [...players].sort((a, b) => b.foulsMade - a.foulsMade);
+          if (teamFouls > 0 && foulSorted.length > 0) {
+            const foulVal = foulSorted[0].foulsMade;
+            const foulTied = foulSorted.filter((p) => p.foulsMade === foulVal);
+            const foulIsTie = foulTied.length > 1;
+            cards.push({
+              cls: "wrapped-card--fouls",
+              emoji: "\ud83d\udea8",
+              ascii: "",
+              label: "Foul Trouble",
+              value: teamFouls + " FOULS",
+              sub: "Across the whole squad",
+              detail: (foulIsTie ? "Most physical (tied): " : "Most physical: ")
+                + foulTied.map((p) => p.name + " (" + p.foulsMade + ")").join(" & ")
+                + "\nThat's " + Math.round((foulVal * foulTied.length / teamFouls) * 100) + "% of all team fouls",
+            });
+          }
+
+          // FINALE
+          if (lastGame) {
+            const endEmoji = lastGame.result === "win" ? "\ud83c\udf89" : "\ud83d\ude24";
+            cards.push({
+              cls: "wrapped-card--finale",
+              emoji: endEmoji,
+              ascii:
+                "  *  *  *  *  *  *\n" +
+                " ***  KOG  ***\n" +
+                "  * 2025-26 *\n" +
+                "  *  *  *  *  *  *",
+              label: "Season Finale",
+              value: lastGame.kogScore + " \u2013 " + lastGame.opponentScore,
+              sub: (lastGame.result === "win" ? "Ended on a HIGH! " : "vs ") + lastGame.opponent,
+              detail: "Thanks for a great season \u2764\ufe0f\nSee you next year!",
+            });
+          }
+
+          return cards;
+        }
+
+        function renderWrapped(cards) {
+          wrappedCards = cards;
+          wrappedIndex = 0;
+          viewport.innerHTML = "";
+          progressBar.innerHTML = "";
+
+          cards.forEach(function (c, i) {
+            // progress pip
+            const pip = document.createElement("div");
+            pip.className = "wrapped-progress__bar" + (i === 0 ? " active" : "");
+            progressBar.appendChild(pip);
+
+            // card
+            const el = document.createElement("div");
+            el.className = "wrapped-card " + c.cls + (i === 0 ? " active" : "");
+            el.innerHTML =
+              (c.ascii ? '<div class="wrapped-card__ascii">' + c.ascii + "</div>" : "") +
+              (c.emoji ? '<div class="wrapped-card__emoji">' + c.emoji + "</div>" : "") +
+              '<div class="wrapped-card__label">' + c.label + "</div>" +
+              '<div class="wrapped-card__value">' + c.value + "</div>" +
+              '<div class="wrapped-card__sub">' + c.sub + "</div>" +
+              (c.detail ? '<div class="wrapped-card__detail">' + c.detail.replace(/\n/g, "<br>") + "</div>" : "");
+            viewport.appendChild(el);
+          });
+        }
+
+        function goTo(idx) {
+          if (idx < 0 || idx >= wrappedCards.length) return;
+          const cardEls = viewport.querySelectorAll(".wrapped-card");
+          const pips = progressBar.querySelectorAll(".wrapped-progress__bar");
+
+          cardEls[wrappedIndex].classList.remove("active");
+          cardEls[wrappedIndex].classList.add("exit-left");
+
+          pips[wrappedIndex].className = "wrapped-progress__bar done";
+
+          wrappedIndex = idx;
+
+          cardEls[wrappedIndex].classList.remove("exit-left");
+          cardEls[wrappedIndex].classList.add("active");
+          pips[wrappedIndex].className = "wrapped-progress__bar active";
+        }
+
+        function goBack(idx) {
+          if (idx < 0 || idx >= wrappedCards.length) return;
+          const cardEls = viewport.querySelectorAll(".wrapped-card");
+          const pips = progressBar.querySelectorAll(".wrapped-progress__bar");
+
+          // current card: remove active, reset to default (off-screen right)
+          cardEls[wrappedIndex].classList.remove("active", "exit-left");
+          pips[wrappedIndex].className = "wrapped-progress__bar";
+
+          wrappedIndex = idx;
+
+          // previous card: was exit-left, bring it back
+          cardEls[wrappedIndex].classList.remove("exit-left");
+          cardEls[wrappedIndex].classList.add("active");
+          pips[wrappedIndex].className = "wrapped-progress__bar active";
+        }
+
+        function openWrapped() {
+          Promise.all([
+            fetch("data/kog_players.json").then((r) => r.json()),
+            fetch("data/kog_schedule.json").then((r) => r.json()),
+          ]).then(function (data) {
+            const cards = buildCards(data[0], data[1]);
+            renderWrapped(cards);
+            overlay.classList.add("visible");
+            document.body.style.overflow = "hidden";
+          });
+        }
+
+        function closeWrapped() {
+          overlay.classList.remove("visible");
+          document.body.style.overflow = "";
+        }
+
+        wrappedBtn.addEventListener("click", openWrapped);
+        closeBtn.addEventListener("click", closeWrapped);
+
+        // tap left/right halves to navigate
+        viewport.addEventListener("click", function (e) {
+          const rect = viewport.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          if (x < rect.width * 0.35) {
+            if (wrappedIndex > 0) goBack(wrappedIndex - 1);
+          } else {
+            if (wrappedIndex < wrappedCards.length - 1) goTo(wrappedIndex + 1);
+            else closeWrapped();
+          }
+        });
+
+        // swipe support
+        let touchStartX = 0;
+        viewport.addEventListener("touchstart", function (e) {
+          touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        viewport.addEventListener("touchend", function (e) {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            if (dx < 0 && wrappedIndex < wrappedCards.length - 1) goTo(wrappedIndex + 1);
+            else if (dx > 0 && wrappedIndex > 0) goBack(wrappedIndex - 1);
+          }
+        }, { passive: true });
+
+        // keyboard
+        document.addEventListener("keydown", function (e) {
+          if (!overlay.classList.contains("visible")) return;
+          if (e.key === "Escape") closeWrapped();
+          if (e.key === "ArrowRight" || e.key === " ") {
+            e.preventDefault();
+            if (wrappedIndex < wrappedCards.length - 1) goTo(wrappedIndex + 1);
+          }
+          if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            if (wrappedIndex > 0) goBack(wrappedIndex - 1);
+          }
+        });
+      })();
     </script>
   </body>
 </html>
