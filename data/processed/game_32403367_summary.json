@@ -1,0 +1,326 @@
+{
+  "gameId": 32403367,
+  "finalScore": {
+    "homeGoals": 60,
+    "awayGoals": 53
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1403069,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 6322886,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 6322887,
+          "personId": 450268,
+          "number": "13",
+          "name": "Axel Forsberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6322890,
+          "personId": 425001,
+          "number": "42",
+          "name": "Chuma Mc Phoy Odenyo",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 3,
+            "onePointMade": 3,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 6322892,
+          "personId": 469605,
+          "number": "87",
+          "name": "Hassan Drammeh",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 6322893,
+          "personId": 512579,
+          "number": "1",
+          "name": "Hawsoon Jobe",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 13,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 3,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 6322895,
+          "personId": 479556,
+          "number": "4",
+          "name": "Luka Rosko",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6322898,
+          "personId": 441575,
+          "number": "9",
+          "name": "Randall Brar Kalala",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 17,
+            "onePointMade": 2,
+            "twoPointMade": 3,
+            "threePointMade": 3,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 6322905,
+          "personId": 488051,
+          "number": "11",
+          "name": "Rudolfs Dzelzkalejs",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 6322932,
+          "personId": null,
+          "number": "",
+          "name": "Anton  Wennberg",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6336247,
+          "personId": null,
+          "number": "",
+          "name": "Randall Kalala",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1404135,
+      "teamName": "JKS Basket Bred\u00e4ng IF",
+      "roster": [
+        {
+          "playerId": 6336714,
+          "personId": 555726,
+          "number": "15",
+          "name": "Abdi Haji",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6336717,
+          "personId": 1046012,
+          "number": "00",
+          "name": "ESSENOS WONDIMU",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 16,
+            "onePointMade": 1,
+            "twoPointMade": 6,
+            "threePointMade": 1,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 6336719,
+          "personId": 1102422,
+          "number": "12",
+          "name": "Hamza El Moussaoui",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6336723,
+          "personId": 474100,
+          "number": "21",
+          "name": "Maxi Seenala Halabi",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 11,
+            "onePointMade": 2,
+            "twoPointMade": 0,
+            "threePointMade": 3,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 6336726,
+          "personId": 474859,
+          "number": "14",
+          "name": "Mehmet Dilek",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 13,
+            "onePointMade": 1,
+            "twoPointMade": 3,
+            "threePointMade": 2,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 6336730,
+          "personId": 435781,
+          "number": "22",
+          "name": "Yafet Habtu",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 14,
+            "onePointMade": 0,
+            "twoPointMade": 4,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6336747,
+          "personId": 1070230,
+          "number": "16",
+          "name": "Felix Brinck",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 6336769,
+          "personId": 920532,
+          "number": "8",
+          "name": "Josef Mannai",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 2,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 6336923,
+          "personId": null,
+          "number": "",
+          "name": "Staffan Thil\u00e9n",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}

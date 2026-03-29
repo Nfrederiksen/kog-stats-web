@@ -1,0 +1,374 @@
+{
+  "gameId": 32403370,
+  "finalScore": {
+    "homeGoals": 89,
+    "awayGoals": 58
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1404670,
+      "teamName": "Tyres\u00f6 Basket",
+      "roster": [
+        {
+          "playerId": 6403723,
+          "personId": 369539,
+          "number": "86",
+          "name": "Erik Montgomery",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 17,
+            "onePointMade": 4,
+            "twoPointMade": 2,
+            "threePointMade": 3,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 6403724,
+          "personId": 514741,
+          "number": "4",
+          "name": "Evangelos Skondras",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 3,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 1,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 6403725,
+          "personId": 515224,
+          "number": "32",
+          "name": "Damien Brown Nguyen",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 6403727,
+          "personId": 476903,
+          "number": "8",
+          "name": "Daniel Siberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 6403731,
+          "personId": 1030561,
+          "number": "41",
+          "name": "Josef Jamai-haitot",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6403736,
+          "personId": 481008,
+          "number": "20",
+          "name": "P\u00e4r Nyman",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 7,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 6403739,
+          "personId": 513052,
+          "number": "1",
+          "name": "Rohan Bj\u00f6rkman",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6403780,
+          "personId": 533786,
+          "number": "27",
+          "name": "Valentas Gailius",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 18,
+            "onePointMade": 2,
+            "twoPointMade": 5,
+            "threePointMade": 2,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 6403808,
+          "personId": null,
+          "number": "",
+          "name": "P\u00e4r Nyman",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6405679,
+          "personId": 513469,
+          "number": "9",
+          "name": "Artin Mahmoudi",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 6406241,
+          "personId": 524040,
+          "number": "",
+          "name": "Harry Fr\u00f6berg",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1403069,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 6406012,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 13,
+            "onePointMade": 1,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6406019,
+          "personId": 450268,
+          "number": "13",
+          "name": "Axel Forsberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 6406024,
+          "personId": 465622,
+          "number": "2",
+          "name": "Benjamin Nord Paskin",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 8,
+            "onePointMade": 0,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 6406025,
+          "personId": 425001,
+          "number": "42",
+          "name": "Chuma Mc Phoy Odenyo",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 6406027,
+          "personId": 457387,
+          "number": "5",
+          "name": "Fares Cherif",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 16,
+            "onePointMade": 3,
+            "twoPointMade": 2,
+            "threePointMade": 3,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 6406035,
+          "personId": 512579,
+          "number": "1",
+          "name": "Hawsoon Jobe",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 7,
+            "onePointMade": 1,
+            "twoPointMade": 0,
+            "threePointMade": 2,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 6406042,
+          "personId": 445544,
+          "number": "11",
+          "name": "Michael Brown",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 12,
+            "onePointMade": 2,
+            "twoPointMade": 2,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6406045,
+          "personId": 441575,
+          "number": "9",
+          "name": "Randall Brar Kalala",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 3,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 6406047,
+          "personId": 431924,
+          "number": "50",
+          "name": "Max Landgren",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 14,
+            "onePointMade": 2,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 6406055,
+          "personId": null,
+          "number": "",
+          "name": "Anton  Wennberg",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 6406057,
+          "personId": null,
+          "number": "",
+          "name": "Nicholas  Frederiksen",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}

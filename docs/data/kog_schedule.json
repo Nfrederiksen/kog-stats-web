@@ -261,14 +261,15 @@
     "location": "Bred\u00e4ngshallen",
     "dateLabel": "Sat 21.Mar 15:00",
     "tipoff": "2026-03-21T15:00:00+01:00",
-    "homeScore": null,
-    "awayScore": null,
-    "status": "upcoming",
-    "kogScore": null,
-    "opponentScore": null,
-    "pointDiff": null,
-    "result": null,
-    "hasStats": false
+    "homeScore": 60,
+    "awayScore": 53,
+    "status": "played",
+    "kogScore": 53,
+    "opponentScore": 60,
+    "pointDiff": -7,
+    "result": "loss",
+    "hasStats": true,
+    "opponentTeamId": 1404135
   },
   {
     "matchId": 32403370,
@@ -277,13 +278,14 @@
     "location": "Thorildshallen",
     "dateLabel": "Sun 29.Mar 16:15",
     "tipoff": "2026-03-29T16:15:00+02:00",
-    "homeScore": null,
-    "awayScore": null,
-    "status": "upcoming",
-    "kogScore": null,
-    "opponentScore": null,
-    "pointDiff": null,
-    "result": null,
-    "hasStats": false
+    "homeScore": 89,
+    "awayScore": 58,
+    "status": "played",
+    "kogScore": 89,
+    "opponentScore": 58,
+    "pointDiff": 31,
+    "result": "win",
+    "hasStats": true,
+    "opponentTeamId": 1404670
   }
 ]

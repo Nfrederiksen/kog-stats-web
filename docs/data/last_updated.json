@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-16T10:59:23.708847+00:00",
+  "generatedAt": "2026-03-29T19:22:04.751786+00:00",
   "gamesProcessed": [
     32403262,
     32403267,
@@ -14,26 +14,28 @@
     32403342,
     32403359,
     32403364,
+    32403367,
+    32403370,
     32423175,
     32425895
   ],
   "playersTracked": 23,
   "teamRecords": {
     "highestScore": {
-      "gameId": 32423175,
-      "opponent": "Vallentuna Eagles",
-      "opponentTeamId": 1459098,
-      "kogPoints": 85,
-      "opponentPoints": 57,
-      "pointDiff": 28
+      "gameId": 32403370,
+      "opponent": "Tyres\u00f6 Basket",
+      "opponentTeamId": 1404670,
+      "kogPoints": 89,
+      "opponentPoints": 58,
+      "pointDiff": 31
     },
     "biggestWin": {
-      "gameId": 32423175,
-      "opponent": "Vallentuna Eagles",
-      "opponentTeamId": 1459098,
-      "kogPoints": 85,
-      "opponentPoints": 57,
-      "pointDiff": 28
+      "gameId": 32403370,
+      "opponent": "Tyres\u00f6 Basket",
+      "opponentTeamId": 1404670,
+      "kogPoints": 89,
+      "opponentPoints": 58,
+      "pointDiff": 31
     },
     "toughestLoss": {
       "gameId": 32403279,
