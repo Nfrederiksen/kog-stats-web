@@ -1247,6 +1247,15 @@
         transform: scale(1.06);
         box-shadow: 0 12px 32px rgba(255, 107, 53, 0.5);
       }
+      .wrapped-btn--hero {
+        display: block;
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.85rem 1.4rem;
+        margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        position: relative;
+        z-index: 1;
+      }
       @keyframes wrappedGradient {
         0%, 100% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
@@ -1335,14 +1344,17 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         text-align: center;
         padding: 2.5rem 1.8rem;
-        gap: 1rem;
+        gap: 0.8rem;
         border-radius: 24px;
         opacity: 0;
         transform: translateX(100%);
         transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.45s ease;
+      }
+      .wrapped-card:not(:has(.wrapped-card__img-wrapper)) {
+        justify-content: center;
       }
       .wrapped-card.active {
         opacity: 1;
@@ -1351,6 +1363,46 @@
       .wrapped-card.exit-left {
         opacity: 0;
         transform: translateX(-100%);
+      }
+
+      .wrapped-card__img-wrapper {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 65%;
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+        z-index: 0;
+        overflow: hidden;
+      }
+      .wrapped-card__img-wrapper img {
+        max-width: 85%;
+        max-height: 100%;
+        object-fit: contain;
+        object-position: top;
+      }
+      .wrapped-card__img-wrapper--duo img {
+        max-width: 95%;
+      }
+      .wrapped-card__img-wrapper--wide {
+        height: 45%;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .wrapped-card__img-wrapper--wide img {
+        max-width: 92%;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+      .wrapped-card > *:not(.wrapped-card__img-wrapper) {
+        position: relative;
+        z-index: 1;
       }
 
       .wrapped-card__ascii {
@@ -1436,6 +1488,10 @@
     <main>
       <header></header>
 
+      <button type="button" class="wrapped-btn wrapped-btn--hero" id="wrappedBtn">
+        Season Wrapped
+      </button>
+
       <section class="totals" id="teamTotals"></section>
 
       <div class="content-switcher" id="contentSwitcher">
@@ -1444,9 +1500,6 @@
         </button>
         <button type="button" class="content-toggle content-toggle--active" id="toggleSchedulePanel" aria-expanded="true" aria-controls="schedulePanel">
           Schedule & Games
-        </button>
-        <button type="button" class="wrapped-btn" id="wrappedBtn">
-          Season Wrapped
         </button>
       </div>
 
@@ -2888,6 +2941,7 @@
             cards.push({
               cls: "wrapped-card--scorer",
               emoji: "\ud83d\udd25",
+              image: "assets/team-art/randall.png",
               ascii: isTie ? "" :
                 "      _____\n" +
                 "     |     |\n" +
@@ -2915,6 +2969,7 @@
               cls: "wrapped-card--ppg",
               emoji: "\u26a1",
               ascii: "",
+              image: "assets/team-art/max.png",
               label: ppgIsTie ? "Tied for PPG Leader" : "Points Per Game Leader",
               value: ppgVal.toFixed(1),
               sub: ppgTied.map((p) => p.name + " #" + p.number).join(" & "),
@@ -2931,6 +2986,8 @@
               cls: "wrapped-card--ironman",
               emoji: "\ud83e\uddbe",
               ascii: "",
+              image: "assets/team-art/chu_anton.png",
+              imageDuo: true,
               label: gpIsTie ? "Tied for Mr. Reliable" : "Mr. Reliable",
               value: gpVal + "/" + played.length,
               sub: gpTied.map((p) => p.name).join(" & "),
@@ -2945,13 +3002,9 @@
             cards.push({
               cls: "wrapped-card--bigwin",
               emoji: "\ud83d\udca5",
-              ascii:
-                "  ___________\n" +
-                " |           |\n" +
-                " | " + String(biggestWin.kogScore).padStart(2, " ") + "  -  " + String(biggestWin.opponentScore).padStart(2, " ") + " |\n" +
-                " |___________|\n" +
-                "    |  |  |\n" +
-                "    SCOREBOARD",
+              image: "assets/team-art/biggest_score.png",
+              imageWide: true,
+              ascii: "",
               label: "Biggest Win",
               value: "+" + biggestWin.pointDiff,
               sub: "vs " + biggestWin.opponent,
@@ -2971,6 +3024,8 @@
               cls: "wrapped-card--sniper",
               emoji: "\ud83c\udfd0",
               ascii: "",
+              image: "assets/team-art/fares_randall.png",
+              imageDuo: true,
               label: threeIsTie ? "Tied for Three-Point King" : "Three-Point King",
               value: threeVal + " triples" + (threeIsTie ? " each" : ""),
               sub: threeTied.map((p) => p.name).join(" & "),
@@ -3004,6 +3059,7 @@
               cls: "wrapped-card--threerain",
               emoji: "\ud83c\udfaf",
               ascii: "",
+              image: "assets/team-art/fares.png",
               label: "Raining Threes",
               value: teamThrees + " triples",
               sub: "As a team this season",
@@ -3021,6 +3077,7 @@
             cards.push({
               cls: "wrapped-card--ftline",
               emoji: "\ud83e\uddf2",
+              image: "assets/team-art/max.png",
               ascii:
                 "     |     |\n" +
                 "     |  O  |\n" +
@@ -3045,6 +3102,7 @@
               cls: "wrapped-card--impact",
               emoji: "\ud83d\udca3",
               ascii: "",
+              image: "assets/team-art/michael.png",
               label: impIsTie ? "Tied for Impact Sub" : "Impact Sub",
               value: impVal.toFixed(1) + " PPG",
               sub: impTied.map((p) => p.name + " #" + p.number).join(" & "),
@@ -3107,6 +3165,7 @@
               cls: "wrapped-card--fouls",
               emoji: "\ud83d\udea8",
               ascii: "",
+              image: "assets/team-art/chu.png",
               label: "Foul Trouble",
               value: teamFouls + " FOULS",
               sub: "Across the whole squad",
@@ -3153,6 +3212,7 @@
             const el = document.createElement("div");
             el.className = "wrapped-card " + c.cls + (i === 0 ? " active" : "");
             el.innerHTML =
+              (c.image ? '<div class="wrapped-card__img-wrapper' + (c.imageDuo ? ' wrapped-card__img-wrapper--duo' : '') + (c.imageWide ? ' wrapped-card__img-wrapper--wide' : '') + '"><img src="' + c.image + '" alt=""></div>' : "") +
               (c.ascii ? '<div class="wrapped-card__ascii">' + c.ascii + "</div>" : "") +
               (c.emoji ? '<div class="wrapped-card__emoji">' + c.emoji + "</div>" : "") +
               '<div class="wrapped-card__label">' + c.label + "</div>" +
