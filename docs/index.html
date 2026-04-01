@@ -2916,7 +2916,7 @@
             label: "Your Season in Review",
             value: "WRAPPED",
             sub: "Kungsholmen OG 2025-26",
-            detail: played.length + " games \u00b7 " + totalKog + " total points scored",
+            detail: played.length + " games \u00b7 1 season \u00b7 endless memories",
           });
 
           // 2 - Record
@@ -2941,15 +2941,7 @@
               cls: "wrapped-card--scorer",
               emoji: "\ud83d\udd25",
               image: "assets/team-art/randall.png",
-              ascii: isTie ? "" :
-                "      _____\n" +
-                "     |     |\n" +
-                "     | #" + top.number.toString().padStart(2, " ") + " |\n" +
-                "     |_____|\n" +
-                "     /|   |\\\n" +
-                "    / |   | \\\n" +
-                "      |   |\n" +
-                "     /     \\",
+              ascii: "",
               label: isTie ? "Tied for Top Scorer" : "Top Scorer",
               value: topVal + " PTS",
               sub: topTied.map((p) => p.name).join(" & "),
@@ -3045,24 +3037,22 @@
             label: "Squad Depth",
             value: players.length + " PLAYERS",
             sub: "Suited up for KOG this season",
-            detail: ftSorted.length > 0 ? "Most FTs: " + ftSorted[0].name + " (" + ftSorted[0].freeThrowsMade + ")" : "",
+            detail: "",
           });
 
-          // 9 - Three-point rain: team total + individual shares
+          // 9 - Three-point scoring share
           if (teamThrees > 0) {
-            const topTwo3 = [...players].sort((a, b) => b.threePointsMade - a.threePointsMade).slice(0, 2);
-            const topTwo3Total = topTwo3.reduce((s, p) => s + p.threePointsMade, 0);
-            const pct = Math.round((topTwo3Total / teamThrees) * 100);
-            const bar3 = topTwo3.map((p) => p.name.split(" ")[0] + " " + "\u2588".repeat(p.threePointsMade)).join("\n");
+            const threePoints = teamThrees * 3;
+            const threePct = Math.round((threePoints / totalKog) * 100);
             cards.push({
               cls: "wrapped-card--threerain",
               emoji: "\ud83c\udfaf",
               ascii: "",
               image: "assets/team-art/fares.png",
-              label: "Raining Threes",
-              value: teamThrees + " triples",
-              sub: "As a team this season",
-              detail: bar3 + "\n" + topTwo3[0].name.split(" ")[0] + " & " + topTwo3[1].name.split(" ")[0] + " combined for " + pct + "% of them",
+              label: "From Beyond the Arc",
+              value: teamThrees + " threes",
+              sub: threePoints + " points from downtown",
+              detail: threePct + "% of KOG's " + totalKog + " total points came from three",
             });
           }
 
@@ -3077,13 +3067,7 @@
               cls: "wrapped-card--ftline",
               emoji: "\ud83e\uddf2",
               image: "assets/team-art/max.png",
-              ascii:
-                "     |     |\n" +
-                "     |  O  |\n" +
-                "     | /|\\ |\n" +
-                "     | / \\ |\n" +
-                "  ___|_____|___\n" +
-                "  FREE  THROWS",
+              ascii: "",
               label: ftIsTie ? "Tied for FT Machine" : "Free Throw Machine",
               value: ftVal + " FTs" + (ftIsTie ? " each" : ""),
               sub: ftTied.map((p) => p.name).join(" & "),
