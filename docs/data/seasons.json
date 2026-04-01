@@ -1,0 +1,18 @@
+[
+  {
+    "key": "25-26",
+    "label": "2025-26",
+    "gamesPlayed": 17,
+    "gamesScheduled": 17,
+    "hasStats": true,
+    "record": "6W-11L"
+  },
+  {
+    "key": "24-25",
+    "label": "2024-25",
+    "gamesPlayed": 26,
+    "gamesScheduled": 26,
+    "hasStats": true,
+    "record": "11W-15L"
+  }
+]

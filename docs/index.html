@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>KOG Player Stats</title>
     <style>
-      :root {
+      :root,
+      [data-season="25-26"] {
         color-scheme: dark;
         --bg-gradient: radial-gradient(circle at top, #151a33 0%, #05070e 55%, #010103 100%);
         --card-bg: rgba(12, 16, 34, 0.75);
@@ -18,6 +19,34 @@
         --divider: rgba(90, 105, 158, 0.35);
         --badge-bg: rgba(70, 194, 255, 0.12);
         --badge-text: #7fd6ff;
+      }
+
+      [data-season="24-25"] {
+        --bg-gradient: radial-gradient(circle at top, #2a0f1e 0%, #0e0408 55%, #030102 100%);
+        --card-bg: rgba(34, 12, 22, 0.75);
+        --card-border: rgba(150, 60, 100, 0.35);
+        --glow: 0 24px 60px rgba(67, 16, 42, 0.55);
+        --accent: #e8566c;
+        --accent-soft: rgba(232, 86, 108, 0.18);
+        --text-primary: #ffe6ec;
+        --text-muted: #c78a9a;
+        --divider: rgba(158, 70, 100, 0.35);
+        --badge-bg: rgba(232, 86, 108, 0.12);
+        --badge-text: #ff8fa3;
+      }
+
+      [data-season="23-24"] {
+        --bg-gradient: radial-gradient(circle at top, #0a2a1a 0%, #04100a 55%, #010302 100%);
+        --card-bg: rgba(8, 34, 20, 0.75);
+        --card-border: rgba(50, 150, 100, 0.35);
+        --glow: 0 24px 60px rgba(10, 67, 42, 0.55);
+        --accent: #34d399;
+        --accent-soft: rgba(52, 211, 153, 0.18);
+        --text-primary: #e6fff5;
+        --text-muted: #82c7a8;
+        --divider: rgba(60, 158, 120, 0.35);
+        --badge-bg: rgba(52, 211, 153, 0.12);
+        --badge-text: #5eead4;
       }
 
       * {
@@ -52,8 +81,8 @@
         position: absolute;
         inset: 0;
         pointer-events: none;
-        background: radial-gradient(circle at 25% 15%, rgba(70, 194, 255, 0.22), transparent 55%),
-          radial-gradient(circle at 80% 0%, rgba(125, 214, 255, 0.12), transparent 60%);
+        background: radial-gradient(circle at 25% 15%, var(--accent-soft), transparent 55%),
+          radial-gradient(circle at 80% 0%, var(--accent-soft), transparent 60%);
         filter: blur(0.5px);
       }
 
@@ -84,7 +113,7 @@
         height: clamp(64px, 12vw, 92px);
         object-fit: cover;
         border-radius: 50%;
-        border: 2px solid rgba(70, 194, 255, 0.35);
+        border: 2px solid var(--accent-soft);
         box-shadow: 0 12px 28px rgba(16, 32, 72, 0.45);
         background: rgba(4, 6, 14, 0.6);
       }
@@ -191,7 +220,7 @@
       }
 
       thead {
-        background: linear-gradient(95deg, rgba(70, 194, 255, 0.18), rgba(70, 194, 255, 0.05));
+        background: linear-gradient(95deg, var(--accent-soft), transparent);
       }
 
       th,
@@ -227,7 +256,7 @@
       }
 
       tbody tr:hover {
-        background: rgba(70, 194, 255, 0.06);
+        background: var(--accent-soft);
         transform: translateY(-2px);
       }
 
@@ -293,8 +322,8 @@
       }
 
       .content-toggle--active {
-        background: rgba(70, 194, 255, 0.16);
-        border-color: rgba(70, 194, 255, 0.46);
+        background: var(--accent-soft);
+        border-color: var(--accent);
         color: var(--accent);
       }
 
@@ -419,13 +448,13 @@
       }
 
       .game-card {
-        border: 1px solid rgba(96, 108, 162, 0.24);
+        border: 1px solid var(--card-border);
         background: rgba(7, 10, 22, 0.62);
         border-radius: 18px;
         padding: 1rem 1.2rem;
         display: grid;
         gap: 0.65rem;
-        box-shadow: inset 0 1px 0 rgba(70, 194, 255, 0.12);
+        box-shadow: inset 0 1px 0 var(--accent-soft);
       }
 
       .game-card--next {
@@ -527,7 +556,7 @@
       .team-photo img {
         width: min(460px, 90%);
         border-radius: 22px;
-        border: 2px solid rgba(70, 194, 255, 0.25);
+        border: 2px solid var(--accent-soft);
         box-shadow: 0 20px 48px rgba(12, 26, 66, 0.45);
         object-fit: cover;
       }
@@ -562,7 +591,7 @@
         gap: 0.4rem;
         padding: 0.55rem 1rem;
         border-radius: 999px;
-        border: 1px solid rgba(70, 194, 255, 0.26);
+        border: 1px solid var(--accent-soft);
         color: var(--badge-text);
         text-decoration: none;
         letter-spacing: 0.08em;
@@ -580,7 +609,7 @@
         margin-top: 1.6rem;
         padding: 1.1rem 1.3rem;
         border-radius: 14px;
-        border: 1px dashed rgba(70, 194, 255, 0.42);
+        border: 1px dashed var(--accent);
         background: rgba(4, 7, 18, 0.65);
         color: var(--badge-text);
         font-size: 0.88rem;
@@ -1226,6 +1255,50 @@
         color: var(--accent);
       }
 
+      /* ── Season Selector ── */
+      .season-selector {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        position: relative;
+        z-index: 1;
+      }
+
+      .season-pill {
+        appearance: none;
+        border: 1px solid var(--card-border);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text-muted);
+        border-radius: 999px;
+        padding: 0.5rem 1.1rem;
+        font: inherit;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: transform 140ms ease, border-color 140ms ease, background 140ms ease, color 140ms ease;
+      }
+
+      .season-pill:hover {
+        transform: translateY(-1px);
+        border-color: var(--accent);
+        color: var(--text-primary);
+      }
+
+      .season-pill--active {
+        background: var(--accent-soft);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .season-pill__record {
+        font-weight: 400;
+        font-size: 0.72rem;
+        opacity: 0.7;
+        margin-left: 0.3rem;
+      }
+
       /* ── Season Wrapped ── */
       .wrapped-btn {
         background: linear-gradient(135deg, #ff6b35, #f7c948, #ff6b35);
@@ -1488,6 +1561,8 @@
     <main>
       <header></header>
 
+      <div class="season-selector" id="seasonSelector"></div>
+
       <button type="button" class="wrapped-btn wrapped-btn--hero" id="wrappedBtn">
         Season Wrapped
       </button>
@@ -1637,6 +1712,7 @@
       const closeDetailBtn = document.getElementById("closeDetail");
       const closeTimelineBtn = document.getElementById("closeTimeline");
       const timelineSearch = document.getElementById("timelineSearch");
+      const seasonSelector = document.getElementById("seasonSelector");
       let playerStore = [];
       let scheduleStore = [];
       let timelineStore = [];
@@ -1646,22 +1722,22 @@
       let selectedTimelineQuarter = null;
       let selectedSide = "home";
       let sortState = { key: null, dir: "desc" };
+      let currentSeason = null;
+      let seasonsManifest = [];
       metaContainer.className = "meta";
-      header.appendChild(
-        (() => {
-          const lockup = document.createElement("div");
-          lockup.className = "team-lockup";
-          lockup.innerHTML = `
-            <img src="assets/team-logo.png" alt="Kungsholmen OG logo" class="team-logo" />
-            <div class="team-lockup__text">
-              <span>Season 2025</span>
-              <h1>Kungsholmen OG</h1>
-            </div>
-          `;
-          return lockup;
-        })()
-      );
+
+      const lockup = document.createElement("div");
+      lockup.className = "team-lockup";
+      lockup.innerHTML = `
+        <img src="assets/team-logo.png" alt="Kungsholmen OG logo" class="team-logo" />
+        <div class="team-lockup__text">
+          <span id="seasonTagline">Season 2025</span>
+          <h1>Kungsholmen OG</h1>
+        </div>
+      `;
+      header.appendChild(lockup);
       header.appendChild(metaContainer);
+      const seasonTagline = document.getElementById("seasonTagline");
 
       const modalOverlay = document.getElementById("playerModal");
       const modalName = document.getElementById("modalPlayerName");
@@ -1747,6 +1823,21 @@
             value: formatDiff(teamRecords.toughestLoss.pointDiff),
             subtitle: `vs ${teamRecords.toughestLoss.opponent} (${formatScoreLine(teamRecords.toughestLoss)})`
           });
+        }
+
+        // Win streak from schedule
+        const played = scheduleStore
+          .filter((g) => (g.status || "").toLowerCase() === "played" && g.tipoff)
+          .sort((a, b) => new Date(a.tipoff) - new Date(b.tipoff));
+        if (played.length) {
+          let best = 0, current = 0;
+          played.forEach((g) => {
+            if (g.result === "win") { current++; if (current > best) best = current; }
+            else { current = 0; }
+          });
+          if (best > 0) {
+            cards.push({ label: "Best Win Streak", value: `${best} games` });
+          }
         }
 
         const totalsEl = document.getElementById("teamTotals");
@@ -2466,7 +2557,7 @@
         selectedTimelineQuarter = null;
         selectedSide = "home";
 
-        fetch(`data/playbyplay/game_${matchId}.json`, { cache: "no-store" })
+        fetch(seasonDataPath(currentSeason, `playbyplay/game_${matchId}.json`), { cache: "no-store" })
           .then((response) => (response.ok ? response.json() : null))
           .then((data) => {
             if (!data || !data.timeline) {
@@ -2648,56 +2739,135 @@
         return counts.length ? Math.max(...counts) : 0;
       }
 
-      Promise.all([
-        fetch("data/kog_players.json", { cache: "no-store" })
-          .then((response) => (response.ok ? response.json() : []))
-          .catch(() => []),
-        fetch("data/last_updated.json", { cache: "no-store" })
-          .then((response) => (response.ok ? response.json() : null))
-          .catch(() => null),
-        fetch("data/kog_schedule.json", { cache: "no-store" })
-          .then((response) => (response.ok ? response.json() : []))
-          .catch(() => []),
-        fetch("data/kog_links.json", { cache: "no-store" })
-          .then((response) => (response.ok ? response.json() : []))
-          .catch(() => [])
-      ])
-        .then(([playersData, metadata, scheduleData, linksData]) => {
-          const players = Array.isArray(playersData) ? playersData : [];
-          const gamesCount = resolveGamesCount(players, metadata);
-          const playersTracked = metadata && typeof metadata.playersTracked === "number"
-            ? metadata.playersTracked
-            : players.length;
+      function seasonDataPath(seasonKey, file) {
+        return `data/${seasonKey}/${file}`;
+      }
 
-          playerStore = players;
+      function applySeasonTheme(seasonKey) {
+        document.documentElement.setAttribute("data-season", seasonKey);
+      }
 
-          renderBadges(players, metadata, gamesCount);
-          renderSchedule(Array.isArray(scheduleData) ? scheduleData : []);
-          renderLinks(Array.isArray(linksData) ? linksData : []);
+      function renderSeasonSelector() {
+        seasonSelector.innerHTML = "";
+        if (seasonsManifest.length <= 1) return;
 
-          if (!players.length) {
+        seasonsManifest.forEach((season) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "season-pill" + (season.key === currentSeason ? " season-pill--active" : "");
+          btn.innerHTML = season.label +
+            (season.record ? `<span class="season-pill__record">${season.record}</span>` : "");
+          btn.addEventListener("click", () => {
+            if (season.key === currentSeason) return;
+            switchSeason(season.key);
+          });
+          seasonSelector.appendChild(btn);
+        });
+      }
+
+      function loadSeasonData(seasonKey) {
+        currentSeason = seasonKey;
+        applySeasonTheme(seasonKey);
+
+        const seasonInfo = seasonsManifest.find((s) => s.key === seasonKey);
+        seasonTagline.textContent = seasonInfo ? `Season ${seasonInfo.label}` : `Season ${seasonKey}`;
+
+        // Update URL hash
+        history.replaceState(null, "", `#season=${seasonKey}`);
+
+        // Show/hide wrapped button based on whether season has stats
+        const wrappedBtn = document.getElementById("wrappedBtn");
+        if (wrappedBtn) {
+          wrappedBtn.style.display = (seasonInfo && seasonInfo.hasStats) ? "" : "none";
+        }
+
+        renderSeasonSelector();
+
+        return Promise.all([
+          fetch(seasonDataPath(seasonKey, "kog_players.json"), { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : []))
+            .catch(() => []),
+          fetch(seasonDataPath(seasonKey, "last_updated.json"), { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : null))
+            .catch(() => null),
+          fetch(seasonDataPath(seasonKey, "kog_schedule.json"), { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : []))
+            .catch(() => []),
+          fetch("data/kog_links.json", { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : []))
+            .catch(() => [])
+        ])
+          .then(([playersData, metadata, scheduleData, linksData]) => {
+            const players = Array.isArray(playersData) ? playersData : [];
+            const gamesCount = resolveGamesCount(players, metadata);
+            const playersTracked = metadata && typeof metadata.playersTracked === "number"
+              ? metadata.playersTracked
+              : players.length;
+
+            playerStore = players;
+
+            renderBadges(players, metadata, gamesCount);
+            renderSchedule(Array.isArray(scheduleData) ? scheduleData : []);
+            renderLinks(Array.isArray(linksData) ? linksData : []);
+
+            document.getElementById("noDataMessage").style.display = "none";
+
+            if (!players.length) {
+              document.getElementById("noDataMessage").style.display = "block";
+              document.getElementById("statsTable").innerHTML = "";
+              document.getElementById("teamTotals").innerHTML = "";
+              // If no stats but schedule exists, show schedule panel
+              if (Array.isArray(scheduleData) && scheduleData.length) {
+                setPanelOpen(schedulePanel, toggleSchedulePanelBtn, true);
+                setPanelOpen(statsPanel, toggleStatsPanelBtn, false);
+              } else {
+                statsPanel.hidden = false;
+                setPanelOpen(statsPanel, toggleStatsPanelBtn, true);
+              }
+              return;
+            }
+
+            renderTable(players);
+            renderTotals(
+              computeTeamTotals(players),
+              gamesCount,
+              playersTracked,
+              metadata?.teamRecords || null,
+              metadata?.playerRecords || null
+            );
+          })
+          .catch(() => {
             document.getElementById("noDataMessage").style.display = "block";
+            renderBadges([], null, 0);
+            renderSchedule([]);
+            renderLinks([]);
             statsPanel.hidden = false;
             setPanelOpen(statsPanel, toggleStatsPanelBtn, true);
-            return;
-          }
+          });
+      }
 
-          renderTable(players);
-          renderTotals(
-            computeTeamTotals(players),
-            gamesCount,
-            playersTracked,
-            metadata?.teamRecords || null,
-            metadata?.playerRecords || null
-          );
-        })
-        .catch(() => {
-          document.getElementById("noDataMessage").style.display = "block";
-          renderBadges([], null, 0);
-          renderSchedule([]);
-          renderLinks([]);
-          statsPanel.hidden = false;
-          setPanelOpen(statsPanel, toggleStatsPanelBtn, true);
+      function switchSeason(seasonKey) {
+        loadSeasonData(seasonKey);
+      }
+
+      // Boot: load manifest, then load the right season
+      function getInitialSeason() {
+        const hash = location.hash.replace("#", "");
+        const params = new URLSearchParams(hash);
+        return params.get("season") || null;
+      }
+
+      fetch("data/seasons.json", { cache: "no-store" })
+        .then((r) => (r.ok ? r.json() : []))
+        .catch(() => [])
+        .then((manifest) => {
+          seasonsManifest = Array.isArray(manifest) ? manifest : [];
+          const requested = getInitialSeason();
+          const defaultKey = seasonsManifest.length ? seasonsManifest[0].key : "25-26";
+          const seasonKey = (requested && seasonsManifest.some((s) => s.key === requested))
+            ? requested
+            : defaultKey;
+          loadSeasonData(seasonKey);
         });
 
       function openPlayerModal(data) {
@@ -2886,7 +3056,43 @@
         let wrappedIndex = 0;
         let wrappedCards = [];
 
-        function buildCards(players, schedule) {
+        // Player name → art file mapping. First name match (case-insensitive).
+        const playerArt = {
+          "randall": "assets/team-art/randall.png",
+          "max": "assets/team-art/max.png",
+          "chu": "assets/team-art/chu.png",
+          "anton": "assets/team-art/anton.png",
+          "fares": "assets/team-art/fares.png",
+          "michael": "assets/team-art/michael.png",
+          "nicholas": "assets/team-art/nicholas.png",
+          "kalle": "assets/team-art/kalle.png",
+          "sander": "assets/team-art/sander.png",
+        };
+        const duoArt = {
+          "chu+anton": "assets/team-art/chu_anton.png",
+          "anton+chu": "assets/team-art/chu_anton.png",
+          "fares+randall": "assets/team-art/fares_randall.png",
+          "randall+fares": "assets/team-art/fares_randall.png",
+          "fares+nicholas": "assets/team-art/fares_nicholas.png",
+          "nicholas+fares": "assets/team-art/fares_nicholas.png",
+        };
+
+        function artFor(name) {
+          if (!name) return null;
+          const first = name.split(/\s+/)[0].toLowerCase();
+          return playerArt[first] || null;
+        }
+
+        function duoArtFor(names) {
+          if (!Array.isArray(names) || names.length < 2) return null;
+          const firsts = names.map((n) => (n || "").split(/\s+/)[0].toLowerCase());
+          return duoArt[firsts[0] + "+" + firsts[1]] || duoArt[firsts[1] + "+" + firsts[0]] || null;
+        }
+
+        function buildCards(players, schedule, metadata) {
+          const seasonInfo = seasonsManifest.find((s) => s.key === currentSeason);
+          const seasonLabel = seasonInfo ? seasonInfo.label : currentSeason || "2025-26";
+          const playerRecords = (metadata && metadata.playerRecords) || {};
           const played = schedule.filter((g) => g.status === "played");
           const wins = played.filter((g) => g.result === "win");
           const losses = played.filter((g) => g.result === "loss");
@@ -2909,13 +3115,13 @@
               "    ,##.         ,##.\n" +
               "  ,#    #.     ,#    #.\n" +
               " #        #   #        #\n" +
-              " #  KOG   #   #  2026  #\n" +
+              " #  KOG   #   #  " + seasonLabel.slice(-2) + "  #\n" +
               "  '#    #'     '#    #'\n" +
               "    '##'         '##'",
             emoji: "",
             label: "Your Season in Review",
             value: "WRAPPED",
-            sub: "Kungsholmen OG 2025-26",
+            sub: "Kungsholmen OG " + seasonLabel,
             detail: played.length + " games \u00b7 1 season \u00b7 endless memories",
           });
 
@@ -2937,10 +3143,12 @@
             const topTied = sorted.filter((p) => p.totalPoints === topVal);
             const isTie = topTied.length > 1;
             const top = sorted[0];
+            const topImg = isTie ? (duoArtFor(topTied.map((p) => p.name)) || artFor(top.name)) : artFor(top.name);
             cards.push({
               cls: "wrapped-card--scorer",
               emoji: "\ud83d\udd25",
-              image: "assets/team-art/randall.png",
+              image: topImg,
+              imageDuo: isTie && !!duoArtFor(topTied.map((p) => p.name)),
               ascii: "",
               label: isTie ? "Tied for Top Scorer" : "Top Scorer",
               value: topVal + " PTS",
@@ -2956,11 +3164,13 @@
             const ppgVal = ppgSorted[0].pointsPerGame;
             const ppgTied = ppgSorted.filter((p) => p.pointsPerGame === ppgVal);
             const ppgIsTie = ppgTied.length > 1;
+            const ppgImg = ppgIsTie ? (duoArtFor(ppgTied.map((p) => p.name)) || artFor(ppgSorted[0].name)) : artFor(ppgSorted[0].name);
             cards.push({
               cls: "wrapped-card--ppg",
               emoji: "\u26a1",
               ascii: "",
-              image: "assets/team-art/max.png",
+              image: ppgImg,
+              imageDuo: ppgIsTie && !!duoArtFor(ppgTied.map((p) => p.name)),
               label: ppgIsTie ? "Tied for PPG Leader" : "Points Per Game Leader",
               value: ppgVal.toFixed(1),
               sub: ppgTied.map((p) => p.name + " #" + p.number).join(" & "),
@@ -2973,12 +3183,13 @@
             const gpVal = gpSorted[0].gamesPlayed;
             const gpTied = gpSorted.filter((p) => p.gamesPlayed === gpVal);
             const gpIsTie = gpTied.length > 1;
+            const gpImg = gpIsTie ? (duoArtFor(gpTied.map((p) => p.name)) || artFor(gpSorted[0].name)) : artFor(gpSorted[0].name);
             cards.push({
               cls: "wrapped-card--ironman",
               emoji: "\ud83e\uddbe",
               ascii: "",
-              image: "assets/team-art/chu_anton.png",
-              imageDuo: true,
+              image: gpImg,
+              imageDuo: gpIsTie && !!duoArtFor(gpTied.map((p) => p.name)),
               label: gpIsTie ? "Tied for Mr. Reliable" : "Mr. Reliable",
               value: gpVal + "/" + played.length,
               sub: gpTied.map((p) => p.name).join(" & "),
@@ -2990,16 +3201,48 @@
 
           // 6 - Biggest win
           if (biggestWin) {
+            const hasBigWinPhoto = currentSeason === "25-26";
             cards.push({
               cls: "wrapped-card--bigwin",
-              emoji: "\ud83d\udca5",
-              image: "assets/team-art/biggest_score.png",
-              imageWide: true,
+              emoji: hasBigWinPhoto ? "\ud83d\udca5" : "\ud83c\udfc0\ud83d\udd25\ud83c\udfc0",
+              image: hasBigWinPhoto ? "assets/team-art/biggest_score.png" : null,
+              imageWide: hasBigWinPhoto,
               ascii: "",
               label: "Biggest Win",
               value: "+" + biggestWin.pointDiff,
               sub: "vs " + biggestWin.opponent,
               detail: biggestWin.dateLabel,
+            });
+          }
+
+          // 6b - Most points in a single game
+          const mostPts = playerRecords.mostPointsInGame;
+          if (mostPts && mostPts.points > 0) {
+            cards.push({
+              cls: "wrapped-card--ppg",
+              emoji: "\ud83e\udd69",
+              image: artFor(mostPts.player),
+              ascii: "",
+              label: "Single-Game High",
+              value: mostPts.points + " PTS",
+              sub: mostPts.player,
+              detail: "vs " + (mostPts.opponent || "?") + (mostPts.dateLabel ? " \u00b7 " + mostPts.dateLabel : ""),
+            });
+          }
+
+          // 6c - Most 3PT in a single game
+          const mostThrees = playerRecords.mostThreesInGame;
+          if (mostThrees && mostThrees.threePointers > 0) {
+            const rain = "\ud83c\udfaf".repeat(Math.min(mostThrees.threePointers, 8));
+            cards.push({
+              cls: "wrapped-card--sniper",
+              emoji: "\ud83c\udf27\ufe0f",
+              image: artFor(mostThrees.player),
+              ascii: "",
+              label: "3PT Game Record",
+              value: mostThrees.threePointers + " THREES",
+              sub: mostThrees.player,
+              detail: rain + "\nvs " + (mostThrees.opponent || "?") + (mostThrees.dateLabel ? " \u00b7 " + mostThrees.dateLabel : ""),
             });
           }
 
@@ -3011,12 +3254,13 @@
             const threeIsTie = threeTied.length > 1;
             const combinedPct = Math.round((threeVal * threeTied.length / teamThrees) * 100);
             const bombs = "\ud83c\udfaf".repeat(Math.min(threeVal, 8));
+            const threeImg = threeIsTie ? (duoArtFor(threeTied.map((p) => p.name)) || artFor(threeSorted[0].name)) : artFor(threeSorted[0].name);
             cards.push({
               cls: "wrapped-card--sniper",
               emoji: "\ud83c\udfd0",
               ascii: "",
-              image: "assets/team-art/fares_randall.png",
-              imageDuo: true,
+              image: threeImg,
+              imageDuo: threeIsTie && !!duoArtFor(threeTied.map((p) => p.name)),
               label: threeIsTie ? "Tied for Three-Point King" : "Three-Point King",
               value: threeVal + " triples" + (threeIsTie ? " each" : ""),
               sub: threeTied.map((p) => p.name).join(" & "),
@@ -3048,7 +3292,7 @@
               cls: "wrapped-card--threerain",
               emoji: "\ud83c\udfaf",
               ascii: "",
-              image: "assets/team-art/fares.png",
+              image: artFor(threeSorted[0].name),
               label: "From Beyond the Arc",
               value: teamThrees + " threes",
               sub: threePoints + " points from downtown",
@@ -3063,10 +3307,12 @@
             const ftIsTie = ftTied.length > 1;
             const teamFT = players.reduce((s, p) => s + p.freeThrowsMade, 0);
             const ftPct = Math.round((ftVal * ftTied.length / teamFT) * 100);
+            const ftImg = ftIsTie ? (duoArtFor(ftTied.map((p) => p.name)) || artFor(ftSorted[0].name)) : artFor(ftSorted[0].name);
             cards.push({
               cls: "wrapped-card--ftline",
               emoji: "\ud83e\uddf2",
-              image: "assets/team-art/max.png",
+              image: ftImg,
+              imageDuo: ftIsTie && !!duoArtFor(ftTied.map((p) => p.name)),
               ascii: "",
               label: ftIsTie ? "Tied for FT Machine" : "Free Throw Machine",
               value: ftVal + " FTs" + (ftIsTie ? " each" : ""),
@@ -3081,11 +3327,13 @@
             const impVal = impactPlayers[0].pointsPerGame;
             const impTied = impactPlayers.filter((p) => p.pointsPerGame === impVal);
             const impIsTie = impTied.length > 1;
+            const impImg = impIsTie ? (duoArtFor(impTied.map((p) => p.name)) || artFor(impactPlayers[0].name)) : artFor(impactPlayers[0].name);
             cards.push({
               cls: "wrapped-card--impact",
               emoji: "\ud83d\udca3",
               ascii: "",
-              image: "assets/team-art/michael.png",
+              image: impImg,
+              imageDuo: impIsTie && !!duoArtFor(impTied.map((p) => p.name)),
               label: impIsTie ? "Tied for Impact Sub" : "Impact Sub",
               value: impVal.toFixed(1) + " PPG",
               sub: impTied.map((p) => p.name + " #" + p.number).join(" & "),
@@ -3148,7 +3396,7 @@
               cls: "wrapped-card--fouls",
               emoji: "\ud83d\udea8",
               ascii: "",
-              image: "assets/team-art/chu.png",
+              image: artFor(foulSorted[0].name),
               label: "Foul Trouble",
               value: teamFouls + " FOULS",
               sub: "Across the whole squad",
@@ -3167,7 +3415,7 @@
               ascii:
                 "  *  *  *  *  *  *\n" +
                 " ***  KOG  ***\n" +
-                "  * 2025-26 *\n" +
+                "  * " + seasonLabel + " *\n" +
                 "  *  *  *  *  *  *",
               label: "Season Finale",
               value: lastGame.kogScore + " \u2013 " + lastGame.opponentScore,
@@ -3241,11 +3489,13 @@
         }
 
         function openWrapped() {
+          const season = currentSeason || "25-26";
           Promise.all([
-            fetch("data/kog_players.json").then((r) => r.json()),
-            fetch("data/kog_schedule.json").then((r) => r.json()),
+            fetch(seasonDataPath(season, "kog_players.json")).then((r) => r.json()),
+            fetch(seasonDataPath(season, "kog_schedule.json")).then((r) => r.json()),
+            fetch(seasonDataPath(season, "last_updated.json")).then((r) => r.ok ? r.json() : null).catch(() => null),
           ]).then(function (data) {
-            const cards = buildCards(data[0], data[1]);
+            const cards = buildCards(data[0], data[1], data[2]);
             renderWrapped(cards);
             overlay.classList.add("visible");
             document.body.style.overflow = "hidden";

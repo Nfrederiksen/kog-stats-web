@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Fetch every EMP feed listed in data/sources.txt, store raw copies,
-and rebuild the processed stats + site data.
+Fetch every EMP feed listed in data/sources_*.txt files, store raw copies,
+and rebuild the processed stats + site data for all seasons.
 """
 from __future__ import annotations
 
@@ -15,17 +15,19 @@ from typing import Iterable, Tuple
 from build_stats import main as build_stats_main
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCES_FILE = ROOT / "data" / "sources.txt"
 RAW_DIR = ROOT / "data" / "raw"
 
 EMP_PATTERN = re.compile(r"/emp/(\d+)/")
 
 
-def read_sources() -> Iterable[str]:
-    if not SOURCES_FILE.exists():
-        raise SystemExit(f"Sources file not found: {SOURCES_FILE}")
+def discover_source_files() -> list[Path]:
+    """Find all sources_*.txt files in data/."""
+    data_dir = ROOT / "data"
+    return sorted(data_dir.glob("sources_*.txt"))
 
-    with SOURCES_FILE.open("r", encoding="utf-8") as handle:
+
+def read_sources(source_file: Path) -> Iterable[str]:
+    with source_file.open("r", encoding="utf-8") as handle:
         for line in handle:
             cleaned = line.strip()
             if not cleaned or cleaned.startswith("#"):
@@ -64,31 +66,42 @@ def write_raw_feed(match_id: int, data: bytes) -> Path:
 
 
 def main() -> None:
+    source_files = discover_source_files()
+    if not source_files:
+        print("No sources_*.txt files found in data/.")
+        print("Rebuilding from cached data…")
+        build_stats_main()
+        return
+
     fetched: list[Path] = []
-    for url in read_sources():
-        try:
-            match_id = parse_match_id(url)
-        except ValueError as exc:
-            print(f"[WARN] {exc}")
-            continue
+    for source_file in source_files:
+        season_label = source_file.stem.replace("sources_", "")
+        print(f"Processing sources for season {season_label}…")
 
-        cached_path = RAW_DIR / f"game_{match_id}.json"
-        if cached_path.exists():
-            print(f"Skipping game {match_id}; cached feed found at {cached_path}")
-            continue
+        for url in read_sources(source_file):
+            try:
+                match_id = parse_match_id(url)
+            except ValueError as exc:
+                print(f"[WARN] {exc}")
+                continue
 
-        try:
-            match_id, payload = fetch_feed(url, match_id)
-        except RuntimeError as exc:
-            print(f"[WARN] {exc}")
-            continue
+            cached_path = RAW_DIR / f"game_{match_id}.json"
+            if cached_path.exists():
+                print(f"  Skipping game {match_id}; cached feed found")
+                continue
 
-        path = write_raw_feed(match_id, payload)
-        fetched.append(path)
-        print(f"Saved game {match_id} -> {path}")
+            try:
+                match_id, payload = fetch_feed(url, match_id)
+            except RuntimeError as exc:
+                print(f"[WARN] {exc}")
+                continue
+
+            path = write_raw_feed(match_id, payload)
+            fetched.append(path)
+            print(f"  Saved game {match_id} -> {path}")
 
     if fetched:
-        print("Fetched new feeds; regenerating outputs…")
+        print(f"Fetched {len(fetched)} new feed(s); regenerating outputs…")
     else:
         print("No new feeds fetched; using cached data.")
 

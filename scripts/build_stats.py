@@ -5,9 +5,9 @@ Utility for transforming raw Profixio EMP feeds into site-ready JSON.
 Usage:
     python scripts/build_stats.py
 
-The script expects raw game feeds inside data/raw/ named like game_<id>.json.
-It will write per-game summaries into data/processed/ and publish the
-aggregated Kungsholmen OG player stats to docs/data/kog_players.json.
+The script discovers seasons from data/sources_XX-YY.txt and
+data/schedule_XX-YY.csv files.  Each season's output lands in
+docs/data/<season>/ and a manifest is written to docs/data/seasons.json.
 """
 from __future__ import annotations
 
@@ -17,25 +17,72 @@ import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Iterable, Tuple
+from typing import Dict, Iterable, List, Tuple
 from zoneinfo import ZoneInfo
 
-# Team id for Kungsholmen OG in Profixio
+# Default team id for Kungsholmen OG in Profixio (25-26 onward)
 KOG_TEAM_ID = 1403069
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw"
 PROCESSED_DIR = ROOT / "data" / "processed"
 SITE_DATA_DIR = ROOT / "docs" / "data"
-PLAY_BY_PLAY_DIR = SITE_DATA_DIR / "playbyplay"
-SCHEDULE_PATH = ROOT / "data" / "schedule.csv"
 LINKS_PATH = ROOT / "data" / "links.txt"
 
-# Static season details. Update SEASON_START_YEAR when rolling into a new campaign.
-SEASON_START_MONTH = 9  # September
-SEASON_START_YEAR = 2025
 SCHEDULE_TZ = ZoneInfo("Europe/Stockholm")
 
+# Season month where a new campaign starts (September).
+SEASON_START_MONTH = 9
+
+# Ordered list of seasons – latest first.  Each entry maps a season key
+# (e.g. "25-26") to its start year and a display label.
+SEASONS: list[dict] = [
+    {"key": "25-26", "startYear": 2025, "label": "2025-26", "teamId": 1403069},
+    {"key": "24-25", "startYear": 2024, "label": "2024-25", "teamId": 1264914},
+    # Add more seasons here as needed, newest first.
+]
+
+EMP_PATTERN = re.compile(r"/emp/(\d+)/")
+
+
+# ── Season discovery ────────────────────────────────────────────────────────
+
+def discover_seasons() -> list[dict]:
+    """Return list of season configs that have at least a schedule file."""
+    found: list[dict] = []
+    for season in SEASONS:
+        key = season["key"]
+        schedule_path = ROOT / "data" / f"schedule_{key}.csv"
+        sources_path = ROOT / "data" / f"sources_{key}.txt"
+        if not schedule_path.exists():
+            continue
+        found.append({
+            **season,
+            "schedulePath": schedule_path,
+            "sourcesPath": sources_path if sources_path.exists() else None,
+        })
+    return found
+
+
+def game_ids_for_season(season_cfg: dict) -> set[int]:
+    """Extract the set of game IDs listed in a season's sources file."""
+    sources_path = season_cfg.get("sourcesPath")
+    if not sources_path or not sources_path.exists():
+        return set()
+
+    ids: set[int] = set()
+    with sources_path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            cleaned = line.strip()
+            if not cleaned or cleaned.startswith("#"):
+                continue
+            match = EMP_PATTERN.search(cleaned)
+            if match:
+                ids.add(int(match.group(1)))
+    return ids
+
+
+# ── Player totals ───────────────────────────────────────────────────────────
 
 @dataclass
 class PlayerTotals:
@@ -99,18 +146,26 @@ class PlayerTotals:
         }
 
 
-def load_raw_games() -> Iterable[Tuple[int, dict]]:
+# ── Raw game loading ────────────────────────────────────────────────────────
+
+def load_raw_games(allowed_ids: set[int] | None = None) -> Iterable[Tuple[int, dict]]:
     pattern = re.compile(r"game_(\d+)\.json$")
     for raw_file in sorted(RAW_DIR.glob("game_*.json")):
         match = pattern.search(raw_file.name)
         if not match:
             continue
 
+        game_id = int(match.group(1))
+        if allowed_ids is not None and game_id not in allowed_ids:
+            continue
+
         with raw_file.open("r", encoding="utf-8") as handle:
-            yield int(match.group(1)), json.load(handle)
+            yield game_id, json.load(handle)
 
 
-def parse_schedule_datetime(raw_value: str) -> datetime | None:
+# ── Schedule parsing ────────────────────────────────────────────────────────
+
+def parse_schedule_datetime(raw_value: str, start_year: int) -> datetime | None:
     raw_value = " ".join((raw_value or "").strip().split())
     if not raw_value:
         return None
@@ -120,7 +175,7 @@ def parse_schedule_datetime(raw_value: str) -> datetime | None:
     except ValueError:
         return None
 
-    year = SEASON_START_YEAR
+    year = start_year
     if parsed.month < SEASON_START_MONTH:
         year += 1
 
@@ -139,12 +194,12 @@ def to_int(value: str | None) -> int | None:
         return None
 
 
-def load_schedule() -> Dict[int, dict]:
-    if not SCHEDULE_PATH.exists():
+def load_schedule(schedule_path: Path, start_year: int) -> Dict[int, dict]:
+    if not schedule_path.exists():
         return {}
 
     schedule: Dict[int, dict] = {}
-    with SCHEDULE_PATH.open("r", encoding="utf-8") as handle:
+    with schedule_path.open("r", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
         for row in reader:
             raw_id = (row.get("matchId") or "").strip()
@@ -157,7 +212,7 @@ def load_schedule() -> Dict[int, dict]:
 
             home_or_away = (row.get("homeOrAway") or "").strip().lower()
             raw_date = " ".join((row.get("date") or "").strip().split())
-            tipoff = parse_schedule_datetime(raw_date)
+            tipoff = parse_schedule_datetime(raw_date, start_year)
             home_score = to_int(row.get("homeScore"))
             away_score = to_int(row.get("awayScore"))
             status = "played" if home_score is not None and away_score is not None else "upcoming"
@@ -199,6 +254,8 @@ def load_schedule() -> Dict[int, dict]:
     return schedule
 
 
+# ── Play-by-play ────────────────────────────────────────────────────────────
+
 def format_clock(seconds: int | None) -> str | None:
     if seconds is None or seconds < 0:
         return None
@@ -210,6 +267,7 @@ def build_play_by_play(
     events: list[dict],
     schedule_entry: dict,
     opponent_team_id: int | None,
+    kog_team_id: int = KOG_TEAM_ID,
 ) -> list[dict]:
     kog_home = (schedule_entry.get("homeOrAway") or "").lower() == "home"
     opponent_name = schedule_entry.get("opponent") or "Opponent"
@@ -217,7 +275,7 @@ def build_play_by_play(
     def resolve_side(team_id: int | None, team_name: str | None) -> str | None:
         if team_id is None:
             return None
-        if team_id == KOG_TEAM_ID:
+        if team_id == kog_team_id:
             return "KOG"
         if opponent_team_id and team_id == opponent_team_id:
             return "Opponent"
@@ -379,16 +437,16 @@ def build_play_by_play(
     return timeline
 
 
-def publish_play_by_play(game_id: int, game: dict, schedule_entry: dict, opponent_team_id: int | None) -> None:
+def publish_play_by_play(game_id: int, game: dict, schedule_entry: dict, opponent_team_id: int | None, play_by_play_dir: Path, kog_team_id: int = KOG_TEAM_ID) -> None:
     events = game.get("events")
     if not events:
         return
 
-    timeline = build_play_by_play(events, schedule_entry, opponent_team_id)
+    timeline = build_play_by_play(events, schedule_entry, opponent_team_id, kog_team_id=kog_team_id)
     if not timeline:
         return
 
-    PLAY_BY_PLAY_DIR.mkdir(parents=True, exist_ok=True)
+    play_by_play_dir.mkdir(parents=True, exist_ok=True)
     payload = {
         "matchId": game_id,
         "opponent": schedule_entry.get("opponent"),
@@ -397,9 +455,11 @@ def publish_play_by_play(game_id: int, game: dict, schedule_entry: dict, opponen
         "dateLabel": schedule_entry.get("dateLabel"),
         "timeline": timeline,
     }
-    target = PLAY_BY_PLAY_DIR / f"game_{game_id}.json"
+    target = play_by_play_dir / f"game_{game_id}.json"
     target.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
+
+# ── Metrics helpers ─────────────────────────────────────────────────────────
 
 def apply_metrics_to_schedule(schedule: Dict[int, dict], metrics: Dict[str, object]) -> None:
     match_id = metrics.get("gameId")
@@ -442,8 +502,8 @@ def apply_metrics_to_schedule(schedule: Dict[int, dict], metrics: Dict[str, obje
         entry["opponent"] = opponent_name
 
 
-def publish_schedule(schedule: Dict[int, dict]) -> None:
-    SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
+def publish_schedule(schedule: Dict[int, dict], site_dir: Path) -> None:
+    site_dir.mkdir(parents=True, exist_ok=True)
 
     def sort_key(item: dict) -> datetime:
         tipoff = item.get("tipoff")
@@ -462,7 +522,7 @@ def publish_schedule(schedule: Dict[int, dict]) -> None:
             serialized["tipoff"] = None if not tipoff else str(tipoff)
         payload.append(serialized)
 
-    schedule_path = SITE_DATA_DIR / "kog_schedule.json"
+    schedule_path = site_dir / "kog_schedule.json"
     schedule_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
@@ -588,8 +648,9 @@ def aggregate_kog_players(
     teams: Dict[int, dict],
     totals: Dict[str, PlayerTotals],
     tipoff_ts: float | None = None,
+    kog_team_id: int = KOG_TEAM_ID,
 ) -> None:
-    kog_team = teams.get(KOG_TEAM_ID)
+    kog_team = teams.get(kog_team_id)
     if not kog_team:
         return
 
@@ -621,12 +682,12 @@ def aggregate_kog_players(
         )
 
 
-def compute_game_metrics(teams: Dict[int, dict], game_id: int | None = None) -> Dict[str, object] | None:
-    kog_team = teams.get(KOG_TEAM_ID)
+def compute_game_metrics(teams: Dict[int, dict], game_id: int | None = None, kog_team_id: int = KOG_TEAM_ID) -> Dict[str, object] | None:
+    kog_team = teams.get(kog_team_id)
     if not kog_team:
         return None
 
-    opponents = [team for team_id, team in teams.items() if team_id != KOG_TEAM_ID]
+    opponents = [team for team_id, team in teams.items() if team_id != kog_team_id]
     if not opponents:
         return None
 
@@ -648,12 +709,12 @@ def compute_game_metrics(teams: Dict[int, dict], game_id: int | None = None) -> 
     }
 
 
-def publish_kog_player_feed(totals: Dict[str, PlayerTotals]) -> None:
-    SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
+def publish_kog_player_feed(totals: Dict[str, PlayerTotals], site_dir: Path) -> None:
+    site_dir.mkdir(parents=True, exist_ok=True)
     rows = [player.as_row() for player in totals.values() if player.games_played]
     rows.sort(key=lambda r: r["name"].lower())
 
-    feed_path = SITE_DATA_DIR / "kog_players.json"
+    feed_path = site_dir / "kog_players.json"
     feed_path.write_text(json.dumps(rows, indent=2), encoding="utf-8")
 
 
@@ -662,12 +723,13 @@ def update_player_records(
     schedule: Dict[int, dict],
     player_records: Dict[str, dict],
     game_id: int | None = None,
+    kog_team_id: int = KOG_TEAM_ID,
 ) -> None:
-    kog_team = teams.get(KOG_TEAM_ID)
+    kog_team = teams.get(kog_team_id)
     if not kog_team:
         return
 
-    opponents = [team for team_id, team in teams.items() if team_id != KOG_TEAM_ID]
+    opponents = [team for team_id, team in teams.items() if team_id != kog_team_id]
     opponent = opponents[0] if opponents else {}
     opponent_name = (opponent.get("teamName") or "Opponent").strip() or "Opponent"
     schedule_row = schedule.get(game_id or 0, {})
@@ -711,8 +773,9 @@ def publish_metadata(
     totals: Dict[str, PlayerTotals],
     game_metrics: Iterable[Dict[str, object]],
     player_records: Dict[str, dict] | None,
+    site_dir: Path,
 ) -> None:
-    SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    site_dir.mkdir(parents=True, exist_ok=True)
     metadata = {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "gamesProcessed": sorted(set(game_ids)),
@@ -731,25 +794,44 @@ def publish_metadata(
             "biggestWin": max(positive, key=lambda m: m["pointDiff"]) if positive else None,
             "toughestLoss": min(negative, key=lambda m: m["pointDiff"]) if negative else None,
         }
-    meta_path = SITE_DATA_DIR / "last_updated.json"
+    meta_path = site_dir / "last_updated.json"
     meta_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
 
 
-def main() -> None:
-    if not RAW_DIR.exists():
-        raise SystemExit("No raw data found. Add EMP feeds to data/raw/ first.")
+# ── Per-season build ────────────────────────────────────────────────────────
 
-    schedule = load_schedule()
-    links = load_links()
+def build_season(season_cfg: dict) -> dict | None:
+    """Process one season and publish its data.  Returns season manifest entry or None."""
+    key = season_cfg["key"]
+    label = season_cfg["label"]
+    start_year = season_cfg["startYear"]
+    schedule_path = season_cfg["schedulePath"]
+    kog_team_id = season_cfg.get("teamId", KOG_TEAM_ID)
+
+    season_site_dir = SITE_DATA_DIR / key
+    play_by_play_dir = season_site_dir / "playbyplay"
+
+    schedule = load_schedule(schedule_path, start_year)
+    if not schedule:
+        return None
+
+    allowed_ids = game_ids_for_season(season_cfg)
 
     kog_totals: Dict[str, PlayerTotals] = {}
     processed_games: list[int] = []
     game_metrics: list[Dict[str, object]] = []
     player_records: dict[str, dict] = {}
+    has_stats = False
 
-    for game_id, game in load_raw_games():
+    for game_id, game in load_raw_games(allowed_ids or None):
+        # Only process games that are in this season's schedule or source list
+        if allowed_ids and game_id not in allowed_ids:
+            continue
+        has_stats = True
+
         teams = build_team_structures(game)
         write_game_summary(game_id, game, teams)
+
         tipoff = None
         schedule_entry = schedule.get(game_id)
         if schedule_entry:
@@ -763,25 +845,63 @@ def main() -> None:
                 except ValueError:
                     tipoff = None
 
-        aggregate_kog_players(game_id, teams, kog_totals, tipoff_ts=tipoff)
+        aggregate_kog_players(game_id, teams, kog_totals, tipoff_ts=tipoff, kog_team_id=kog_team_id)
         processed_games.append(game_id)
-        metrics = compute_game_metrics(teams, game_id=game_id)
-        update_player_records(teams, schedule, player_records, game_id=game_id)
+        metrics = compute_game_metrics(teams, game_id=game_id, kog_team_id=kog_team_id)
+        update_player_records(teams, schedule, player_records, game_id=game_id, kog_team_id=kog_team_id)
         if metrics:
             game_metrics.append(metrics)
             apply_metrics_to_schedule(schedule, metrics)
 
         opponent_team_id = None
         for team_id in teams:
-            if team_id != KOG_TEAM_ID:
+            if team_id != kog_team_id:
                 opponent_team_id = team_id
                 break
         if schedule_entry:
-            publish_play_by_play(game_id, game, schedule_entry, opponent_team_id)
+            publish_play_by_play(game_id, game, schedule_entry, opponent_team_id, play_by_play_dir, kog_team_id=kog_team_id)
 
-    publish_kog_player_feed(kog_totals)
-    publish_metadata(processed_games, kog_totals, game_metrics, player_records)
-    publish_schedule(schedule)
+    publish_kog_player_feed(kog_totals, season_site_dir)
+    publish_metadata(processed_games, kog_totals, game_metrics, player_records, season_site_dir)
+    publish_schedule(schedule, season_site_dir)
+
+    played = [g for g in schedule.values() if g.get("status") == "played"]
+    wins = sum(1 for g in played if g.get("result") == "win")
+    losses = sum(1 for g in played if g.get("result") == "loss")
+
+    return {
+        "key": key,
+        "label": label,
+        "gamesPlayed": len(played),
+        "gamesScheduled": len(schedule),
+        "hasStats": has_stats,
+        "record": f"{wins}W-{losses}L",
+    }
+
+
+# ── Main ────────────────────────────────────────────────────────────────────
+
+def main() -> None:
+    seasons = discover_seasons()
+    if not seasons:
+        raise SystemExit("No seasons found. Add schedule_XX-YY.csv files to data/.")
+
+    links = load_links()
+    manifest: list[dict] = []
+
+    for season_cfg in seasons:
+        print(f"Building season {season_cfg['label']}…")
+        entry = build_season(season_cfg)
+        if entry:
+            manifest.append(entry)
+            print(f"  → {entry['gamesPlayed']} played, stats={'yes' if entry['hasStats'] else 'no'}")
+
+    # Write seasons manifest
+    SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    manifest_path = SITE_DATA_DIR / "seasons.json"
+    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    print(f"Seasons manifest: {len(manifest)} season(s)")
+
     publish_links(links)
 
 

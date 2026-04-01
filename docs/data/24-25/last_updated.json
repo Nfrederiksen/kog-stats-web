@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-04-01T08:24:08.856834+00:00",
+  "gamesProcessed": [
+    31909571,
+    31909575,
+    31909582,
+    31909587,
+    31909593,
+    31909603,
+    31909605,
+    31909619,
+    31909624,
+    31909631,
+    31909633,
+    31909638,
+    31909647,
+    31909654,
+    31909661,
+    31909662,
+    31909672,
+    31909678,
+    31909682,
+    31909699,
+    31909705,
+    31909709,
+    31909715,
+    31909723,
+    31960888,
+    31967760
+  ],
+  "playersTracked": 25,
+  "teamRecords": {
+    "highestScore": {
+      "gameId": 31909705,
+      "opponent": "Viby Herr 4",
+      "opponentTeamId": 1266094,
+      "kogPoints": 89,
+      "opponentPoints": 50,
+      "pointDiff": 39
+    },
+    "biggestWin": {
+      "gameId": 31909705,
+      "opponent": "Viby Herr 4",
+      "opponentTeamId": 1266094,
+      "kogPoints": 89,
+      "opponentPoints": 50,
+      "pointDiff": 39
+    },
+    "toughestLoss": {
+      "gameId": 31909662,
+      "opponent": "Konyaspor",
+      "opponentTeamId": 1278942,
+      "kogPoints": 57,
+      "opponentPoints": 125,
+      "pointDiff": -68
+    }
+  },
+  "playerRecords": {
+    "mostThreesInGame": {
+      "gameId": 31909715,
+      "player": "Sander \u00d6hman",
+      "threePointers": 7,
+      "opponent": "Tyres\u00f6",
+      "opponentTeamId": 1267744,
+      "dateLabel": "Sun 13.Apr 12:45",
+      "tipoff": "2025-04-13T12:45:00+02:00"
+    },
+    "mostPointsInGame": {
+      "gameId": 31909654,
+      "player": "Nicholas Frederiksen",
+      "points": 25,
+      "opponent": "Odysseas",
+      "opponentTeamId": 1276984,
+      "dateLabel": "Sun 19.Jan 15:30",
+      "tipoff": "2025-01-19T15:30:00+01:00"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-04-01T08:24:08.735411+00:00",
+  "gamesProcessed": [
+    32403262,
+    32403267,
+    32403273,
+    32403279,
+    32403288,
+    32403308,
+    32403312,
+    32403326,
+    32403329,
+    32403340,
+    32403342,
+    32403359,
+    32403364,
+    32403367,
+    32403370,
+    32423175,
+    32425895
+  ],
+  "playersTracked": 23,
+  "teamRecords": {
+    "highestScore": {
+      "gameId": 32403370,
+      "opponent": "Tyres\u00f6 Basket",
+      "opponentTeamId": 1404670,
+      "kogPoints": 89,
+      "opponentPoints": 58,
+      "pointDiff": 31
+    },
+    "biggestWin": {
+      "gameId": 32403370,
+      "opponent": "Tyres\u00f6 Basket",
+      "opponentTeamId": 1404670,
+      "kogPoints": 89,
+      "opponentPoints": 58,
+      "pointDiff": 31
+    },
+    "toughestLoss": {
+      "gameId": 32403279,
+      "opponent": "KFUM Central Basket",
+      "opponentTeamId": 1402964,
+      "kogPoints": 42,
+      "opponentPoints": 88,
+      "pointDiff": -46
+    }
+  },
+  "playerRecords": {
+    "mostThreesInGame": {
+      "gameId": 32403364,
+      "player": "Fares Cherif",
+      "threePointers": 4,
+      "opponent": "Norrt\u00e4lje",
+      "opponentTeamId": 1401843,
+      "dateLabel": "Sun 15.Mar 18:00",
+      "tipoff": "2026-03-15T18:00:00+01:00"
+    },
+    "mostPointsInGame": {
+      "gameId": 32403288,
+      "player": "Max Landgren",
+      "points": 20,
+      "opponent": "Kungsholmen NY",
+      "opponentTeamId": 1403070,
+      "dateLabel": "Sun 9.Nov 16:15",
+      "tipoff": "2025-11-09T16:15:00+01:00"
+    }
+  }
+}
