@@ -1,0 +1,342 @@
+{
+  "gameId": 31570842,
+  "finalScore": {
+    "homeGoals": 64,
+    "awayGoals": 84
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1114613,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 2384317,
+          "personId": 435107,
+          "number": "0",
+          "name": "Alexander Mohamud",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2384318,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 0,
+            "twoPointMade": 5,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2384320,
+          "personId": 488754,
+          "number": "20",
+          "name": "Bijan Yousefi",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 2384403,
+          "personId": 456303,
+          "number": "21",
+          "name": "Daniel Amani Rud\u00e4ng",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2384408,
+          "personId": 473253,
+          "number": "9",
+          "name": "Daniel Yousefi Lidman",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2384416,
+          "personId": 457387,
+          "number": "5",
+          "name": "Fares Cherif",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 16,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 4,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 2384419,
+          "personId": 473251,
+          "number": "15",
+          "name": "Joakim Walles",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 2384421,
+          "personId": 454317,
+          "number": "10",
+          "name": "Lucas Evertsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 5,
+            "onePointMade": 1,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2384422,
+          "personId": 866087,
+          "number": "51",
+          "name": "Mattias Malmi Pauser",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 6,
+            "onePointMade": 2,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2384426,
+          "personId": 898013,
+          "number": "7",
+          "name": "Patrick Blom",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 9,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 1,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2384446,
+          "personId": 452525,
+          "number": "",
+          "name": "Arvin Parmozeh",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1133656,
+      "teamName": "Botkyrka Basket LTU",
+      "roster": [
+        {
+          "playerId": 2385943,
+          "personId": 428174,
+          "number": "13",
+          "name": "Arnas Zabarauskas",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 20,
+            "onePointMade": 2,
+            "twoPointMade": 6,
+            "threePointMade": 2,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2385949,
+          "personId": 452104,
+          "number": "11",
+          "name": "Aurimas Pocius",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 2385953,
+          "personId": 513505,
+          "number": "1",
+          "name": "Darius Vilcinskas",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 6,
+            "onePointMade": 4,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2385956,
+          "personId": 900926,
+          "number": "9",
+          "name": "Dominykas Niuniava",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2385958,
+          "personId": 468867,
+          "number": "23",
+          "name": "Evaldas Bernota",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 12,
+            "onePointMade": 4,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2385960,
+          "personId": 476346,
+          "number": "83",
+          "name": "Mihaljo Kvocka",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 14,
+            "onePointMade": 2,
+            "twoPointMade": 3,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2385961,
+          "personId": 900938,
+          "number": "99",
+          "name": "Tomas Banys",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 19,
+            "onePointMade": 2,
+            "twoPointMade": 4,
+            "threePointMade": 3,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2385963,
+          "personId": 598113,
+          "number": "5",
+          "name": "Arturas Tichonodas",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 5,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2386024,
+          "personId": null,
+          "number": "",
+          "name": "Niko Rajak",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}

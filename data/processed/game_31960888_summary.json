@@ -1,0 +1,358 @@
+{
+  "gameId": 31960888,
+  "finalScore": {
+    "homeGoals": 64,
+    "awayGoals": 57
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1306178,
+      "teamName": "Uppsala Basket",
+      "roster": [
+        {
+          "playerId": 3368524,
+          "personId": 471435,
+          "number": "24",
+          "name": "Adam J\u00e4rphagen",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3368527,
+          "personId": 468067,
+          "number": "29",
+          "name": "Anton Udith Ray",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3368528,
+          "personId": 117614,
+          "number": "12",
+          "name": "August Nagague",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 9,
+            "onePointMade": 3,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3368530,
+          "personId": 465640,
+          "number": "21",
+          "name": "Can Ugurlu",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 1,
+            "twoPointMade": 0,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3368532,
+          "personId": 464375,
+          "number": "41",
+          "name": "Gustaf Eklund",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3368536,
+          "personId": 483127,
+          "number": "82",
+          "name": "Ludwig De Geer",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 9,
+            "onePointMade": 1,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 3368537,
+          "personId": 470830,
+          "number": "33",
+          "name": "Olle Martinson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 2,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3368538,
+          "personId": 258448,
+          "number": "26",
+          "name": "Roem Khan",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3368540,
+          "personId": null,
+          "number": "75",
+          "name": "Alexander  Douhan",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 9,
+            "onePointMade": 1,
+            "twoPointMade": 1,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3369535,
+          "personId": null,
+          "number": "",
+          "name": "Roem  Khan",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1264914,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 3370626,
+          "personId": null,
+          "number": "",
+          "name": "Anton Wennberg",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3370627,
+          "personId": 435107,
+          "number": "6",
+          "name": "Alexander Mohamud",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 20,
+            "onePointMade": 0,
+            "twoPointMade": 10,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3370628,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 3370629,
+          "personId": 450268,
+          "number": "13",
+          "name": "Axel Forsberg",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 3,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3370630,
+          "personId": 507494,
+          "number": "1",
+          "name": "Erik Stark",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3370631,
+          "personId": 457387,
+          "number": "5",
+          "name": "Fares Cherif",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 3370632,
+          "personId": 473251,
+          "number": "15",
+          "name": "Joakim Walles",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 9,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3370633,
+          "personId": 975637,
+          "number": "33",
+          "name": "Karl Ginsburg",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3370634,
+          "personId": 454317,
+          "number": "10",
+          "name": "Lucas Evertsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3370636,
+          "personId": 866087,
+          "number": "51",
+          "name": "Mattias Malmi Pauser",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3370638,
+          "personId": 481612,
+          "number": "36",
+          "name": "Nicholas Frederiksen",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 9,
+            "onePointMade": 1,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "gameId": 31909672,
+  "finalScore": {
+    "homeGoals": 49,
+    "awayGoals": 82
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1260452,
+      "teamName": "T\u00e4by Bullcats",
+      "roster": [
+        {
+          "playerId": 4141653,
+          "personId": 496534,
+          "number": "8",
+          "name": "Christoffer Lagerstam",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 12,
+            "onePointMade": 4,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4141657,
+          "personId": 868599,
+          "number": "10",
+          "name": "Emil Svantesson",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 9,
+            "onePointMade": 2,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4141658,
+          "personId": 496531,
+          "number": "7",
+          "name": "Fredrik Benckert",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 8,
+            "onePointMade": 4,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4141662,
+          "personId": 432158,
+          "number": "4",
+          "name": "Joakim Henriksson",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 15,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 3,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 4141665,
+          "personId": 448839,
+          "number": "12",
+          "name": "Martin B\u00f6hlin",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 17,
+            "onePointMade": 2,
+            "twoPointMade": 3,
+            "threePointMade": 3,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4141668,
+          "personId": 496520,
+          "number": "6",
+          "name": "Olof Andersson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4141674,
+          "personId": 496525,
+          "number": "13",
+          "name": "Victor By",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4141685,
+          "personId": 497585,
+          "number": "5",
+          "name": "Victor Silbersky",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4141723,
+          "personId": null,
+          "number": "",
+          "name": "Fredrik Benckert",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1264914,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 4149024,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 4,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4149026,
+          "personId": 545526,
+          "number": "41",
+          "name": "Kipat Kahumbu",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 14,
+            "onePointMade": 0,
+            "twoPointMade": 7,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 4149027,
+          "personId": 448842,
+          "number": "8",
+          "name": "Mikael Ceder Brolin",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4149028,
+          "personId": 496518,
+          "number": "1",
+          "name": "Nessim Al Khalili",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 0,
+            "twoPointMade": 5,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 4149030,
+          "personId": 481612,
+          "number": "36",
+          "name": "Nicholas Frederiksen",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 9,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 4149032,
+          "personId": 479556,
+          "number": "11",
+          "name": "Luka Rosko",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 5,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 4149033,
+          "personId": 454317,
+          "number": "10",
+          "name": "Lucas Evertsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4149153,
+          "personId": null,
+          "number": "",
+          "name": "Anton Wennberg",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}

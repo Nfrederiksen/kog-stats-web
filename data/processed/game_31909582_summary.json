@@ -1,0 +1,358 @@
+{
+  "gameId": 31909582,
+  "finalScore": {
+    "homeGoals": 68,
+    "awayGoals": 67
+  },
+  "periodsPlayed": 5,
+  "teamStats": [
+    {
+      "teamId": 1264914,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 3014477,
+          "personId": 435107,
+          "number": "6",
+          "name": "Alexander Mohamud",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 10,
+            "onePointMade": 1,
+            "twoPointMade": 3,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3014478,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 12,
+            "onePointMade": 0,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3014515,
+          "personId": 450268,
+          "number": "13",
+          "name": "Axel Forsberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3014516,
+          "personId": 507494,
+          "number": "1",
+          "name": "Erik Stark",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 6,
+            "onePointMade": 3,
+            "twoPointMade": 0,
+            "threePointMade": 1,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3014517,
+          "personId": 457387,
+          "number": "5",
+          "name": "Fares Cherif",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 7,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3014518,
+          "personId": 473251,
+          "number": "15",
+          "name": "Joakim Walles",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 3014519,
+          "personId": 435069,
+          "number": "100",
+          "name": "Kalle Modin",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 15,
+            "onePointMade": 7,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3014523,
+          "personId": 481612,
+          "number": "36",
+          "name": "Nicholas Frederiksen",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 8,
+            "onePointMade": 0,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 3014531,
+          "personId": 454317,
+          "number": "10",
+          "name": "Lucas Evertsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 3014534,
+          "personId": null,
+          "number": "",
+          "name": "Anton  Wennberg",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1278942,
+      "teamName": "Konyaspor",
+      "roster": [
+        {
+          "playerId": 3031003,
+          "personId": null,
+          "number": "",
+          "name": "Gabriel Albis",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3031010,
+          "personId": 351512,
+          "number": "31",
+          "name": "Chrishan Fernando",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 5,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 3031013,
+          "personId": 440721,
+          "number": "8",
+          "name": "Dominick Estremos",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 17,
+            "onePointMade": 1,
+            "twoPointMade": 5,
+            "threePointMade": 2,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 3031014,
+          "personId": 512683,
+          "number": "5",
+          "name": "Giovanni Arg\u00fcelles Soto",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 20,
+            "onePointMade": 3,
+            "twoPointMade": 4,
+            "threePointMade": 3,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3031016,
+          "personId": 371123,
+          "number": "34",
+          "name": "Ibrahim Halmstrand",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3031018,
+          "personId": 461277,
+          "number": "9",
+          "name": "Matthew Mediona Alzona",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3031020,
+          "personId": 565434,
+          "number": "6",
+          "name": "Mehmet Bagci",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3031022,
+          "personId": 565431,
+          "number": "7",
+          "name": "Reda El Metowri",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3031039,
+          "personId": null,
+          "number": "30",
+          "name": "Wictor Andersson",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 11,
+            "onePointMade": 2,
+            "twoPointMade": 3,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3031043,
+          "personId": null,
+          "number": "10",
+          "name": "Enlil Danial",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 2,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 3031058,
+          "personId": null,
+          "number": "4",
+          "name": "Gabriel Albis",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        }
+      ]
+    }
+  ]
+}

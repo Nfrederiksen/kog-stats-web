@@ -1,0 +1,310 @@
+{
+  "gameId": 31909638,
+  "finalScore": {
+    "homeGoals": 74,
+    "awayGoals": 84
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1264914,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 3778800,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 5
+          }
+        },
+        {
+          "playerId": 3778803,
+          "personId": 504249,
+          "number": "66",
+          "name": "Edward Saldh",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 16,
+            "onePointMade": 6,
+            "twoPointMade": 2,
+            "threePointMade": 2,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3778807,
+          "personId": 473251,
+          "number": "15",
+          "name": "Joakim Walles",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 7,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 3778810,
+          "personId": 481612,
+          "number": "36",
+          "name": "Nicholas Frederiksen",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 19,
+            "onePointMade": 4,
+            "twoPointMade": 6,
+            "threePointMade": 1,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3778816,
+          "personId": 866087,
+          "number": "51",
+          "name": "Mattias Malmi Pauser",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 9,
+            "onePointMade": 2,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3778818,
+          "personId": 535125,
+          "number": "31",
+          "name": "Sebastian Rios Barnett",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 11,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 3,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3778819,
+          "personId": 482745,
+          "number": "00",
+          "name": "Rufus Horn",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 3,
+            "onePointMade": 1,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3778820,
+          "personId": 602169,
+          "number": "38",
+          "name": "Axel Miljeteig Lundqvist",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 3,
+            "onePointMade": 1,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3778854,
+          "personId": null,
+          "number": "",
+          "name": "Anton  Wennberg",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1267885,
+      "teamName": "Duvbo",
+      "roster": [
+        {
+          "playerId": 3780001,
+          "personId": 557445,
+          "number": "1",
+          "name": "Amer Jibran",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 11,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 3,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3780007,
+          "personId": 521816,
+          "number": "11",
+          "name": "Dino Kotorcic",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 14,
+            "onePointMade": 2,
+            "twoPointMade": 3,
+            "threePointMade": 2,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3780008,
+          "personId": 516152,
+          "number": "100",
+          "name": "Fredrik Bergstr\u00f6m",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 9,
+            "onePointMade": 3,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 3780011,
+          "personId": 541290,
+          "number": "22",
+          "name": "HANNES ARVIDSSON",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 15,
+            "onePointMade": 0,
+            "twoPointMade": 6,
+            "threePointMade": 1,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 3780012,
+          "personId": 512529,
+          "number": "13",
+          "name": "Mardin Soleymanpour",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 3,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 1,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 3780014,
+          "personId": 521802,
+          "number": "24",
+          "name": "Modibo Andersson",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 22,
+            "onePointMade": 4,
+            "twoPointMade": 3,
+            "threePointMade": 4,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 3780017,
+          "personId": 445228,
+          "number": "35",
+          "name": "Texas Weddig",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 2,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 3780030,
+          "personId": null,
+          "number": "15",
+          "name": "David Kidane",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 3780180,
+          "personId": null,
+          "number": "",
+          "name": "Modibo  Andersson",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}

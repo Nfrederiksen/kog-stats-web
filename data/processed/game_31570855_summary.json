@@ -1,0 +1,310 @@
+{
+  "gameId": 31570855,
+  "finalScore": {
+    "homeGoals": 78,
+    "awayGoals": 69
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1114613,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 2575595,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 18,
+            "onePointMade": 0,
+            "twoPointMade": 9,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 2575598,
+          "personId": 456303,
+          "number": "21",
+          "name": "Daniel Amani Rud\u00e4ng",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 2575601,
+          "personId": 457387,
+          "number": "5",
+          "name": "Fares Cherif",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 8,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 2,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2575606,
+          "personId": 454317,
+          "number": "10",
+          "name": "Lucas Evertsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 8,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 2,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2575644,
+          "personId": 866087,
+          "number": "51",
+          "name": "Mattias Malmi Pauser",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 10,
+            "onePointMade": 0,
+            "twoPointMade": 5,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2575649,
+          "personId": 475615,
+          "number": "13",
+          "name": "Mert Camlibel",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 3,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2575652,
+          "personId": 481612,
+          "number": "36",
+          "name": "Nicholas Frederiksen",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 0,
+            "twoPointMade": 5,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2575654,
+          "personId": 422502,
+          "number": "3",
+          "name": "Niklas Walles",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2575680,
+          "personId": 898013,
+          "number": "7",
+          "name": "Patrick Blom",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 12,
+            "onePointMade": 2,
+            "twoPointMade": 2,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2575711,
+          "personId": 473251,
+          "number": "15",
+          "name": "Joakim Walles",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 5,
+            "onePointMade": 1,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2575754,
+          "personId": 452525,
+          "number": "",
+          "name": "Arvin Parmozeh",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1115119,
+      "teamName": "Central Basket Stars",
+      "roster": [
+        {
+          "playerId": 2576852,
+          "personId": 52360,
+          "number": "7",
+          "name": "H\u00e5kan Nylin",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2576855,
+          "personId": 446461,
+          "number": "8",
+          "name": "Jens Larsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 27,
+            "onePointMade": 4,
+            "twoPointMade": 10,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2576867,
+          "personId": 586459,
+          "number": "81",
+          "name": "Johny Chhim",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 3,
+            "onePointMade": 1,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2576870,
+          "personId": 477934,
+          "number": "19",
+          "name": "Tobias Liljedahl",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 18,
+            "onePointMade": 4,
+            "twoPointMade": 7,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2576876,
+          "personId": 429198,
+          "number": "12",
+          "name": "Victor Yllmark",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2576880,
+          "personId": 423215,
+          "number": "11",
+          "name": "Viktor Lundberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 14,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 4,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2576903,
+          "personId": null,
+          "number": "",
+          "name": "Axel S\u00f6derberg",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}

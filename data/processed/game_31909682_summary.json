@@ -1,0 +1,326 @@
+{
+  "gameId": 31909682,
+  "finalScore": {
+    "homeGoals": 59,
+    "awayGoals": 68
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1264914,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 4218767,
+          "personId": 456303,
+          "number": "21",
+          "name": "Daniel Amani Rud\u00e4ng",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4218773,
+          "personId": 473251,
+          "number": "15",
+          "name": "Joakim Walles",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 5,
+            "onePointMade": 1,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 4218775,
+          "personId": 975637,
+          "number": "33",
+          "name": "Karl Ginsburg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 3,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4218779,
+          "personId": 454317,
+          "number": "10",
+          "name": "Lucas Evertsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 12,
+            "onePointMade": 2,
+            "twoPointMade": 5,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 4218781,
+          "personId": 545526,
+          "number": "41",
+          "name": "Kipat Kahumbu",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4218782,
+          "personId": 479556,
+          "number": "11",
+          "name": "Luka Rosko",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 8,
+            "onePointMade": 0,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4218788,
+          "personId": 496518,
+          "number": "00",
+          "name": "Nessim Al Khalili",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 5
+          }
+        },
+        {
+          "playerId": 4218797,
+          "personId": 422502,
+          "number": "3",
+          "name": "Niklas Walles",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 12,
+            "onePointMade": 0,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 4218805,
+          "personId": 481612,
+          "number": "36",
+          "name": "Nicholas Frederiksen",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 13,
+            "onePointMade": 1,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 4219051,
+          "personId": null,
+          "number": "",
+          "name": "Lucas Evertsson",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1264725,
+      "teamName": "Alvik V\u00e4sterled",
+      "roster": [
+        {
+          "playerId": 4218915,
+          "personId": 536530,
+          "number": "5",
+          "name": "Carl Str\u00f6mberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 26,
+            "onePointMade": 8,
+            "twoPointMade": 6,
+            "threePointMade": 2,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 4218921,
+          "personId": 452922,
+          "number": "10",
+          "name": "Erik Thomasson",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4218922,
+          "personId": 423429,
+          "number": "0",
+          "name": "Karl Silfversparre",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4218924,
+          "personId": 422012,
+          "number": "6",
+          "name": "Mattias Olofsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 3,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 4218926,
+          "personId": 422902,
+          "number": "13",
+          "name": "Melker Magnerius",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 12,
+            "onePointMade": 0,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 5
+          }
+        },
+        {
+          "playerId": 4218928,
+          "personId": 976785,
+          "number": "22",
+          "name": "Volodymyr Yavorskyi",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 16,
+            "onePointMade": 4,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4218954,
+          "personId": 422906,
+          "number": "63",
+          "name": "Robert Thanger Elofsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 5
+          }
+        },
+        {
+          "playerId": 4219021,
+          "personId": 422020,
+          "number": "9",
+          "name": "Daniel Cabern\u00e9r",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 1,
+            "onePointMade": 1,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4219034,
+          "personId": null,
+          "number": "",
+          "name": "Kalle Silfversparre",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}

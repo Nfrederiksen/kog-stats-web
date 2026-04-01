@@ -1,0 +1,406 @@
+{
+  "gameId": 31603975,
+  "finalScore": {
+    "homeGoals": 46,
+    "awayGoals": 72
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1141196,
+      "teamName": "KKFS Basket",
+      "roster": [
+        {
+          "playerId": 1650644,
+          "personId": null,
+          "number": "",
+          "name": "Zhiqiang Yang",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1650681,
+          "personId": null,
+          "number": "41",
+          "name": "Yunhai  Qin",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 8,
+            "onePointMade": 0,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 1650682,
+          "personId": null,
+          "number": "16",
+          "name": "Marco Souza",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 13,
+            "onePointMade": 7,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 1650683,
+          "personId": 422926,
+          "number": "9",
+          "name": "Jimmi Yang",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1650684,
+          "personId": 473971,
+          "number": "5",
+          "name": "Shuo Xu",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 5,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 1650686,
+          "personId": 425364,
+          "number": "0",
+          "name": "Vincent Ye",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1650687,
+          "personId": 736492,
+          "number": "7",
+          "name": "Yanlin Quan",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 2,
+            "fouls": 5
+          }
+        },
+        {
+          "playerId": 1650688,
+          "personId": 871160,
+          "number": "23",
+          "name": "Yu Gao",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 1650689,
+          "personId": 871159,
+          "number": "3",
+          "name": "Zeyu Lin",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 1650690,
+          "personId": 871579,
+          "number": "22",
+          "name": "Zhengsheng Chen",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 9,
+            "onePointMade": 2,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 1651878,
+          "personId": null,
+          "number": "88",
+          "name": "Liang Wang",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1651879,
+          "personId": null,
+          "number": "12",
+          "name": "Yu Sun",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1654542,
+          "personId": 566967,
+          "number": "4",
+          "name": "Yu Shi",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1660554,
+          "personId": 503361,
+          "number": "13",
+          "name": "Yichuan Dou",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1687470,
+          "personId": 871614,
+          "number": "30",
+          "name": "Hanshi Wang",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1702982,
+          "personId": 872037,
+          "number": "66",
+          "name": "Zhiqiang Yang",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1114613,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 1703031,
+          "personId": 435107,
+          "number": "1",
+          "name": "Alexander Mohamud",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 14,
+            "onePointMade": 0,
+            "twoPointMade": 7,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 1703037,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 13,
+            "onePointMade": 1,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 1703041,
+          "personId": 473253,
+          "number": "9",
+          "name": "Daniel Yousefi Lidman",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 5,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 1703043,
+          "personId": 473251,
+          "number": "15",
+          "name": "Joakim Walles",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 12,
+            "onePointMade": 2,
+            "twoPointMade": 5,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 1703045,
+          "personId": 435069,
+          "number": "0",
+          "name": "Kalle Modin",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 19,
+            "onePointMade": 4,
+            "twoPointMade": 6,
+            "threePointMade": 1,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1703047,
+          "personId": 866087,
+          "number": "51",
+          "name": "Mattias Malmi Pauser",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 1703050,
+          "personId": 475615,
+          "number": "13",
+          "name": "Mert Camlibel",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 3,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 1703115,
+          "personId": 452525,
+          "number": "",
+          "name": "Arvin Parmozeh",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}

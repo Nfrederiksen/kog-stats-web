@@ -1,0 +1,406 @@
+{
+  "gameId": 31570867,
+  "finalScore": {
+    "homeGoals": 63,
+    "awayGoals": 50
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1114352,
+      "teamName": "Duvbo IK",
+      "roster": [
+        {
+          "playerId": 2653559,
+          "personId": 440659,
+          "number": "34",
+          "name": "ADNAN TUCO",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2653561,
+          "personId": 521816,
+          "number": "11",
+          "name": "Dino Kotorcic",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2653562,
+          "personId": 541290,
+          "number": "22",
+          "name": "HANNES ARVIDSSON",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 13,
+            "onePointMade": 2,
+            "twoPointMade": 4,
+            "threePointMade": 1,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2653564,
+          "personId": 423882,
+          "number": "15",
+          "name": "Mark Celedon",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2653565,
+          "personId": 521802,
+          "number": "24",
+          "name": "Modibo Andersson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 8,
+            "onePointMade": 0,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2653566,
+          "personId": 445002,
+          "number": "13",
+          "name": "Omer Suleiman",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 5,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2657090,
+          "personId": 441935,
+          "number": "8",
+          "name": "Paulos Mussie",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2657091,
+          "personId": 445228,
+          "number": "35",
+          "name": "Texas Weddig",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 14,
+            "onePointMade": 2,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 2657105,
+          "personId": null,
+          "number": "7",
+          "name": "Akram Romae",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2657317,
+          "personId": 516152,
+          "number": "00",
+          "name": "Fredrik Bergstr\u00f6m",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2657325,
+          "personId": 455332,
+          "number": "1",
+          "name": "Seegann Davies-Jones",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 7,
+            "onePointMade": 3,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2657443,
+          "personId": null,
+          "number": "",
+          "name": "Hamzah Suleiman",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1114613,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 2657401,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 14,
+            "onePointMade": 4,
+            "twoPointMade": 5,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2657402,
+          "personId": 488754,
+          "number": "20",
+          "name": "Bijan Yousefi",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2657403,
+          "personId": 456303,
+          "number": "21",
+          "name": "Daniel Amani Rud\u00e4ng",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 1,
+            "onePointMade": 1,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2657404,
+          "personId": 457387,
+          "number": "5",
+          "name": "Fares Cherif",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 7,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2657405,
+          "personId": 473251,
+          "number": "15",
+          "name": "Joakim Walles",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2657406,
+          "personId": 435069,
+          "number": "0",
+          "name": "Kalle Modin",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 12,
+            "onePointMade": 4,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2657407,
+          "personId": 454317,
+          "number": "10",
+          "name": "Lucas Evertsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2657408,
+          "personId": 866087,
+          "number": "51",
+          "name": "Mattias Malmi Pauser",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 4,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2657410,
+          "personId": 475615,
+          "number": "13",
+          "name": "Mert Camlibel",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2657411,
+          "personId": 481612,
+          "number": "36",
+          "name": "Nicholas Frederiksen",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2657422,
+          "personId": 452525,
+          "number": "",
+          "name": "Arvin Parmozeh",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2657444,
+          "personId": 473253,
+          "number": "",
+          "name": "Daniel Yousefi Lidman",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}

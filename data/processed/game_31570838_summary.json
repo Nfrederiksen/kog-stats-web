@@ -1,0 +1,342 @@
+{
+  "gameId": 31570838,
+  "finalScore": {
+    "homeGoals": 44,
+    "awayGoals": 37
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1113955,
+      "teamName": "Duga Basket",
+      "roster": [
+        {
+          "playerId": 2341582,
+          "personId": 483125,
+          "number": "30",
+          "name": "Andreas Skarfors",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 3,
+            "onePointMade": 1,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2341585,
+          "personId": 553437,
+          "number": "55",
+          "name": "Anton Andersson Andrejic",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 2,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2341587,
+          "personId": 599736,
+          "number": "12",
+          "name": "Daniel Mourad",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 4,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2341589,
+          "personId": 469766,
+          "number": "34",
+          "name": "Johan Svensson",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2341591,
+          "personId": 599730,
+          "number": "11",
+          "name": "Kalle Pettersson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 1,
+            "onePointMade": 1,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2341592,
+          "personId": 599737,
+          "number": "9",
+          "name": "Lucas Rudqwist",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 3,
+            "onePointMade": 1,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2341594,
+          "personId": 553484,
+          "number": "5",
+          "name": "Simon \u00c5kerlund",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2341602,
+          "personId": null,
+          "number": "3",
+          "name": "Fredrik  Skogsj\u00f6",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 14,
+            "onePointMade": 3,
+            "twoPointMade": 4,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2341605,
+          "personId": null,
+          "number": "",
+          "name": "Simon  \u00c5kerlund",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1114613,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 2341610,
+          "personId": 461671,
+          "number": "27",
+          "name": "Anton Jensen Wennberg",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 13,
+            "onePointMade": 1,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2341612,
+          "personId": 488754,
+          "number": "22",
+          "name": "Bijan Yousefi",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2341622,
+          "personId": 473253,
+          "number": "9",
+          "name": "Daniel Yousefi Lidman",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2341625,
+          "personId": 457387,
+          "number": "5",
+          "name": "Fares Cherif",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 2341634,
+          "personId": 473251,
+          "number": "15",
+          "name": "Joakim Walles",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 2341645,
+          "personId": 475615,
+          "number": "13",
+          "name": "Mert Camlibel",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 2,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2341647,
+          "personId": 422502,
+          "number": "3",
+          "name": "Niklas Walles",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2341666,
+          "personId": 452525,
+          "number": "",
+          "name": "Arvin Parmozeh",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2341733,
+          "personId": null,
+          "number": "",
+          "name": "Nicholas  Fredriksen",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 2341744,
+          "personId": 440629,
+          "number": "10",
+          "name": "Love Triumf",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 5,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 1,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 2341881,
+          "personId": 898013,
+          "number": "7",
+          "name": "Patrick Blom",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}

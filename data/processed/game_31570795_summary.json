@@ -1,0 +1,326 @@
+{
+  "gameId": 31570795,
+  "finalScore": {
+    "homeGoals": 45,
+    "awayGoals": 50
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1130722,
+      "teamName": "Odysseas Basket",
+      "roster": [
+        {
+          "playerId": 1415952,
+          "personId": 894423,
+          "number": "5",
+          "name": "Aris Logothetis",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1415955,
+          "personId": 463275,
+          "number": "10",
+          "name": "Christos Verginis",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 1415957,
+          "personId": 894422,
+          "number": "42",
+          "name": "Eleftherios Adamis",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 6,
+            "onePointMade": 2,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 1415958,
+          "personId": 473316,
+          "number": "44",
+          "name": "Francisco Jardim de Almada Nascimento",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1415959,
+          "personId": 455564,
+          "number": "4",
+          "name": "Hampus Fristedt",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1415960,
+          "personId": 444288,
+          "number": "2",
+          "name": "Kenya Shatani",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 6,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 2,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 1415961,
+          "personId": 461282,
+          "number": "41",
+          "name": "Nikita Heinonen",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 1415963,
+          "personId": 562610,
+          "number": "22",
+          "name": "Vasileios Evripidis Kyriakidis",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 13,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 3,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 1415964,
+          "personId": 562613,
+          "number": "7",
+          "name": "Georgios Papaioannou",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1416037,
+          "personId": null,
+          "number": "1",
+          "name": "Jordan Tsoupeis",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 10,
+            "onePointMade": 1,
+            "twoPointMade": 3,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 1416053,
+          "personId": null,
+          "number": "",
+          "name": "Vagelis Bakas",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1114613,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 1431012,
+          "personId": 473253,
+          "number": "9",
+          "name": "Daniel Yousefi Lidman",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 4
+          }
+        },
+        {
+          "playerId": 1431017,
+          "personId": 457387,
+          "number": "5",
+          "name": "Fares Cherif",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 9,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 1431032,
+          "personId": 435069,
+          "number": "0",
+          "name": "Kalle Modin",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 15,
+            "onePointMade": 2,
+            "twoPointMade": 5,
+            "threePointMade": 1,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 1431036,
+          "personId": 240701,
+          "number": "12",
+          "name": "Luca Roa",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 4,
+            "onePointMade": 2,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1431087,
+          "personId": 454317,
+          "number": "10",
+          "name": "Lucas Evertsson",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 7,
+            "onePointMade": 0,
+            "twoPointMade": 2,
+            "threePointMade": 1,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 1431098,
+          "personId": 475615,
+          "number": "13",
+          "name": "Mert Camlibel",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 1431102,
+          "personId": 496518,
+          "number": "00",
+          "name": "Nessim Al Khalili",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 3
+          }
+        },
+        {
+          "playerId": 1431108,
+          "personId": 898013,
+          "number": "7",
+          "name": "Patrick Blom",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 11,
+            "onePointMade": 3,
+            "twoPointMade": 1,
+            "threePointMade": 2,
+            "fouls": 1
+          }
+        }
+      ]
+    }
+  ]
+}

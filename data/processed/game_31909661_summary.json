@@ -1,0 +1,294 @@
+{
+  "gameId": 31909661,
+  "finalScore": {
+    "homeGoals": 64,
+    "awayGoals": 69
+  },
+  "periodsPlayed": 4,
+  "teamStats": [
+    {
+      "teamId": 1264914,
+      "teamName": "Kungsholmen OG",
+      "roster": [
+        {
+          "playerId": 4030065,
+          "personId": 450268,
+          "number": "13",
+          "name": "Axel Forsberg",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 12,
+            "onePointMade": 0,
+            "twoPointMade": 6,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4030066,
+          "personId": 507494,
+          "number": "1",
+          "name": "Erik Stark",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 5,
+            "onePointMade": 1,
+            "twoPointMade": 2,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4030067,
+          "personId": 448842,
+          "number": "8",
+          "name": "Mikael Ceder Brolin",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4030069,
+          "personId": 535125,
+          "number": "31",
+          "name": "Sebastian Rios Barnett",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 19,
+            "onePointMade": 5,
+            "twoPointMade": 4,
+            "threePointMade": 2,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4030070,
+          "personId": 481612,
+          "number": "36",
+          "name": "Nicholas Frederiksen",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 18,
+            "onePointMade": 3,
+            "twoPointMade": 6,
+            "threePointMade": 1,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 4030071,
+          "personId": 866087,
+          "number": "51",
+          "name": "Mattias Malmi Pauser",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 8,
+            "onePointMade": 0,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 4030093,
+          "personId": null,
+          "number": "",
+          "name": "nicholas frederiksen",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamId": 1277072,
+      "teamName": "Nyn\u00e4shamn",
+      "roster": [
+        {
+          "playerId": 4030104,
+          "personId": 505200,
+          "number": "89",
+          "name": "Felix Kovanen",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4030105,
+          "personId": 505104,
+          "number": "91",
+          "name": "Hampus Ljungd\u00e9ll",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 8,
+            "onePointMade": 2,
+            "twoPointMade": 3,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4030106,
+          "personId": 452695,
+          "number": "51",
+          "name": "Ilo Clark",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 12,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 2,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4030107,
+          "personId": 505123,
+          "number": "13",
+          "name": "Liam Jergander",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 15,
+            "onePointMade": 4,
+            "twoPointMade": 4,
+            "threePointMade": 1,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4030108,
+          "personId": 435693,
+          "number": "87",
+          "name": "Matin Haso",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 8,
+            "onePointMade": 0,
+            "twoPointMade": 4,
+            "threePointMade": 0,
+            "fouls": 1
+          }
+        },
+        {
+          "playerId": 4030109,
+          "personId": 431883,
+          "number": "8",
+          "name": "Petter Tistad",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 9,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 1,
+            "fouls": 5
+          }
+        },
+        {
+          "playerId": 4030112,
+          "personId": 505097,
+          "number": "11",
+          "name": "Simon Erbe",
+          "type": "player",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 2,
+            "onePointMade": 0,
+            "twoPointMade": 1,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4030114,
+          "personId": 505113,
+          "number": "2",
+          "name": "William K\u00e4llstr\u00f6m",
+          "type": "player",
+          "starter": true,
+          "played": true,
+          "stats": {
+            "points": 15,
+            "onePointMade": 0,
+            "twoPointMade": 3,
+            "threePointMade": 3,
+            "fouls": 2
+          }
+        },
+        {
+          "playerId": 4030126,
+          "personId": null,
+          "number": "",
+          "name": "Johan Jergander",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        },
+        {
+          "playerId": 4030128,
+          "personId": 435693,
+          "number": "",
+          "name": "Matin Haso",
+          "type": "staff",
+          "starter": false,
+          "played": false,
+          "stats": {
+            "points": 0,
+            "onePointMade": 0,
+            "twoPointMade": 0,
+            "threePointMade": 0,
+            "fouls": 0
+          }
+        }
+      ]
+    }
+  ]
+}
