@@ -5,7 +5,8 @@
     "gamesPlayed": 17,
     "gamesScheduled": 17,
     "hasStats": true,
-    "record": "6W-11L"
+    "record": "6W-11L",
+    "empGames": 17
   },
   {
     "key": "24-25",
@@ -13,6 +14,16 @@
     "gamesPlayed": 26,
     "gamesScheduled": 26,
     "hasStats": true,
-    "record": "11W-15L"
+    "record": "11W-15L",
+    "empGames": 26
+  },
+  {
+    "key": "23-24",
+    "label": "2023-24",
+    "gamesPlayed": 15,
+    "gamesScheduled": 15,
+    "hasStats": true,
+    "record": "10W-5L",
+    "empGames": 11
   }
 ]

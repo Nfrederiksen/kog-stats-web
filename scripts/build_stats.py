@@ -39,7 +39,7 @@ SEASON_START_MONTH = 9
 SEASONS: list[dict] = [
     {"key": "25-26", "startYear": 2025, "label": "2025-26", "teamId": 1403069},
     {"key": "24-25", "startYear": 2024, "label": "2024-25", "teamId": 1264914},
-    # Add more seasons here as needed, newest first.
+    {"key": "23-24", "startYear": 2023, "label": "2023-24", "teamId": 1114613},
 ]
 
 EMP_PATTERN = re.compile(r"/emp/(\d+)/")
@@ -798,6 +798,59 @@ def publish_metadata(
     meta_path.write_text(json.dumps(metadata, indent=2), encoding="utf-8")
 
 
+# ── Player overrides (for seasons with incomplete EMP data) ─────────────────
+
+def apply_player_overrides(season_key: str, site_dir: Path) -> None:
+    """Patch published kog_players.json with manual override totals if available."""
+    override_path = ROOT / "data" / f"overrides_{season_key}.json"
+    if not override_path.exists():
+        return
+
+    overrides = json.loads(override_path.read_text(encoding="utf-8"))
+    override_by_name = {o["name"]: o for o in overrides}
+
+    feed_path = site_dir / "kog_players.json"
+    if not feed_path.exists():
+        return
+
+    rows = json.loads(feed_path.read_text(encoding="utf-8"))
+
+    # Patch existing players
+    seen_names = set()
+    for row in rows:
+        ovr = override_by_name.get(row["name"])
+        if not ovr:
+            continue
+        seen_names.add(row["name"])
+        row["gamesPlayed"] = ovr["gamesPlayed"]
+        row["totalPoints"] = ovr["totalPoints"]
+        row["pointsPerGame"] = ovr["pointsPerGame"]
+        if ovr.get("threePointsMade") is not None:
+            row["threePointsMade"] = ovr["threePointsMade"]
+        if ovr.get("foulsMade") is not None:
+            row["foulsMade"] = ovr["foulsMade"]
+
+    # Add players that only appear in overrides (no EMP data at all)
+    for ovr in overrides:
+        if ovr["name"] in seen_names:
+            continue
+        rows.append({
+            "name": ovr["name"],
+            "number": ovr.get("number", ""),
+            "gamesPlayed": ovr["gamesPlayed"],
+            "freeThrowsMade": 0,
+            "fieldGoalsMade": 0,
+            "threePointsMade": ovr.get("threePointsMade") or 0,
+            "foulsMade": ovr.get("foulsMade") or 0,
+            "totalPoints": ovr["totalPoints"],
+            "pointsPerGame": ovr["pointsPerGame"],
+        })
+
+    rows.sort(key=lambda r: r["name"].lower())
+    feed_path.write_text(json.dumps(rows, indent=2), encoding="utf-8")
+    print(f"  Applied {len(override_by_name)} player override(s)")
+
+
 # ── Per-season build ────────────────────────────────────────────────────────
 
 def build_season(season_cfg: dict) -> dict | None:
@@ -862,6 +915,7 @@ def build_season(season_cfg: dict) -> dict | None:
             publish_play_by_play(game_id, game, schedule_entry, opponent_team_id, play_by_play_dir, kog_team_id=kog_team_id)
 
     publish_kog_player_feed(kog_totals, season_site_dir)
+    apply_player_overrides(key, season_site_dir)
     publish_metadata(processed_games, kog_totals, game_metrics, player_records, season_site_dir)
     publish_schedule(schedule, season_site_dir)
 
@@ -876,6 +930,7 @@ def build_season(season_cfg: dict) -> dict | None:
         "gamesScheduled": len(schedule),
         "hasStats": has_stats,
         "record": f"{wins}W-{losses}L",
+        "empGames": len(processed_games),
     }
 
 

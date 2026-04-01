@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-04-01T10:12:18.660862+00:00",
+  "gamesProcessed": [
+    31570780,
+    31570795,
+    31570810,
+    31570816,
+    31570830,
+    31570834,
+    31570838,
+    31570842,
+    31570855,
+    31570867,
+    31603975
+  ],
+  "playersTracked": 19,
+  "teamRecords": {
+    "highestScore": {
+      "gameId": 31570830,
+      "opponent": "Nyn\u00e4shamn",
+      "opponentTeamId": 1113713,
+      "kogPoints": 101,
+      "opponentPoints": 33,
+      "pointDiff": 68
+    },
+    "biggestWin": {
+      "gameId": 31570830,
+      "opponent": "Nyn\u00e4shamn",
+      "opponentTeamId": 1113713,
+      "kogPoints": 101,
+      "opponentPoints": 33,
+      "pointDiff": 68
+    },
+    "toughestLoss": {
+      "gameId": 31570834,
+      "opponent": "Viby Herr 4",
+      "opponentTeamId": 1113938,
+      "kogPoints": 56,
+      "opponentPoints": 93,
+      "pointDiff": -37
+    }
+  },
+  "playerRecords": {
+    "mostThreesInGame": {
+      "gameId": 31570830,
+      "player": "Fares Cherif",
+      "threePointers": 5,
+      "opponent": "Nyn\u00e4shamn",
+      "opponentTeamId": 1113713,
+      "dateLabel": "Sat 27.Jan 17:00",
+      "tipoff": "2024-01-27T17:00:00+01:00"
+    },
+    "mostPointsInGame": {
+      "gameId": 31570810,
+      "player": "Kalle Modin",
+      "points": 22,
+      "opponent": "Tyres\u00f6 Basket",
+      "opponentTeamId": 1113273,
+      "dateLabel": "Sat 2.Dec 15:30",
+      "tipoff": "2023-12-02T15:30:00+01:00"
+    }
+  }
+}

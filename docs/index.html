@@ -19,6 +19,7 @@
         --divider: rgba(90, 105, 158, 0.35);
         --badge-bg: rgba(70, 194, 255, 0.12);
         --badge-text: #7fd6ff;
+        --wrapped-intro: linear-gradient(135deg, #0a1a2e, #1a3a5a, #2c5364);
       }
 
       [data-season="24-25"] {
@@ -33,6 +34,7 @@
         --divider: rgba(158, 70, 100, 0.35);
         --badge-bg: rgba(232, 86, 108, 0.12);
         --badge-text: #ff8fa3;
+        --wrapped-intro: linear-gradient(135deg, #2a0f1e, #5a1a2a, #8b2252);
       }
 
       [data-season="23-24"] {
@@ -47,6 +49,7 @@
         --divider: rgba(60, 158, 120, 0.35);
         --badge-bg: rgba(52, 211, 153, 0.12);
         --badge-text: #5eead4;
+        --wrapped-intro: linear-gradient(135deg, #0a2a1a, #1a5a3a, #2c6450);
       }
 
       * {
@@ -90,22 +93,24 @@
         position: relative;
         z-index: 1;
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        gap: 1.5rem;
+        gap: 1.2rem;
         margin-bottom: clamp(1.8rem, 3vw, 2.8rem);
       }
 
       .team-lockup {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: clamp(0.9rem, 2vw, 1.4rem);
+        gap: clamp(0.6rem, 1.5vw, 1rem);
+        text-align: center;
       }
 
       .team-lockup__text {
         display: grid;
         gap: 0.45rem;
+        justify-items: center;
       }
 
       .team-logo {
@@ -614,6 +619,89 @@
         color: var(--badge-text);
         font-size: 0.88rem;
         display: none;
+      }
+
+      .incomplete-data-banner {
+        display: none;
+        margin: 0.8rem 0 0.4rem;
+        padding: 0.7rem 1rem;
+        border-radius: 10px;
+        background: rgba(220, 38, 38, 0.15);
+        border: 1px solid rgba(220, 38, 38, 0.5);
+        color: #fca5a5;
+        font-size: 0.82rem;
+        line-height: 1.45;
+        text-align: center;
+      }
+
+      .season-info-btn {
+        display: none;
+        position: absolute;
+        top: 1.2rem;
+        right: 2.5rem;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 1.5px solid var(--accent);
+        background: var(--card-bg);
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 700;
+        font-style: italic;
+        font-family: Georgia, serif;
+        cursor: pointer;
+        z-index: 5;
+        transition: background 0.2s;
+      }
+      .season-info-btn:hover { background: var(--accent-soft); }
+
+      .insight-row {
+        display: grid;
+        grid-template-columns: 1fr auto auto auto;
+        gap: 0;
+        border-bottom: 1px solid var(--divider);
+        padding: 0.3rem 0;
+        font-size: 0.75rem;
+      }
+      .insight-row--head {
+        color: var(--accent);
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        font-weight: 600;
+        border-bottom: 1.5px solid var(--divider);
+      }
+      .insight-cell {
+        padding: 0 0.35rem;
+        text-align: right;
+        min-width: 0;
+      }
+      .insight-cell:first-child {
+        text-align: left;
+        padding-left: 0;
+      }
+      .insight-delta--pos { color: #34d399; }
+      .insight-delta--neg { color: #f87171; }
+      .insight-delta--neutral { color: var(--text-muted); }
+      .insight-section {
+        margin-top: 0.8rem;
+        font-size: 0.8rem;
+        line-height: 1.5;
+        color: var(--text-primary);
+      }
+      .insight-section h4 {
+        color: var(--accent);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin: 0 0 0.3rem;
+      }
+      .insight-section ul {
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+      .insight-section li {
+        margin-bottom: 0.25rem;
       }
 
       @media (max-width: 768px) {
@@ -1535,7 +1623,7 @@
         z-index: 10;
       }
 
-      .wrapped-card--intro { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: #fff; }
+      .wrapped-card--intro { background: var(--wrapped-intro, linear-gradient(135deg, #0f2027, #203a43, #2c5364)); color: #fff; }
       .wrapped-card--record { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); color: #fff; }
       .wrapped-card--scorer { background: linear-gradient(135deg, #2d1b69, #11998e); color: #fff; }
       .wrapped-card--ppg { background: linear-gradient(135deg, #fc4a1a, #f7b733); color: #fff; }
@@ -1558,10 +1646,12 @@
     </style>
   </head>
   <body>
-    <main>
+    <main style="position:relative;">
+      <button type="button" class="season-info-btn" id="seasonInfoBtn" title="Season comparison">i</button>
       <header></header>
 
       <div class="season-selector" id="seasonSelector"></div>
+      <div class="incomplete-data-banner" id="incompleteDataBanner"></div>
 
       <button type="button" class="wrapped-btn wrapped-btn--hero" id="wrappedBtn">
         Season Wrapped
@@ -1678,6 +1768,16 @@
       </div>
     </div>
 
+    <div class="modal-overlay" id="seasonInsightModal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" style="width:min(400px,100%);overflow-x:hidden;">
+        <div class="modal-header">
+          <h2 id="insightTitle" style="font-size:clamp(1rem,4vw,1.4rem);">Season Comparison</h2>
+          <button class="close-modal" id="closeInsight" type="button">Close</button>
+        </div>
+        <div id="insightBody"></div>
+      </div>
+    </div>
+
     <div class="wrapped-overlay" id="wrappedOverlay">
       <button class="wrapped-close" id="wrappedClose">Close</button>
       <div class="wrapped-progress" id="wrappedProgress"></div>
@@ -1724,6 +1824,7 @@
       let sortState = { key: null, dir: "desc" };
       let currentSeason = null;
       let seasonsManifest = [];
+      let rivalryRecord = null;
       metaContainer.className = "meta";
 
       const lockup = document.createElement("div");
@@ -2607,6 +2708,13 @@
         bestThree && bestThree.threePointsMade > 0 && metaContainer.appendChild(createBadge("Top 3PT 👌", bestThree.name));
         topFouler && topFouler.foulsMade > 0 && metaContainer.appendChild(createBadge("Top Fouler 🩼", topFouler.name));
 
+        if (rivalryRecord) {
+          const rivalryBadge = createBadge("OG x NY", `${rivalryRecord.ogWins} - ${rivalryRecord.nyWins}`);
+          rivalryBadge.style.cursor = "pointer";
+          rivalryBadge.addEventListener("click", openRivalryModal);
+          metaContainer.appendChild(rivalryBadge);
+        }
+
         const updated = formatDateTime(metadata && metadata.generatedAt);
         if (updated) {
           metaContainer.appendChild(createBadge("Updated", updated));
@@ -2781,6 +2889,21 @@
           wrappedBtn.style.display = (seasonInfo && seasonInfo.hasStats) ? "" : "none";
         }
 
+        // Show/hide incomplete data banner
+        const banner = document.getElementById("incompleteDataBanner");
+        if (banner && seasonInfo) {
+          const missing = seasonInfo.gamesPlayed - (seasonInfo.empGames || 0);
+          if (missing > 0) {
+            banner.textContent = `Play-by-play data is missing for ${missing} of ${seasonInfo.gamesPlayed} games this season. Some early games were recorded on paper only — player stats are based on the ${seasonInfo.empGames} games with digital data.`;
+            banner.style.display = "block";
+          } else {
+            banner.style.display = "none";
+          }
+        }
+
+        // Show/hide season insight button
+        seasonInfoBtn.style.display = seasonInsights[seasonKey] ? "block" : "none";
+
         renderSeasonSelector();
 
         return Promise.all([
@@ -2862,12 +2985,36 @@
         .catch(() => [])
         .then((manifest) => {
           seasonsManifest = Array.isArray(manifest) ? manifest : [];
-          const requested = getInitialSeason();
-          const defaultKey = seasonsManifest.length ? seasonsManifest[0].key : "25-26";
-          const seasonKey = (requested && seasonsManifest.some((s) => s.key === requested))
-            ? requested
-            : defaultKey;
-          loadSeasonData(seasonKey);
+
+          // Compute all-time OG vs NY rivalry record
+          Promise.all(
+            seasonsManifest.map((s) =>
+              fetch(seasonDataPath(s.key, "kog_schedule.json"), { cache: "no-store" })
+                .then((r) => (r.ok ? r.json() : []))
+                .catch(() => [])
+            )
+          ).then((allSchedules) => {
+            let ogW = 0, nyW = 0;
+            const games = [];
+            seasonsManifest.forEach((s, i) => {
+              (allSchedules[i] || []).forEach((g) => {
+                if (/kungsholmen\s*ny/i.test(g.opponent || "")) {
+                  if (g.result === "win") ogW++;
+                  else if (g.result === "loss") nyW++;
+                  games.push({ season: s.label, tipoff: g.tipoff, kogScore: g.kogScore, opponentScore: g.opponentScore, result: g.result, dateLabel: g.dateLabel, location: g.location });
+                }
+              });
+            });
+            games.sort((a, b) => (a.tipoff || "").localeCompare(b.tipoff || ""));
+            if (ogW + nyW > 0) rivalryRecord = { ogWins: ogW, nyWins: nyW, games: games };
+
+            const requested = getInitialSeason();
+            const defaultKey = seasonsManifest.length ? seasonsManifest[0].key : "25-26";
+            const seasonKey = (requested && seasonsManifest.some((s) => s.key === requested))
+              ? requested
+              : defaultKey;
+            loadSeasonData(seasonKey);
+          });
         });
 
       function openPlayerModal(data) {
@@ -3030,6 +3177,127 @@
         }
       });
 
+      // Season insight modal
+      const seasonInfoBtn = document.getElementById("seasonInfoBtn");
+      const seasonInsightModal = document.getElementById("seasonInsightModal");
+      const closeInsightBtn = document.getElementById("closeInsight");
+      const insightBody = document.getElementById("insightBody");
+
+      // Comparison data keyed by season
+      const seasonInsights = {
+        "25-26": {
+          compare: "24-25",
+          title: "25-26 vs 24-25",
+          rows: [
+            ["Win %", "42.3%", "35.3%", -7.0, "%"],
+            ["Avg KOG Score", "60.9", "63.5", +2.6, ""],
+            ["Avg Opp Score", "67.3", "67.1", -0.2, ""],
+            ["Avg Margin", "-6.4", "-3.6", +2.8, ""],
+            ["Best Win Streak", "4", "1", -3, ""],
+            ["3PT / Game", "4.6", "4.1", -0.5, ""],
+            ["Fouls / Game", "13.4", "14.7", +1.3, ""],
+            ["Close Games (W-L)", "5-3", "1-4", null, ""],
+            ["Blowout Losses (20+)", "6", "2", -4, ""],
+          ],
+          better: [
+            "Scoring up +2.6 PPG \u2014 putting up more points per game",
+            "Average margin improved from -6.4 to -3.6",
+            "Only 2 blowout losses vs 6 last season",
+          ],
+          worse: [
+            "Win rate dropped from 42.3% to 35.3%",
+            "Best win streak just 1 game vs 4 last year",
+            "Close games: 1-4 this season vs 5-3 last year",
+            "Slightly more fouls per game (14.7 vs 13.4)",
+          ],
+          verdict: "25-26 is more competitive per game (better margins, fewer blowouts) but can\u2019t close out tight games. Fixing the 1-4 clutch record would flip the season.",
+        },
+        "24-25": {
+          compare: "23-24",
+          title: "24-25 vs 23-24",
+          rows: [
+            ["Win %", "66.7%", "42.3%", -24.4, "%"],
+            ["Avg KOG Score", "65.6", "60.9", -4.7, ""],
+            ["Avg Opp Score", "57.5", "67.3", +9.8, ""],
+            ["Avg Margin", "+8.1", "-6.4", -14.5, ""],
+            ["Best Win Streak", "8", "4", -4, ""],
+            ["3PT / Game", "4.7", "4.6", -0.1, ""],
+            ["Fouls / Game", "15.7", "13.4", -2.3, ""],
+            ["Close Games (W-L)", "2-1", "5-3", null, ""],
+            ["Blowout Wins (20+)", "3", "3", 0, ""],
+            ["Blowout Losses (20+)", "2", "6", +4, ""],
+            ["Roster Size", "19", "25", +6, ""],
+          ],
+          better: [
+            "Much better discipline \u2014 fouls down from 15.7 to 13.4 per game",
+            "Clutch factor: 5-3 in close games vs 2-1 (more pressure, still winning)",
+            "Deeper roster with 25 players vs 19",
+          ],
+          worse: [
+            "Win rate dropped sharply from 66.7% to 42.3%",
+            "Average margin flipped from +8.1 to -6.4 \u2014 a 14.5 point swing",
+            "Opponents scored 9.8 more PPG (57.5 \u2192 67.3)",
+            "Best win streak halved: 4 vs 8",
+            "Blowout losses tripled: 6 vs 2",
+            "Scoring down 4.7 PPG",
+          ],
+          verdict: "A tough step up in competition. KOG went from a dominant 23-24 (66.7% wins, +8.1 margin) to struggling in 24-25. The defense gave up nearly 10 more PPG while the offense also dipped. The bigger roster didn\u2019t translate to results \u2014 but the team did foul less and compete hard in close games.",
+        },
+      };
+
+      function openRivalryModal() {
+        if (!rivalryRecord || !rivalryRecord.games.length) return;
+        document.getElementById("insightTitle").textContent = "OG x NY — All-Time";
+        let html = '<div style="display:grid;gap:0.5rem;">';
+        rivalryRecord.games.forEach(function (g) {
+          const won = g.result === "win";
+          const color = won ? "var(--accent)" : "#f87171";
+          const tag = won ? "W" : "L";
+          html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0.6rem;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid ' + color + '33;font-size:0.82rem;">';
+          html += '<div><span style="color:' + color + ';font-weight:700;margin-right:0.4rem;">' + tag + '</span>';
+          html += '<span style="color:var(--text-primary);">OG ' + g.kogScore + ' - ' + g.opponentScore + ' NY</span></div>';
+          html += '<div style="text-align:right;color:var(--text-muted);font-size:0.72rem;">' + (g.dateLabel || "") + '<br>' + (g.season || "") + '</div>';
+          html += '</div>';
+        });
+        html += '</div>';
+        insightBody.innerHTML = html;
+        seasonInsightModal.classList.add("visible");
+        seasonInsightModal.setAttribute("aria-hidden", "false");
+      }
+
+      function openSeasonInsight() {
+        const data = seasonInsights[currentSeason];
+        if (!data) return;
+        document.getElementById("insightTitle").textContent = data.title;
+
+        let html = '<div class="insight-row insight-row--head"><div class="insight-cell"></div><div class="insight-cell">' + data.compare + '</div><div class="insight-cell">' + currentSeason + '</div><div class="insight-cell">\u0394</div></div>';
+        data.rows.forEach(function (r) {
+          const deltaClass = r[3] === null ? "insight-delta--neutral" : r[3] > 0 ? "insight-delta--pos" : r[3] < 0 ? "insight-delta--neg" : "insight-delta--neutral";
+          const deltaStr = r[3] === null ? "\u2014" : (r[3] > 0 ? "+" : "") + r[3] + r[4];
+          html += '<div class="insight-row"><div class="insight-cell">' + r[0] + '</div><div class="insight-cell">' + r[1] + '</div><div class="insight-cell">' + r[2] + '</div><div class="insight-cell ' + deltaClass + '">' + deltaStr + '</div></div>';
+        });
+
+        html += '<div class="insight-section"><h4>Improved</h4><ul>' + data.better.map(function(b) { return "<li>" + b + "</li>"; }).join("") + '</ul></div>';
+        html += '<div class="insight-section"><h4>Declined</h4><ul>' + data.worse.map(function(w) { return "<li>" + w + "</li>"; }).join("") + '</ul></div>';
+        html += '<div class="insight-section"><h4>The Verdict</h4><p style="margin:0;">' + data.verdict + '</p></div>';
+
+        insightBody.innerHTML = html;
+        seasonInsightModal.classList.add("visible");
+        seasonInsightModal.setAttribute("aria-hidden", "false");
+      }
+
+      seasonInfoBtn.addEventListener("click", openSeasonInsight);
+      closeInsightBtn.addEventListener("click", function () {
+        seasonInsightModal.classList.remove("visible");
+        seasonInsightModal.setAttribute("aria-hidden", "true");
+      });
+      seasonInsightModal.addEventListener("click", function (event) {
+        if (event.target === seasonInsightModal) {
+          seasonInsightModal.classList.remove("visible");
+          seasonInsightModal.setAttribute("aria-hidden", "true");
+        }
+      });
+
       timelineSearch.addEventListener("input", (event) => {
         const term = event.target.value || "";
         renderTimeline(timelineStore, term);
@@ -3067,6 +3335,12 @@
           "nicholas": "assets/team-art/nicholas.png",
           "kalle": "assets/team-art/kalle.png",
           "sander": "assets/team-art/sander.png",
+          "joakim": "assets/team-art/jocke.png",
+          "mert": "assets/team-art/mert.jpg",
+          "niklas": "assets/team-art/niklas.png",
+        };
+        const playerArtBg = {
+          "mert": "#DDDDDD",
         };
         const duoArt = {
           "chu+anton": "assets/team-art/chu_anton.png",
@@ -3081,6 +3355,12 @@
           if (!name) return null;
           const first = name.split(/\s+/)[0].toLowerCase();
           return playerArt[first] || null;
+        }
+
+        function artBgFor(name) {
+          if (!name) return null;
+          const first = name.split(/\s+/)[0].toLowerCase();
+          return playerArtBg[first] || null;
         }
 
         function duoArtFor(names) {
@@ -3442,6 +3722,13 @@
             // card
             const el = document.createElement("div");
             el.className = "wrapped-card " + c.cls + (i === 0 ? " active" : "");
+            // Override card bg if image belongs to a player with a custom bg
+            const imgBgMatch = c.image && Object.entries(playerArt).find(([, v]) => v === c.image);
+            if (imgBgMatch && playerArtBg[imgBgMatch[0]]) {
+              el.style.background = playerArtBg[imgBgMatch[0]];
+              el.style.color = "#222";
+              el.style.textShadow = "none";
+            }
             el.innerHTML =
               (c.image ? '<div class="wrapped-card__img-wrapper' + (c.imageDuo ? ' wrapped-card__img-wrapper--duo' : '') + (c.imageWide ? ' wrapped-card__img-wrapper--wide' : '') + '"><img src="' + c.image + '" alt=""></div>' : "") +
               (c.ascii ? '<div class="wrapped-card__ascii">' + c.ascii + "</div>" : "") +

@@ -1,0 +1,19 @@
+[
+  { "name": "Kalle Modin", "number": "0", "gamesPlayed": 9, "totalPoints": 121, "pointsPerGame": 13.4, "threePointsMade": 11, "foulsMade": 15 },
+  { "name": "Niklas Walles", "number": "3", "gamesPlayed": 6, "totalPoints": 39, "pointsPerGame": 6.5, "threePointsMade": 1, "foulsMade": 12 },
+  { "name": "Alexander Kling", "number": "4", "gamesPlayed": 1, "totalPoints": 8, "pointsPerGame": 8.0, "threePointsMade": null, "foulsMade": null },
+  { "name": "Fares Cherif", "number": "5", "gamesPlayed": 14, "totalPoints": 145, "pointsPerGame": 10.4, "threePointsMade": 29, "foulsMade": 27 },
+  { "name": "Patrick Blom", "number": "7", "gamesPlayed": 10, "totalPoints": 83, "pointsPerGame": 8.3, "threePointsMade": 17, "foulsMade": 7 },
+  { "name": "Mikael Ceder Brolin", "number": "8", "gamesPlayed": 2, "totalPoints": 2, "pointsPerGame": 1.0, "threePointsMade": null, "foulsMade": 1 },
+  { "name": "Daniel Yousefi Lidman", "number": "9", "gamesPlayed": 9, "totalPoints": 27, "pointsPerGame": 3.0, "threePointsMade": 3, "foulsMade": 22 },
+  { "name": "Lucas Evertsson", "number": "10", "gamesPlayed": 9, "totalPoints": 69, "pointsPerGame": 7.7, "threePointsMade": 3, "foulsMade": 6 },
+  { "name": "Mert Camlibel", "number": "13", "gamesPlayed": 13, "totalPoints": 59, "pointsPerGame": 4.5, "threePointsMade": null, "foulsMade": 23 },
+  { "name": "Joakim Walles", "number": "15", "gamesPlayed": 11, "totalPoints": 51, "pointsPerGame": 4.6, "threePointsMade": 2, "foulsMade": 32 },
+  { "name": "Bijan Yousefi", "number": "20", "gamesPlayed": 9, "totalPoints": 14, "pointsPerGame": 1.5, "threePointsMade": 1, "foulsMade": 19 },
+  { "name": "Daniel Amani Rud\u00e4ng", "number": "21", "gamesPlayed": 7, "totalPoints": 13, "pointsPerGame": 1.9, "threePointsMade": 1, "foulsMade": 7 },
+  { "name": "Anton Jensen Wennberg", "number": "27", "gamesPlayed": 12, "totalPoints": 139, "pointsPerGame": 11.6, "threePointsMade": null, "foulsMade": 28 },
+  { "name": "Nicholas Frederiksen", "number": "36", "gamesPlayed": 11, "totalPoints": 119, "pointsPerGame": 10.8, "threePointsMade": null, "foulsMade": 10 },
+  { "name": "Mattias Malmi Pauser", "number": "51", "gamesPlayed": 12, "totalPoints": 68, "pointsPerGame": 5.7, "threePointsMade": 1, "foulsMade": 19 },
+  { "name": "Nessim Al Khalili", "number": "00", "gamesPlayed": 2, "totalPoints": 9, "pointsPerGame": 4.5, "threePointsMade": null, "foulsMade": 3 },
+  { "name": "Alexander Mohamud", "number": "0", "gamesPlayed": 2, "totalPoints": 16, "pointsPerGame": 8.0, "threePointsMade": null, "foulsMade": 2 }
+]
