@@ -37,6 +37,7 @@ SEASON_START_MONTH = 9
 # Ordered list of seasons – latest first.  Each entry maps a season key
 # (e.g. "25-26") to its start year and a display label.
 SEASONS: list[dict] = [
+    {"key": "26-27", "startYear": 2026, "label": "2026-27", "teamId": 1403069},
     {"key": "25-26", "startYear": 2025, "label": "2025-26", "teamId": 1403069},
     {"key": "24-25", "startYear": 2024, "label": "2024-25", "teamId": 1264914},
     {"key": "23-24", "startYear": 2023, "label": "2023-24", "teamId": 1114613},
@@ -876,7 +877,11 @@ def build_season(season_cfg: dict) -> dict | None:
     player_records: dict[str, dict] = {}
     has_stats = False
 
-    for game_id, game in load_raw_games(allowed_ids or None):
+    # A season without an EMP source file has no digital box scores yet.  Do
+    # not accidentally process every cached game from previous seasons.
+    raw_games = load_raw_games(allowed_ids) if season_cfg.get("sourcesPath") else ()
+
+    for game_id, game in raw_games:
         # Only process games that are in this season's schedule or source list
         if allowed_ids and game_id not in allowed_ids:
             continue

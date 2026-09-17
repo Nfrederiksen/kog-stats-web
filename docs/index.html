@@ -6,8 +6,23 @@
     <title>KOG Player Stats</title>
     <style>
       :root,
-      [data-season="25-26"] {
+      [data-season="26-27"] {
         color-scheme: dark;
+        --bg-gradient: radial-gradient(circle at top, #28134a 0%, #0c0719 55%, #020104 100%);
+        --card-bg: rgba(26, 13, 47, 0.75);
+        --card-border: rgba(166, 103, 255, 0.35);
+        --glow: 0 24px 60px rgba(86, 33, 151, 0.48);
+        --accent: #ba8cff;
+        --accent-soft: rgba(186, 140, 255, 0.18);
+        --text-primary: #f8f2ff;
+        --text-muted: #c5acd9;
+        --divider: rgba(166, 103, 255, 0.35);
+        --badge-bg: rgba(186, 140, 255, 0.12);
+        --badge-text: #d4b8ff;
+        --wrapped-intro: linear-gradient(135deg, #1d0e38, #4d2182, #7d3d9b);
+      }
+
+      [data-season="25-26"] {
         --bg-gradient: radial-gradient(circle at top, #151a33 0%, #05070e 55%, #010103 100%);
         --card-bg: rgba(12, 16, 34, 0.75);
         --card-border: rgba(82, 93, 150, 0.35);
@@ -1387,6 +1402,238 @@
         margin-left: 0.3rem;
       }
 
+      /* ── Season Insights (draft) ── */
+      .season-insights {
+        position: relative;
+        z-index: 1;
+        margin-bottom: clamp(1rem, 2vw, 1.5rem);
+      }
+
+      .season-insights__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .season-insights__header h2 {
+        margin: 0;
+        font-size: clamp(1.05rem, 2vw, 1.35rem);
+      }
+
+      .season-insights__header p,
+      .insight-card__note {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      .insights-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+      }
+
+      .insight-card {
+        min-width: 0;
+        border: 1px solid var(--card-border);
+        border-radius: 18px;
+        padding: 1rem;
+        background: rgba(5, 8, 18, 0.34);
+      }
+
+      .insight-card--wide {
+        grid-column: 1 / -1;
+      }
+
+      .insight-card__title-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.85rem;
+      }
+
+      .insight-card h3 {
+        margin: 0;
+        font-size: 0.92rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .team-snapshot {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7rem;
+      }
+
+      .team-snapshot__stat {
+        border-radius: 12px;
+        padding: 0.75rem;
+        background: var(--accent-soft);
+      }
+
+      .team-snapshot__stat span {
+        display: block;
+        color: var(--text-muted);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .team-snapshot__stat strong {
+        display: block;
+        margin-top: 0.28rem;
+        font-size: 1.15rem;
+      }
+
+      .form-chart {
+        position: relative;
+        height: 176px;
+        display: flex;
+        align-items: stretch;
+        gap: clamp(0.2rem, 1vw, 0.55rem);
+        padding: 0.25rem 0 1.7rem;
+        overflow-x: auto;
+      }
+
+      .form-chart::before {
+        content: "EVEN";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(50% - 0.85rem);
+        border-top: 1px dashed var(--divider);
+        color: var(--text-muted);
+        font-size: 0.6rem;
+        letter-spacing: 0.08em;
+        pointer-events: none;
+      }
+
+      .form-chart__game {
+        position: relative;
+        flex: 1 0 30px;
+        min-width: 30px;
+        border: 0;
+        background: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .form-chart__game:hover .form-chart__bar,
+      .form-chart__game:focus-visible .form-chart__bar {
+        filter: brightness(1.25);
+        outline: 2px solid var(--text-primary);
+        outline-offset: 2px;
+      }
+
+      .form-chart__bar {
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        border-radius: 5px;
+        min-height: 4px;
+        transition: filter 150ms ease, transform 150ms ease;
+      }
+
+      .form-chart__bar--win { bottom: 50%; background: #4ade80; }
+      .form-chart__bar--loss { top: 50%; background: #fb7185; }
+      .form-chart__bar--draw { bottom: calc(50% - 2px); height: 4px !important; background: #facc15; }
+
+      .form-chart__label {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%) rotate(-45deg);
+        transform-origin: top left;
+        white-space: nowrap;
+        font-size: 0.62rem;
+      }
+
+      .form-chart__tooltip {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -108%);
+        z-index: 2;
+        display: none;
+        width: max-content;
+        max-width: 180px;
+        padding: 0.4rem 0.55rem;
+        border-radius: 8px;
+        background: #05070e;
+        border: 1px solid var(--card-border);
+        color: var(--text-primary);
+        font: 0.7rem/1.25 inherit;
+        text-align: left;
+      }
+
+      .form-chart__game:hover .form-chart__tooltip,
+      .form-chart__game:focus-visible .form-chart__tooltip { display: block; }
+
+      .heatmap-scroll { overflow-x: auto; }
+
+      .player-heatmap {
+        display: grid;
+        gap: 3px;
+        min-width: max-content;
+      }
+
+      .player-heatmap__row {
+        display: grid;
+        grid-template-columns: minmax(104px, 1fr) repeat(var(--game-count), 30px);
+        gap: 3px;
+        align-items: center;
+      }
+
+      .player-heatmap__name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-right: 0.35rem;
+        font-size: 0.78rem;
+      }
+
+      .player-heatmap__game,
+      .player-heatmap__cell {
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        border-radius: 6px;
+        font-size: 0.68rem;
+      }
+
+      .player-heatmap__game {
+        color: var(--text-muted);
+        transform: rotate(-45deg);
+      }
+
+      .player-heatmap__cell {
+        background: rgba(255, 255, 255, 0.045);
+        color: var(--text-muted);
+      }
+
+      .player-heatmap__cell--scored {
+        background: color-mix(in srgb, var(--accent) calc(var(--heat) * 88%), rgba(255,255,255,0.05));
+        color: #07101d;
+        font-weight: 800;
+      }
+
+      .insight-empty {
+        color: var(--text-muted);
+        font-size: 0.88rem;
+        padding: 0.35rem 0;
+      }
+
+      @media (max-width: 640px) {
+        .insights-grid { grid-template-columns: 1fr; }
+        .insight-card--wide { grid-column: auto; }
+        .season-insights__header { align-items: flex-start; flex-direction: column; gap: 0.2rem; }
+      }
+
       /* ── Season Wrapped ── */
       .wrapped-btn {
         background: linear-gradient(135deg, #ff6b35, #f7c948, #ff6b35);
@@ -1659,6 +1906,14 @@
 
       <section class="totals" id="teamTotals"></section>
 
+      <section class="season-insights" id="seasonInsightsPanel">
+        <div class="season-insights__header">
+          <h2>Season Insights <span aria-label="draft">✦</span></h2>
+          <p>Draft visuals from scores and digital game logs</p>
+        </div>
+        <div class="insights-grid" id="seasonInsightsGrid"></div>
+      </section>
+
       <div class="content-switcher" id="contentSwitcher">
         <button type="button" class="content-toggle" id="toggleStatsPanel" aria-expanded="false" aria-controls="statsPanel">
           Player Stats
@@ -1813,6 +2068,7 @@
       const closeTimelineBtn = document.getElementById("closeTimeline");
       const timelineSearch = document.getElementById("timelineSearch");
       const seasonSelector = document.getElementById("seasonSelector");
+      const seasonInsightsGrid = document.getElementById("seasonInsightsGrid");
       let playerStore = [];
       let scheduleStore = [];
       let timelineStore = [];
@@ -2157,6 +2413,201 @@
         } else {
           upcomingGamesGroup.style.display = "none";
         }
+      }
+
+      function createInsightCard(title, note = "", wide = false) {
+        const card = document.createElement("article");
+        card.className = "insight-card" + (wide ? " insight-card--wide" : "");
+        const heading = document.createElement("div");
+        heading.className = "insight-card__title-row";
+        const headingText = document.createElement("h3");
+        headingText.textContent = title;
+        heading.appendChild(headingText);
+        if (note) {
+          const noteEl = document.createElement("p");
+          noteEl.className = "insight-card__note";
+          noteEl.textContent = note;
+          heading.appendChild(noteEl);
+        }
+        card.appendChild(heading);
+        return card;
+      }
+
+      function renderSeasonForm(played) {
+        const card = createInsightCard("Season form", "Point differential by game", true);
+        const chart = document.createElement("div");
+        chart.className = "form-chart";
+        const maxDiff = Math.max(...played.map((game) => Math.abs(Number(game.pointDiff) || 0)), 1);
+
+        played.forEach((game, index) => {
+          const diff = Number(game.pointDiff) || 0;
+          const result = diff > 0 ? "win" : diff < 0 ? "loss" : "draw";
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "form-chart__game";
+          button.setAttribute("aria-label", `Game ${index + 1}: ${game.opponent}, ${game.kogScore}-${game.opponentScore}`);
+          button.addEventListener("click", () => openTimelineModal(game.matchId, game));
+
+          const tooltip = document.createElement("span");
+          tooltip.className = "form-chart__tooltip";
+          tooltip.textContent = `${game.homeOrAway === "home" ? "vs" : "@"} ${game.opponent}: ${game.kogScore}-${game.opponentScore} (${formatDiff(diff)})`;
+
+          const bar = document.createElement("span");
+          bar.className = `form-chart__bar form-chart__bar--${result}`;
+          bar.style.height = `${Math.max(4, (Math.abs(diff) / maxDiff) * 46)}%`;
+
+          const label = document.createElement("span");
+          label.className = "form-chart__label";
+          label.textContent = `G${index + 1}`;
+          button.append(tooltip, bar, label);
+          chart.appendChild(button);
+        });
+
+        card.appendChild(chart);
+        return card;
+      }
+
+      function renderTeamSnapshot(players, played) {
+        const card = createInsightCard("Team snapshot", "What the available data can support");
+        const statsGames = played.filter((game) => game.hasStats).length;
+        const totalPoints = players.reduce((sum, player) => sum + (Number(player.totalPoints) || 0), 0);
+        const totalThrees = players.reduce((sum, player) => sum + (Number(player.threePointsMade) || 0), 0);
+        const totalFreeThrows = players.reduce((sum, player) => sum + (Number(player.freeThrowsMade) || 0), 0);
+        const totalFouls = players.reduce((sum, player) => sum + (Number(player.foulsMade) || 0), 0);
+        const scorePerGame = played.reduce((sum, game) => sum + (Number(game.kogScore) || 0), 0) / played.length;
+        const averageMargin = played.reduce((sum, game) => sum + (Number(game.pointDiff) || 0), 0) / played.length;
+        const grid = document.createElement("div");
+        grid.className = "team-snapshot";
+
+        const metrics = [
+          ["KOG PTS / game", scorePerGame.toFixed(1)],
+          ["Average margin", formatDiff(Number(averageMargin.toFixed(1)))],
+          ["3PT made / digital game", statsGames ? (totalThrees / statsGames).toFixed(1) : "—"],
+          ["FT made / digital game", statsGames ? (totalFreeThrows / statsGames).toFixed(1) : "—"],
+          ["Fouls / digital game", statsGames ? (totalFouls / statsGames).toFixed(1) : "—"],
+          ["Digital PTS logged", totalPoints || "—"],
+        ];
+
+        metrics.forEach(([label, value]) => {
+          const item = document.createElement("div");
+          item.className = "team-snapshot__stat";
+          const labelEl = document.createElement("span");
+          labelEl.textContent = label;
+          const valueEl = document.createElement("strong");
+          valueEl.textContent = value;
+          item.append(labelEl, valueEl);
+          grid.appendChild(item);
+        });
+        card.appendChild(grid);
+        return card;
+      }
+
+      function renderPlayerHeatmap(card, players, games, seasonKey) {
+        const body = document.createElement("div");
+        body.className = "insight-empty";
+        body.textContent = "Loading digital game logs…";
+        card.appendChild(body);
+
+        Promise.all(
+          games.map((game) =>
+            fetch(seasonDataPath(seasonKey, `playbyplay/game_${game.matchId}.json`), { cache: "no-store" })
+              .then((response) => (response.ok ? response.json() : null))
+              .catch(() => null)
+          )
+        ).then((feeds) => {
+          if (currentSeason !== seasonKey || !card.isConnected) return;
+
+          const pointsByPlayer = new Map();
+          const scoringValues = { 103: 3, 104: 2, 106: 1 };
+          feeds.forEach((feed, gameIndex) => {
+            (feed?.timeline || []).forEach((event) => {
+              const points = scoringValues[event.rawType];
+              const name = (event.player || "").trim();
+              if (event.side !== "KOG" || !points || !name) return;
+              const playerPoints = pointsByPlayer.get(name) || Array(games.length).fill(0);
+              playerPoints[gameIndex] += points;
+              pointsByPlayer.set(name, playerPoints);
+            });
+          });
+
+          const rows = Array.from(pointsByPlayer.entries())
+            .filter(([, values]) => values.some(Boolean))
+            .sort(([, a], [, b]) => b.reduce((sum, value) => sum + value, 0) - a.reduce((sum, value) => sum + value, 0));
+          if (!rows.length) {
+            body.textContent = "No player scoring events are available in the digital logs yet.";
+            return;
+          }
+
+          const maxPoints = Math.max(...rows.flatMap(([, values]) => values), 1);
+          const scroll = document.createElement("div");
+          scroll.className = "heatmap-scroll";
+          const heatmap = document.createElement("div");
+          heatmap.className = "player-heatmap";
+          heatmap.style.setProperty("--game-count", String(games.length));
+
+          const header = document.createElement("div");
+          header.className = "player-heatmap__row";
+          header.appendChild(document.createElement("span"));
+          games.forEach((game, index) => {
+            const gameLabel = document.createElement("span");
+            gameLabel.className = "player-heatmap__game";
+            gameLabel.textContent = `G${index + 1}`;
+            gameLabel.title = `${game.dateLabel || ""} vs ${game.opponent || "Opponent"}`;
+            header.appendChild(gameLabel);
+          });
+          heatmap.appendChild(header);
+
+          rows.forEach(([name, values]) => {
+            const row = document.createElement("div");
+            row.className = "player-heatmap__row";
+            const nameEl = document.createElement("span");
+            nameEl.className = "player-heatmap__name";
+            nameEl.textContent = name;
+            row.appendChild(nameEl);
+            values.forEach((points, index) => {
+              const cell = document.createElement("span");
+              cell.className = "player-heatmap__cell" + (points ? " player-heatmap__cell--scored" : "");
+              if (points) cell.style.setProperty("--heat", String(points / maxPoints));
+              cell.textContent = points || "·";
+              cell.title = `${name}: ${points || 0} points in G${index + 1}`;
+              row.appendChild(cell);
+            });
+            heatmap.appendChild(row);
+          });
+
+          body.replaceWith(scroll);
+          scroll.appendChild(heatmap);
+        });
+      }
+
+      function renderSeasonInsights(players, games) {
+        seasonInsightsGrid.innerHTML = "";
+        const played = (Array.isArray(games) ? games : [])
+          .filter((game) => (game.status || "").toLowerCase() === "played" && Number.isFinite(game.kogScore) && Number.isFinite(game.opponentScore))
+          .sort((a, b) => getTipoffTime(a, 0) - getTipoffTime(b, 0));
+
+        if (!played.length) {
+          const empty = createInsightCard("Season form", "Coming after the first final score", true);
+          const message = document.createElement("p");
+          message.className = "insight-empty";
+          message.textContent = "Game-by-game momentum, team averages, and the player scoring heatmap will appear here as digital game data arrives.";
+          empty.appendChild(message);
+          seasonInsightsGrid.appendChild(empty);
+          return;
+        }
+
+        seasonInsightsGrid.append(renderTeamSnapshot(players, played), renderSeasonForm(played));
+        const digitalGames = played.filter((game) => game.hasStats);
+        const heatmapCard = createInsightCard("Player scoring heatmap", `${digitalGames.length} digital game${digitalGames.length === 1 ? "" : "s"}`, true);
+        if (digitalGames.length) {
+          renderPlayerHeatmap(heatmapCard, players, digitalGames, currentSeason);
+        } else {
+          const message = document.createElement("p");
+          message.className = "insight-empty";
+          message.textContent = "This season has final scores, but no digital player-level game logs yet.";
+          heatmapCard.appendChild(message);
+        }
+        seasonInsightsGrid.appendChild(heatmapCard);
       }
 
       function renderLinks(links) {
@@ -2931,6 +3382,7 @@
 
             renderBadges(players, metadata, gamesCount);
             renderSchedule(Array.isArray(scheduleData) ? scheduleData : []);
+            renderSeasonInsights(players, Array.isArray(scheduleData) ? scheduleData : []);
             renderLinks(Array.isArray(linksData) ? linksData : []);
 
             document.getElementById("noDataMessage").style.display = "none";
@@ -2963,6 +3415,7 @@
             document.getElementById("noDataMessage").style.display = "block";
             renderBadges([], null, 0);
             renderSchedule([]);
+            renderSeasonInsights([], []);
             renderLinks([]);
             statsPanel.hidden = false;
             setPanelOpen(statsPanel, toggleStatsPanelBtn, true);
