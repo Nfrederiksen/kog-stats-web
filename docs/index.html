@@ -490,6 +490,32 @@
         gap: 1rem;
       }
 
+      .game-card__actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.5rem;
+      }
+
+      .game-card__scout-button {
+        appearance: none;
+        width: 1.9rem;
+        height: 1.9rem;
+        border-radius: 50%;
+        border: 1px solid var(--accent);
+        background: var(--accent-soft);
+        color: var(--accent);
+        font: 700 0.9rem/1 inherit;
+        cursor: pointer;
+      }
+
+      .game-card__scout-button:hover,
+      .game-card__scout-button:focus-visible {
+        color: var(--text-primary);
+        background: var(--accent);
+        outline: none;
+      }
+
       .game-card__label {
         font-size: 0.78rem;
         letter-spacing: 0.24em;
@@ -936,6 +962,71 @@
 
       .modal-card--wide {
         width: min(760px, 100%);
+      }
+
+      .scout-summary {
+        margin: 0;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      .scout-source {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.76rem;
+      }
+
+      .scout-section {
+        display: grid;
+        gap: 0.6rem;
+      }
+
+      .scout-section h3 {
+        margin: 0;
+        color: var(--badge-text);
+        font-size: 0.75rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .scout-player,
+      .scout-plan li {
+        border-left: 3px solid var(--accent);
+        border-radius: 0 10px 10px 0;
+        padding: 0.65rem 0.8rem;
+        background: rgba(255, 255, 255, 0.045);
+      }
+
+      .scout-player strong {
+        display: block;
+      }
+
+      .scout-player span {
+        display: block;
+        color: var(--badge-text);
+        font-size: 0.78rem;
+        margin: 0.18rem 0;
+      }
+
+      .scout-player p {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.86rem;
+        line-height: 1.4;
+      }
+
+      .scout-plan {
+        display: grid;
+        gap: 0.55rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .scout-plan li {
+        color: var(--text-primary);
+        font-size: 0.9rem;
+        line-height: 1.45;
       }
       @media (max-width: 720px) {
         .modal-overlay {
@@ -2044,6 +2135,16 @@
       </div>
     </div>
 
+    <div class="modal-overlay" id="scoutModal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="scoutTitle">
+        <div class="modal-header">
+          <h2 id="scoutTitle">Opponent Scout</h2>
+          <button class="close-modal" id="closeScout" type="button">Close</button>
+        </div>
+        <div id="scoutBody"></div>
+      </div>
+    </div>
+
     <div class="wrapped-overlay" id="wrappedOverlay">
       <button class="wrapped-close" id="wrappedClose">Close</button>
       <div class="wrapped-progress" id="wrappedProgress"></div>
@@ -2084,6 +2185,10 @@
       const timelineSearch = document.getElementById("timelineSearch");
       const seasonSelector = document.getElementById("seasonSelector");
       const seasonInsightsGrid = document.getElementById("seasonInsightsGrid");
+      const scoutModal = document.getElementById("scoutModal");
+      const scoutTitle = document.getElementById("scoutTitle");
+      const scoutBody = document.getElementById("scoutBody");
+      const closeScoutBtn = document.getElementById("closeScout");
       let playerStore = [];
       let scheduleStore = [];
       let timelineStore = [];
@@ -2096,6 +2201,7 @@
       let currentSeason = null;
       let seasonsManifest = [];
       let rivalryRecord = null;
+      let opponentScouts = [];
       metaContainer.className = "meta";
 
       const lockup = document.createElement("div");
@@ -2277,6 +2383,77 @@
         return `Starts in ${diffMinutes} ${diffMinutes === 1 ? "minute" : "minutes"}`;
       }
 
+      function normalizeOpponentName(name) {
+        return (name || "").trim().toLocaleLowerCase();
+      }
+
+      function findOpponentScout(game) {
+        return opponentScouts.find((scout) =>
+          scout.seasonKey === currentSeason &&
+          normalizeOpponentName(scout.opponent) === normalizeOpponentName(game.opponent)
+        ) || null;
+      }
+
+      function openScoutModal(scout) {
+        if (!scout) return;
+        scoutTitle.textContent = scout.title || `${scout.opponent} Game Plan`;
+        scoutBody.innerHTML = "";
+
+        const summary = document.createElement("p");
+        summary.className = "scout-summary";
+        summary.textContent = scout.summary || "";
+        scoutBody.appendChild(summary);
+
+        if (Array.isArray(scout.players) && scout.players.length) {
+          const playerSection = document.createElement("section");
+          playerSection.className = "scout-section";
+          const heading = document.createElement("h3");
+          heading.textContent = "Match-ups to know";
+          playerSection.appendChild(heading);
+          scout.players.forEach((player) => {
+            const item = document.createElement("article");
+            item.className = "scout-player";
+            const name = document.createElement("strong");
+            name.textContent = player.name;
+            const stat = document.createElement("span");
+            stat.textContent = player.stat;
+            const note = document.createElement("p");
+            note.textContent = player.note;
+            item.append(name, stat, note);
+            playerSection.appendChild(item);
+          });
+          scoutBody.appendChild(playerSection);
+        }
+
+        if (Array.isArray(scout.plan) && scout.plan.length) {
+          const planSection = document.createElement("section");
+          planSection.className = "scout-section";
+          const heading = document.createElement("h3");
+          heading.textContent = "Team plan";
+          const list = document.createElement("ul");
+          list.className = "scout-plan";
+          scout.plan.forEach((tip) => {
+            const item = document.createElement("li");
+            item.textContent = tip;
+            list.appendChild(item);
+          });
+          planSection.append(heading, list);
+          scoutBody.appendChild(planSection);
+        }
+
+        const source = document.createElement("p");
+        source.className = "scout-source";
+        source.textContent = scout.source || "Opponent scout";
+        scoutBody.appendChild(source);
+        scoutModal.classList.add("visible");
+        scoutModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeScoutModal() {
+        scoutModal.classList.remove("visible");
+        scoutModal.setAttribute("aria-hidden", "true");
+      }
+
       function buildGameCard(game, { highlight = false, label = null } = {}) {
         const card = document.createElement("article");
         card.className = highlight ? "game-card game-card--next" : "game-card";
@@ -2298,11 +2475,29 @@
           headerRow.appendChild(document.createElement("span"));
         }
 
+        const actions = document.createElement("div");
+        actions.className = "game-card__actions";
+        const scout = (game.status || "").toLowerCase() !== "played" ? findOpponentScout(game) : null;
+        if (scout) {
+          const scoutButton = document.createElement("button");
+          scoutButton.type = "button";
+          scoutButton.className = "game-card__scout-button";
+          scoutButton.textContent = "i";
+          scoutButton.title = `Open ${scout.opponent} game plan`;
+          scoutButton.setAttribute("aria-label", `Open ${scout.opponent} game plan`);
+          scoutButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            openScoutModal(scout);
+          });
+          actions.appendChild(scoutButton);
+        }
+
         const badge = document.createElement("span");
         badge.className = "game-card__homeaway";
         badge.classList.add(game.homeOrAway === "home" ? "is-home" : "is-away");
         badge.textContent = game.homeOrAway === "home" ? "Home" : "Away";
-        headerRow.appendChild(badge);
+        actions.appendChild(badge);
+        headerRow.appendChild(actions);
         card.appendChild(headerRow);
 
         const opponentLine = document.createElement("div");
@@ -3394,9 +3589,12 @@
             .catch(() => []),
           fetch("data/kog_links.json", { cache: "no-store" })
             .then((response) => (response.ok ? response.json() : []))
+            .catch(() => []),
+          fetch("data/opponent_scouts.json", { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : []))
             .catch(() => [])
         ])
-          .then(([playersData, metadata, scheduleData, linksData]) => {
+          .then(([playersData, metadata, scheduleData, linksData, scoutsData]) => {
             const players = Array.isArray(playersData) ? playersData : [];
             const gamesCount = resolveGamesCount(players, metadata);
             const playersTracked = metadata && typeof metadata.playersTracked === "number"
@@ -3404,6 +3602,7 @@
               : players.length;
 
             playerStore = players;
+            opponentScouts = Array.isArray(scoutsData) ? scoutsData : [];
 
             renderBadges(players, metadata, gamesCount);
             renderSchedule(Array.isArray(scheduleData) ? scheduleData : []);
@@ -3776,6 +3975,11 @@
         }
       });
 
+      closeScoutBtn.addEventListener("click", closeScoutModal);
+      scoutModal.addEventListener("click", (event) => {
+        if (event.target === scoutModal) closeScoutModal();
+      });
+
       timelineSearch.addEventListener("input", (event) => {
         const term = event.target.value || "";
         renderTimeline(timelineStore, term);
@@ -3792,6 +3996,9 @@
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && modalOverlay.classList.contains("visible")) {
           closeModal();
+        }
+        if (event.key === "Escape" && scoutModal.classList.contains("visible")) {
+          closeScoutModal();
         }
       });
 
