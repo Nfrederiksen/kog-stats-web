@@ -1918,6 +1918,9 @@
         <button type="button" class="content-toggle" id="toggleStatsPanel" aria-expanded="false" aria-controls="statsPanel">
           Player Stats
         </button>
+        <button type="button" class="content-toggle" id="toggleHeatmapPanel" aria-expanded="false" aria-controls="heatmapPanel" hidden>
+          Scoring Heatmap
+        </button>
         <button type="button" class="content-toggle content-toggle--active" id="toggleSchedulePanel" aria-expanded="true" aria-controls="schedulePanel">
           Schedule & Games
         </button>
@@ -1949,6 +1952,14 @@
         <div class="no-data" id="noDataMessage">
           No stats available yet. Check back after the next Kungsholmen OG game tip-off.
         </div>
+      </section>
+
+      <section class="content-panel" id="heatmapPanel" hidden>
+        <div class="content-panel__header">
+          <h2 class="content-panel__title">Player Scoring Heatmap</h2>
+          <div class="content-panel__summary" id="heatmapSummary">Digital game logs</div>
+        </div>
+        <div id="heatmapPanelContent"></div>
       </section>
 
       <section class="content-panel schedule" id="schedulePanel">
@@ -2043,9 +2054,13 @@
       const header = document.querySelector("header");
       const metaContainer = document.createElement("div");
       const statsPanel = document.getElementById("statsPanel");
+      const heatmapPanel = document.getElementById("heatmapPanel");
       const schedulePanel = document.getElementById("schedulePanel");
       const toggleStatsPanelBtn = document.getElementById("toggleStatsPanel");
+      const toggleHeatmapPanelBtn = document.getElementById("toggleHeatmapPanel");
       const toggleSchedulePanelBtn = document.getElementById("toggleSchedulePanel");
+      const heatmapPanelContent = document.getElementById("heatmapPanelContent");
+      const heatmapSummary = document.getElementById("heatmapSummary");
       const scheduleSection = document.getElementById("scheduleSection");
       const nextGameWrapper = document.getElementById("nextGameWrapper");
       const playedGamesGroup = document.getElementById("playedGamesGroup");
@@ -2580,6 +2595,25 @@
         });
       }
 
+      function renderHeatmapPanel(players, games, seasonKey) {
+        heatmapPanelContent.innerHTML = "";
+        const digitalGames = games.filter((game) => game.hasStats);
+        const countLabel = `${digitalGames.length} digital game${digitalGames.length === 1 ? "" : "s"}`;
+        heatmapSummary.textContent = countLabel;
+
+        if (!digitalGames.length) {
+          heatmapPanel.hidden = true;
+          toggleHeatmapPanelBtn.hidden = true;
+          toggleHeatmapPanelBtn.classList.remove("content-toggle--active");
+          toggleHeatmapPanelBtn.setAttribute("aria-expanded", "false");
+          return;
+        }
+
+        heatmapPanel.hidden = true;
+        toggleHeatmapPanelBtn.hidden = false;
+        renderPlayerHeatmap(heatmapPanelContent, players, digitalGames, seasonKey);
+      }
+
       function renderSeasonInsights(players, games) {
         seasonInsightsGrid.innerHTML = "";
         const played = (Array.isArray(games) ? games : [])
@@ -2590,24 +2624,15 @@
           const empty = createInsightCard("Season form", "Coming after the first final score", true);
           const message = document.createElement("p");
           message.className = "insight-empty";
-          message.textContent = "Game-by-game momentum, team averages, and the player scoring heatmap will appear here as digital game data arrives.";
+          message.textContent = "Game-by-game momentum and team averages will appear here after the first final score.";
           empty.appendChild(message);
           seasonInsightsGrid.appendChild(empty);
+          renderHeatmapPanel(players, [], currentSeason);
           return;
         }
 
         seasonInsightsGrid.append(renderTeamSnapshot(players, played), renderSeasonForm(played));
-        const digitalGames = played.filter((game) => game.hasStats);
-        const heatmapCard = createInsightCard("Player scoring heatmap", `${digitalGames.length} digital game${digitalGames.length === 1 ? "" : "s"}`, true);
-        if (digitalGames.length) {
-          renderPlayerHeatmap(heatmapCard, players, digitalGames, currentSeason);
-        } else {
-          const message = document.createElement("p");
-          message.className = "insight-empty";
-          message.textContent = "This season has final scores, but no digital player-level game logs yet.";
-          heatmapCard.appendChild(message);
-        }
-        seasonInsightsGrid.appendChild(heatmapCard);
+        renderHeatmapPanel(players, played, currentSeason);
       }
 
       function renderLinks(links) {
@@ -3757,6 +3782,9 @@
       });
       toggleStatsPanelBtn.addEventListener("click", () => {
         togglePanel(statsPanel, toggleStatsPanelBtn);
+      });
+      toggleHeatmapPanelBtn.addEventListener("click", () => {
+        togglePanel(heatmapPanel, toggleHeatmapPanelBtn);
       });
       toggleSchedulePanelBtn.addEventListener("click", () => {
         togglePanel(schedulePanel, toggleSchedulePanelBtn);
