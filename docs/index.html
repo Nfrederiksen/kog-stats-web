@@ -2217,6 +2217,7 @@
       let playerStore = [];
       let scheduleStore = [];
       let timelineStore = [];
+      let timelineIsQuarterSummary = false;
       let timelineContext = { homeOrAway: null };
       let quarterDetailsCache = {};
       let selectedQuarter = null;
@@ -3315,7 +3316,11 @@
           empty.className = "timeline-detail__row";
           empty.innerHTML = `
             <div class="timeline-detail__cell timeline-detail__cell--muted" style="grid-column: 1 / -1; text-align: center;">
-              ${isFullGame ? "No player actions logged for this game." : "No player actions logged for this quarter."}
+              ${timelineIsQuarterSummary
+                ? "The official protocol records quarter totals, not individual scoring events."
+                : isFullGame
+                ? "No player actions logged for this game."
+                : "No player actions logged for this quarter."}
             </div>
           `;
           timelineDetailTable.appendChild(empty);
@@ -3416,6 +3421,7 @@
         document.body.style.overflow = "hidden";
         timelineSearch.value = "";
         timelineStore = [];
+        timelineIsQuarterSummary = false;
 
         const titleOpponent = gameInfo?.opponent || "Opponent";
         timelineTitle.textContent = `vs ${titleOpponent}`;
@@ -3444,7 +3450,11 @@
               return;
             }
             timelineStore = data.timeline;
+            timelineIsQuarterSummary = Boolean(data.isQuarterSummary);
             timelineContext = { homeOrAway: data.homeOrAway || null };
+            if (data.note) {
+              timelineMeta.textContent = [timelineMeta.textContent, data.note].filter(Boolean).join(" • ");
+            }
             quarterDetailsCache = buildQuarterDetails(timelineStore);
             selectedQuarter = "all";
             selectedTimelineQuarter = null;
