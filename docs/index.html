@@ -3554,10 +3554,14 @@
         // Update URL hash
         history.replaceState(null, "", `#season=${seasonKey}`);
 
-        // Show/hide wrapped button based on whether season has stats
+        // Wrapped is a season finale: keep it locked until every scheduled
+        // game has a recorded final result.
         const wrappedBtn = document.getElementById("wrappedBtn");
         if (wrappedBtn) {
-          wrappedBtn.style.display = (seasonInfo && seasonInfo.hasStats) ? "" : "none";
+          const seasonComplete = seasonInfo &&
+            seasonInfo.gamesScheduled > 0 &&
+            seasonInfo.gamesPlayed >= seasonInfo.gamesScheduled;
+          wrappedBtn.style.display = seasonComplete ? "" : "none";
         }
 
         // Show/hide incomplete data banner
