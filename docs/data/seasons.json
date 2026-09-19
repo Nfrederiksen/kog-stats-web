@@ -2,11 +2,12 @@
   {
     "key": "26-27",
     "label": "2026-27",
-    "gamesPlayed": 0,
+    "gamesPlayed": 1,
     "gamesScheduled": 20,
-    "hasStats": false,
-    "record": "0W-0L",
-    "empGames": 0
+    "hasStats": true,
+    "record": "1W-0L",
+    "empGames": 0,
+    "manualGames": 1
   },
   {
     "key": "25-26",

@@ -3563,7 +3563,7 @@
         // Show/hide incomplete data banner
         const banner = document.getElementById("incompleteDataBanner");
         if (banner && seasonInfo) {
-          const missing = seasonInfo.gamesPlayed - (seasonInfo.empGames || 0);
+          const missing = seasonInfo.gamesPlayed - (seasonInfo.empGames || 0) - (seasonInfo.manualGames || 0);
           if (missing > 0) {
             banner.textContent = `Play-by-play data is missing for ${missing} of ${seasonInfo.gamesPlayed} games this season. Some early games were recorded on paper only — player stats are based on the ${seasonInfo.empGames} games with digital data.`;
             banner.style.display = "block";

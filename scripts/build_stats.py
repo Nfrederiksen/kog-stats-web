@@ -83,6 +83,20 @@ def game_ids_for_season(season_cfg: dict) -> set[int]:
     return ids
 
 
+def manual_stats_game_ids(season_key: str) -> set[int]:
+    """Return games backed by a manually entered official match protocol."""
+    path = ROOT / "data" / f"manual_stats_{season_key}.json"
+    if not path.exists():
+        return set()
+
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return set()
+
+    return {int(match_id) for match_id in payload.get("matchIds", []) if str(match_id).isdigit()}
+
+
 # ── Player totals ───────────────────────────────────────────────────────────
 
 @dataclass
@@ -775,12 +789,13 @@ def publish_metadata(
     game_metrics: Iterable[Dict[str, object]],
     player_records: Dict[str, dict] | None,
     site_dir: Path,
+    players_tracked: int | None = None,
 ) -> None:
     site_dir.mkdir(parents=True, exist_ok=True)
     metadata = {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "gamesProcessed": sorted(set(game_ids)),
-        "playersTracked": sum(1 for player in totals.values() if player.games_played),
+        "playersTracked": players_tracked if players_tracked is not None else sum(1 for player in totals.values() if player.games_played),
         "teamRecords": None,
         "playerRecords": player_records or None,
     }
@@ -801,18 +816,18 @@ def publish_metadata(
 
 # ── Player overrides (for seasons with incomplete EMP data) ─────────────────
 
-def apply_player_overrides(season_key: str, site_dir: Path) -> None:
+def apply_player_overrides(season_key: str, site_dir: Path) -> int | None:
     """Patch published kog_players.json with manual override totals if available."""
     override_path = ROOT / "data" / f"overrides_{season_key}.json"
     if not override_path.exists():
-        return
+        return None
 
     overrides = json.loads(override_path.read_text(encoding="utf-8"))
     override_by_name = {o["name"]: o for o in overrides}
 
     feed_path = site_dir / "kog_players.json"
     if not feed_path.exists():
-        return
+        return None
 
     rows = json.loads(feed_path.read_text(encoding="utf-8"))
 
@@ -826,10 +841,9 @@ def apply_player_overrides(season_key: str, site_dir: Path) -> None:
         row["gamesPlayed"] = ovr["gamesPlayed"]
         row["totalPoints"] = ovr["totalPoints"]
         row["pointsPerGame"] = ovr["pointsPerGame"]
-        if ovr.get("threePointsMade") is not None:
-            row["threePointsMade"] = ovr["threePointsMade"]
-        if ovr.get("foulsMade") is not None:
-            row["foulsMade"] = ovr["foulsMade"]
+        for field in ("freeThrowsMade", "fieldGoalsMade", "threePointsMade", "foulsMade"):
+            if ovr.get(field) is not None:
+                row[field] = ovr[field]
 
     # Add players that only appear in overrides (no EMP data at all)
     for ovr in overrides:
@@ -839,8 +853,8 @@ def apply_player_overrides(season_key: str, site_dir: Path) -> None:
             "name": ovr["name"],
             "number": ovr.get("number", ""),
             "gamesPlayed": ovr["gamesPlayed"],
-            "freeThrowsMade": 0,
-            "fieldGoalsMade": 0,
+            "freeThrowsMade": ovr.get("freeThrowsMade") or 0,
+            "fieldGoalsMade": ovr.get("fieldGoalsMade") or 0,
             "threePointsMade": ovr.get("threePointsMade") or 0,
             "foulsMade": ovr.get("foulsMade") or 0,
             "totalPoints": ovr["totalPoints"],
@@ -850,6 +864,7 @@ def apply_player_overrides(season_key: str, site_dir: Path) -> None:
     rows.sort(key=lambda r: r["name"].lower())
     feed_path.write_text(json.dumps(rows, indent=2), encoding="utf-8")
     print(f"  Applied {len(override_by_name)} player override(s)")
+    return len(rows)
 
 
 # ── Per-season build ────────────────────────────────────────────────────────
@@ -870,12 +885,13 @@ def build_season(season_cfg: dict) -> dict | None:
         return None
 
     allowed_ids = game_ids_for_season(season_cfg)
+    manual_game_ids = manual_stats_game_ids(key)
 
     kog_totals: Dict[str, PlayerTotals] = {}
     processed_games: list[int] = []
     game_metrics: list[Dict[str, object]] = []
     player_records: dict[str, dict] = {}
-    has_stats = False
+    has_stats = bool(manual_game_ids)
 
     # A season without an EMP source file has no digital box scores yet.  Do
     # not accidentally process every cached game from previous seasons.
@@ -919,9 +935,35 @@ def build_season(season_cfg: dict) -> dict | None:
         if schedule_entry:
             publish_play_by_play(game_id, game, schedule_entry, opponent_team_id, play_by_play_dir, kog_team_id=kog_team_id)
 
+    # Official paper/PDF protocols can provide a final score and player totals
+    # before an EMP feed is available. Include those scores in team records,
+    # while keeping hasStats false on the schedule entry (no play-by-play).
+    for game_id in manual_game_ids - set(processed_games):
+        entry = schedule.get(game_id)
+        if not entry or entry.get("status") != "played":
+            continue
+        kog_points = entry.get("kogScore")
+        opponent_points = entry.get("opponentScore")
+        if kog_points is None or opponent_points is None:
+            continue
+        game_metrics.append({
+            "gameId": game_id,
+            "opponent": entry.get("opponent") or "Opponent",
+            "kogPoints": kog_points,
+            "opponentPoints": opponent_points,
+            "pointDiff": entry.get("pointDiff"),
+        })
+
     publish_kog_player_feed(kog_totals, season_site_dir)
-    apply_player_overrides(key, season_site_dir)
-    publish_metadata(processed_games, kog_totals, game_metrics, player_records, season_site_dir)
+    published_players = apply_player_overrides(key, season_site_dir)
+    publish_metadata(
+        processed_games,
+        kog_totals,
+        game_metrics,
+        player_records,
+        season_site_dir,
+        players_tracked=published_players,
+    )
     publish_schedule(schedule, season_site_dir)
 
     played = [g for g in schedule.values() if g.get("status") == "played"]
@@ -936,6 +978,7 @@ def build_season(season_cfg: dict) -> dict | None:
         "hasStats": has_stats,
         "record": f"{wins}W-{losses}L",
         "empGames": len(processed_games),
+        "manualGames": sum(1 for game_id in manual_game_ids if schedule.get(game_id, {}).get("status") == "played"),
     }
 
 

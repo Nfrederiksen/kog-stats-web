@@ -1,7 +1,23 @@
 {
-  "generatedAt": "2026-09-17T15:37:22.248491+00:00",
+  "generatedAt": "2026-09-19T16:16:37.707705+00:00",
   "gamesProcessed": [],
-  "playersTracked": 0,
-  "teamRecords": null,
+  "playersTracked": 10,
+  "teamRecords": {
+    "highestScore": {
+      "gameId": 32726810,
+      "opponent": "Skuru Basket",
+      "kogPoints": 74,
+      "opponentPoints": 67,
+      "pointDiff": 7
+    },
+    "biggestWin": {
+      "gameId": 32726810,
+      "opponent": "Skuru Basket",
+      "kogPoints": 74,
+      "opponentPoints": 67,
+      "pointDiff": 7
+    },
+    "toughestLoss": null
+  },
   "playerRecords": null
 }
