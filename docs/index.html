@@ -3567,7 +3567,7 @@
         fetch(seasonDataPath(currentSeason, `playbyplay/game_${matchId}.json`), { cache: "no-store" })
           .then((response) => (response.ok ? response.json() : null))
           .then((data) => {
-            if (!data || !data.timeline) {
+            if (!data || (!data.timeline && !data.events)) {
               timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game.</div>`;
               return;
             }
