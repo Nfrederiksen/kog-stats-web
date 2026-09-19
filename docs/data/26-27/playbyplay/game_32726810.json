@@ -4,129 +4,747 @@
   "homeOrAway": "home",
   "location": "Konradsbergshallen",
   "dateLabel": "Sat 19.Sep 15:30",
-  "isQuarterSummary": true,
-  "note": "Official quarter totals — individual event order was not recorded.",
-  "timeline": [
-    {
-      "period": 1,
-      "clock": "10:00",
-      "teamName": "Kungsholmen OG",
-      "player": "",
-      "playerNumber": "",
-      "score": "0-0",
-      "rawType": 97,
-      "side": null,
-      "kind": "period",
-      "label": "Start Period 1",
-      "emoji": "⏱️"
+  "note": "Official match-protocol action ledger. The protocol records event order and score, but not game clocks.",
+  "rosters": {
+    "KOG": {
+      "00": "Charlie Elf",
+      "1": "Hawsoon Jobe",
+      "4": "Luka Rosko",
+      "5": "Fares Cherif",
+      "7": "Hassan Drammeh",
+      "9": "Randall Brar Kalala",
+      "11": "Chuma Mc Phoy Odenyo",
+      "15": "Joakim Walles",
+      "27": "Anton Jensen Wennberg",
+      "50": "Max Landgren"
     },
-    {
-      "period": 1,
-      "clock": "00:00",
-      "teamName": "Kungsholmen OG",
-      "player": "",
-      "playerNumber": "",
-      "score": "18-16",
-      "rawType": 98,
-      "side": "KOG",
-      "kind": "period",
-      "label": "End Period 1",
-      "emoji": "🔔",
-      "detail": "KOG wins Q1 18–16."
-    },
-    {
-      "period": 2,
-      "clock": "10:00",
-      "teamName": "Kungsholmen OG",
-      "player": "",
-      "playerNumber": "",
-      "score": "18-16",
-      "rawType": 97,
-      "side": null,
-      "kind": "period",
-      "label": "Start Period 2",
-      "emoji": "⏱️"
-    },
-    {
-      "period": 2,
-      "clock": "00:00",
-      "teamName": "Skuru Basket",
-      "player": "",
-      "playerNumber": "",
-      "score": "38-37",
-      "rawType": 98,
-      "side": "Opponent",
-      "kind": "period",
-      "label": "End Period 2",
-      "emoji": "🔔",
-      "detail": "Skuru wins Q2 21–20. KOG leads 38–37 at half."
-    },
-    {
-      "period": 3,
-      "clock": "10:00",
-      "teamName": "Kungsholmen OG",
-      "player": "",
-      "playerNumber": "",
-      "score": "38-37",
-      "rawType": 97,
-      "side": null,
-      "kind": "period",
-      "label": "Start Period 3",
-      "emoji": "⏱️"
-    },
-    {
-      "period": 3,
-      "clock": "00:00",
-      "teamName": "Kungsholmen OG",
-      "player": "",
-      "playerNumber": "",
-      "score": "55-52",
-      "rawType": 98,
-      "side": "KOG",
-      "kind": "period",
-      "label": "End Period 3",
-      "emoji": "🔔",
-      "detail": "KOG wins Q3 17–15 and carries a 55–52 lead into the fourth."
-    },
-    {
-      "period": 4,
-      "clock": "10:00",
-      "teamName": "Kungsholmen OG",
-      "player": "",
-      "playerNumber": "",
-      "score": "55-52",
-      "rawType": 97,
-      "side": null,
-      "kind": "period",
-      "label": "Start Period 4",
-      "emoji": "⏱️"
-    },
-    {
-      "period": 4,
-      "clock": "00:00",
-      "teamName": "Kungsholmen OG",
-      "player": "",
-      "playerNumber": "",
-      "score": "74-67",
-      "rawType": 98,
-      "side": "KOG",
-      "kind": "period",
-      "label": "End Period 4",
-      "emoji": "🔔",
-      "detail": "KOG wins Q4 19–15."
-    },
-    {
-      "period": 4,
-      "clock": "00:00",
-      "teamName": "Kungsholmen OG",
-      "player": "",
-      "playerNumber": "",
-      "score": "74-67",
-      "rawType": 100,
-      "side": "KOG",
-      "kind": "period",
-      "label": "Final Buzzer — Kungsholmen OG",
-      "emoji": "🏁"
+    "Opponent": {
+      "00": "Pontus Thunblad",
+      "1": "Tage Labedzki Krüger",
+      "2": "Humam Wahid",
+      "7": "Jonathan Larsson",
+      "8": "Simon Stenkvist",
+      "11": "Max Thunblad",
+      "14": "Tim Lord",
+      "66": "Tage Johansson"
     }
+  },
+  "events": [
+    [
+      "start",
+      1
+    ],
+    [
+      1,
+      "0-2",
+      "14",
+      "Opponent",
+      "2p"
+    ],
+    [
+      1,
+      "2-2",
+      "9",
+      "KOG",
+      "2p"
+    ],
+    [
+      1,
+      "2-2",
+      "7",
+      "Opponent",
+      "P"
+    ],
+    [
+      1,
+      "3-2",
+      "50",
+      "KOG",
+      "Mål"
+    ],
+    [
+      1,
+      "4-2",
+      "50",
+      "KOG",
+      "Mål"
+    ],
+    [
+      1,
+      "6-2",
+      "50",
+      "KOG",
+      "2p"
+    ],
+    [
+      1,
+      "6-4",
+      "14",
+      "Opponent",
+      "2p"
+    ],
+    [
+      1,
+      "6-6",
+      "1",
+      "Opponent",
+      "2p"
+    ],
+    [
+      1,
+      "6-6",
+      "7",
+      "Opponent",
+      "P"
+    ],
+    [
+      1,
+      "9-6",
+      "9",
+      "KOG",
+      "3p"
+    ],
+    [
+      1,
+      "9-9",
+      "2",
+      "Opponent",
+      "3p"
+    ],
+    [
+      1,
+      "11-9",
+      "50",
+      "KOG",
+      "2p"
+    ],
+    [
+      1,
+      "11-9",
+      "00",
+      "Opponent",
+      "P"
+    ],
+    [
+      1,
+      "12-9",
+      "50",
+      "KOG",
+      "Mål"
+    ],
+    [
+      1,
+      "12-9",
+      "15",
+      "KOG",
+      "P"
+    ],
+    [
+      1,
+      "12-12",
+      "8",
+      "Opponent",
+      "3p"
+    ],
+    [
+      1,
+      "12-12",
+      "00",
+      "Opponent",
+      "P"
+    ],
+    [
+      1,
+      "13-12",
+      "00",
+      "KOG",
+      "Mål"
+    ],
+    [
+      1,
+      "15-12",
+      "00",
+      "KOG",
+      "2p"
+    ],
+    [
+      1,
+      "15-14",
+      "8",
+      "Opponent",
+      "2p"
+    ],
+    [
+      1,
+      "17-14",
+      "50",
+      "KOG",
+      "2p"
+    ],
+    [
+      1,
+      "17-16",
+      "7",
+      "Opponent",
+      "2p"
+    ],
+    [
+      1,
+      "17-16",
+      "11",
+      "Opponent",
+      "P"
+    ],
+    [
+      1,
+      "18-16",
+      "5",
+      "KOG",
+      "Mål"
+    ],
+    [
+      "start",
+      2
+    ],
+    [
+      2,
+      "18-18",
+      "14",
+      "Opponent",
+      "2p"
+    ],
+    [
+      2,
+      "18-21",
+      "1",
+      "Opponent",
+      "3p"
+    ],
+    [
+      2,
+      "20-21",
+      "27",
+      "KOG",
+      "2p"
+    ],
+    [
+      2,
+      "20-24",
+      "1",
+      "Opponent",
+      "3p"
+    ],
+    [
+      2,
+      "22-24",
+      "4",
+      "KOG",
+      "2p"
+    ],
+    [
+      2,
+      "22-24",
+      "27",
+      "KOG",
+      "P"
+    ],
+    [
+      2,
+      "22-24",
+      "1",
+      "Opponent",
+      "P"
+    ],
+    [
+      2,
+      "24-24",
+      "00",
+      "KOG",
+      "2p"
+    ],
+    [
+      2,
+      "24-26",
+      "8",
+      "Opponent",
+      "2p"
+    ],
+    [
+      2,
+      "24-26",
+      "5",
+      "KOG",
+      "P"
+    ],
+    [
+      2,
+      "24-27",
+      "8",
+      "Opponent",
+      "Mål"
+    ],
+    [
+      2,
+      "26-27",
+      "27",
+      "KOG",
+      "2p"
+    ],
+    [
+      2,
+      "29-27",
+      "1",
+      "KOG",
+      "3p"
+    ],
+    [
+      2,
+      "29-29",
+      "7",
+      "Opponent",
+      "2p"
+    ],
+    [
+      2,
+      "32-29",
+      "1",
+      "KOG",
+      "3p"
+    ],
+    [
+      2,
+      "32-32",
+      "1",
+      "Opponent",
+      "3p"
+    ],
+    [
+      2,
+      "34-32",
+      "4",
+      "KOG",
+      "2p"
+    ],
+    [
+      2,
+      "34-34",
+      "7",
+      "Opponent",
+      "2p"
+    ],
+    [
+      2,
+      "34-36",
+      "7",
+      "Opponent",
+      "2p"
+    ],
+    [
+      2,
+      "34-36",
+      "1",
+      "Opponent",
+      "P"
+    ],
+    [
+      2,
+      "34-36",
+      "11",
+      "Opponent",
+      "P"
+    ],
+    [
+      2,
+      "35-36",
+      "50",
+      "KOG",
+      "Mål"
+    ],
+    [
+      2,
+      "35-36",
+      "50",
+      "KOG",
+      "P"
+    ],
+    [
+      2,
+      "35-37",
+      "14",
+      "Opponent",
+      "Mål"
+    ],
+    [
+      2,
+      "38-37",
+      "1",
+      "KOG",
+      "3p"
+    ],
+    [
+      "start",
+      3
+    ],
+    [
+      3,
+      "40-37",
+      "5",
+      "KOG",
+      "2p"
+    ],
+    [
+      3,
+      "40-37",
+      "50",
+      "KOG",
+      "P"
+    ],
+    [
+      3,
+      "40-38",
+      "1",
+      "Opponent",
+      "Mål"
+    ],
+    [
+      3,
+      "42-38",
+      "4",
+      "KOG",
+      "2p"
+    ],
+    [
+      3,
+      "44-38",
+      "9",
+      "KOG",
+      "2p"
+    ],
+    [
+      3,
+      "44-40",
+      "14",
+      "Opponent",
+      "2p"
+    ],
+    [
+      3,
+      "44-43",
+      "2",
+      "Opponent",
+      "3p"
+    ],
+    [
+      3,
+      "44-43",
+      "66",
+      "Opponent",
+      "P"
+    ],
+    [
+      3,
+      "46-43",
+      "4",
+      "KOG",
+      "2p"
+    ],
+    [
+      3,
+      "46-45",
+      "8",
+      "Opponent",
+      "2p"
+    ],
+    [
+      3,
+      "46-45",
+      "5",
+      "KOG",
+      "P"
+    ],
+    [
+      3,
+      "46-46",
+      "8",
+      "Opponent",
+      "Mål"
+    ],
+    [
+      3,
+      "46-46",
+      "1",
+      "KOG",
+      "P"
+    ],
+    [
+      3,
+      "46-48",
+      "8",
+      "Opponent",
+      "2p"
+    ],
+    [
+      3,
+      "48-48",
+      "00",
+      "KOG",
+      "2p"
+    ],
+    [
+      3,
+      "50-48",
+      "27",
+      "KOG",
+      "2p"
+    ],
+    [
+      3,
+      "52-48",
+      "27",
+      "KOG",
+      "2p"
+    ],
+    [
+      3,
+      "52-48",
+      "00",
+      "Opponent",
+      "P"
+    ],
+    [
+      3,
+      "52-48",
+      "27",
+      "KOG",
+      "P"
+    ],
+    [
+      3,
+      "52-48",
+      "8",
+      "Opponent",
+      "P"
+    ],
+    [
+      3,
+      "52-50",
+      "8",
+      "Opponent",
+      "2p"
+    ],
+    [
+      3,
+      "54-50",
+      "1",
+      "KOG",
+      "2p"
+    ],
+    [
+      3,
+      "54-50",
+      "66",
+      "Opponent",
+      "P"
+    ],
+    [
+      3,
+      "54-50",
+      "8",
+      "Opponent",
+      "T"
+    ],
+    [
+      3,
+      "55-50",
+      "1",
+      "KOG",
+      "Mål"
+    ],
+    [
+      3,
+      "55-52",
+      "1",
+      "Opponent",
+      "2p"
+    ],
+    [
+      "start",
+      4
+    ],
+    [
+      4,
+      "58-52",
+      "1",
+      "KOG",
+      "3p"
+    ],
+    [
+      4,
+      "58-54",
+      "1",
+      "Opponent",
+      "2p"
+    ],
+    [
+      4,
+      "58-56",
+      "2",
+      "Opponent",
+      "2p"
+    ],
+    [
+      4,
+      "60-56",
+      "50",
+      "KOG",
+      "2p"
+    ],
+    [
+      4,
+      "62-56",
+      "00",
+      "KOG",
+      "2p"
+    ],
+    [
+      4,
+      "62-56",
+      "1",
+      "Opponent",
+      "P"
+    ],
+    [
+      4,
+      "64-56",
+      "5",
+      "KOG",
+      "2p"
+    ],
+    [
+      4,
+      "64-56",
+      "5",
+      "KOG",
+      "DI"
+    ],
+    [
+      4,
+      "64-57",
+      "14",
+      "Opponent",
+      "Mål"
+    ],
+    [
+      4,
+      "64-58",
+      "14",
+      "Opponent",
+      "Mål"
+    ],
+    [
+      4,
+      "64-60",
+      "14",
+      "Opponent",
+      "2p"
+    ],
+    [
+      4,
+      "67-60",
+      "5",
+      "KOG",
+      "3p"
+    ],
+    [
+      4,
+      "67-62",
+      "8",
+      "Opponent",
+      "2p"
+    ],
+    [
+      4,
+      "67-62",
+      "2",
+      "Opponent",
+      "P"
+    ],
+    [
+      4,
+      "67-62",
+      "50",
+      "KOG",
+      "P"
+    ],
+    [
+      4,
+      "67-62",
+      "00",
+      "Opponent",
+      "P"
+    ],
+    [
+      4,
+      "67-62",
+      "7",
+      "KOG",
+      "P"
+    ],
+    [
+      4,
+      "70-62",
+      "7",
+      "KOG",
+      "3p"
+    ],
+    [
+      4,
+      "70-65",
+      "8",
+      "Opponent",
+      "3p"
+    ],
+    [
+      4,
+      "70-65",
+      "27",
+      "KOG",
+      "P"
+    ],
+    [
+      4,
+      "70-65",
+      "",
+      "KOG",
+      "Timeout"
+    ],
+    [
+      4,
+      "70-67",
+      "1",
+      "Opponent",
+      "2p"
+    ],
+    [
+      4,
+      "72-67",
+      "50",
+      "KOG",
+      "2p"
+    ],
+    [
+      4,
+      "72-67",
+      "66",
+      "Opponent",
+      "P"
+    ],
+    [
+      4,
+      "74-67",
+      "50",
+      "KOG",
+      "2p"
+    ]
   ]
 }

@@ -3414,6 +3414,95 @@
         renderQuarterSummary(timelineStore);
       }
 
+      function buildTimelineFromLedger(data) {
+        if (!Array.isArray(data?.events)) return Array.isArray(data?.timeline) ? data.timeline : [];
+
+        const actionTypes = {
+          "2p": { kind: "score", label: "2PT Made", emoji: "🏀", rawType: 104 },
+          "3p": { kind: "score", label: "3PT Made", emoji: "🎯", rawType: 103 },
+          "Mål": { kind: "score", label: "FT Made", emoji: "🎫", rawType: 106 },
+          "P": { kind: "foul", label: "Personal Foul", emoji: "🥊", rawType: 109 },
+          "T": { kind: "foul", label: "Technical Foul", emoji: "🥊", rawType: 111 },
+          "DI": { kind: "foul", label: "Disqualifying Foul", emoji: "🥊", rawType: 111 },
+          "Timeout": { kind: "timeout", label: "Timeout", emoji: "🛑", rawType: 108 }
+        };
+        const timeline = [];
+        let activePeriod = null;
+        let previousScore = "0-0";
+
+        const appendPeriodEnd = () => {
+          if (!activePeriod) return;
+          timeline.push({
+            period: activePeriod,
+            clock: null,
+            teamName: "Kungsholmen OG",
+            player: "",
+            playerNumber: "",
+            score: previousScore,
+            rawType: 98,
+            side: null,
+            kind: "period",
+            label: `End Period ${activePeriod}`,
+            emoji: "🔔"
+          });
+        };
+
+        data.events.forEach((entry) => {
+          if (entry[0] === "start") {
+            appendPeriodEnd();
+            activePeriod = Number(entry[1]);
+            timeline.push({
+              period: activePeriod,
+              clock: null,
+              teamName: "Kungsholmen OG",
+              player: "",
+              playerNumber: "",
+              score: previousScore,
+              rawType: 97,
+              side: null,
+              kind: "period",
+              label: `Start Period ${activePeriod}`,
+              emoji: "⏱️"
+            });
+            return;
+          }
+
+          const [period, score, number, side, action] = entry;
+          const eventType = actionTypes[action] || { kind: "event", label: action, emoji: "•", rawType: null };
+          const teamName = side === "KOG" ? "Kungsholmen OG" : (data.opponent || "Opponent");
+          timeline.push({
+            period: Number(period),
+            clock: null,
+            teamName,
+            player: data.rosters?.[side]?.[number] || "",
+            playerNumber: number || "",
+            score,
+            rawType: eventType.rawType,
+            side,
+            kind: eventType.kind,
+            label: eventType.label,
+            emoji: eventType.emoji
+          });
+          previousScore = score || previousScore;
+        });
+
+        appendPeriodEnd();
+        timeline.push({
+          period: activePeriod || 4,
+          clock: null,
+          teamName: "Kungsholmen OG",
+          player: "",
+          playerNumber: "",
+          score: previousScore,
+          rawType: 100,
+          side: "KOG",
+          kind: "period",
+          label: "Final Buzzer — Kungsholmen OG",
+          emoji: "🏁"
+        });
+        return timeline;
+      }
+
       function openTimelineModal(matchId, gameInfo = null) {
         if (!matchId) return;
         timelineModal.classList.add("visible");
@@ -3449,7 +3538,7 @@
               timelineBody.innerHTML = `<div class="timeline-empty">No play-by-play data for this game.</div>`;
               return;
             }
-            timelineStore = data.timeline;
+            timelineStore = buildTimelineFromLedger(data);
             timelineIsQuarterSummary = Boolean(data.isQuarterSummary);
             timelineContext = { homeOrAway: data.homeOrAway || null };
             if (data.note) {
