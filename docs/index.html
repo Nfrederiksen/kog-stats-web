@@ -516,6 +516,17 @@
         outline: none;
       }
 
+      .game-card__scout-button--review {
+        border-color: #64d99b;
+        background: rgba(100, 217, 155, 0.14);
+        color: #8df0ba;
+      }
+
+      .game-card__scout-button--review:hover,
+      .game-card__scout-button--review:focus-visible {
+        background: #4fc983;
+      }
+
       .game-card__label {
         font-size: 0.78rem;
         letter-spacing: 0.24em;
@@ -2145,6 +2156,16 @@
       </div>
     </div>
 
+    <div class="modal-overlay" id="reviewModal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
+        <div class="modal-header">
+          <h2 id="reviewTitle">KOG Coach Debrief</h2>
+          <button class="close-modal" id="closeReview" type="button">Close</button>
+        </div>
+        <div id="reviewBody"></div>
+      </div>
+    </div>
+
     <div class="wrapped-overlay" id="wrappedOverlay">
       <button class="wrapped-close" id="wrappedClose">Close</button>
       <div class="wrapped-progress" id="wrappedProgress"></div>
@@ -2189,6 +2210,10 @@
       const scoutTitle = document.getElementById("scoutTitle");
       const scoutBody = document.getElementById("scoutBody");
       const closeScoutBtn = document.getElementById("closeScout");
+      const reviewModal = document.getElementById("reviewModal");
+      const reviewTitle = document.getElementById("reviewTitle");
+      const reviewBody = document.getElementById("reviewBody");
+      const closeReviewBtn = document.getElementById("closeReview");
       let playerStore = [];
       let scheduleStore = [];
       let timelineStore = [];
@@ -2202,6 +2227,7 @@
       let seasonsManifest = [];
       let rivalryRecord = null;
       let opponentScouts = [];
+      let gameReviews = [];
       metaContainer.className = "meta";
 
       const lockup = document.createElement("div");
@@ -2394,6 +2420,12 @@
         ) || null;
       }
 
+      function findGameReview(game) {
+        return gameReviews.find((review) =>
+          review.seasonKey === currentSeason && Number(review.matchId) === Number(game.matchId)
+        ) || null;
+      }
+
       function openScoutModal(scout) {
         if (!scout) return;
         scoutTitle.textContent = scout.title || `${scout.opponent} Game Plan`;
@@ -2454,6 +2486,66 @@
         scoutModal.setAttribute("aria-hidden", "true");
       }
 
+      function openReviewModal(review) {
+        if (!review) return;
+        reviewTitle.textContent = review.title || "KOG Coach Debrief";
+        reviewBody.innerHTML = "";
+
+        const summary = document.createElement("p");
+        summary.className = "scout-summary";
+        summary.textContent = review.summary || "";
+        reviewBody.appendChild(summary);
+
+        if (Array.isArray(review.highlights) && review.highlights.length) {
+          const highlightsSection = document.createElement("section");
+          highlightsSection.className = "scout-section";
+          const heading = document.createElement("h3");
+          heading.textContent = "What worked";
+          highlightsSection.appendChild(heading);
+          review.highlights.forEach((highlight) => {
+            const item = document.createElement("article");
+            item.className = "scout-player";
+            const title = document.createElement("strong");
+            title.textContent = highlight.title;
+            const stat = document.createElement("span");
+            stat.textContent = highlight.stat;
+            const note = document.createElement("p");
+            note.textContent = highlight.note;
+            item.append(title, stat, note);
+            highlightsSection.appendChild(item);
+          });
+          reviewBody.appendChild(highlightsSection);
+        }
+
+        if (Array.isArray(review.takeaways) && review.takeaways.length) {
+          const takeawaySection = document.createElement("section");
+          takeawaySection.className = "scout-section";
+          const heading = document.createElement("h3");
+          heading.textContent = "Carry forward";
+          const list = document.createElement("ul");
+          list.className = "scout-plan";
+          review.takeaways.forEach((takeaway) => {
+            const item = document.createElement("li");
+            item.textContent = takeaway;
+            list.appendChild(item);
+          });
+          takeawaySection.append(heading, list);
+          reviewBody.appendChild(takeawaySection);
+        }
+
+        const source = document.createElement("p");
+        source.className = "scout-source";
+        source.textContent = review.source || "Match protocol";
+        reviewBody.appendChild(source);
+        reviewModal.classList.add("visible");
+        reviewModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeReviewModal() {
+        reviewModal.classList.remove("visible");
+        reviewModal.setAttribute("aria-hidden", "true");
+      }
+
       function buildGameCard(game, { highlight = false, label = null } = {}) {
         const card = document.createElement("article");
         card.className = highlight ? "game-card game-card--next" : "game-card";
@@ -2477,7 +2569,8 @@
 
         const actions = document.createElement("div");
         actions.className = "game-card__actions";
-        const scout = (game.status || "").toLowerCase() !== "played" ? findOpponentScout(game) : null;
+        const scout = findOpponentScout(game);
+        const review = (game.status || "").toLowerCase() === "played" ? findGameReview(game) : null;
         if (scout) {
           const scoutButton = document.createElement("button");
           scoutButton.type = "button";
@@ -2490,6 +2583,20 @@
             openScoutModal(scout);
           });
           actions.appendChild(scoutButton);
+        }
+
+        if (review) {
+          const reviewButton = document.createElement("button");
+          reviewButton.type = "button";
+          reviewButton.className = "game-card__scout-button game-card__scout-button--review";
+          reviewButton.textContent = "K";
+          reviewButton.title = "Open KOG coach debrief";
+          reviewButton.setAttribute("aria-label", "Open KOG coach debrief");
+          reviewButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            openReviewModal(review);
+          });
+          actions.appendChild(reviewButton);
         }
 
         const badge = document.createElement("span");
@@ -3596,9 +3703,12 @@
             .catch(() => []),
           fetch("data/opponent_scouts.json", { cache: "no-store" })
             .then((response) => (response.ok ? response.json() : []))
+            .catch(() => []),
+          fetch("data/game_reviews.json", { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : []))
             .catch(() => [])
         ])
-          .then(([playersData, metadata, scheduleData, linksData, scoutsData]) => {
+          .then(([playersData, metadata, scheduleData, linksData, scoutsData, reviewsData]) => {
             const players = Array.isArray(playersData) ? playersData : [];
             const gamesCount = resolveGamesCount(players, metadata);
             const playersTracked = metadata && typeof metadata.playersTracked === "number"
@@ -3607,6 +3717,7 @@
 
             playerStore = players;
             opponentScouts = Array.isArray(scoutsData) ? scoutsData : [];
+            gameReviews = Array.isArray(reviewsData) ? reviewsData : [];
 
             renderBadges(players, metadata, gamesCount);
             renderSchedule(Array.isArray(scheduleData) ? scheduleData : []);
@@ -3983,6 +4094,10 @@
       scoutModal.addEventListener("click", (event) => {
         if (event.target === scoutModal) closeScoutModal();
       });
+      closeReviewBtn.addEventListener("click", closeReviewModal);
+      reviewModal.addEventListener("click", (event) => {
+        if (event.target === reviewModal) closeReviewModal();
+      });
 
       timelineSearch.addEventListener("input", (event) => {
         const term = event.target.value || "";
@@ -4003,6 +4118,9 @@
         }
         if (event.key === "Escape" && scoutModal.classList.contains("visible")) {
           closeScoutModal();
+        }
+        if (event.key === "Escape" && reviewModal.classList.contains("visible")) {
+          closeReviewModal();
         }
       });
 
