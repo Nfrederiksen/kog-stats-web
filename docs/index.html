@@ -527,6 +527,25 @@
         background: #4fc983;
       }
 
+      .game-card__timeline-button {
+        appearance: none;
+        border: 1px solid var(--accent);
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        padding: 0.38rem 0.62rem;
+        font: 700 0.68rem/1 inherit;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+      }
+
+      .game-card__timeline-button:hover,
+      .game-card__timeline-button:focus-visible {
+        color: var(--text-primary);
+        background: var(--accent);
+        outline: none;
+      }
+
       .game-card__label {
         font-size: 0.78rem;
         letter-spacing: 0.24em;
@@ -2598,6 +2617,20 @@
             openReviewModal(review);
           });
           actions.appendChild(reviewButton);
+        }
+
+        if ((game.status || "").toLowerCase() === "played") {
+          const timelineButton = document.createElement("button");
+          timelineButton.type = "button";
+          timelineButton.className = "game-card__timeline-button";
+          timelineButton.textContent = "PBP";
+          timelineButton.title = "Open play-by-play";
+          timelineButton.setAttribute("aria-label", "Open play-by-play");
+          timelineButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            openTimelineModal(game.matchId, game);
+          });
+          actions.appendChild(timelineButton);
         }
 
         const badge = document.createElement("span");
