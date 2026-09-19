@@ -16,7 +16,8 @@
     "gamesScheduled": 17,
     "hasStats": true,
     "record": "6W-11L",
-    "empGames": 17
+    "empGames": 17,
+    "manualGames": 0
   },
   {
     "key": "24-25",
@@ -25,7 +26,8 @@
     "gamesScheduled": 26,
     "hasStats": true,
     "record": "11W-15L",
-    "empGames": 26
+    "empGames": 26,
+    "manualGames": 0
   },
   {
     "key": "23-24",
@@ -34,6 +36,7 @@
     "gamesScheduled": 15,
     "hasStats": true,
     "record": "10W-5L",
-    "empGames": 11
+    "empGames": 11,
+    "manualGames": 0
   }
 ]
