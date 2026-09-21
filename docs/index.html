@@ -2973,12 +2973,16 @@
 
       function renderLinks(links) {
         linksList.innerHTML = "";
-        if (!Array.isArray(links) || !links.length) {
+        const allLinks = Array.isArray(links) ? links : [];
+        const seasonLinks = allLinks.filter((link) => link.seasonKey === currentSeason);
+        const sharedLinks = allLinks.filter((link) => !link.seasonKey);
+        const visibleLinks = seasonLinks.length ? [...seasonLinks, ...sharedLinks] : sharedLinks;
+        if (!visibleLinks.length) {
           linksCard.hidden = true;
           return;
         }
 
-        links.forEach((link) => {
+        visibleLinks.forEach((link) => {
           if (!link || !link.url) return;
           const anchor = document.createElement("a");
           anchor.href = link.url;
