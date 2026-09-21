@@ -726,6 +726,22 @@
       }
       .season-info-btn:hover { background: var(--accent-soft); }
 
+      .build-version {
+        position: absolute;
+        top: 1.25rem;
+        right: 4.5rem;
+        z-index: 4;
+        margin: 0;
+        padding: 0.3rem 0.5rem;
+        border: 1px solid var(--accent-soft);
+        border-radius: 999px;
+        background: rgba(7, 10, 22, 0.55);
+        color: var(--text-muted);
+        font: 600 0.62rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
       .insight-row {
         display: grid;
         grid-template-columns: 1fr auto auto auto;
@@ -2016,6 +2032,7 @@
   <body>
     <main style="position:relative;">
       <button type="button" class="season-info-btn" id="seasonInfoBtn" title="Season comparison">i</button>
+      <p class="build-version" id="buildVersion" hidden></p>
       <header></header>
 
       <div class="season-selector" id="seasonSelector"></div>
@@ -2210,6 +2227,7 @@
       const upcomingGamesList = document.getElementById("upcomingGamesList");
       const linksCard = document.getElementById("linksCard");
       const linksList = document.getElementById("linksList");
+      const buildVersion = document.getElementById("buildVersion");
       const timelineModal = document.getElementById("timelineModal");
       const timelineTitle = document.getElementById("timelineTitle");
       const timelineMeta = document.getElementById("timelineMeta");
@@ -2993,6 +3011,19 @@
         });
 
         linksCard.hidden = linksList.children.length === 0;
+      }
+
+      function renderBuildVersion(version) {
+        const commit = (version?.commit || "").trim().slice(0, 7);
+        if (!commit) {
+          buildVersion.hidden = true;
+          return;
+        }
+        buildVersion.textContent = `build ${commit}`;
+        buildVersion.title = version.builtAt
+          ? `Source commit ${commit} · refreshed ${new Date(version.builtAt).toLocaleString()}`
+          : `Source commit ${commit}`;
+        buildVersion.hidden = false;
       }
 
       function shortenTeamName(name) {
@@ -3842,9 +3873,12 @@
             .catch(() => []),
           fetch("data/game_reviews.json", { cache: "no-store" })
             .then((response) => (response.ok ? response.json() : []))
-            .catch(() => [])
+            .catch(() => []),
+          fetch("data/site_version.json", { cache: "no-store" })
+            .then((response) => (response.ok ? response.json() : null))
+            .catch(() => null)
         ])
-          .then(([playersData, metadata, scheduleData, linksData, scoutsData, reviewsData]) => {
+          .then(([playersData, metadata, scheduleData, linksData, scoutsData, reviewsData, versionData]) => {
             const players = Array.isArray(playersData) ? playersData : [];
             const gamesCount = resolveGamesCount(players, metadata);
             const playersTracked = metadata && typeof metadata.playersTracked === "number"
@@ -3859,6 +3893,7 @@
             renderSchedule(Array.isArray(scheduleData) ? scheduleData : []);
             renderSeasonInsights(players, Array.isArray(scheduleData) ? scheduleData : []);
             renderLinks(Array.isArray(linksData) ? linksData : []);
+            renderBuildVersion(versionData);
 
             document.getElementById("noDataMessage").style.display = "none";
 

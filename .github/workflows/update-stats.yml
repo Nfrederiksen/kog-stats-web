@@ -22,6 +22,29 @@ jobs:
       - name: Fetch feeds and rebuild stats
         run: python3 scripts/update_stats.py
 
+      - name: Write site version marker
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import datetime
+          import json
+          import os
+          from pathlib import Path
+
+          Path("docs/data/site_version.json").write_text(
+              json.dumps(
+                  {
+                      "commit": os.environ["BUILD_COMMIT"][:7],
+                      "builtAt": datetime.datetime.now(datetime.UTC).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+                  },
+                  indent=2,
+              )
+              + "\n",
+              encoding="utf-8",
+          )
+          PY
+
       - name: Commit changes
         id: commit
         run: |
