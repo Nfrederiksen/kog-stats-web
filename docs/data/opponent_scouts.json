@@ -28,5 +28,40 @@
       "Make their supporting cast create: the top four scorers accounted for 91 of 95 points in this game.",
       "This is a one-game sample, not a complete scouting report — adjust quickly to the line-up and what is happening on court."
     ]
+  },
+  {
+    "seasonKey": "26-27",
+    "opponent": "Tumba Basket",
+    "title": "Tumba Game Plan",
+    "summary": "Tumba are 2–1 in the three supplied protocols: wins over Odysseas (50–43) and DISK (58–55), then a 62–68 loss to Hybrid. #10 Enlil Danial is their most consistent scorer across the sample, while their line-up has changed enough that jersey numbers matter in the pre-game check.",
+    "source": "Three-game match-protocol sample: Tumba 50–43 Odysseas (19 Sep), 58–55 DISK (27 Sep), 62–68 Hybrid (4 Oct 2026).",
+    "players": [
+      {
+        "name": "#10 Enlil Danial",
+        "stat": "34 points in 3 games · 4×3PT vs Odysseas",
+        "note": "The most reliable scoring threat in this sample (13, 9 and 12 points). Find him early in transition and stay connected when he spaces to the arc."
+      },
+      {
+        "name": "#30 Nikola Mitrovic",
+        "stat": "25 points in 3 games · 5×3PT in the first 2",
+        "note": "A real perimeter threat when he is in rhythm: two threes against Hybrid and three against DISK. Close out under control and make him put it on the floor."
+      },
+      {
+        "name": "#5 — confirm the name at warm-ups",
+        "stat": "13 vs DISK · 14 vs Odysseas",
+        "note": "The #5 player changed between the protocols (Giovanni Argüelles Soto / Georges Abou Faycal), but the jersey spot was a major recent scorer. Match the current name to #5 before tip-off."
+      },
+      {
+        "name": "#9 Mac Omicevic — check availability",
+        "stat": "20 points vs Hybrid",
+        "note": "He was Tumba's top scorer in the latest report but did not appear in the prior two supplied protocols. Have a match-up ready if he dresses."
+      }
+    ],
+    "plan": [
+      "Call out #10 and #30 in transition and on every perimeter hand-off. They supplied 59 of Tumba's points across these three reports.",
+      "Stay disciplined with a lead: Tumba won Q4 19–7 to turn the Odysseas game, and they were still in a one-possession game late at DISK.",
+      "Attack with purpose and make their rotation defend multiple actions. Tumba recorded 45 team fouls across the three protocols (18, 16 and 11).",
+      "Do a final jersey-number check at warm-ups. The Tumba roster and high scorers varied across the three reports, so adjust match-ups to who is actually available."
+    ]
   }
 ]
