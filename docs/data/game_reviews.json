@@ -32,5 +32,39 @@
       "Use the same calm finish next game: win the last quarter, protect the lead, and make the opponent chase.",
       "This is a scorebook-based debrief. The protocol has no shot attempts, rebounds, turnovers, or minutes, so it cannot show full efficiency or possession detail."
     ]
+  },
+  {
+    "seasonKey": "26-27",
+    "matchId": 32726822,
+    "title": "KOG Coach Debrief",
+    "summary": "KOG fell 55–68 at Tumba, but there were clear positives to take forward: the team matched Tumba 32–32 after halftime and won the fourth quarter 16–14. The response and shared contribution were there throughout a difficult road game.",
+    "source": "Official match protocol: Tumba Basket 68–55 Kungsholmen OG, 10 October 2026.",
+    "highlights": [
+      {
+        "title": "Stayed in the fight after halftime",
+        "stat": "Second half 32–32 · Q4 16–14",
+        "note": "KOG trailed 23–37 at the break, then matched Tumba 16–17 in the third and won the final quarter 16–14. That is a response the group can build on."
+      },
+      {
+        "title": "Max gave KOG a reliable scoring base",
+        "stat": "Max Landgren 21 pts · 8×2PT · 5×FT",
+        "note": "Max consistently finished around the basket and converted five free throws, creating a dependable inside option in every quarter."
+      },
+      {
+        "title": "A reshaped group contributed",
+        "stat": "25 pts from Rudolfs, Mehmet, Lucas, Chuma & Hassan",
+        "note": "Mehmet scored 12 and Lucas added 6, while Rudolfs, Chuma and Hassan all contributed. That depth is a very positive foundation for the next games."
+      },
+      {
+        "title": "Perimeter answers in the finish",
+        "stat": "3 made threes · 3 players",
+        "note": "Lucas hit two threes and Hawsoon one. Those shots helped KOG win the final quarter and showed that the offense can attack in more than one way."
+      }
+    ],
+    "takeaways": [
+      "Carry the second-half standard into the next game: compete possession by possession, communicate, and finish quarters with purpose.",
+      "Keep creating early finishing opportunities for Max, then use the perimeter threat to open the floor for the whole group.",
+      "This is a scorebook-based debrief. The protocol records made baskets, fouls and event order, but not attempts, rebounds, turnovers or minutes."
+    ]
   }
 ]

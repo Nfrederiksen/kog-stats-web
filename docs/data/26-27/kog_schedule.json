@@ -13,7 +13,7 @@
     "opponentScore": 67,
     "pointDiff": 7,
     "result": "win",
-    "hasStats": false
+    "hasStats": true
   },
   {
     "matchId": 32726822,
@@ -22,14 +22,14 @@
     "location": "Bro\u00e4ngens Sporthall",
     "dateLabel": "Sat 10.Oct 17:00",
     "tipoff": "2026-10-10T17:00:00+02:00",
-    "homeScore": null,
-    "awayScore": null,
-    "status": "upcoming",
-    "kogScore": null,
-    "opponentScore": null,
-    "pointDiff": null,
-    "result": null,
-    "hasStats": false
+    "homeScore": 68,
+    "awayScore": 55,
+    "status": "played",
+    "kogScore": 55,
+    "opponentScore": 68,
+    "pointDiff": -13,
+    "result": "loss",
+    "hasStats": true
   },
   {
     "matchId": 32726807,

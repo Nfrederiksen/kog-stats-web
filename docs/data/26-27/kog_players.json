@@ -2,13 +2,13 @@
   {
     "name": "Anton Jensen Wennberg",
     "number": "27",
-    "gamesPlayed": 1,
+    "gamesPlayed": 2,
     "freeThrowsMade": 0,
-    "fieldGoalsMade": 4,
+    "fieldGoalsMade": 7,
     "threePointsMade": 0,
-    "foulsMade": 3,
-    "totalPoints": 8,
-    "pointsPerGame": 8.0
+    "foulsMade": 6,
+    "totalPoints": 14,
+    "pointsPerGame": 7.0
   },
   {
     "name": "Charlie Elf",
@@ -23,14 +23,14 @@
   },
   {
     "name": "Chuma Mc Phoy Odenyo",
-    "number": "11",
-    "gamesPlayed": 1,
+    "number": "42",
+    "gamesPlayed": 2,
     "freeThrowsMade": 0,
-    "fieldGoalsMade": 0,
+    "fieldGoalsMade": 1,
     "threePointsMade": 0,
-    "foulsMade": 0,
-    "totalPoints": 0,
-    "pointsPerGame": 0.0
+    "foulsMade": 4,
+    "totalPoints": 2,
+    "pointsPerGame": 1.0
   },
   {
     "name": "Fares Cherif",
@@ -45,25 +45,25 @@
   },
   {
     "name": "Hassan Drammeh",
-    "number": "7",
-    "gamesPlayed": 1,
+    "number": "87",
+    "gamesPlayed": 2,
     "freeThrowsMade": 0,
-    "fieldGoalsMade": 1,
+    "fieldGoalsMade": 2,
     "threePointsMade": 1,
     "foulsMade": 1,
-    "totalPoints": 3,
-    "pointsPerGame": 3.0
+    "totalPoints": 5,
+    "pointsPerGame": 2.5
   },
   {
     "name": "Hawsoon Jobe",
-    "number": "1",
-    "gamesPlayed": 1,
+    "number": "11",
+    "gamesPlayed": 2,
     "freeThrowsMade": 1,
-    "fieldGoalsMade": 5,
-    "threePointsMade": 4,
-    "foulsMade": 1,
-    "totalPoints": 15,
-    "pointsPerGame": 15.0
+    "fieldGoalsMade": 6,
+    "threePointsMade": 5,
+    "foulsMade": 3,
+    "totalPoints": 18,
+    "pointsPerGame": 9.0
   },
   {
     "name": "Joakim Walles",
@@ -77,26 +77,48 @@
     "pointsPerGame": 0.0
   },
   {
+    "name": "Lucas Evertsson",
+    "number": "13",
+    "gamesPlayed": 1,
+    "freeThrowsMade": 0,
+    "fieldGoalsMade": 2,
+    "threePointsMade": 2,
+    "foulsMade": 1,
+    "totalPoints": 6,
+    "pointsPerGame": 6.0
+  },
+  {
     "name": "Luka Rosko",
     "number": "4",
-    "gamesPlayed": 1,
+    "gamesPlayed": 2,
     "freeThrowsMade": 0,
     "fieldGoalsMade": 4,
     "threePointsMade": 0,
-    "foulsMade": 0,
+    "foulsMade": 2,
     "totalPoints": 8,
-    "pointsPerGame": 8.0
+    "pointsPerGame": 4.0
   },
   {
     "name": "Max Landgren",
     "number": "50",
-    "gamesPlayed": 1,
-    "freeThrowsMade": 4,
-    "fieldGoalsMade": 6,
+    "gamesPlayed": 2,
+    "freeThrowsMade": 9,
+    "fieldGoalsMade": 14,
     "threePointsMade": 0,
     "foulsMade": 3,
-    "totalPoints": 16,
-    "pointsPerGame": 16.0
+    "totalPoints": 37,
+    "pointsPerGame": 18.5
+  },
+  {
+    "name": "Mehmet Dilek",
+    "number": "1",
+    "gamesPlayed": 1,
+    "freeThrowsMade": 4,
+    "fieldGoalsMade": 4,
+    "threePointsMade": 0,
+    "foulsMade": 4,
+    "totalPoints": 12,
+    "pointsPerGame": 12.0
   },
   {
     "name": "Randall Brar Kalala",
@@ -108,5 +130,16 @@
     "foulsMade": 0,
     "totalPoints": 7,
     "pointsPerGame": 7.0
+  },
+  {
+    "name": "Rudolfs Dzelzkalejs",
+    "number": "00",
+    "gamesPlayed": 1,
+    "freeThrowsMade": 1,
+    "fieldGoalsMade": 1,
+    "threePointsMade": 0,
+    "foulsMade": 3,
+    "totalPoints": 3,
+    "pointsPerGame": 3.0
   }
 ]

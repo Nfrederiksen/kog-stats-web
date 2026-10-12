@@ -838,6 +838,7 @@ def apply_player_overrides(season_key: str, site_dir: Path) -> int | None:
         if not ovr:
             continue
         seen_names.add(row["name"])
+        row["number"] = ovr.get("number", row.get("number", ""))
         row["gamesPlayed"] = ovr["gamesPlayed"]
         row["totalPoints"] = ovr["totalPoints"]
         row["pointsPerGame"] = ovr["pointsPerGame"]
@@ -935,9 +936,9 @@ def build_season(season_cfg: dict) -> dict | None:
         if schedule_entry:
             publish_play_by_play(game_id, game, schedule_entry, opponent_team_id, play_by_play_dir, kog_team_id=kog_team_id)
 
-    # Official paper/PDF protocols can provide a final score and player totals
-    # before an EMP feed is available. Include those scores in team records,
-    # while keeping hasStats false on the schedule entry (no play-by-play).
+    # Official paper/PDF protocols can provide final scores and player totals
+    # before an EMP feed is available. Treat those games as having stats: the
+    # site can still show the recorded player totals and a manual event ledger.
     for game_id in manual_game_ids - set(processed_games):
         entry = schedule.get(game_id)
         if not entry or entry.get("status") != "played":
@@ -946,6 +947,7 @@ def build_season(season_cfg: dict) -> dict | None:
         opponent_points = entry.get("opponentScore")
         if kog_points is None or opponent_points is None:
             continue
+        entry["hasStats"] = True
         game_metrics.append({
             "gameId": game_id,
             "opponent": entry.get("opponent") or "Opponent",
