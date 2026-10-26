@@ -98,5 +98,41 @@
       "Make Odysseas execute against a set defense. The five-game sample ranges from 43 to 70 points.",
       "This is still a small protocol sample. Confirm the active roster and adjust to what happens on court."
     ]
+  },
+  {
+    "seasonKey": "26-27",
+    "opponent": "Duga",
+    "title": "Duga Game Plan",
+    "summary": "Duga are 3–0 in the three supplied match protocols (26 Sep–11 Oct), averaging 68.3 points scored and 48.3 allowed. #8 Benjamin Curis leads the sample with 60 points and made six free throws in each of his last two appearances.",
+    "source": "Three official match protocols: Duga 74–44 IK Hephata (26 Sep), Nynäshamn BBK 47–73 Duga (3 Oct), Skuru Basket 54–58 Duga (11 Oct 2026).",
+    "players": [
+      {
+        "name": "#8 Benjamin Curis",
+        "stat": "60 points in 3 games · 31 vs Nynäshamn",
+        "note": "Duga’s leading scorer in all three reports; made six free throws in each of the last two. Contest without fouling and communicate on drives."
+      },
+      {
+        "name": "#11 Kalle Pettersson",
+        "stat": "25 points in 3 games · scored in every report",
+        "note": "Reliable secondary scorer (6, 10, 9). Track him in transition and as the defense shifts to Curis."
+      },
+      {
+        "name": "#10 Olov Fors Ögren",
+        "stat": "14 points in each of 2 appearances · 5 threes",
+        "note": "Absent from the Nynäshamn protocol, so confirm availability. Dangerous perimeter scorer when active."
+      },
+      {
+        "name": "#32 Sam Remmets",
+        "stat": "23 points in 2 appearances · 3 threes",
+        "note": "Scored 11 vs Hephata and 12 vs Skuru; absent vs Nynäshamn. Match up to the active lineup."
+      }
+    ],
+    "plan": [
+      "Locate #8 Curis early; keep hands vertical and avoid sending him to the line.",
+      "Call out #11 Pettersson. Check whether #10 Olov Fors Ögren and #32 Sam Remmets are active because the lineup changed across these reports.",
+      "Pressure the third quarter: in the Skuru game Duga scored 8 in Q3 after leading by 9 at half, then answered with 18 in Q4. Keep executing and finish the game.",
+      "Stay connected at the arc. Duga made 5–7 threes in each report, with multiple players contributing.",
+      "This is a three-game sample. Confirm the active lineup and adjust to what the game shows."
+    ]
   }
 ]
