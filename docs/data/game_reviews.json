@@ -71,8 +71,8 @@
     "seasonKey": "26-27",
     "matchId": 32726807,
     "title": "KOG Coach Debrief",
-    "summary": "KOG fell 59–60 at Odysseas after leading 18–13 after Q1 and 38–33 at halftime. Odysseas won Q3 12–6, then both teams scored 15 in Q4. The protocol’s final scoring action was #7’s three, changing the score from 57–59 to 60–59.",
-    "source": "Official match protocol: Odysseas BF 60–59 Kungsholmen OG, 25 October 2026.",
+    "summary": "KOG fell 59–60 at Odysseas after leading 18–13 after Q1 and 38–33 at halftime. Odysseas won Q3 12–6, then both teams scored 15 in Q4. KOG led 59–57 with five seconds left before #7 hit a lucky banked three. That left KOG 2.2 seconds for the final possession, but no shot went up before the buzzer.",
+    "source": "Official match protocol for score and scoring actions; KOG's post-game account for the final five-second sequence.",
     "highlights": [
       {
         "title": "Built an early lead",
@@ -86,8 +86,8 @@
       },
       {
         "title": "Had the lead late",
-        "stat": "KOG 59–57 before the final recorded three",
-        "note": "Odysseas #7 Ioannis Katsaros hit the last listed field goal, a three-pointer that made it 60–59. The sheet has no game clock, so it does not establish when it happened."
+        "stat": "Five seconds left · KOG led 59–57 · KOG had 2.2 seconds for its final possession",
+        "note": "KOG's post-game account says #7 Ioannis Katsaros hit a lucky banked three with five seconds left. KOG had 2.2 seconds after the basket but could not get a shot away before the buzzer. The protocol itself has no game clock."
       },
       {
         "title": "Scoring came from across the roster",
@@ -102,7 +102,7 @@
     ],
     "takeaways": [
       "Prepare a clear opening action after halftime: KOG scored 20 in Q2 and 6 in Q3.",
-      "In a one-possession finish, locate the three-point threat and communicate the closeout. Katsaros’ final recorded make was the go-ahead three.",
+      "Rehearse a 2.2-second final possession with an immediate inbound and shot option; KOG could not get a shot away after Odysseas took the lead.",
       "Keep the scoring contributions spread across the roster; the three leading KOG scorers supplied 38 of the 59 points.",
       "KOG recorded 18 team fouls, including eight in Q4. Stay physical while avoiding unnecessary late fouls.",
       "This is a scorebook-based review. The protocol records made shots, free throws, fouls and event order, but not misses, rebounds, turnovers or minutes."
