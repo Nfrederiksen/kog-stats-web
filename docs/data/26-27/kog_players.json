@@ -13,13 +13,13 @@
   {
     "name": "Axel Forsberg",
     "number": "13",
-    "gamesPlayed": 1,
+    "gamesPlayed": 2,
     "freeThrowsMade": 0,
-    "fieldGoalsMade": 1,
-    "threePointsMade": 0,
-    "foulsMade": 0,
-    "totalPoints": 2,
-    "pointsPerGame": 2.0
+    "fieldGoalsMade": 3,
+    "threePointsMade": 2,
+    "foulsMade": 1,
+    "totalPoints": 8,
+    "pointsPerGame": 4.0
   },
   {
     "name": "Charlie Elf",
@@ -86,17 +86,6 @@
     "foulsMade": 3,
     "totalPoints": 0,
     "pointsPerGame": 0.0
-  },
-  {
-    "name": "Lucas Evertsson",
-    "number": "13",
-    "gamesPlayed": 1,
-    "freeThrowsMade": 0,
-    "fieldGoalsMade": 2,
-    "threePointsMade": 2,
-    "foulsMade": 1,
-    "totalPoints": 6,
-    "pointsPerGame": 6.0
   },
   {
     "name": "Luka Rosko",
