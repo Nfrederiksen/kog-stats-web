@@ -527,6 +527,18 @@
         background: #4fc983;
       }
 
+      .game-card__scout-button--difference {
+        border-color: #f4c76b;
+        background: rgba(244, 199, 107, 0.14);
+        color: #f4c76b;
+      }
+
+      .game-card__scout-button--difference:hover,
+      .game-card__scout-button--difference:focus-visible {
+        color: #101522;
+        background: #f4c76b;
+      }
+
       .game-card__timeline-button {
         appearance: none;
         border: 1px solid var(--accent);
@@ -1016,6 +1028,27 @@
         line-height: 1.5;
       }
 
+      .modal-card--info {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        max-height: 90vh;
+      }
+
+      .modal-card--info .modal-header {
+        position: static;
+        flex: 0 0 auto;
+      }
+
+      .modal-card--info__body {
+        min-height: 0;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        display: grid;
+        gap: 1rem;
+        padding-right: 0.15rem;
+      }
+
       .scout-source {
         margin: 0;
         color: var(--text-muted);
@@ -1074,6 +1107,50 @@
         font-size: 0.9rem;
         line-height: 1.45;
       }
+
+      .difference-intro,
+      .difference-note {
+        margin: 0;
+        color: var(--text-muted);
+        line-height: 1.45;
+      }
+
+      .difference-table {
+        display: grid;
+        gap: 0.35rem;
+        font-size: 0.84rem;
+      }
+
+      .difference-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(3.2rem, 0.7fr));
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.6rem 0.65rem;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.045);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .difference-row--head {
+        color: var(--text-muted);
+        background: transparent;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .difference-row > :not(:first-child) {
+        text-align: right;
+      }
+
+      .difference-value--positive {
+        color: #8df0ba;
+      }
+
+      .difference-value--negative {
+        color: #ff9aab;
+      }
       @media (max-width: 720px) {
         .modal-overlay {
           align-items: flex-start;
@@ -1083,6 +1160,9 @@
           width: 100%;
           border-radius: 16px;
           padding: 1.2rem;
+          max-height: calc(100vh - 1.4rem);
+        }
+        .modal-card--info {
           max-height: calc(100vh - 1.4rem);
         }
         .timeline-body {
@@ -2192,22 +2272,32 @@
     </div>
 
     <div class="modal-overlay" id="scoutModal" aria-hidden="true">
-      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="scoutTitle">
+      <div class="modal-card modal-card--info" role="dialog" aria-modal="true" aria-labelledby="scoutTitle">
         <div class="modal-header">
           <h2 id="scoutTitle">Opponent Scout</h2>
           <button class="close-modal" id="closeScout" type="button">Close</button>
         </div>
-        <div id="scoutBody"></div>
+        <div id="scoutBody" class="modal-card--info__body"></div>
       </div>
     </div>
 
     <div class="modal-overlay" id="reviewModal" aria-hidden="true">
-      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
+      <div class="modal-card modal-card--info" role="dialog" aria-modal="true" aria-labelledby="reviewTitle">
         <div class="modal-header">
           <h2 id="reviewTitle">KOG Coach Debrief</h2>
           <button class="close-modal" id="closeReview" type="button">Close</button>
         </div>
-        <div id="reviewBody"></div>
+        <div id="reviewBody" class="modal-card--info__body"></div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="differenceModal" aria-hidden="true">
+      <div class="modal-card modal-card--info" role="dialog" aria-modal="true" aria-labelledby="differenceTitle">
+        <div class="modal-header">
+          <h2 id="differenceTitle">Game Differences</h2>
+          <button class="close-modal" id="closeDifference" type="button">Close</button>
+        </div>
+        <div id="differenceBody" class="modal-card--info__body"></div>
       </div>
     </div>
 
@@ -2260,6 +2350,10 @@
       const reviewTitle = document.getElementById("reviewTitle");
       const reviewBody = document.getElementById("reviewBody");
       const closeReviewBtn = document.getElementById("closeReview");
+      const differenceModal = document.getElementById("differenceModal");
+      const differenceTitle = document.getElementById("differenceTitle");
+      const differenceBody = document.getElementById("differenceBody");
+      const closeDifferenceBtn = document.getElementById("closeDifference");
       let playerStore = [];
       let scheduleStore = [];
       let timelineStore = [];
@@ -2593,6 +2687,127 @@
         reviewModal.setAttribute("aria-hidden", "true");
       }
 
+      function extractGameDifferenceStats(data) {
+        const stats = {
+          KOG: { twoPM: 0, threePM: 0, freeThrows: 0, fouls: 0, players: new Set() },
+          Opponent: { twoPM: 0, threePM: 0, freeThrows: 0, fouls: 0, players: new Set() }
+        };
+        const events = Array.isArray(data?.events)
+          ? data.events.map((entry) => {
+              if (!Array.isArray(entry) || entry[0] === "start") return null;
+              return { side: entry[3], action: entry[4], playerNumber: entry[2] };
+            })
+          : Array.isArray(data?.timeline)
+            ? data.timeline.map((event) => ({
+                side: event.side,
+                action: event.kind === "score" ? event.label : event.label,
+                kind: event.kind,
+                playerNumber: event.playerNumber
+              }))
+            : [];
+
+        events.forEach((event) => {
+          if (!event || !stats[event.side]) return;
+          const side = stats[event.side];
+          const action = String(event.action || "").trim().toLowerCase();
+          const label = action.replace(/\s+/g, " ");
+
+          if (label === "2p" || label === "2pt made") side.twoPM += 1;
+          else if (label === "3p" || label === "3pt made") side.threePM += 1;
+          else if (label === "mål" || label === "ft made" || label === "free throw made") side.freeThrows += 1;
+          else if (["p", "t", "di", "personal foul", "technical foul", "disqualifying foul"].includes(label)) side.fouls += 1;
+          else if (event.kind === "foul") side.fouls += 1;
+
+          if (event.playerNumber !== null && event.playerNumber !== undefined && String(event.playerNumber).trim()) {
+            side.players.add(String(event.playerNumber).trim());
+          }
+        });
+
+        return Object.fromEntries(Object.entries(stats).map(([team, values]) => [team, {
+          twoPM: values.twoPM,
+          threePM: values.threePM,
+          freeThrows: values.freeThrows,
+          fouls: values.fouls,
+          players: values.players.size
+        }]));
+      }
+
+      function openDifferenceModal(game) {
+        if (!game) return;
+        const opponentName = game.opponent || "Opponent";
+        differenceTitle.textContent = `${opponentName} · Game Differences`;
+        differenceBody.innerHTML = '<p class="difference-intro">Loading score sheet totals…</p>';
+        differenceModal.classList.add("visible");
+        differenceModal.setAttribute("aria-hidden", "false");
+
+        fetch(seasonDataPath(currentSeason, `playbyplay/game_${game.matchId}.json`), { cache: "no-store" })
+          .then((response) => {
+            if (!response.ok) throw new Error("No game event data");
+            return response.json();
+          })
+          .then((data) => {
+            if (!differenceModal.classList.contains("visible")) return;
+            const stats = extractGameDifferenceStats(data);
+            const rows = [
+              ["2PM", "twoPM"],
+              ["3PM", "threePM"],
+              ["Free throws", "freeThrows"],
+              ["Fouls", "fouls"],
+              ["Players with recorded actions", "players"]
+            ].map(([label, key], order) => {
+              const opponentValue = stats.Opponent[key];
+              const kogValue = stats.KOG[key];
+              const diff = kogValue - opponentValue;
+              const diffClass = diff > 0 ? "difference-value--positive" : diff < 0 ? "difference-value--negative" : "";
+              const diffText = diff > 0 ? `+${diff}` : String(diff);
+              return { label, opponentValue, kogValue, diff, diffClass, diffText, order };
+            }).sort((a, b) => Math.abs(b.diff) - Math.abs(a.diff) || a.order - b.order);
+
+            differenceBody.innerHTML = "";
+            const intro = document.createElement("p");
+            intro.className = "difference-intro";
+            intro.textContent = `Positive differences mean KOG recorded more; negative differences mean ${opponentName} recorded more.`;
+            const table = document.createElement("div");
+            table.className = "difference-table";
+            table.setAttribute("role", "table");
+            table.setAttribute("aria-label", "Team stat differences");
+            const header = document.createElement("div");
+            header.className = "difference-row difference-row--head";
+            header.setAttribute("role", "row");
+            ["Stat", opponentName, "KOG", "Δ KOG"].forEach((text) => {
+              const cell = document.createElement("span");
+              cell.textContent = text;
+              header.appendChild(cell);
+            });
+            table.appendChild(header);
+            rows.forEach((row) => {
+              const line = document.createElement("div");
+              line.className = "difference-row";
+              line.setAttribute("role", "row");
+              [row.label, row.opponentValue, row.kogValue, row.diffText].forEach((text, index) => {
+                const cell = document.createElement(index === 0 || index === 3 ? "strong" : "span");
+                cell.textContent = String(text);
+                if (index === 3 && row.diffClass) cell.className = row.diffClass;
+                line.appendChild(cell);
+              });
+              table.appendChild(line);
+            });
+            const note = document.createElement("p");
+            note.className = "difference-note";
+            note.textContent = "Rows are ordered by the size of the difference. Player count uses players with a recorded score-sheet event; it is a participation proxy, not a substitution or minutes log. Fouls include personal, technical, and disqualifying fouls recorded in the ledger.";
+            differenceBody.append(intro, table, note);
+          })
+          .catch(() => {
+            if (!differenceModal.classList.contains("visible")) return;
+            differenceBody.innerHTML = '<p class="difference-intro">No play-by-play score sheet is available for this game yet.</p>';
+          });
+      }
+
+      function closeDifferenceModal() {
+        differenceModal.classList.remove("visible");
+        differenceModal.setAttribute("aria-hidden", "true");
+      }
+
       function buildGameCard(game, { highlight = false, label = null } = {}) {
         const card = document.createElement("article");
         card.className = highlight ? "game-card game-card--next" : "game-card";
@@ -2644,6 +2859,20 @@
             openReviewModal(review);
           });
           actions.appendChild(reviewButton);
+        }
+
+        if ((game.status || "").toLowerCase() === "played") {
+          const differenceButton = document.createElement("button");
+          differenceButton.type = "button";
+          differenceButton.className = "game-card__scout-button game-card__scout-button--difference";
+          differenceButton.textContent = "d";
+          differenceButton.title = "Compare game statistics";
+          differenceButton.setAttribute("aria-label", "Compare game statistics");
+          differenceButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            openDifferenceModal(game);
+          });
+          actions.appendChild(differenceButton);
         }
 
         if ((game.status || "").toLowerCase() === "played") {
@@ -4278,6 +4507,10 @@
       reviewModal.addEventListener("click", (event) => {
         if (event.target === reviewModal) closeReviewModal();
       });
+      closeDifferenceBtn.addEventListener("click", closeDifferenceModal);
+      differenceModal.addEventListener("click", (event) => {
+        if (event.target === differenceModal) closeDifferenceModal();
+      });
 
       timelineSearch.addEventListener("input", (event) => {
         const term = event.target.value || "";
@@ -4301,6 +4534,9 @@
         }
         if (event.key === "Escape" && reviewModal.classList.contains("visible")) {
           closeReviewModal();
+        }
+        if (event.key === "Escape" && differenceModal.classList.contains("visible")) {
+          closeDifferenceModal();
         }
       });
 
