@@ -38,14 +38,14 @@
     "location": "Enskedehallen L",
     "dateLabel": "Sun 25.Oct 14:00",
     "tipoff": "2026-10-25T14:00:00+01:00",
-    "homeScore": null,
-    "awayScore": null,
-    "status": "upcoming",
-    "kogScore": null,
-    "opponentScore": null,
-    "pointDiff": null,
-    "result": null,
-    "hasStats": false
+    "homeScore": 60,
+    "awayScore": 59,
+    "status": "played",
+    "kogScore": 59,
+    "opponentScore": 60,
+    "pointDiff": -1,
+    "result": "loss",
+    "hasStats": true
   },
   {
     "matchId": 32726830,

@@ -68,13 +68,13 @@
     "seasonKey": "26-27",
     "opponent": "Odysseas BF",
     "title": "Odysseas Game Plan",
-    "summary": "Odysseas are 3–1 across the four supplied match protocols, averaging 56 points scored and 49.5 allowed. They are coming off a 70-point win over Skuru. Ioannis Katsaros has led them in scoring in each of his last three appearances.",
-    "source": "Four Swedish Basketball Federation match protocols: Sep 19, Oct 4, Oct 11 and Oct 18, 2026.",
+    "summary": "Odysseas are 4–1 across five supplied match protocols through 25 October, averaging 56.8 points scored and 51.4 allowed. In the 60–59 win over KOG, #7 Ioannis Katsaros and #20 Andrea Scotti scored 17 each.",
+    "source": "Five match protocols, 19 Sep–25 Oct 2026, including Odysseas BF 60–59 KOG on 25 Oct.",
     "players": [
       {
         "name": "#7 Ioannis Katsaros",
-        "stat": "49 points across his last 3 appearances · 18 and 20 in the last 2",
-        "note": "Their leading scorer in the latest two reports. Locate him early, communicate on screens, and make catches difficult."
+        "stat": "66 points across 4 appearances · 17 in the KOG game",
+        "note": "Odysseas’ leading scorer across the sample (11, 18, 20 and 17 points). Locate him early and communicate on screens; he made the decisive final three in the KOG game."
       },
       {
         "name": "#10 Christos Verginis",
@@ -83,15 +83,20 @@
       },
       {
         "name": "#17 Konstantinos Pylarinos",
-        "stat": "9 points vs Skuru",
-        "note": "A secondary scoring option in the latest report. Stay aware when the defense shifts toward Katsaros."
+        "stat": "9 vs Skuru · 2 vs KOG",
+        "note": "A secondary scoring option. Stay aware when the defense shifts toward Katsaros and Scotti."
+      },
+      {
+        "name": "#20 Andrea Scotti",
+        "stat": "17 points vs KOG",
+        "note": "Shared the team high with Katsaros in the latest protocol. Identify him in matchups and do not leave him as the defense rotates."
       }
     ],
     "plan": [
-      "Identify #7 Katsaros and #10 Verginis before tip-off; adjust matchups to the players who dress.",
-      "Stay connected for all four quarters. Odysseas scored 19 in Q3 against Tyresö and 23 in Q2 at Huddinge, but managed 7 in Q4 against Tumba.",
-      "Respect the 70-point ceiling from the Skuru game while making Odysseas execute against a set defense.",
-      "Finish possessions with rebounds and avoid empty trips. The protocols do not include turnover or rebound totals, so adjust to what the game shows."
+      "Identify #7 Katsaros and #20 Scotti early; they shared the team high with 17 points each against KOG.",
+      "Stay connected for all four quarters. Odysseas scored 23 in Q2 at Huddinge and 19 in Q3 vs Tyresö, but had a 7-point Q4 against Tumba.",
+      "Make Odysseas execute against a set defense. The five-game sample ranges from 43 to 70 points.",
+      "This is still a small protocol sample. Confirm the active roster and adjust to what happens on court."
     ]
   }
 ]

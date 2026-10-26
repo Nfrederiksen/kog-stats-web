@@ -66,5 +66,46 @@
       "Keep creating early finishing opportunities for Max, then use the perimeter threat to open the floor for the whole group.",
       "This is a scorebook-based debrief. The protocol records made baskets, fouls and event order, but not attempts, rebounds, turnovers or minutes."
     ]
+  },
+  {
+    "seasonKey": "26-27",
+    "matchId": 32726807,
+    "title": "KOG Coach Debrief",
+    "summary": "KOG fell 59–60 at Odysseas after leading 18–13 after Q1 and 38–33 at halftime. Odysseas won Q3 12–6, then both teams scored 15 in Q4. The protocol’s final scoring action was #7’s three, changing the score from 57–59 to 60–59.",
+    "source": "Official match protocol: Odysseas BF 60–59 Kungsholmen OG, 25 October 2026.",
+    "highlights": [
+      {
+        "title": "Built an early lead",
+        "stat": "Q1 18–13 · halftime 38–33",
+        "note": "KOG controlled the opening quarter and carried a five-point advantage into the break."
+      },
+      {
+        "title": "Third quarter was the swing",
+        "stat": "Q3: Odysseas 12 · KOG 6",
+        "note": "KOG’s lowest-scoring quarter left the team one point behind entering Q4. The protocol does not show missed shots or possessions, so the cause is not visible in the score sheet."
+      },
+      {
+        "title": "Had the lead late",
+        "stat": "KOG 59–57 before the final recorded three",
+        "note": "Odysseas #7 Ioannis Katsaros hit the last listed field goal, a three-pointer that made it 60–59. The sheet has no game clock, so it does not establish when it happened."
+      },
+      {
+        "title": "Scoring came from across the roster",
+        "stat": "Hawsoon Jobe 15 · Randall Brar Kalala 12 · Rudolfs Dzelzkalejs 11",
+        "note": "The three leading scorers combined for 38 points; four more KOG players added points."
+      },
+      {
+        "title": "Made 24 field goals",
+        "stat": "21×2PT · 3×3PT · 8×FT",
+        "note": "KOG made 24 field goals and eight free throws for 59 points. The protocol does not list attempts, so shooting percentages cannot be calculated."
+      }
+    ],
+    "takeaways": [
+      "Prepare a clear opening action after halftime: KOG scored 20 in Q2 and 6 in Q3.",
+      "In a one-possession finish, locate the three-point threat and communicate the closeout. Katsaros’ final recorded make was the go-ahead three.",
+      "Keep the scoring contributions spread across the roster; the three leading KOG scorers supplied 38 of the 59 points.",
+      "KOG recorded 18 team fouls, including eight in Q4. Stay physical while avoiding unnecessary late fouls.",
+      "This is a scorebook-based review. The protocol records made shots, free throws, fouls and event order, but not misses, rebounds, turnovers or minutes."
+    ]
   }
 ]
