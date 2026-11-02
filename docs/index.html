@@ -2715,12 +2715,17 @@
           if (label === "2p" || label === "2pt made") side.twoPM += 1;
           else if (label === "3p" || label === "3pt made") side.threePM += 1;
           else if (label === "mål" || label === "ft made" || label === "free throw made") side.freeThrows += 1;
-          else if (["p", "t", "di", "personal foul", "technical foul", "disqualifying foul"].includes(label)) side.fouls += 1;
+          else if (["p", "t", "di", "fl", "personal foul", "technical foul", "disqualifying foul", "foul limit"].includes(label)) side.fouls += 1;
           else if (event.kind === "foul") side.fouls += 1;
 
           if (event.playerNumber !== null && event.playerNumber !== undefined && String(event.playerNumber).trim()) {
             side.players.add(String(event.playerNumber).trim());
           }
+        });
+
+        Object.entries(data?.starters || {}).forEach(([team, jerseys]) => {
+          if (!stats[team] || !Array.isArray(jerseys)) return;
+          jerseys.forEach((jersey) => stats[team].players.add(String(jersey)));
         });
 
         return Object.fromEntries(Object.entries(stats).map(([team, values]) => [team, {
@@ -2794,7 +2799,7 @@
             });
             const note = document.createElement("p");
             note.className = "difference-note";
-            note.textContent = "Rows are ordered by the size of the difference. Player count uses players with a recorded score-sheet event; it is a participation proxy, not a substitution or minutes log. Fouls include personal, technical, and disqualifying fouls recorded in the ledger.";
+            note.textContent = "Rows are ordered by the size of the difference. Player count includes starters marked on the score sheet and players with a recorded event; the sheet has no substitution or minutes log. Fouls include personal, technical, disqualifying, and foul-limit entries.";
             differenceBody.append(intro, table, note);
           })
           .catch(() => {
@@ -3730,6 +3735,7 @@
           "P": { kind: "foul", label: "Personal Foul", emoji: "🥊", rawType: 109 },
           "T": { kind: "foul", label: "Technical Foul", emoji: "🥊", rawType: 111 },
           "DI": { kind: "foul", label: "Disqualifying Foul", emoji: "🥊", rawType: 111 },
+          "FL": { kind: "foul", label: "Foul Limit", emoji: "🥊", rawType: 109 },
           "Timeout": { kind: "timeout", label: "Timeout", emoji: "🛑", rawType: 108 }
         };
         const timeline = [];

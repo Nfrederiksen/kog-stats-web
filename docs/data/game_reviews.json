@@ -107,5 +107,40 @@
       "KOG recorded 18 team fouls, including eight in Q4. Stay physical while avoiding unnecessary late fouls.",
       "This is a scorebook-based review. The protocol records made shots, free throws, fouls and event order, but not misses, rebounds, turnovers or minutes."
     ]
+  },
+  {
+    "seasonKey": "26-27",
+    "matchId": 32726830,
+    "title": "KOG Coach Debrief",
+    "summary": "KOG lost 62–69 at home to Duga. After trailing 22–40 at halftime, KOG outscored Duga 40–29 in the second half and won both later quarters, but the early deficit proved too large to erase.",
+    "source": "Official match protocol: Kungsholmen OG 62–69 Duga, 1 November 2026.",
+    "highlights": [
+      {
+        "title": "Strong second-half response",
+        "stat": "KOG 40 · Duga 29 after halftime",
+        "note": "KOG scored 22 in Q3 and 18 in Q4, narrowing the halftime gap from 18 points to seven. Keep that response and urgency from the opening tip."
+      },
+      {
+        "title": "Hawsoon led the offense",
+        "stat": "Hawsoon Jobe 17 pts · 5×2PT · 2×3PT · 1×FT",
+        "note": "He found points inside and at the arc. Fares Cherif added 13 and Randall Brar Kalala 9."
+      },
+      {
+        "title": "Duga’s perimeter edge",
+        "stat": "Duga 9×3PT · KOG 6×3PT",
+        "note": "Benjamin Curis made six threes and scored 26. Locate him early and contest without losing track of the other shooters."
+      },
+      {
+        "title": "Foul discipline to improve",
+        "stat": "KOG 21 team fouls · Duga 10",
+        "note": "The score sheet records 21 KOG fouls, including five by Joakim Walles. Stay physical while reducing avoidable fouls and protecting the rotation."
+      }
+    ],
+    "takeaways": [
+      "Start with the second-half defensive urgency. KOG held Duga to 29 points over the final two quarters after allowing 40 in the first half.",
+      "Identify Curis and the other perimeter threats early; Duga made nine threes across several players.",
+      "Reduce team fouls: the 21–10 foul gap was the clearest discipline difference in the score sheet.",
+      "This is a score-sheet review. The protocol records made baskets and fouls, but not attempts, rebounds, turnovers, or minutes."
+    ]
   }
 ]
