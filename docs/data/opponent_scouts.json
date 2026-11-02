@@ -134,5 +134,42 @@
       "Stay connected at the arc. Duga made 5–7 threes in each report, with multiple players contributing.",
       "This is a three-game sample. Confirm the active lineup and adjust to what the game shows."
     ]
+  },
+  {
+    "seasonKey": "26-27",
+    "opponent": "Hybrid Basketförening",
+    "title": "Hybrid Game Plan",
+    "summary": "Hybrid are 2–3 across the five supplied protocols (20 Sep–24 Oct), averaging 59.2 points scored and 62.8 allowed. The reports show substantial jersey and lineup changes, so confirm names and numbers at warm-ups.",
+    "source": "Five official match protocols: IK Hephata 52–51 Hybrid (20 Sep), Hybrid 51–62 Nynäshamn BBK (27 Sep), Tumba 62–68 Hybrid (4 Oct), Hybrid 66–60 Tyresö (18 Oct), and Hybrid 60–78 KFUM Huddinge (24 Oct 2026).",
+    "players": [
+      {
+        "name": "#3 Mattias Bergman",
+        "stat": "46 points in all 5 games · season-high 20",
+        "note": "Scored in every report and has been a regular part of their offense. Find him early in transition and communicate through off-ball screens."
+      },
+      {
+        "name": "#2 Björn Annerskog",
+        "stat": "39 points in all 5 games · 11 in each of the last 2",
+        "note": "A steady scorer across the sample. Keep track of him when help defense shifts toward Bergman."
+      },
+      {
+        "name": "Carl Gärdsell",
+        "stat": "55 points in 4 appearances · 15 in the latest report",
+        "note": "His jersey changed: #10 in three protocols and #9 vs Nynäshamn. Match the name as well as the number at warm-ups."
+      },
+      {
+        "name": "Kristoffer Ravudd",
+        "stat": "25 points in his last 2 appearances · 23 vs Huddinge",
+        "note": "He wore #11 vs Tyresö and #5 vs Huddinge. The #5 jersey belonged to different players in earlier protocols, so verify the active lineup."
+      }
+    ],
+    "plan": [
+      "Locate Bergman (#3) and Annerskog (#2) early; both appeared in all five reports and combined for 85 points.",
+      "Identify Carl Gärdsell by name. His number shifted between #9 and #10, and #10 belonged to a different player in the Tyresö protocol.",
+      "Check whether Kristoffer Ravudd is active and confirm his jersey. He scored 23 in the latest game after scoring 2 as #11 against Tyresö.",
+      "Start with urgency. Huddinge outscored Hybrid 30–14 in Q1, but Hybrid can respond: against Tyresö they came back from nine down at halftime and won the second half 34–19.",
+      "Do not relax with a lead. Hybrid has shown it can make a strong second-half run; keep communicating and execute through all four quarters.",
+      "This is a five-game sample. The roster and jersey numbers changed repeatedly, so adjust matchups to the players who actually dress."
+    ]
   }
 ]
