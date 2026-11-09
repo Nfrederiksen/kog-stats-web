@@ -70,14 +70,14 @@
     "location": "Vintervikens sph",
     "dateLabel": "Sat 7.Nov 15:15",
     "tipoff": "2026-11-07T15:15:00+01:00",
-    "homeScore": null,
-    "awayScore": null,
-    "status": "upcoming",
-    "kogScore": null,
-    "opponentScore": null,
-    "pointDiff": null,
-    "result": null,
-    "hasStats": false
+    "homeScore": 70,
+    "awayScore": 69,
+    "status": "played",
+    "kogScore": 69,
+    "opponentScore": 70,
+    "pointDiff": -1,
+    "result": "loss",
+    "hasStats": true
   },
   {
     "matchId": 32726843,

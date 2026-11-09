@@ -142,5 +142,40 @@
       "Reduce team fouls: the 21–10 foul gap was the clearest discipline difference in the score sheet.",
       "This is a score-sheet review. The protocol records made baskets and fouls, but not attempts, rebounds, turnovers, or minutes."
     ]
+  },
+  {
+    "seasonKey": "26-27",
+    "matchId": 32726832,
+    "title": "KOG Coach Debrief",
+    "summary": "KOG lost 69–70 away to Hybrid after leading for much of the game, including 53–44 after three quarters. Hybrid scored 26 in the fourth to turn the game. KOG’s account says a difficult but uncontested layup put Hybrid ahead in the final minute; with two seconds left, KOG stepped out of bounds on the inbound and could not get a final shot.",
+    "source": "Official match protocol for the score, player totals and quarter splits; KOG post-game account for the final-minute layup and two-second inbound.",
+    "highlights": [
+      {
+        "title": "Built a lead through three quarters",
+        "stat": "Halftime KOG 29–26 · after Q3 KOG 53–44",
+        "note": "KOG took the lead in Q2 and extended it to nine entering the fourth. That work kept the game in KOG’s hands for most of the night."
+      },
+      {
+        "title": "Rudolfs carried the scoring load",
+        "stat": "Rudolfs Dzelzkalejs 22 pts · Anton Jensen Wennberg 13 · Markus Nyblom 12",
+        "note": "Three KOG players combined for 47 points, with contributions from the rest of the rotation."
+      },
+      {
+        "title": "Fourth quarter decided it",
+        "stat": "Hybrid 26 · KOG 16 in Q4",
+        "note": "Hybrid erased the nine-point deficit. Keep the same defensive communication and possession discipline through the final quarter."
+      },
+      {
+        "title": "Last two seconds",
+        "stat": "Hybrid took a 70–69 lead · KOG had 2 seconds",
+        "note": "KOG’s post-game account says Hybrid scored a difficult but uncontested layup in the final minute. KOG then stepped out of bounds on the inbound with two seconds left and could not get a shot away. The protocol has no game-clock times."
+      }
+    ],
+    "takeaways": [
+      "Carry the focus that built the 53–44 lead into the fourth quarter; Hybrid scored 26 in the final period.",
+      "Rehearse two-second inbound options and sideline awareness so the team can still create a shot after a late basket.",
+      "Protect the paint without leaving a layup uncontested in a close finish.",
+      "This review uses the score sheet and KOG’s account. The protocol does not record misses, rebounds, turnovers, minutes or game-clock times."
+    ]
   }
 ]
