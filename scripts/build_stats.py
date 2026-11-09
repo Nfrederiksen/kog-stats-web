@@ -783,6 +783,86 @@ def update_player_records(
             }
 
 
+def update_manual_player_records(
+    game_id: int,
+    schedule_entry: dict,
+    player_records: Dict[str, dict],
+    play_by_play_dir: Path,
+) -> None:
+    """Derive single-game player records from a manually transcribed score ledger."""
+    source = play_by_play_dir / f"game_{game_id}.json"
+    if not source.exists():
+        return
+
+    try:
+        game = json.loads(source.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return
+
+    roster = game.get("rosters", {}).get("KOG", {})
+    if not isinstance(roster, dict) or not roster:
+        return
+
+    # The ledger stores scores as home-away. Track KOG's side to attribute each
+    # scoring change to the jersey on that scoring event.
+    kog_score_index = 1 if schedule_entry.get("homeOrAway") == "away" else 0
+    previous_kog_score = 0
+    points_by_number: Dict[str, int] = {}
+    threes_by_number: Dict[str, int] = {}
+
+    for event in game.get("events", []):
+        if not isinstance(event, list) or len(event) < 5 or event[0] == "start":
+            continue
+        try:
+            score_parts = str(event[1]).split("-")
+            kog_score = int(score_parts[kog_score_index])
+        except (IndexError, TypeError, ValueError):
+            continue
+
+        score_delta = kog_score - previous_kog_score
+        previous_kog_score = kog_score
+        if event[3] != "KOG" or score_delta <= 0:
+            continue
+
+        number = str(event[2])
+        points_by_number[number] = points_by_number.get(number, 0) + score_delta
+        if event[4] == "3p":
+            threes_by_number[number] = threes_by_number.get(number, 0) + 1
+
+    opponent_name = game.get("opponent") or schedule_entry.get("opponent") or "Opponent"
+    tipoff = schedule_entry.get("tipoff")
+    tipoff_value = tipoff.isoformat() if hasattr(tipoff, "isoformat") else tipoff
+    for number, points in points_by_number.items():
+        player_name = roster.get(number, "")
+        if not player_name:
+            continue
+        current = player_records.get("mostPointsInGame")
+        if not current or points > current["points"]:
+            player_records["mostPointsInGame"] = {
+                "gameId": game_id,
+                "player": player_name,
+                "points": points,
+                "opponent": opponent_name,
+                "dateLabel": game.get("dateLabel") or schedule_entry.get("dateLabel"),
+                "tipoff": tipoff_value,
+            }
+
+    for number, threes in threes_by_number.items():
+        player_name = roster.get(number, "")
+        if not player_name:
+            continue
+        current = player_records.get("mostThreesInGame")
+        if not current or threes > current["threePointers"]:
+            player_records["mostThreesInGame"] = {
+                "gameId": game_id,
+                "player": player_name,
+                "threePointers": threes,
+                "opponent": opponent_name,
+                "dateLabel": game.get("dateLabel") or schedule_entry.get("dateLabel"),
+                "tipoff": tipoff_value,
+            }
+
+
 def publish_metadata(
     game_ids: Iterable[int],
     totals: Dict[str, PlayerTotals],
@@ -943,6 +1023,7 @@ def build_season(season_cfg: dict) -> dict | None:
         entry = schedule.get(game_id)
         if not entry or entry.get("status") != "played":
             continue
+        update_manual_player_records(game_id, entry, player_records, play_by_play_dir)
         kog_points = entry.get("kogScore")
         opponent_points = entry.get("opponentScore")
         if kog_points is None or opponent_points is None:

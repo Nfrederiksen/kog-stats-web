@@ -25,5 +25,22 @@
       "pointDiff": -13
     }
   },
-  "playerRecords": null
+  "playerRecords": {
+    "mostPointsInGame": {
+      "gameId": 32726832,
+      "player": "Rudolfs Dzelzkalejs",
+      "points": 22,
+      "opponent": "Hybrid Basketf\u00f6rening",
+      "dateLabel": "Sat 7.Nov 15:15",
+      "tipoff": "2026-11-07T15:15:00+01:00"
+    },
+    "mostThreesInGame": {
+      "gameId": 32726810,
+      "player": "Hawsoon Jobe",
+      "threePointers": 4,
+      "opponent": "Skuru Basket",
+      "dateLabel": "Sat 19.Sep 15:30",
+      "tipoff": "2026-09-19T15:30:00+02:00"
+    }
+  }
 }
